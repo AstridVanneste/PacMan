@@ -6,10 +6,16 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include <iostream>
-using namespace std;
+#include "AbstractFactory.h"
+#include "SDLFactory.h"
+#include "Game.h"
 
-int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+int main()
+{
+	AbstractFactory *factory = new SDL_Factory();
+	Game *game = Game::getInstance();
+	game->setFactory(factory);
+
+	game->start();
 	return 0;
 }
