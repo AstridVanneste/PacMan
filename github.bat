@@ -6,4 +6,3 @@ git pull origin master
 git push origin master
 
 echo finished
-echo hallelujah
