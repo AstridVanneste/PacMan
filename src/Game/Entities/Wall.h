@@ -8,16 +8,23 @@
 #ifndef GAME_ENTITIES_WALL_H_
 #define GAME_ENTITIES_WALL_H_
 #include "Entity.h"
+#include "WallConstants.h"
 
 namespace Game {
 
 	class Wall : public Entity
 	{
 	private:
+		char type;		//type is set using the constants in "WallConstants.h"
 
 	public:
 		Wall();
 		virtual ~Wall();
+
+		void setType(char type);
+		char getType();
+
+		virtual void visualize();
 	};
 
 } /* namespace Game */

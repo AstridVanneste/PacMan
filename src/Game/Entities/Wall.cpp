@@ -7,15 +7,16 @@
 
 #include "Wall.h"
 
-namespace Game {
+namespace Game
+{
+	Wall::Wall()
+	{
+		// TODO Auto-generated constructor stub
 
-Wall::Wall() {
-	// TODO Auto-generated constructor stub
+	}
 
-}
-
-Wall::~Wall() {
-	// TODO Auto-generated destructor stub
-}
-
+	Wall::~Wall()
+	{
+		// TODO Auto-generated destructor stub
+	}
 } /* namespace Game */
