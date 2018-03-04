@@ -7,6 +7,7 @@
 
 #include "Entities/Ghost.h"
 #include "Gamemanager.h"
+#include "Map.h"
 
 namespace Game
 {
@@ -45,6 +46,9 @@ namespace Game
 		Ghost* ghost = this->factory->createGhost();
 
 		ghost->visualize();
+
+		Map* map = new Map();
+		map->loadFromFile("res/Maps/lev1.txt");
 	}
 
 	AbstractFactory* Gamemanager::getFactory()
