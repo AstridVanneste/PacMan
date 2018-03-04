@@ -10,15 +10,14 @@ namespace Game
 {
 	Entity::Entity()
 	{
-		this->x = 0;
-		this->y = 0;
+		this->location.x = 0;
+		this->location.y = 0;
 	}
 
-	Entity::Entity(int x, int y, string image)
+	Entity::Entity(Location location)
 	{
-		this->x = x;
-		this->y = y;
-		this->image = image;
+		this->location.x = location.x;
+		this->location.y = location.y;
 	}
 
 	Entity::~Entity()

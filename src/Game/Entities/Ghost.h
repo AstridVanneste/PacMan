@@ -22,7 +22,7 @@ namespace Game
 	public:
 		Ghost();
 		Ghost(GhostType type);
-		Ghost(int x, int y, string image, GhostType type);
+		Ghost(Location location, GhostType type);
 		virtual ~Ghost();
 
 		GhostType getType();

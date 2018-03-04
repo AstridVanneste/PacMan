@@ -25,8 +25,8 @@ namespace Game
 		this->fear = false;
 	}
 
-	Ghost::Ghost(int x, int y, string image, GhostType type)
-	:Entity(x,y,image)
+	Ghost::Ghost(Location location, GhostType type)
+	:Entity(location)
 	{
 		this->type = type;
 		this->fear = false;

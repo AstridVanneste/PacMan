@@ -8,6 +8,7 @@
 #ifndef ENTITY_H_
 #define ENTITY_H_
 #include <string>
+#include "../Util/Util.h"
 using namespace std;
 
 namespace Game
@@ -15,12 +16,10 @@ namespace Game
 	class Entity
 	{
 	private:
-		int x;
-		int y;
-		string image; //path to the image with the appearance of the entity
+		Location location;
 	public:
 		Entity();
-		Entity(int x, int y, string image);
+		Entity(Location location);
 		virtual ~Entity();
 
 		void setX(int x);
