@@ -9,7 +9,7 @@
 #define SDLHANDLER_H_
 #include <SDL2/SDL.h>
 #include <string>
-#include "../GraphicsHandler.h"
+#include "../Game/GraphicsHandler.h"
 using namespace std;
 
 namespace SDL

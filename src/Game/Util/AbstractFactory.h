@@ -8,7 +8,7 @@
 #ifndef ABSTRACTFACTORY_H_
 #define ABSTRACTFACTORY_H_
 #include "../Entities/Ghost.h"
-#include "../../GraphicsHandler.h"
+#include "../GraphicsHandler.h"
 
 namespace Game
 {

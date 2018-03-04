@@ -7,7 +7,7 @@
 
 #ifndef GAME_H_
 #define GAME_H_
-#include "../GraphicsHandler.h"
+#include "GraphicsHandler.h"
 #include "Util/AbstractFactory.h"
 
 namespace Game
