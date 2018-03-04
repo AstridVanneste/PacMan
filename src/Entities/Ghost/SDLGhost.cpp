@@ -9,8 +9,15 @@
 using namespace std;
 
 SDL_Ghost::SDL_Ghost()
+:Ghost()
 {
-	// TODO Auto-generated constructor stub
+
+
+}
+
+SDL_Ghost::SDL_Ghost(GhostType type)
+:Ghost(type)
+{
 
 }
 
@@ -28,7 +35,7 @@ void SDL_Ghost::visualize()
 	SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
 	SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
 
-	SDL_Surface* tmpSurface = IMG_Load("res/Inky.png");
+	SDL_Surface* tmpSurface = IMG_Load("res/Images/Inky.png");
 	if(tmpSurface == NULL)
 	{
 		cout << "Failed to load image to surface" << endl;
@@ -37,9 +44,16 @@ void SDL_Ghost::visualize()
 	SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
 	SDL_FreeSurface(tmpSurface);
 
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255,  255);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0,  255);
 	SDL_RenderClear(renderer);
-	if(SDL_RenderCopy(renderer, tex, NULL,NULL)<0)
+
+	SDL_Rect* destrect = new SDL_Rect;
+	destrect->h = 32;
+	destrect->w = 32;
+	destrect->x = 0;
+	destrect->y = 0;
+
+	if(SDL_RenderCopy(renderer, tex, NULL,destrect)<0)
 	{
 		cout << "Error when drawing image on screen" << endl;
 		cout << SDL_GetError() << endl;

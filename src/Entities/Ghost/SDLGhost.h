@@ -20,6 +20,7 @@ class SDL_Ghost : public Ghost
 {
 public:
 	SDL_Ghost();
+	SDL_Ghost(GhostType type);
 	virtual ~SDL_Ghost();
 
 	void visualize();

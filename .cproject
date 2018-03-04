@@ -33,6 +33,19 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.109201831" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.306140508" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
+								<option id="gnu.cpp.link.option.libs.35821166" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" value="mingw32"/>
+									<listOptionValue builtIn="false" value="sdl2"/>
+									<listOptionValue builtIn="false" value="sdl2main"/>
+									<listOptionValue builtIn="false" value="sdl2_image"/>
+								</option>
+								<option id="gnu.cpp.link.option.other.210393277" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" useByScannerDiscovery="false" valueType="stringList">
+									<listOptionValue builtIn="false" value="libjpeg-9.dll"/>
+									<listOptionValue builtIn="false" value="libpng16-16.dll"/>
+									<listOptionValue builtIn="false" value="libtiff-5.dll"/>
+									<listOptionValue builtIn="false" value="libwebp-7.dll"/>
+									<listOptionValue builtIn="false" value="zlib1.dll"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.467422536" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -113,4 +126,13 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/PacMan"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/PacMan"/>
+		</configuration>
+	</storageModule>
 </cproject>
