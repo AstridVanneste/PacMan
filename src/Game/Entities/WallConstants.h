@@ -1,5 +1,5 @@
-//constants used to compose index for WALL_IMAGE matrix.
-enum neighbouringWalls
+//Constants used to compose index for WALL_IMAGE matrix.
+enum NEIGHBOUR_WALLS
 {
 	LEFT = 1,
 	UP = 1<<1,
@@ -7,7 +7,8 @@ enum neighbouringWalls
 	DOWN = 1<<3
 };
 
-//constants that can be used as index for WALL_IMAGE matrix.
+//Constants that can be used as index for WALL_IMAGE matrix.
+//Composed using the NEIGHBOUR_WALLS enum.
 const char L = LEFT;							//0001		1
 const char U = UP;								//0010		2
 const char R = RIGHT;							//0100		4
