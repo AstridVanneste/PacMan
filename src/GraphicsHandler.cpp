@@ -7,12 +7,17 @@
 
 #include "GraphicsHandler.h"
 
-Graphics_Handler::Graphics_Handler() {
-	// TODO Auto-generated constructor stub
+namespace Game
+{
+	Graphics_Handler::Graphics_Handler()
+	{
+		// TODO Auto-generated constructor stub
 
-}
+	}
 
-Graphics_Handler::~Graphics_Handler() {
-	// TODO Auto-generated destructor stub
+	Graphics_Handler::~Graphics_Handler()
+	{
+		// TODO Auto-generated destructor stub
+	}
 }
 

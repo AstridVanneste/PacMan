@@ -6,16 +6,16 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-#include "AbstractFactory.h"
-#include "SDLFactory.h"
-#include "Game.h"
+#include "Game/Gamemanager.h"
+#include "Game/Util/AbstractFactory.h"
+#include "SDL/Util/SDLFactory.h"
 
 int main()
 {
-	AbstractFactory *factory = new SDL_Factory();
-	Game *game = Game::getInstance();
-	game->setFactory(factory);
+	Game::AbstractFactory *factory = new SDL::SDL_Factory();
+	Game::Gamemanager *gamemanager = Game::Gamemanager::getInstance();
+	gamemanager->setFactory(factory);
 
-	game->start();
+	gamemanager->start();
 	return 0;
 }

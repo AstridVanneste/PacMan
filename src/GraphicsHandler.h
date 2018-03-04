@@ -8,16 +8,19 @@
 #ifndef GRAPHICSHANDLER_H_
 #define GRAPHICSHANDLER_H_
 
-class Graphics_Handler
+namespace Game
 {
-public:
-	Graphics_Handler();
-	virtual ~Graphics_Handler();
+	class Graphics_Handler
+	{
+	public:
+		Graphics_Handler();
+		virtual ~Graphics_Handler();
 
-	virtual bool init()=0;
-	virtual bool visualizeAll()=0;
-	virtual bool visualizeMap()=0;
-	virtual bool visualizeComponent()=0;
-};
+		virtual bool init()=0;
+		virtual bool visualizeAll()=0;
+		virtual bool visualizeMap()=0;
+		virtual bool visualizeComponent()=0;
+	};
+}
 
 #endif /* GRAPHICSHANDLER_H_ */
