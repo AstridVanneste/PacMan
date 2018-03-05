@@ -9,6 +9,7 @@
 #define ENTITY_H_
 #include <string>
 #include "../Util/Util.h"
+#include "EntityTypes.h"
 using namespace std;
 
 namespace Game
@@ -17,10 +18,17 @@ namespace Game
 	{
 	private:
 		Location location;
+	protected:
+		char objectType;
 	public:
 		Entity();
-		Entity(Location location);
+		Entity(const Location& location);
 		virtual ~Entity();
+
+		virtual void visualize()=0;
+
+		char getObjectType();
+		void setObjectType(char type);
 
 		void setX(int x);
 		void setY(int y);

@@ -22,11 +22,13 @@ namespace Game
 		static Gamemanager* instance;
 
 		Gamemanager();
+		Gamemanager(const Gamemanager& gamemanager) = delete;
+		Gamemanager operator =(const Gamemanager& gamemanager) = delete;
 
 	public:
 		virtual ~Gamemanager();
 
-		static Gamemanager* getInstance();
+		static Gamemanager& getInstance();
 
 		void setFactory(AbstractFactory* factory);
 		void setGraphicsHandler(Graphics_Handler* graphicsHandler);

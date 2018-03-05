@@ -14,6 +14,8 @@ namespace Game
 	Ghost::Ghost()
 	:Entity()
 	{
+		this->objectType = GHOST;
+
 		this->type = Blinky;
 		this->fear = false;
 	}
@@ -21,6 +23,8 @@ namespace Game
 	Ghost::Ghost(GhostType type)
 	:Entity()
 	{
+		this->objectType = GHOST;
+
 		this->type = type;
 		this->fear = false;
 	}
@@ -28,6 +32,8 @@ namespace Game
 	Ghost::Ghost(Location location, GhostType type)
 	:Entity(location)
 	{
+		this->objectType =GHOST;
+
 		this->type = type;
 		this->fear = false;
 	}

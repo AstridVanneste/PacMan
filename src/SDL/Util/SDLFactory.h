@@ -18,8 +18,10 @@ namespace SDL
 		SDL_Factory();
 		virtual ~SDL_Factory();
 
-		Game::Ghost* createGhost();
-		Game::Graphics_Handler* createGraphicsHandler();
+		virtual Game::Ghost* createGhost();
+		virtual Game::Wall* createWall();
+		virtual Game::Wall* createWall(char type);
+		virtual Game::Graphics_Handler* createGraphicsHandler();
 };
 }
 

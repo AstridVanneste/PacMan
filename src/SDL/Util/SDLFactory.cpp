@@ -8,6 +8,7 @@
 #include "../Util/SDLFactory.h"
 
 #include "../Entities/SDLGhost.h"
+#include "../Entities/SDLWall.h"
 #include "../SDLHandler.h"
 
 namespace SDL
@@ -26,6 +27,16 @@ namespace SDL
 	Game::Ghost* SDL_Factory::createGhost()
 	{
 		return new SDL_Ghost();
+	}
+
+	Game::Wall* SDL_Factory::createWall()
+	{
+		return new SDL_Wall();
+	}
+
+	Game::Wall* SDL_Factory::createWall(char type)
+	{
+		return new SDL_Wall(type);
 	}
 
 	Game::Graphics_Handler* SDL_Factory::createGraphicsHandler()

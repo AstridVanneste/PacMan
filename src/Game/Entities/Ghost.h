@@ -14,7 +14,7 @@ namespace Game
 {
 	enum GhostType{Inky, Blinky, Pinky, Clyde};
 
-	class Ghost: Entity
+	class Ghost: public Entity
 	{
 	private:
 		GhostType type;
@@ -30,8 +30,6 @@ namespace Game
 
 		bool isFear();
 		void setFear(bool fear);
-
-		virtual void visualize()=0;
 	};
 }
 

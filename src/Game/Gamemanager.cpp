@@ -11,7 +11,6 @@
 
 namespace Game
 {
-	Gamemanager* Gamemanager::instance = 0;
 
 	Gamemanager::Gamemanager()
 	{
@@ -21,12 +20,9 @@ namespace Game
 	}
 
 
-	Gamemanager* Gamemanager::getInstance()
+	Gamemanager& Gamemanager::getInstance()
 	{
-		if(instance == 0)
-		{
-			instance = new Gamemanager();
-		}
+		static Gamemanager instance;
 		return instance;
 	}
 

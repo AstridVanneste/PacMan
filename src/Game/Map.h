@@ -13,11 +13,14 @@ using namespace std;
 
 namespace Game
 {
+	const int MAP_LIMIT_HEIGHT = 9;
+	const int MAP_LIMIT_WIDTH = 9;
 
 	class Map
 	{
 	private:
 		Entity* map [10][10];
+		void setWallTypes();
 	public:
 		Map();
 		virtual ~Map();

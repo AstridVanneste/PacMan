@@ -19,12 +19,12 @@ namespace Game {
 
 	public:
 		Wall();
+		Wall(char type);
 		virtual ~Wall();
 
 		void setType(char type);
 		char getType();
 
-		virtual void visualize();
 	};
 
 } /* namespace Game */

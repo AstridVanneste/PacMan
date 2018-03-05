@@ -11,8 +11,16 @@ namespace Game
 {
 	Wall::Wall()
 	{
-		// TODO Auto-generated constructor stub
+		this->objectType = WALL;
 
+		this->type = UNDEFINED_WALL;
+	}
+
+	Wall::Wall(char type)
+	{
+		this->objectType = WALL;
+
+		this->type = type & 0b00001111;
 	}
 
 	Wall::~Wall()

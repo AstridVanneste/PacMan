@@ -10,12 +10,16 @@ namespace Game
 {
 	Entity::Entity()
 	{
+		this->objectType = ENTITY;
+
 		this->location.x = 0;
 		this->location.y = 0;
 	}
 
-	Entity::Entity(Location location)
+	Entity::Entity(const Location& location)
 	{
+		this->objectType = ENTITY;
+
 		this->location.x = location.x;
 		this->location.y = location.y;
 	}
@@ -23,5 +27,16 @@ namespace Game
 	Entity::~Entity()
 	{
 	}
+
+	void Entity::setObjectType(char type)
+	{
+		this->objectType = type;
+	}
+
+	char Entity::getObjectType()
+	{
+		return this->objectType;
+	}
+
 }
 

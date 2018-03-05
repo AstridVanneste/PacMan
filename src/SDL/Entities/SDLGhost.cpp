@@ -37,7 +37,7 @@ namespace SDL
 		SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
 		SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
 
-		SDL_Surface* tmpSurface = IMG_Load("res/Images/Inky.png");
+		SDL_Surface* tmpSurface = IMG_Load("res/Images/PacMan.png");
 		if(tmpSurface == NULL)
 		{
 			cout << "Failed to load image to surface" << endl;

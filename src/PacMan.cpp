@@ -13,9 +13,7 @@
 int main()
 {
 	Game::AbstractFactory *factory = new SDL::SDL_Factory();
-	Game::Gamemanager *gamemanager = Game::Gamemanager::getInstance();
-	gamemanager->setFactory(factory);
-
-	gamemanager->start();
+	Game::Gamemanager::getInstance().setFactory(factory);
+	Game::Gamemanager::getInstance().start();
 	return 0;
 }
