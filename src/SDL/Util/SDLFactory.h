@@ -9,6 +9,7 @@
 #define SDLFACTORY_H_
 #include "../../Game/Util/AbstractFactory.h"
 #include "../../Game/Entities/Ghost.h"
+#include "../SDLHandler.h"
 
 namespace SDL
 {
@@ -16,12 +17,13 @@ namespace SDL
 	{
 	public:
 		SDL_Factory();
-		virtual ~SDL_Factory();
+		/*virtual*/ ~SDL_Factory();
 
-		virtual Game::Ghost* createGhost();
-		virtual Game::Wall* createWall();
-		virtual Game::Wall* createWall(char type);
-		virtual Game::Graphics_Handler* createGraphicsHandler();
+		Game::Ghost* createGhost();
+		Game::Wall* createWall();
+		Game::Wall* createWall(Location location);
+		Game::Wall* createWall(char type);
+		Game::Graphics_Handler& getGraphicsHandler();
 };
 }
 

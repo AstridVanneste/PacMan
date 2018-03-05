@@ -20,6 +20,11 @@ namespace SDL
 
 	}
 
+	SDL_Handler& SDL_Handler::getInstance()
+	{
+		static SDL_Handler instance;
+		return instance;
+	}
 
 	/*
 	 * Returns a pointer to the window used by this manager.
@@ -46,7 +51,7 @@ namespace SDL
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
-			this->window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
+			this->window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
 			this->renderer = SDL_CreateRenderer(window, -1, 0);
 
 			if(this->window != NULL && this->renderer != NULL)
@@ -59,6 +64,8 @@ namespace SDL
 
 	bool SDL_Handler::visualizeAll()
 	{
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0,  255);
+		SDL_RenderClear(renderer);
 		return true;
 	}
 

@@ -16,24 +16,20 @@ namespace Game
 	{
 	private:
 		AbstractFactory* factory;
-		Graphics_Handler* graphicsHandler;
 		bool running;
-
-		static Gamemanager* instance;
 
 		Gamemanager();
 		Gamemanager(const Gamemanager& gamemanager) = delete;
-		Gamemanager operator =(const Gamemanager& gamemanager) = delete;
+		Gamemanager* operator =(const Gamemanager& gamemanager) = delete;
 
+		void run();
 	public:
 		virtual ~Gamemanager();
 
 		static Gamemanager& getInstance();
 
 		void setFactory(AbstractFactory* factory);
-		void setGraphicsHandler(Graphics_Handler* graphicsHandler);
 		AbstractFactory* getFactory();
-		Graphics_Handler* getGraphicsHandler();
 
 		void start();
 		bool isRunning();

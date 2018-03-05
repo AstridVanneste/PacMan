@@ -15,7 +15,6 @@ namespace Game
 	Gamemanager::Gamemanager()
 	{
 		this->factory = 0;
-		this->graphicsHandler = 0;
 		this->running = false;
 	}
 
@@ -29,14 +28,12 @@ namespace Game
 	Gamemanager::~Gamemanager()
 	{
 		delete this->factory;
-		delete this->graphicsHandler;
 	}
 
 	void Gamemanager::start()
 	{
 		this->running = true;
 		//initialize game
-		this->graphicsHandler = this->factory->createGraphicsHandler();
 
 
 		Ghost* ghost = this->factory->createGhost();
@@ -47,6 +44,17 @@ namespace Game
 		map->loadFromFile("res/Maps/lev1.txt");
 	}
 
+	void Gamemanager::run()
+	{
+		while(true) //todo change this to something logical
+		{
+			//input
+			//update positions
+			//visualize
+			this->factory->getGraphicsHandler().visualizeAll();
+		}
+	}
+
 	AbstractFactory* Gamemanager::getFactory()
 	{
 		return this->factory;
@@ -55,16 +63,6 @@ namespace Game
 	void Gamemanager::setFactory(AbstractFactory* factory)
 	{
 		this->factory = factory;
-	}
-
-	Graphics_Handler* Gamemanager::getGraphicsHandler()
-	{
-		return this->graphicsHandler;
-	}
-
-	void Gamemanager::setGraphicsHandler(Graphics_Handler* graphicsHandler)
-	{
-		this->graphicsHandler = graphicsHandler;
 	}
 }
 

@@ -19,6 +19,7 @@ namespace Game {
 
 	public:
 		Wall();
+		Wall(const Location& location);
 		Wall(char type);
 		virtual ~Wall();
 

@@ -6,6 +6,7 @@
  */
 #include <iostream>
 #include "SDLGhost.h"
+#include "../SDLHandler.h"
 using namespace std;
 
 namespace SDL
@@ -13,14 +14,11 @@ namespace SDL
 	SDL_Ghost::SDL_Ghost()
 	:Game::Ghost()
 	{
-
-
 	}
 
 	SDL_Ghost::SDL_Ghost(Game::GhostType type)
 	:Game::Ghost(type)
 	{
-
 	}
 
 	SDL_Ghost::~SDL_Ghost()
@@ -33,9 +31,11 @@ namespace SDL
 
 
 		cout << "SDL_Ghost::visualize()" << endl;
+		/*
 		SDL_Init(SDL_INIT_EVERYTHING);
-		SDL_Window *window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
+		SDL_Window *window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
 		SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
+		*/
 
 		SDL_Surface* tmpSurface = IMG_Load("res/Images/PacMan.png");
 		if(tmpSurface == NULL)
@@ -43,11 +43,12 @@ namespace SDL
 			cout << "Failed to load image to surface" << endl;
 			cout << IMG_GetError()<< endl;
 		}
+
+		SDL_Renderer* renderer = SDL_Handler::getInstance().getRenderer();
+
 		SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
 		SDL_FreeSurface(tmpSurface);
 
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0,  255);
-		SDL_RenderClear(renderer);
 
 		SDL_Rect* destrect = new SDL_Rect;
 		destrect->h = 32;

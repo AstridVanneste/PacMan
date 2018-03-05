@@ -17,8 +17,9 @@ namespace Game
 	class Entity
 	{
 	private:
-		Location location;
+
 	protected:
+		Location location;
 		char objectType;
 	public:
 		Entity();

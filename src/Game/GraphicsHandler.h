@@ -16,6 +16,8 @@ namespace Game
 		Graphics_Handler();
 		virtual ~Graphics_Handler();
 
+		static Graphics_Handler& getInstance();
+
 		virtual bool init()=0;
 		virtual bool visualizeAll()=0;
 		virtual bool visualizeMap()=0;

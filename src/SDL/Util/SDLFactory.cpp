@@ -9,19 +9,16 @@
 
 #include "../Entities/SDLGhost.h"
 #include "../Entities/SDLWall.h"
-#include "../SDLHandler.h"
+
 
 namespace SDL
 {
 	SDL_Factory::SDL_Factory()
 	{
-		// TODO Auto-generated constructor stub
-
 	}
 
 	SDL_Factory::~SDL_Factory()
 	{
-		// TODO Auto-generated destructor stub
 	}
 
 	Game::Ghost* SDL_Factory::createGhost()
@@ -39,9 +36,14 @@ namespace SDL
 		return new SDL_Wall(type);
 	}
 
-	Game::Graphics_Handler* SDL_Factory::createGraphicsHandler()
+	Game::Wall* SDL_Factory::createWall(Location location)
 	{
-		return new SDL_Handler();
+		return new SDL_Wall(location);
+	}
+
+	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler()
+	{
+		return SDL_Handler::getInstance();
 	}
 }
 

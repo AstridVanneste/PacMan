@@ -20,9 +20,15 @@ namespace SDL
 		SDL_Renderer* renderer;
 		SDL_Window* window;
 
-	public:
 		SDL_Handler();
+		SDL_Handler(const SDL_Handler& h) = delete;
+		SDL_Handler* operator= (const SDL_Handler& h) = delete;
+
+	public:
+
 		virtual ~SDL_Handler();
+
+		static SDL_Handler& getInstance();
 
 		SDL_Renderer* getRenderer();
 		SDL_Window* getWindow();

@@ -13,19 +13,20 @@ namespace SDL
 	SDL_Wall::SDL_Wall()
 	: Game::Wall()
 	{
-		// TODO Auto-generated constructor stub
+	}
 
+	SDL_Wall::SDL_Wall(Location location)
+	: Game::Wall(location)
+	{
 	}
 
 	SDL_Wall::SDL_Wall(char type)
 	: Game::Wall(type)
 	{
-
 	}
 
 	SDL_Wall::~SDL_Wall()
 	{
-		// TODO Auto-generated destructor stub
 	}
 
 	void SDL_Wall::visualize()

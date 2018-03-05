@@ -21,8 +21,9 @@ namespace Game
 
 		virtual Ghost* createGhost()=0;
 		virtual Wall* createWall()=0;
+		virtual Wall* createWall(Location location)=0;
 		virtual Wall* createWall(char type)=0;
-		virtual Graphics_Handler* createGraphicsHandler()=0;
+		virtual Graphics_Handler& getGraphicsHandler()=0;
 	};
 }
 

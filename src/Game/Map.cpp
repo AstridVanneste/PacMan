@@ -50,7 +50,7 @@ namespace Game
 				file >> output;
 				if(output == 1)
 				{
-					this->setEntity(i, factory->createWall());
+					this->setEntity(i, factory->createWall(i));
 					if(i.x > 10)
 					{
 						i.x = 0;
@@ -68,6 +68,10 @@ namespace Game
 		{
 			cout << "unable to open file";
 		}
+
+
+		this->setWallTypes();
+
 		return true;
 	}
 
