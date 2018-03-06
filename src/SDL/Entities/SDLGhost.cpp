@@ -5,6 +5,7 @@
  *      Author: Astrid
  */
 #include <iostream>
+#include <memory>
 #include "SDLGhost.h"
 #include "../SDLHandler.h"
 using namespace std;
@@ -28,14 +29,15 @@ namespace SDL
 
 	void SDL_Ghost::visualize()
 	{
-
-
 		cout << "SDL_Ghost::visualize()" << endl;
-		/*
-		SDL_Init(SDL_INIT_EVERYTHING);
-		SDL_Window *window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-		SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
-		*/
+
+		unique_ptr<SDL_Rect> srcRect();
+		srcRect->h = ;
+		srcRect->w =
+
+
+
+
 
 		SDL_Surface* tmpSurface = IMG_Load("res/Images/PacMan.png");
 		if(tmpSurface == NULL)
@@ -50,11 +52,11 @@ namespace SDL
 		SDL_FreeSurface(tmpSurface);
 
 
-		SDL_Rect* destrect = new SDL_Rect;
+		SDL_Rect* destrect = new SDL_Rect();
 		destrect->h = 32;
 		destrect->w = 32;
-		destrect->x = 0;
-		destrect->y = 0;
+		destrect->x = this->location.x * 32;
+		destrect->y = this->location.y * 32;
 
 		if(SDL_RenderCopy(renderer, tex, NULL,destrect)<0)
 		{

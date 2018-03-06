@@ -14,6 +14,7 @@ namespace Game
 	Entity::Entity()
 	{
 		this->objectType = ENTITY;
+		this->passable = true;
 
 		this->location.x = 0;
 		this->location.y = 0;
@@ -22,13 +23,14 @@ namespace Game
 	Entity::Entity(const Entity& e)
 	{
 		this->objectType = e.objectType;
+		this->passable = e.passable;
 		this->location = e.location;
 	}
 
 	Entity::Entity(const Location& location)
 	{
 		this->objectType = ENTITY;
-
+		this->passable = true;
 		this->location = location;
 	}
 
@@ -56,6 +58,11 @@ namespace Game
 		cout << "checking object type" << endl;
 		cout << "Object type: " << +this->objectType << endl;
 		return this->objectType;
+	}
+
+	bool Entity::isPassable()
+	{
+		return this->passable;
 	}
 
 }

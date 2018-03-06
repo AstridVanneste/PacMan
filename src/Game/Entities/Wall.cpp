@@ -13,7 +13,7 @@ namespace Game
 	:Entity()
 	{
 		this->objectType = WALL;
-
+		this->passable = false;
 		this->type = UNDEFINED_WALL;
 	}
 
@@ -21,6 +21,8 @@ namespace Game
 	:Entity(location)
 	{
 		this->objectType = WALL;
+		this->passable = false;
+
 		this->type = UNDEFINED_WALL;
 	}
 
@@ -28,6 +30,7 @@ namespace Game
 	:Entity()
 	{
 		this->objectType = WALL;
+		this->passable = false;
 
 		Location location;
 		location.x = 0;
@@ -40,6 +43,11 @@ namespace Game
 	Wall::Wall(const Location& location, char type)
 	{
 		this->objectType = WALL;
+		if(type != EMPTY_WALL)
+		{
+			this->passable = false;
+		}
+
 		this->location = location;
 		this->type = type;
 	}

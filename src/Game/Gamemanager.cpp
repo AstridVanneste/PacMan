@@ -36,10 +36,10 @@ namespace Game
 		this->running = true;
 		//initialize game
 		this->map->loadFromFile("res/Maps/lev1.txt");
-		//cout << "Init graphics" << endl;
-		//this->factory->getGraphicsHandler().init();
-		//cout << "Start run()" << endl;
-		//this->run();
+		cout << "Init graphics" << endl;
+		this->factory->getGraphicsHandler().init();
+		cout << "Start run()" << endl;
+		this->run();
 	}
 
 	void Gamemanager::run()
@@ -51,7 +51,7 @@ namespace Game
 			//visualize
 			shared_ptr<Ghost> ghost = this->factory->createGhost();
 			ghost->visualize();
-			this->factory->getGraphicsHandler().visualizeAll();
+			//this->factory->getGraphicsHandler().visualizeAll();
 			//this->factory->getGraphicsHandler().delay(3000);
 		}
 	}
