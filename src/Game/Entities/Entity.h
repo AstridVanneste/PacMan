@@ -21,6 +21,7 @@ namespace Game
 	protected:
 		Location location;
 		char objectType;
+		bool passable;
 	public:
 		Entity();
 		Entity(const Entity& e);
@@ -39,6 +40,8 @@ namespace Game
 
 		int getX();
 		int getY();
+
+		virtual bool isPassable();
 	};
 }
 

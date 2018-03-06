@@ -20,26 +20,14 @@ namespace Game
 
 	Map::~Map()
 	{
-		//delete this->map;
-		Location i;
-
-		cout<<"destructor of map called" << endl;
-
-		for(i.x=0;i.x<this->map.size();i.x++)
-		{
-			for(i.y=0;i.y<this->map[i.x].size();i.y++)
-			{
-				delete this->map[i.x][i.y];
-			}
-		}
 	}
 
-	void Map::setEntity(Location location, Entity* entity)
+	void Map::setEntity(Location location, shared_ptr<Entity> entity)
 	{
 		map.at(location.x).at(location.y) = entity;
 	}
 
-	Entity* Map::getEntity(Location location)
+	shared_ptr<Entity> Map::getEntity(Location location)
 	{
 		return this->map[location.x][location.y];
 	}
@@ -113,22 +101,22 @@ namespace Game
 					char type = 0;
 
 					cout << "checking wall above" << endl;
-					if(i.x !=0 && this->map[i.x-1][i.y]->getObjectType() == WALL)						//check if there is a wall above this one.
+					if(i.x !=0 && this->map[i.x-1][i.y]->getObjectType() == WALL)							//check if there is a wall above this one.
 					{
 						type |= UP;
 					}
 					cout << "checking wall below" << endl;
-					if(i.x >= this->map.size() && this->map[i.x + 1][i.y]->getObjectType() == WALL)		//check if there is a wall below this one.
+					if(i.x >= this->map.size() && this->map[i.x + 1][i.y]->getObjectType() == WALL)			//check if there is a wall below this one.
 					{
 						type |= DOWN;
 					}
 					cout << "checking wall left" << endl;
-					if(i.y != 0 && this->map[i.x][i.y - 1]->getObjectType() == WALL)					//check if there is a wall on the left.
+					if(i.y != 0 && this->map[i.x][i.y - 1]->getObjectType() == WALL)						//check if there is a wall on the left.
 					{
 						type |= LEFT;
 					}
 					cout << "checking wall right" << endl;
-					if(i.y >= this->map[i.x].size() && this->map[i.x][i.y + 1]->getObjectType() == WALL)		//check if there is a wall on the right.
+					if(i.y >= this->map[i.x].size() && this->map[i.x][i.y + 1]->getObjectType() == WALL)	//check if there is a wall on the right.
 					{
 						type |= RIGHT;
 					}

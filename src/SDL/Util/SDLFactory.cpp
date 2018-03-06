@@ -9,6 +9,7 @@
 
 #include "../Entities/SDLGhost.h"
 #include "../Entities/SDLWall.h"
+using namespace std;
 
 
 namespace SDL
@@ -21,29 +22,29 @@ namespace SDL
 	{
 	}
 
-	Game::Ghost* SDL_Factory::createGhost()
+	shared_ptr<Game::Ghost> SDL_Factory::createGhost()
 	{
-		return new SDL_Ghost();
+		return make_shared<SDL_Ghost>();
 	}
 
-	Game::Wall* SDL_Factory::createWall()
+	shared_ptr<Game::Wall> SDL_Factory::createWall()
 	{
-		return new SDL_Wall();
+		return make_shared<SDL_Wall>();
 	}
 
-	Game::Wall* SDL_Factory::createWall(char type)
+	shared_ptr<Game::Wall> SDL_Factory::createWall(char type)
 	{
-		return new SDL_Wall(type);
+		return make_shared<SDL_Wall>(type);
 	}
 
-	Game::Wall* SDL_Factory::createWall(const Location& location)
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Location& location)
 	{
-		return new SDL_Wall(location);
+		return make_shared<SDL_Wall>(location);
 	}
 
-	Game::Wall* SDL_Factory::createWall(const Location& location, char type)
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Location& location, char type)
 	{
-		return new SDL_Wall(location, type);
+		return make_shared<SDL_Wall>(location, type);
 	}
 
 	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler()

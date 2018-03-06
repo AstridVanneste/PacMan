@@ -49,7 +49,7 @@ namespace Game
 			//input
 			//update positions
 			//visualize
-			Ghost* ghost = this->factory->createGhost();
+			shared_ptr<Ghost> ghost = this->factory->createGhost();
 			ghost->visualize();
 			this->factory->getGraphicsHandler().visualizeAll();
 			//this->factory->getGraphicsHandler().delay(3000);

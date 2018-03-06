@@ -10,6 +10,7 @@
 #include "Entities/Entity.h"
 #include <string>
 #include <vector>
+#include <memory>
 using namespace std;
 
 namespace Game
@@ -27,14 +28,14 @@ namespace Game
 	class Map
 	{
 	private:
-		vector<vector<Entity*>> map;
+		vector<vector<shared_ptr<Entity>>> map;
 		void setWallTypes();
 	public:
 		Map();
 		virtual ~Map();
 
-		void setEntity(Location location, Entity* entity);
-		Entity* getEntity(Location location);
+		void setEntity(Location location, shared_ptr<Entity> entity);
+		shared_ptr<Entity> getEntity(Location location);
 		//virtual void visualize()=0;
 		bool loadFromFile(string path);
 	};
