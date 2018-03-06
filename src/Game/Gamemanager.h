@@ -7,6 +7,7 @@
 
 #ifndef GAME_H_
 #define GAME_H_
+#include <memory>
 #include "GraphicsHandler.h"
 #include "Util/AbstractFactory.h"
 #include "Map.h"
@@ -16,8 +17,11 @@ namespace Game
 	class Gamemanager
 	{
 	private:
-		AbstractFactory* factory;
-		Map* map;
+		//AbstractFactory* factory;
+		//Map* map;
+
+		shared_ptr<AbstractFactory> factory;
+		shared_ptr<Map> map;
 
 		bool running;
 
@@ -31,8 +35,8 @@ namespace Game
 
 		static Gamemanager& getInstance();
 
-		void setFactory(AbstractFactory* factory);
-		AbstractFactory* getFactory();
+		void setFactory(shared_ptr<AbstractFactory> factory);
+		shared_ptr<AbstractFactory> getFactory();
 
 		void start();
 		bool isRunning();

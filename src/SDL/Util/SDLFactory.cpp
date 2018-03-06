@@ -36,9 +36,14 @@ namespace SDL
 		return new SDL_Wall(type);
 	}
 
-	Game::Wall* SDL_Factory::createWall(Location location)
+	Game::Wall* SDL_Factory::createWall(const Location& location)
 	{
 		return new SDL_Wall(location);
+	}
+
+	Game::Wall* SDL_Factory::createWall(const Location& location, char type)
+	{
+		return new SDL_Wall(location, type);
 	}
 
 	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler()

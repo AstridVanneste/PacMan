@@ -37,8 +37,14 @@ namespace Game
 		this->type = type & 0b00001111;
 	}
 
+	Wall::Wall(const Location& location, char type)
+	{
+		this->objectType = WALL;
+		this->location = location;
+		this->type = type;
+	}
+
 	Wall::~Wall()
 	{
-		// TODO Auto-generated destructor stub
 	}
 } /* namespace Game */

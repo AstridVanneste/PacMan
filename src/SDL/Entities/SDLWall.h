@@ -16,8 +16,9 @@ namespace SDL
 	{
 	public:
 		SDL_Wall();
-		SDL_Wall(Location location);
+		SDL_Wall(const Location& location);
 		SDL_Wall(char type);
+		SDL_Wall(const Location& location, char type);
 
 		virtual ~SDL_Wall();
 

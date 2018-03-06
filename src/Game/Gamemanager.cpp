@@ -16,7 +16,7 @@ namespace Game
 	Gamemanager::Gamemanager()
 	{
 		this->factory = 0;
-		this->map = new Map();
+		this->map = make_shared<Map>();
 		this->running = false;
 	}
 
@@ -29,8 +29,6 @@ namespace Game
 
 	Gamemanager::~Gamemanager()
 	{
-		delete this->factory;
-		delete this->map;
 	}
 
 	void Gamemanager::start()
@@ -38,9 +36,9 @@ namespace Game
 		this->running = true;
 		//initialize game
 		this->map->loadFromFile("res/Maps/lev1.txt");
-		cout << "Init graphics" << endl;
+		//cout << "Init graphics" << endl;
 		//this->factory->getGraphicsHandler().init();
-		cout << "Start run()" << endl;
+		//cout << "Start run()" << endl;
 		//this->run();
 	}
 
@@ -58,12 +56,12 @@ namespace Game
 		}
 	}
 
-	AbstractFactory* Gamemanager::getFactory()
+	shared_ptr<AbstractFactory> Gamemanager::getFactory()
 	{
 		return this->factory;
 	}
 
-	void Gamemanager::setFactory(AbstractFactory* factory)
+	void Gamemanager::setFactory(shared_ptr<AbstractFactory> factory)
 	{
 		this->factory = factory;
 	}

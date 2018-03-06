@@ -20,6 +20,14 @@ namespace Game
 		this->fear = false;
 	}
 
+	Ghost::Ghost(const Ghost& g)
+	:Entity(g)
+	{
+		this->objectType = GHOST;
+		this->type = g.type;
+		this->fear = g.fear;
+	}
+
 	Ghost::Ghost(GhostType type)
 	:Entity()
 	{
@@ -40,7 +48,6 @@ namespace Game
 
 	Ghost::~Ghost()
 	{
-		// TODO Auto-generated destructor stub
 	}
 
 	GhostType Ghost::getType()

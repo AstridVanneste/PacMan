@@ -21,8 +21,9 @@ namespace SDL
 
 		Game::Ghost* createGhost();
 		Game::Wall* createWall();
-		Game::Wall* createWall(Location location);
+		Game::Wall* createWall(const Location& location);
 		Game::Wall* createWall(char type);
+		Game::Wall* createWall(const Location& location, char type);
 		Game::Graphics_Handler& getGraphicsHandler();
 };
 }

@@ -23,8 +23,11 @@ namespace Game
 		char objectType;
 	public:
 		Entity();
+		Entity(const Entity& e);
 		Entity(const Location& location);
+
 		virtual ~Entity();
+		Entity& operator= (const Entity& e);
 
 		virtual void visualize()=0;
 

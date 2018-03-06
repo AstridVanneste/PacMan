@@ -21,9 +21,11 @@ namespace Game
 		bool fear;
 	public:
 		Ghost();
+		Ghost(const Ghost& g);
 		Ghost(GhostType type);
 		Ghost(Location location, GhostType type);
 		virtual ~Ghost();
+
 
 		GhostType getType();
 		void setType(GhostType type);

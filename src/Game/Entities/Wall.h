@@ -21,6 +21,7 @@ namespace Game {
 		Wall();
 		Wall(const Location& location);
 		Wall(char type);
+		Wall(const Location& location, char type);
 		virtual ~Wall();
 
 		void setType(char type);

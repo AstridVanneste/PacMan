@@ -15,7 +15,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Wall::SDL_Wall(Location location)
+	SDL_Wall::SDL_Wall(const Location& location)
 	: Game::Wall(location)
 	{
 	}
@@ -23,6 +23,12 @@ namespace SDL
 	SDL_Wall::SDL_Wall(char type)
 	: Game::Wall(type)
 	{
+	}
+
+	SDL_Wall::SDL_Wall(const Location& location, char type)
+	: Game::Wall(location, type)
+	{
+
 	}
 
 	SDL_Wall::~SDL_Wall()

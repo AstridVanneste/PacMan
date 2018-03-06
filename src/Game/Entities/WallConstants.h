@@ -10,6 +10,7 @@ enum NEIGHBOUR_WALLS
 //Constants that can be used as index for WALL_IMAGE matrix.
 //Composed using the NEIGHBOUR_WALLS enum.
 const char UNDEFINED_WALL = 0;
+const char EMPTY_WALL = 16;
 
 const char L = LEFT;							//0001		1
 const char U = UP;								//0010		2

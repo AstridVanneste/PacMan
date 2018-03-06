@@ -7,14 +7,17 @@
 //============================================================================
 
 #include "Game/Gamemanager.h"
+#include <iostream>
+#include <memory>
 #include "Game/Util/AbstractFactory.h"
 #include "SDL/Util/SDLFactory.h"
+using namespace std;
 
 int main(int argc, char *argv[])
 {
-	Game::AbstractFactory *factory = new SDL::SDL_Factory();
-	Game::Gamemanager::getInstance().setFactory(factory);
+	Game::Gamemanager::getInstance().setFactory(make_shared<SDL::SDL_Factory>());
 	Game::Gamemanager::getInstance().start();
-	delete factory;
+
+	cout << "THE END" << endl;
 	return 0;
 }

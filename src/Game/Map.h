@@ -9,17 +9,25 @@
 #define GAME_MAP_H_
 #include "Entities/Entity.h"
 #include <string>
+#include <vector>
 using namespace std;
 
 namespace Game
 {
-	const int MAP_LIMIT_HEIGHT = 9;
-	const int MAP_LIMIT_WIDTH = 9;
 
+	/*
+	 * 	[ axy	a12		a13		a14	]
+	 * 	[ a21	a22		a23		a24 ]
+	 * 	[ a31	a32		a33		a34 ]
+	 * 	[ a41	a42		a43		a44 ]
+	 *
+	 *	x = height
+	 *	y = width
+	 */
 	class Map
 	{
 	private:
-		Entity* map [10][10];
+		vector<vector<Entity*>> map;
 		void setWallTypes();
 	public:
 		Map();

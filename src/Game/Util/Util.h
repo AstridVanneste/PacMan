@@ -1,5 +1,5 @@
 typedef struct
 	{
-		int x;
-		int y;
+		unsigned int x;
+		unsigned int y;
 	}Location;
