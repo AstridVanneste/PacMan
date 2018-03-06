@@ -36,42 +36,48 @@ namespace Game
 
 	bool Map::loadFromFile(string path)
 	{
+		cout << "started loading from file" << endl;
+
 		AbstractFactory* factory = Gamemanager::getInstance().getFactory();
 		ifstream file;
 		file.open(path);
+
 		if(file.is_open())
 		{
+			cout << "file opened" << endl;
 			Location i;
 			i.x = 0;
 			i.y = 0;
 			while(!file.eof())
 			{
-				char output;
-				file >> output;
-				if(output == 1)
+				char input;
+				file >> input;
+				cout << "Input of " << input << " at x = " << i.x << " and y = " << i.y << endl;
+				if(input == '1')
 				{
 					this->setEntity(i, factory->createWall(i));
-					if(i.x > 10)
-					{
-						i.x = 0;
-						i.y++;
-					}
-					else
-					{
-						i.x++;
-					}
+					cout << "Entity set at x = " << i.x << " and y = " << i.y << endl;
+				}
+
+				if(i.x >= 9)
+				{
+					i.x = 0;
+					i.y++;
+				}
+				else
+				{
+					i.x++;
 				}
 			}
 			file.close();
+			cout << "file closed" << endl;
+			this->setWallTypes();
 		}
 		else
 		{
 			cout << "unable to open file";
+			return false;
 		}
-
-
-		this->setWallTypes();
-
 		return true;
 	}
 

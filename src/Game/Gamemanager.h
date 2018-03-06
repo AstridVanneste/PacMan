@@ -9,6 +9,7 @@
 #define GAME_H_
 #include "GraphicsHandler.h"
 #include "Util/AbstractFactory.h"
+#include "Map.h"
 
 namespace Game
 {
@@ -16,6 +17,8 @@ namespace Game
 	{
 	private:
 		AbstractFactory* factory;
+		Map* map;
+
 		bool running;
 
 		Gamemanager();

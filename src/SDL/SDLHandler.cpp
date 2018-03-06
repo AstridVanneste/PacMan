@@ -62,6 +62,11 @@ namespace SDL
 		return false;
 	}
 
+	void SDL_Handler::delay(int time)
+	{
+		SDL_Delay(time);
+	}
+
 	bool SDL_Handler::visualizeAll()
 	{
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0,  255);

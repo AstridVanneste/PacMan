@@ -34,6 +34,7 @@ namespace SDL
 		SDL_Window* getWindow();
 
 		bool init();
+		void delay(int time);
 		bool visualizeAll();
 		bool visualizeMap();
 		bool visualizeComponent();
