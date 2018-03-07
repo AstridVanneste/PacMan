@@ -53,14 +53,14 @@ namespace Game
 				string line;
 				getline(file, line, '\n');
 				this->map.resize(i.x+1);
-				cout << "read line: " << line << endl;
+				//cout << "read line: " << line << endl;
 				for(i.y=0; i.y<line.size(); i.y++)
 				{
 					//cout << "Input of " << line[i.y] << " at x = " << i.x << " and y = " << i.y << endl;
 					if(line[i.y] == '1')
 					{
-						this->map[i.x].emplace_back(factory->createWall(i));
-						cout << "Wall set at x = " << i.x << " and y = " << i.y << endl;
+						this->map[i.x].emplace_back(factory->createWall(i,UNDEFINED_WALL));
+						//cout << "Wall set at x = " << i.x << " and y = " << i.y << endl;
 					}
 					else if(line[i.y] == '0')
 					{
@@ -81,13 +81,14 @@ namespace Game
 		}
 
 
-		//this->setWallTypes();
+		this->setWallTypes();
 		return true;
 	}
 
 	void Map::setWallTypes()
 	{
 		cout << "start setting wall types" << endl;
+		cout << "Map size x = " << this->map.size() << " y = " << this->map[0].size() << endl;
 
 		Location i;
 		for ( i.x = 0; i.x < this->map.size(); i.x++)
@@ -96,28 +97,32 @@ namespace Game
 			{
 				cout << "checking for wall at x = " << i.x << " and y = " << i.y << endl;
 
-				if(this->map[i.x][i.y]->getObjectType() == WALL)
+				if(!this->map[i.x][i.y]->isPassable())
 				{
 					char type = 0;
 
 					cout << "checking wall above" << endl;
-					if(i.x !=0 && this->map[i.x-1][i.y]->getObjectType() == WALL)							//check if there is a wall above this one.
+					if(i.x !=0 && !this->map[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
 					{
+						cout <<"wall detected" << endl;
 						type |= UP;
 					}
 					cout << "checking wall below" << endl;
-					if(i.x >= this->map.size() && this->map[i.x + 1][i.y]->getObjectType() == WALL)			//check if there is a wall below this one.
+					if(i.x < this->map.size()-1 && !this->map[i.x+1][i.y]->isPassable())			//check if there is a wall below this one.
 					{
+						cout <<"wall detected" << endl;
 						type |= DOWN;
 					}
 					cout << "checking wall left" << endl;
-					if(i.y != 0 && this->map[i.x][i.y - 1]->getObjectType() == WALL)						//check if there is a wall on the left.
+					if(i.y != 0 && !this->map[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
 					{
+						cout <<"wall detected" << endl;
 						type |= LEFT;
 					}
 					cout << "checking wall right" << endl;
-					if(i.y >= this->map[i.x].size() && this->map[i.x][i.y + 1]->getObjectType() == WALL)	//check if there is a wall on the right.
+					if(i.y < this->map[i.x].size()-1 && !this->map[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
 					{
+						cout <<"wall detected" << endl;
 						type |= RIGHT;
 					}
 

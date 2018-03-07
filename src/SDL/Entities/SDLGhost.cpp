@@ -7,7 +7,9 @@
 #include <iostream>
 #include <memory>
 #include "SDLGhost.h"
+#include "../Util/Util.h"
 #include "../SDLHandler.h"
+#include "../Util/SDLDestroyer.h"
 using namespace std;
 
 namespace SDL
@@ -24,32 +26,29 @@ namespace SDL
 
 	SDL_Ghost::~SDL_Ghost()
 	{
-		// TODO Auto-generated destructor stub
 	}
 
 	void SDL_Ghost::visualize()
 	{
 		cout << "SDL_Ghost::visualize()" << endl;
 
-		unique_ptr<SDL_Rect> srcRect();
-		srcRect->h = ;
-		srcRect->w =
+		unique_ptr<SDL_Rect> dstRect;
+		dstRect->h = ENTITY_HEIGHT;
+		dstRect->w = ENTITY_WIDTH;
+		dstRect->x = this->location.x * ENTITY_HEIGHT;
+		dstRect->y = this->location.y * ENTITY_WIDTH;
 
 
-
-
-
-		SDL_Surface* tmpSurface = IMG_Load("res/Images/PacMan.png");
+		unique_ptr<SDL_Surface> tmpSurface(IMG_Load("res/Images/Inky.png"));
 		if(tmpSurface == NULL)
 		{
 			cout << "Failed to load image to surface" << endl;
 			cout << IMG_GetError()<< endl;
 		}
 
-		SDL_Renderer* renderer = SDL_Handler::getInstance().getRenderer();
-
-		SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-		SDL_FreeSurface(tmpSurface);
+		shared_ptr<SDL_Renderer> renderer(SDL_Handler::getInstance().getRenderer());
+		unique_ptr<SDL_Texture, SDL_Destroyer> tex(SDL_CreateTextureFromSurface(renderer.get(), tmpSurface.get()));
+		SDL_FreeSurface(tmpSurface.get());
 
 
 		SDL_Rect* destrect = new SDL_Rect();
@@ -58,12 +57,12 @@ namespace SDL
 		destrect->x = this->location.x * 32;
 		destrect->y = this->location.y * 32;
 
-		if(SDL_RenderCopy(renderer, tex, NULL,destrect)<0)
+		if(SDL_RenderCopy(renderer.get(), tex.get(), NULL,destrect)<0)
 		{
 			cout << "Error when drawing image on screen" << endl;
 			cout << SDL_GetError() << endl;
 		}
-		SDL_RenderPresent(renderer);
+		SDL_RenderPresent(renderer.get());
 		SDL_Delay(3000);
 	}
 }

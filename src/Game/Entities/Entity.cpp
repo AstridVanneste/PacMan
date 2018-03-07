@@ -62,6 +62,7 @@ namespace Game
 
 	bool Entity::isPassable()
 	{
+		cout << "Passable: " << this->passable << " at [" << this->location.x << "," << this->location.y << "]"<< endl;
 		return this->passable;
 	}
 

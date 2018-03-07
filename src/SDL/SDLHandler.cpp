@@ -7,6 +7,8 @@
 
 #include "SDLHandler.h"
 
+#include "Util/SDLDestroyShared.h"
+
 namespace SDL
 {
 	SDL_Handler::SDL_Handler()
@@ -29,7 +31,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the window used by this manager.
 	 */
-	SDL_Window* SDL_Handler::getWindow()
+	shared_ptr<SDL_Window> SDL_Handler::getWindow()
 	{
 		return this->window;
 	}
@@ -37,7 +39,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the renderer used by this manager.
 	 */
-	SDL_Renderer* SDL_Handler::getRenderer()
+	shared_ptr<SDL_Renderer> SDL_Handler::getRenderer()
 	{
 		return this->renderer;
 	}
@@ -51,8 +53,8 @@ namespace SDL
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
-			this->window = SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-			this->renderer = SDL_CreateRenderer(window, -1, 0);
+			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN));
+			this->renderer = SDL_shared<SDL_Renderer>(SDL_CreateRenderer(window.get(), -1, 0));
 
 			if(this->window != NULL && this->renderer != NULL)
 			{
@@ -69,8 +71,8 @@ namespace SDL
 
 	bool SDL_Handler::visualizeAll()
 	{
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0,  255);
-		SDL_RenderClear(renderer);
+		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0,  255);
+		SDL_RenderClear(renderer.get());
 		return true;
 	}
 

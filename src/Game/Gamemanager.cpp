@@ -39,7 +39,7 @@ namespace Game
 		cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init();
 		cout << "Start run()" << endl;
-		this->run();
+		//this->run();
 	}
 
 	void Gamemanager::run()

@@ -5,7 +5,9 @@
  *      Author: Astrid
  */
 
+#include <iostream>
 #include "Wall.h"
+using namespace std;
 
 namespace Game
 {

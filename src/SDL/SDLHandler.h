@@ -8,6 +8,7 @@
 #ifndef SDLHANDLER_H_
 #define SDLHANDLER_H_
 #include <SDL2/SDL.h>
+#include <memory>
 #include <string>
 #include "../Game/GraphicsHandler.h"
 using namespace std;
@@ -17,8 +18,8 @@ namespace SDL
 	class SDL_Handler : public Game::Graphics_Handler
 	{
 	private:
-		SDL_Renderer* renderer;
-		SDL_Window* window;
+		shared_ptr<SDL_Renderer> renderer;
+		shared_ptr<SDL_Window> window;
 
 		SDL_Handler();
 		SDL_Handler(const SDL_Handler& h) = delete;
@@ -30,8 +31,8 @@ namespace SDL
 
 		static SDL_Handler& getInstance();
 
-		SDL_Renderer* getRenderer();
-		SDL_Window* getWindow();
+		shared_ptr<SDL_Renderer> getRenderer();
+		shared_ptr<SDL_Window> getWindow();
 
 		bool init();
 		void delay(int time);
