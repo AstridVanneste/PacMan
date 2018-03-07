@@ -10,18 +10,18 @@
 #include <memory>
 #include "GraphicsHandler.h"
 #include "Util/AbstractFactory.h"
+#include "EventHandler.h"
 #include "Map.h"
 
 namespace Game
 {
+	const unsigned int FRAMERATE = 60;
 	class Gamemanager
 	{
 	private:
-		//AbstractFactory* factory;
-		//Map* map;
-
 		shared_ptr<AbstractFactory> factory;
 		shared_ptr<Map> map;
+		shared_ptr<Event_Handler> eventHandler;
 
 		bool running;
 

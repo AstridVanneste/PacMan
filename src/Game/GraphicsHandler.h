@@ -20,6 +20,7 @@ namespace Game
 
 		virtual bool init()=0;
 		virtual void delay(int time)=0;
+		virtual unsigned int getTime()=0;
 		virtual bool visualizeAll()=0;
 		virtual bool visualizeMap()=0;
 		virtual bool visualizeComponent()=0;

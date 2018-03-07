@@ -7,8 +7,9 @@
 #include <iostream>
 #include <memory>
 #include "SDLGhost.h"
+
+#include "../SDLGraphHandler.h"
 #include "../Util/Util.h"
-#include "../SDLHandler.h"
 #include "../Util/SDLDestroyer.h"
 using namespace std;
 
@@ -32,21 +33,21 @@ namespace SDL
 	{
 		cout << "SDL_Ghost::visualize()" << endl;
 
-		unique_ptr<SDL_Rect> dstRect;
+		/*unique_ptr<SDL_Rect> dstRect;
 		dstRect->h = ENTITY_HEIGHT;
 		dstRect->w = ENTITY_WIDTH;
 		dstRect->x = this->location.x * ENTITY_HEIGHT;
-		dstRect->y = this->location.y * ENTITY_WIDTH;
+		dstRect->y = this->location.y * ENTITY_WIDTH;*/
 
 
-		unique_ptr<SDL_Surface> tmpSurface(IMG_Load("res/Images/Inky.png"));
+		unique_ptr<SDL_Surface, SDL_Destroyer> tmpSurface(IMG_Load("res/Images/Inky.png"));
 		if(tmpSurface == NULL)
 		{
 			cout << "Failed to load image to surface" << endl;
 			cout << IMG_GetError()<< endl;
 		}
 
-		shared_ptr<SDL_Renderer> renderer(SDL_Handler::getInstance().getRenderer());
+		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 		unique_ptr<SDL_Texture, SDL_Destroyer> tex(SDL_CreateTextureFromSurface(renderer.get(), tmpSurface.get()));
 		SDL_FreeSurface(tmpSurface.get());
 

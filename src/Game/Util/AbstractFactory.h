@@ -11,6 +11,7 @@
 #include "../Entities/Ghost.h"
 #include "../GraphicsHandler.h"
 #include "../Entities/Wall.h"
+#include "../EventHandler.h"
 
 namespace Game
 {
@@ -25,6 +26,7 @@ namespace Game
 		virtual shared_ptr<Wall> createWall(const Location& location)=0;
 		virtual shared_ptr<Wall> createWall(char type)=0;
 		virtual shared_ptr<Wall> createWall(const Location& location, char type)=0;
+		virtual shared_ptr<Event_Handler> createEventHandler()=0;
 		virtual Graphics_Handler& getGraphicsHandler()=0;
 	};
 }

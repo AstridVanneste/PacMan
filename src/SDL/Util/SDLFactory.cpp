@@ -5,10 +5,12 @@
  *      Author: Astrid
  */
 
+#include <memory>
 #include "../Util/SDLFactory.h"
-
 #include "../Entities/SDLGhost.h"
 #include "../Entities/SDLWall.h"
+#include "SDLDestroyShared.h"
+#include "../SDLEventHandler.h"
 using namespace std;
 
 
@@ -49,7 +51,12 @@ namespace SDL
 
 	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler()
 	{
-		return SDL_Handler::getInstance();
+		return SDL_Graph_Handler::getInstance();
+	}
+
+	shared_ptr<Game::Event_Handler> SDL_Factory::createEventHandler()
+	{
+		return make_shared<SDL_Event_Handler>();
 	}
 }
 

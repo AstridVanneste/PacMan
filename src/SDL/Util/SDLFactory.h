@@ -10,7 +10,7 @@
 #include <memory>
 #include "../../Game/Util/AbstractFactory.h"
 #include "../../Game/Entities/Ghost.h"
-#include "../SDLHandler.h"
+#include "../SDLGraphHandler.h"
 
 namespace SDL
 {
@@ -25,6 +25,7 @@ namespace SDL
 		shared_ptr<Game::Wall> createWall(const Location& location);
 		shared_ptr<Game::Wall> createWall(char type);
 		shared_ptr<Game::Wall> createWall(const Location& location, char type);
+		shared_ptr<Game::Event_Handler> createEventHandler();
 		Game::Graphics_Handler& getGraphicsHandler();
 };
 }

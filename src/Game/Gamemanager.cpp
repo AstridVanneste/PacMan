@@ -38,21 +38,32 @@ namespace Game
 		this->map->loadFromFile("res/Maps/lev1.txt");
 		cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init();
+		this->eventHandler = this->factory->createEventHandler();
 		cout << "Start run()" << endl;
-		//this->run();
+		this->run();
 	}
 
 	void Gamemanager::run()
 	{
-		while(true) //todo change this to something logical
+		bool end = false;
+		shared_ptr<Ghost> ghost = this->factory->createGhost();
+		while(!end)
 		{
+			unsigned int startTime = this->factory->getGraphicsHandler().getTime();
 			//input
 			//update positions
+			end = this->eventHandler->handleEvents();
 			//visualize
-			shared_ptr<Ghost> ghost = this->factory->createGhost();
-			ghost->visualize();
-			//this->factory->getGraphicsHandler().visualizeAll();
+
+			//ghost->visualize();
+			this->factory->getGraphicsHandler().visualizeAll();
 			//this->factory->getGraphicsHandler().delay(3000);
+
+			unsigned int endTime = this->factory->getGraphicsHandler().getTime();
+			if((endTime - startTime) < (1/FRAMERATE) * 1000)
+			{
+				this->factory->getGraphicsHandler().delay((1/FRAMERATE) * 1000 - (endTime - startTime));
+			}
 		}
 	}
 

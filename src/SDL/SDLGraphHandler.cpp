@@ -5,33 +5,33 @@
  *      Author: Astrid
  */
 
-#include "SDLHandler.h"
+#include "SDLGraphHandler.h"
 
 #include "Util/SDLDestroyShared.h"
 
 namespace SDL
 {
-	SDL_Handler::SDL_Handler()
+	SDL_Graph_Handler::SDL_Graph_Handler()
 	{
 		this->window = NULL;
 		this->renderer = NULL;
 	}
 
-	SDL_Handler::~SDL_Handler()
+	SDL_Graph_Handler::~SDL_Graph_Handler()
 	{
 
 	}
 
-	SDL_Handler& SDL_Handler::getInstance()
+	SDL_Graph_Handler& SDL_Graph_Handler::getInstance()
 	{
-		static SDL_Handler instance;
+		static SDL_Graph_Handler instance;
 		return instance;
 	}
 
 	/*
 	 * Returns a pointer to the window used by this manager.
 	 */
-	shared_ptr<SDL_Window> SDL_Handler::getWindow()
+	shared_ptr<SDL_Window> SDL_Graph_Handler::getWindow()
 	{
 		return this->window;
 	}
@@ -39,7 +39,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the renderer used by this manager.
 	 */
-	shared_ptr<SDL_Renderer> SDL_Handler::getRenderer()
+	shared_ptr<SDL_Renderer> SDL_Graph_Handler::getRenderer()
 	{
 		return this->renderer;
 	}
@@ -49,7 +49,7 @@ namespace SDL
 	 * Initializes everything necessary to start using SDL and the specific
 	 * window and renderer of this manager.
 	 */
-	bool SDL_Handler::init()
+	bool SDL_Graph_Handler::init()
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
@@ -64,24 +64,29 @@ namespace SDL
 		return false;
 	}
 
-	void SDL_Handler::delay(int time)
+	void SDL_Graph_Handler::delay(int time)
 	{
 		SDL_Delay(time);
 	}
 
-	bool SDL_Handler::visualizeAll()
+	unsigned int SDL_Graph_Handler::getTime()
+	{
+		return SDL_GetTicks();
+	}
+
+	bool SDL_Graph_Handler::visualizeAll()
 	{
 		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0,  255);
 		SDL_RenderClear(renderer.get());
 		return true;
 	}
 
-	bool SDL_Handler::visualizeMap()
+	bool SDL_Graph_Handler::visualizeMap()
 	{
 		return true;
 	}
 
-	bool SDL_Handler::visualizeComponent()
+	bool SDL_Graph_Handler::visualizeComponent()
 	{
 		return true;
 	}
