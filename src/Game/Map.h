@@ -39,6 +39,7 @@ namespace Game
 		bool loadFromFile(string path);
 		unsigned int getSizeX();
 		unsigned int getSizeY();
+		Location getSize();
 	};
 
 } /* namespace Game */

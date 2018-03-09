@@ -7,7 +7,9 @@
 
 #include <vector>
 #include "SDLGraphHandler.h"
+#include "Util/TextureManager.h"
 #include "Util/SDLDestroyShared.h"
+#include "Util/SDLUtil.h"
 
 namespace SDL
 {
@@ -49,15 +51,16 @@ namespace SDL
 	 * Initializes everything necessary to start using SDL and the specific
 	 * window and renderer of this manager.
 	 */
-	bool SDL_Graph_Handler::init()
+	bool SDL_Graph_Handler::init(Location size)
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
-			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN));
+			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (size.y + 1) * ENTITY_WIDTH, (size.x* ENTITY_HEIGHT) + 10, SDL_WINDOW_SHOWN));  //TODO why the +1 for the WIDTH???
 			this->renderer = SDL_shared<SDL_Renderer>(SDL_CreateRenderer(window.get(), -1, 0));
 
 			if(this->window != NULL && this->renderer != NULL)
 			{
+				TextureManager::getInstance().setRenderer(this->renderer);
 				return true;
 			}
 		}

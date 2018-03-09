@@ -35,7 +35,7 @@ namespace SDL
 		shared_ptr<SDL_Renderer> getRenderer();
 		shared_ptr<SDL_Window> getWindow();
 
-		bool init();
+		bool init(Location size);
 		void delay(int time);
 		unsigned int getTime();
 		bool visualizeAll(shared_ptr<Game::Map> map);

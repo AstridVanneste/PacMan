@@ -7,25 +7,28 @@
 
 #include "TextureManaging.h"
 #include "SDLDestroyer.h"
+#include "SDLDestroyShared.h"
 #include <memory>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_Image.h>
-#include "Util.h"
+
+#include "SDLUtil.h"
 using namespace std;
 
 namespace SDL
 {
-	unique_ptr<SDL_Texture, SDL_Destroyer> createTexture(const char* path,shared_ptr<SDL_Renderer> renderer)
+	shared_ptr<SDL_Texture> createTexture(const char* path,shared_ptr<SDL_Renderer> renderer)
 	{
-		unique_ptr<SDL_Surface, SDL_Destroyer> surf(IMG_Load(path));
+		unique_ptr<SDL_Surface> surf(IMG_Load(path));
 		if(surf == nullptr)
 		{
 			cout << "Error when loading surface " << path << endl;
 			cout << IMG_GetError() << endl;
 		}
 
-		unique_ptr<SDL_Texture, SDL_Destroyer> tex(SDL_CreateTextureFromSurface(renderer.get(), surf.get()));
+		shared_ptr<SDL_Texture> tex = SDL_shared(SDL_CreateTextureFromSurface(renderer.get(), surf.get()));
+
 		return tex;
 
 	}
@@ -35,8 +38,8 @@ namespace SDL
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
 		rect->h = ENTITY_HEIGHT;
 		rect->w = ENTITY_WIDTH;
-		rect->x = location.x * (ENTITY_HEIGHT + 1);
-		rect->y = location.y * (ENTITY_WIDTH + 1);
+		rect->x = location.y * (ENTITY_HEIGHT + 1);
+		rect->y = location.x * (ENTITY_WIDTH + 1);
 		return rect;
 	}
 }

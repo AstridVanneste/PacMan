@@ -20,7 +20,7 @@ namespace Game
 
 		static Graphics_Handler& getInstance();
 
-		virtual bool init()=0;
+		virtual bool init(Location location)=0;
 		virtual void delay(int time)=0;
 		virtual unsigned int getTime()=0;
 		virtual bool visualizeAll(shared_ptr<Map> map)=0;

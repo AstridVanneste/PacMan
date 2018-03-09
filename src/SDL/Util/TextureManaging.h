@@ -17,7 +17,7 @@ using namespace std;
 
 namespace SDL
 {
-	unique_ptr<SDL_Texture, SDL_Destroyer> createTexture(const char* path, shared_ptr<SDL_Renderer> renderer);
+	shared_ptr<SDL_Texture> createTexture(const char* path, shared_ptr<SDL_Renderer> renderer);
 	unique_ptr<SDL_Rect> createRect(Location location);
 }
 

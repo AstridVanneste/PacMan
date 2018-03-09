@@ -35,9 +35,9 @@ namespace Game
 	{
 		this->running = true;
 		//initialize game
-		this->map->loadFromFile("res/Maps/lev1.txt");
+		this->map->loadFromFile("res/Maps/arena.txt");
 		cout << "Init graphics" << endl;
-		this->factory->getGraphicsHandler().init();
+		this->factory->getGraphicsHandler().init(this->map->getSize());
 		this->eventHandler = this->factory->createEventHandler();
 		cout << "Start run()" << endl;
 		this->run();
