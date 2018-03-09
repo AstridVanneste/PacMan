@@ -56,7 +56,7 @@ namespace Game
 			//visualize
 
 			//ghost->visualize();
-			this->factory->getGraphicsHandler().visualizeAll();
+			this->factory->getGraphicsHandler().visualizeAll(this->map);
 			//this->factory->getGraphicsHandler().delay(3000);
 
 			unsigned int endTime = this->factory->getGraphicsHandler().getTime();

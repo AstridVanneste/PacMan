@@ -12,8 +12,13 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include "../../Game/Util/Util.h"
+#include "SDLDestroyer.h"
 using namespace std;
 
-unique_ptr<SDL_Texture> createTexture(const char* path,Location imageOffset,Location destination);
+namespace SDL
+{
+	unique_ptr<SDL_Texture, SDL_Destroyer> createTexture(const char* path, shared_ptr<SDL_Renderer> renderer);
+	unique_ptr<SDL_Rect> createRect(Location location);
+}
 
 #endif /* SDL_ENTITIES_TEXTUREMANAGING_H_ */

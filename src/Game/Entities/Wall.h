@@ -14,7 +14,7 @@ namespace Game {
 
 	class Wall : public Entity
 	{
-	private:
+	protected:
 		char type;		//type is set using the constants in "WallConstants.h"
 
 	public:

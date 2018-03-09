@@ -134,4 +134,14 @@ namespace Game
 		}
 	}
 
+	unsigned int Map::getSizeX()
+	{
+		return this->map.size();
+	}
+
+	unsigned int Map::getSizeY()
+	{
+		return this->map[0].size();
+	}
+
 } /* namespace Game */

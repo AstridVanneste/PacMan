@@ -11,6 +11,7 @@
 #include <memory>
 #include <string>
 #include "../Game/GraphicsHandler.h"
+#include "../Game/Map.h"
 using namespace std;
 
 namespace SDL
@@ -37,7 +38,7 @@ namespace SDL
 		bool init();
 		void delay(int time);
 		unsigned int getTime();
-		bool visualizeAll();
+		bool visualizeAll(shared_ptr<Game::Map> map);
 		bool visualizeMap();
 		bool visualizeComponent();
 	};

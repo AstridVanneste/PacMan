@@ -8,6 +8,8 @@
 #ifndef GRAPHICSHANDLER_H_
 #define GRAPHICSHANDLER_H_
 
+#include "Map.h"
+
 namespace Game
 {
 	class Graphics_Handler
@@ -21,7 +23,7 @@ namespace Game
 		virtual bool init()=0;
 		virtual void delay(int time)=0;
 		virtual unsigned int getTime()=0;
-		virtual bool visualizeAll()=0;
+		virtual bool visualizeAll(shared_ptr<Map> map)=0;
 		virtual bool visualizeMap()=0;
 		virtual bool visualizeComponent()=0;
 	};

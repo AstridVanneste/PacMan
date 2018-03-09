@@ -16,7 +16,7 @@ namespace Game
 
 	class Ghost: public Entity
 	{
-	private:
+	protected:
 		GhostType type;
 		bool fear;
 	public:

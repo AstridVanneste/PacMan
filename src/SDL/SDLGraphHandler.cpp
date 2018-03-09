@@ -5,8 +5,8 @@
  *      Author: Astrid
  */
 
+#include <vector>
 #include "SDLGraphHandler.h"
-
 #include "Util/SDLDestroyShared.h"
 
 namespace SDL
@@ -74,10 +74,21 @@ namespace SDL
 		return SDL_GetTicks();
 	}
 
-	bool SDL_Graph_Handler::visualizeAll()
+	bool SDL_Graph_Handler::visualizeAll(shared_ptr<Game::Map> map)
 	{
 		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0,  255);
 		SDL_RenderClear(renderer.get());
+
+		Location i;
+		for(i.x = 0; i.x < map->getSizeX(); i.x++)
+		{
+			for(i.y = 0; i.y < map->getSizeY(); i.y++)
+			{
+				map->getEntity(i)->visualize();
+			}
+		}
+		SDL_RenderPresent(this->renderer.get());
+
 		return true;
 	}
 

@@ -36,8 +36,9 @@ namespace Game
 
 		void setEntity(Location location, shared_ptr<Entity> entity);
 		shared_ptr<Entity> getEntity(Location location);
-		//virtual void visualize()=0;
 		bool loadFromFile(string path);
+		unsigned int getSizeX();
+		unsigned int getSizeY();
 	};
 
 } /* namespace Game */
