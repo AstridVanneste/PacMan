@@ -55,7 +55,7 @@ namespace SDL
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
-			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (size.y + 1) * ENTITY_WIDTH, (size.x* ENTITY_HEIGHT) + 10, SDL_WINDOW_SHOWN));  //TODO why the +1 for the WIDTH???
+			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.y * ENTITY_WIDTH, size.x* ENTITY_HEIGHT, SDL_WINDOW_SHOWN));
 			this->renderer = SDL_shared<SDL_Renderer>(SDL_CreateRenderer(window.get(), -1, 0));
 
 			if(this->window != NULL && this->renderer != NULL)

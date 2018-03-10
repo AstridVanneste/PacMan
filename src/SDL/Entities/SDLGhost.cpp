@@ -34,7 +34,7 @@ namespace SDL
 
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
-		unique_ptr<SDL_Rect> destR = createRect(this->location);
+		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 		shared_ptr<SDL_Texture> tex = createTexture("res/Images/Clyde.png", renderer);
 
 		if(SDL_RenderCopy(renderer.get(), tex.get(), NULL,destR.get())<0)
