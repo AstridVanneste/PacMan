@@ -9,6 +9,7 @@
 #define ABSTRACTFACTORY_H_
 #include <memory>
 #include "../Entities/Ghost.h"
+#include "../Entities/Pacman.h"
 #include "../GraphicsHandler.h"
 #include "../Entities/Wall.h"
 #include "../EventHandler.h"
@@ -22,6 +23,9 @@ namespace Game
 		virtual ~AbstractFactory();
 
 		virtual shared_ptr<Ghost> createGhost()=0;
+		virtual shared_ptr<Ghost> createGhost(const Location& location, GhostType type)=0;
+		virtual shared_ptr<Pacman> createPacman()=0;
+		virtual shared_ptr<Pacman> createPacman(const Location& location)=0;
 		virtual shared_ptr<Wall> createWall()=0;
 		virtual shared_ptr<Wall> createWall(const Location& location)=0;
 		virtual shared_ptr<Wall> createWall(char type)=0;

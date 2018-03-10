@@ -23,9 +23,10 @@ namespace SDL
 	public:
 		SDL_Ghost();
 		SDL_Ghost(Game::GhostType type);
+		SDL_Ghost(Location location, Game::GhostType type);
 		virtual ~SDL_Ghost();
 
-		void visualize();
+		const void visualize();
 	};
 }
 

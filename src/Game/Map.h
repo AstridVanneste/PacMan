@@ -34,12 +34,12 @@ namespace Game
 		Map();
 		virtual ~Map();
 
-		void setEntity(Location location, shared_ptr<Entity> entity);
-		shared_ptr<Entity> getEntity(Location location);
+		void setEntity(Location location, shared_ptr<Entity> entity) noexcept;
+		const shared_ptr<Entity> getEntity(Location location) noexcept;
 		bool loadFromFile(string path);
-		unsigned int getSizeX();
-		unsigned int getSizeY();
-		Location getSize();
+		const unsigned int getSizeX() noexcept;
+		const unsigned int getSizeY() noexcept;
+		const Location getSize() noexcept;
 	};
 
 } /* namespace Game */

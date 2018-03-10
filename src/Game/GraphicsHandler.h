@@ -23,9 +23,7 @@ namespace Game
 		virtual bool init(Location location)=0;
 		virtual void delay(int time)=0;
 		virtual unsigned int getTime()=0;
-		virtual bool visualizeAll(shared_ptr<Map> map)=0;
-		virtual bool visualizeMap()=0;
-		virtual bool visualizeComponent()=0;
+		const virtual bool visualizeAll(shared_ptr<Map> map)=0;
 	};
 }
 

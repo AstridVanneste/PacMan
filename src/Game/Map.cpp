@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Map.h"
 #include "Gamemanager.h"
+#include "Entities/Ghost.h"
 using namespace std;
 
 namespace Game
@@ -22,12 +23,12 @@ namespace Game
 	{
 	}
 
-	void Map::setEntity(Location location, shared_ptr<Entity> entity)
+	void Map::setEntity(Location location, shared_ptr<Entity> entity) noexcept
 	{
 		map.at(location.x).at(location.y) = entity;
 	}
 
-	shared_ptr<Entity> Map::getEntity(Location location)
+	const shared_ptr<Entity> Map::getEntity(Location location) noexcept
 	{
 		return this->map[location.x][location.y];
 	}
@@ -56,15 +57,39 @@ namespace Game
 				//cout << "read line: " << line << endl;
 				for(i.y=0; i.y<line.size(); i.y++)
 				{
-					//cout << "Input of " << line[i.y] << " at x = " << i.x << " and y = " << i.y << endl;
-					if(line[i.y] == '1')
+					switch (line[i.y])
 					{
-						this->map[i.x].emplace_back(factory->createWall(i,UNDEFINED_WALL));
-						//cout << "Wall set at x = " << i.x << " and y = " << i.y << endl;
-					}
-					else if(line[i.y] == '0')
-					{
-						this->map[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+						case '1':
+							this->map[i.x].emplace_back(factory->createWall(i,UNDEFINED_WALL));
+							break;
+						case '0':
+							this->map[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							break;
+						case 'I':
+							//INKY
+							this->map[i.x].emplace_back(factory->createGhost(i,INKY));
+							break;
+						case 'B':
+							//BLINKY
+							this->map[i.x].emplace_back(factory->createGhost(i,BLINKY));
+							break;
+						case 'P':
+							//PINKY
+							this->map[i.x].emplace_back(factory->createGhost(i,PINKY));
+							break;
+						case 'C':
+							//CLYDE
+							this->map[i.x].emplace_back(factory->createGhost(i,CLYDE));
+							break;
+						case '*':
+							//BERRY
+							break;
+						case 'U':
+							//PACMAN
+							this->map[i.x].emplace_back(factory->createPacman(i));
+							break;
+						default:
+							cout << "unknown input in map file" << endl;
 					}
 				}
 
@@ -134,17 +159,17 @@ namespace Game
 		}
 	}
 
-	unsigned int Map::getSizeX()
+	const unsigned int Map::getSizeX() noexcept
 	{
 		return this->map.size();
 	}
 
-	unsigned int Map::getSizeY()
+	const unsigned int Map::getSizeY() noexcept
 	{
 		return this->map[0].size();
 	}
 
-	Location Map::getSize()
+	const Location Map::getSize() noexcept
 	{
 		Location loc;
 		loc.x = this->getSizeX();

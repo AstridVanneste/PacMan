@@ -10,6 +10,7 @@
 #include <memory>
 #include "../../Game/Util/AbstractFactory.h"
 #include "../../Game/Entities/Ghost.h"
+#include "../../Game/Entities/Pacman.h"
 #include "../SDLGraphHandler.h"
 
 namespace SDL
@@ -21,6 +22,9 @@ namespace SDL
 		/*virtual*/ ~SDL_Factory();
 
 		shared_ptr<Game::Ghost> createGhost();
+		shared_ptr<Game::Ghost> createGhost(const Location& location, Game::GhostType type);
+		shared_ptr<Game::Pacman> createPacman();
+		shared_ptr<Game::Pacman> createPacman(const Location& location);
 		shared_ptr<Game::Wall> createWall();
 		shared_ptr<Game::Wall> createWall(const Location& location);
 		shared_ptr<Game::Wall> createWall(char type);

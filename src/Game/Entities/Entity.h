@@ -30,18 +30,18 @@ namespace Game
 		virtual ~Entity();
 		Entity& operator= (const Entity& e);
 
-		virtual void visualize()=0;
+		const virtual void visualize()=0;
 
-		char getObjectType();
-		void setObjectType(char type);
+		const char getObjectType() noexcept;
+		void setObjectType(char type) noexcept;
 
-		void setX(int x);
-		void setY(int y);
+		void setX(int x) noexcept;
+		void setY(int y) noexcept;
 
-		int getX();
-		int getY();
+		const int getX() noexcept;
+		const int getY() noexcept;
 
-		virtual bool isPassable();
+		const virtual bool isPassable() noexcept;
 	};
 }
 

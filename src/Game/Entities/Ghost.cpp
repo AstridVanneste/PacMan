@@ -16,7 +16,7 @@ namespace Game
 	{
 		this->objectType = GHOST;
 
-		this->type = Blinky;
+		this->type = BLINKY;
 		this->fear = false;
 	}
 
@@ -50,12 +50,12 @@ namespace Game
 	{
 	}
 
-	GhostType Ghost::getType()
+	const GhostType Ghost::getType() noexcept
 	{
 		return this->type;
 	}
 
-	void Ghost::setType(GhostType type)
+	void Ghost::setType(GhostType type) noexcept
 	{
 		this->type = type;
 	}

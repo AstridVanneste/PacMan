@@ -15,7 +15,8 @@
 
 namespace Game
 {
-	const unsigned int FRAMERATE = 60;
+	const unsigned int FPS = 60;
+	const unsigned int FRAME_DELAY = 1000/FPS;
 	class Gamemanager
 	{
 	private:
@@ -35,8 +36,8 @@ namespace Game
 
 		static Gamemanager& getInstance();
 
-		void setFactory(shared_ptr<AbstractFactory> factory);
-		shared_ptr<AbstractFactory> getFactory();
+		void setFactory(shared_ptr<AbstractFactory> factory) noexcept;
+		const shared_ptr<AbstractFactory> getFactory() noexcept;
 
 		void start();
 		bool isRunning();

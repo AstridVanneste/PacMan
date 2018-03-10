@@ -22,7 +22,7 @@ namespace SDL
 
 		virtual ~SDL_Wall();
 
-		virtual void visualize();
+		const virtual void visualize();
 	};
 
 } /* namespace SDL */

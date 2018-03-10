@@ -12,7 +12,7 @@
 
 namespace Game
 {
-	enum GhostType{Inky, Blinky, Pinky, Clyde};
+	enum GhostType{INKY, CLYDE, BLINKY, PINKY};
 
 	class Ghost: public Entity
 	{
@@ -27,11 +27,11 @@ namespace Game
 		virtual ~Ghost();
 
 
-		GhostType getType();
-		void setType(GhostType type);
+		const GhostType getType() noexcept;
+		void setType(GhostType type) noexcept;
 
-		bool isFear();
-		void setFear(bool fear);
+		const bool isFear() noexcept;
+		void setFear(bool fear) noexcept;
 	};
 }
 

@@ -41,7 +41,7 @@ namespace SDL
 	{
 	}
 
-	void SDL_Wall::visualize()
+	const void SDL_Wall::visualize()
 	{
 		if(this->type != EMPTY_WALL)
 		{

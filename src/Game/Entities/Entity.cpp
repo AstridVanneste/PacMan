@@ -48,19 +48,19 @@ namespace Game
 		return *this;
 	}
 
-	void Entity::setObjectType(char type)
+	void Entity::setObjectType(char type) noexcept
 	{
 		this->objectType = type;
 	}
 
-	char Entity::getObjectType()
+	const char Entity::getObjectType() noexcept
 	{
 		cout << "checking object type" << endl;
 		cout << "Object type: " << +this->objectType << endl;
 		return this->objectType;
 	}
 
-	bool Entity::isPassable()
+	const bool Entity::isPassable() noexcept
 	{
 		return this->passable;
 	}

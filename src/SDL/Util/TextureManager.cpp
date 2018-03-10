@@ -44,20 +44,20 @@ namespace SDL
 	{
 		if(this->ghosts.get() == nullptr)
 		{
-			this->ghosts = createTexture("/res/Images/ghosts.png", renderer);
+			this->ghosts = createTexture("res/Images/Ghost.png", renderer);
 		}
 
 		return this->ghosts;
 	}
 
 	shared_ptr<SDL_Texture> TextureManager::getPacman()
+	{
+		if(this->pacman.get() == nullptr)
 		{
-			if(this->pacman.get() == nullptr)
-			{
-				this->pacman = createTexture("/res/Images/pacman.png", renderer);
-			}
-
-			return this->pacman;
+			this->pacman = createTexture("res/Images/Pacman.png", renderer);
 		}
+
+		return this->pacman;
+	}
 
 } /* namespace Game */

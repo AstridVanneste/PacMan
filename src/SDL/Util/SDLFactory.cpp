@@ -9,6 +9,7 @@
 #include "../Util/SDLFactory.h"
 #include "../Entities/SDLGhost.h"
 #include "../Entities/SDLWall.h"
+#include "../Entities/SDLPacman.h"
 #include "SDLDestroyShared.h"
 #include "../SDLEventHandler.h"
 using namespace std;
@@ -28,6 +29,22 @@ namespace SDL
 	{
 		return make_shared<SDL_Ghost>();
 	}
+
+	shared_ptr<Game::Ghost> SDL_Factory::createGhost(const Location& location, Game::GhostType type)
+	{
+		return make_shared<SDL_Ghost>(location, type);
+	}
+
+	shared_ptr<Game::Pacman> SDL_Factory::createPacman()
+	{
+		return make_shared<SDL_Pacman>();
+	}
+
+	shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Location& location)
+	{
+		return make_shared<SDL_Pacman>(location);
+	}
+
 
 	shared_ptr<Game::Wall> SDL_Factory::createWall()
 	{

@@ -51,28 +51,28 @@ namespace Game
 		{
 			unsigned int startTime = this->factory->getGraphicsHandler().getTime();
 			//input
-			//update positions
 			end = this->eventHandler->handleEvents();
-			//visualize
+			//update positions
 
-			//ghost->visualize();
+
+			//visualize
 			this->factory->getGraphicsHandler().visualizeAll(this->map);
-			//this->factory->getGraphicsHandler().delay(3000);
 
 			unsigned int endTime = this->factory->getGraphicsHandler().getTime();
-			if((endTime - startTime) < (1/FRAMERATE) * 1000)
+			unsigned int frameTime = endTime - startTime;
+			if(FRAME_DELAY > frameTime)
 			{
-				this->factory->getGraphicsHandler().delay((1/FRAMERATE) * 1000 - (endTime - startTime));
+				this->factory->getGraphicsHandler().delay(FRAME_DELAY - frameTime);
 			}
 		}
 	}
 
-	shared_ptr<AbstractFactory> Gamemanager::getFactory()
+	const shared_ptr<AbstractFactory> Gamemanager::getFactory() noexcept
 	{
 		return this->factory;
 	}
 
-	void Gamemanager::setFactory(shared_ptr<AbstractFactory> factory)
+	void Gamemanager::setFactory(shared_ptr<AbstractFactory> factory) noexcept
 	{
 		this->factory = factory;
 	}
