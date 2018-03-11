@@ -10,19 +10,19 @@
 namespace Game {
 
 Pacman::Pacman()
-:Entity()
+:MovingEntity()
 {
 	this->objectType = PACMAN;
 }
 
 Pacman::Pacman(const Pacman& pacman)
-:Entity(pacman)
+:MovingEntity(pacman)
 {
 	this->objectType = PACMAN;
 }
 
 Pacman::Pacman(const Location& location)
-:Entity(location)
+:MovingEntity(location)
 {
 	this->objectType = PACMAN;
 }

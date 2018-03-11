@@ -9,12 +9,13 @@
 #define GHOST_H_
 #include <string>
 #include "Entity.h"
+#include "MovingEntity.h"
 
 namespace Game
 {
 	enum GhostType{INKY, CLYDE, BLINKY, PINKY};
 
-	class Ghost: public Entity
+	class Ghost: public MovingEntity
 	{
 	protected:
 		GhostType type;

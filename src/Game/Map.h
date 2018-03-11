@@ -8,6 +8,7 @@
 #ifndef GAME_MAP_H_
 #define GAME_MAP_H_
 #include "Entities/Entity.h"
+#include "Entities/MovingEntity.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -22,13 +23,15 @@ namespace Game
 	 * 	[ a31	a32		a33		a34 ]
 	 * 	[ a41	a42		a43		a44 ]
 	 *
-	 *	x = height
-	 *	y = width
+	 *	x = row
+	 *	y = column
 	 */
 	class Map
 	{
 	private:
 		vector<vector<shared_ptr<Entity>>> map;
+		vector<shared_ptr<MovingEntity>> movingEntities;
+
 		void setWallTypes();
 	public:
 		Map();
@@ -40,6 +43,9 @@ namespace Game
 		const unsigned int getSizeX() noexcept;
 		const unsigned int getSizeY() noexcept;
 		const Location getSize() noexcept;
+
+		const shared_ptr<MovingEntity> getMovingEntity(int i) noexcept;
+		const int numberMovingEntities() noexcept;
 	};
 
 } /* namespace Game */

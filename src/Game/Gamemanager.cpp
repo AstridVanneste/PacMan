@@ -53,7 +53,7 @@ namespace Game
 			//input
 			end = this->eventHandler->handleEvents();
 			//update positions
-
+			this->update();
 
 			//visualize
 			this->factory->getGraphicsHandler().visualizeAll(this->map);
@@ -75,6 +75,17 @@ namespace Game
 	void Gamemanager::setFactory(shared_ptr<AbstractFactory> factory) noexcept
 	{
 		this->factory = factory;
+	}
+
+	void Gamemanager::update()
+	{
+		for(int i = 0; i < this->map->numberMovingEntities(); i++)
+		{
+			if(this->map->getMovingEntity(i)->update())
+			{
+				//move entity on map
+			}
+		}
 	}
 }
 

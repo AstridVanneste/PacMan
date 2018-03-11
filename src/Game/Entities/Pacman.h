@@ -9,11 +9,12 @@
 #define GAME_ENTITIES_PACMAN_H_
 
 #include "Entity.h"
+#include "MovingEntity.h"
 
 namespace Game
 {
 
-	class Pacman : public Entity
+	class Pacman : public MovingEntity
 	{
 	public:
 		Pacman();

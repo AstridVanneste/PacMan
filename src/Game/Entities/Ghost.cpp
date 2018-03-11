@@ -12,7 +12,7 @@ using namespace std;
 namespace Game
 {
 	Ghost::Ghost()
-	:Entity()
+	:MovingEntity()
 	{
 		this->objectType = GHOST;
 
@@ -21,7 +21,7 @@ namespace Game
 	}
 
 	Ghost::Ghost(const Ghost& g)
-	:Entity(g)
+	:MovingEntity(g)
 	{
 		this->objectType = GHOST;
 		this->type = g.type;
@@ -29,7 +29,7 @@ namespace Game
 	}
 
 	Ghost::Ghost(GhostType type)
-	:Entity()
+	:MovingEntity()
 	{
 		this->objectType = GHOST;
 
@@ -38,7 +38,7 @@ namespace Game
 	}
 
 	Ghost::Ghost(Location location, GhostType type)
-	:Entity(location)
+	:MovingEntity(location)
 	{
 		this->objectType =GHOST;
 

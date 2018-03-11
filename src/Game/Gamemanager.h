@@ -41,6 +41,8 @@ namespace Game
 
 		void start();
 		bool isRunning();
+
+		void update();
 	};
 }
 

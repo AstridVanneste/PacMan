@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include "Map.h"
 #include "Gamemanager.h"
 #include "Entities/Ghost.h"
@@ -57,6 +58,8 @@ namespace Game
 				//cout << "read line: " << line << endl;
 				for(i.y=0; i.y<line.size(); i.y++)
 				{
+					shared_ptr<Ghost> ghost;
+					shared_ptr<Pacman> pacman;
 					switch (line[i.y])
 					{
 						case '1':
@@ -67,26 +70,36 @@ namespace Game
 							break;
 						case 'I':
 							//INKY
-							this->map[i.x].emplace_back(factory->createGhost(i,INKY));
+							ghost = make_shared<Ghost>(factory->createGhost(i, INKY));
+							this->map[i.x].emplace_back(ghost);
+							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'B':
 							//BLINKY
-							this->map[i.x].emplace_back(factory->createGhost(i,BLINKY));
+							ghost = make_shared<Ghost>(factory->createGhost(i, BLINKY));
+							this->map[i.x].emplace_back(ghost);
+							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'P':
 							//PINKY
-							this->map[i.x].emplace_back(factory->createGhost(i,PINKY));
+							ghost = make_shared<Ghost>(factory->createGhost(i, PINKY));
+							this->map[i.x].emplace_back(ghost);
+							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'C':
 							//CLYDE
-							this->map[i.x].emplace_back(factory->createGhost(i,CLYDE));
+							ghost = make_shared<Ghost>(factory->createGhost(i, CLYDE));
+							this->map[i.x].emplace_back(ghost);
+							this->movingEntities.emplace_back(ghost);
 							break;
 						case '*':
 							//BERRY
 							break;
 						case 'U':
 							//PACMAN
-							this->map[i.x].emplace_back(factory->createPacman(i));
+							pacman = make_shared<Pacman>(factory->createPacman(i));
+							this->map[i.x].emplace_back(pacman);
+							this->movingEntities.emplace_back(ghost);
 							break;
 						default:
 							cout << "unknown input in map file" << endl;
@@ -130,25 +143,25 @@ namespace Game
 					if(i.x !=0 && !this->map[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
 					{
 						//cout << "wall UP" << endl;
-						type |= UP;
+						type |= WALL_UP;
 					}
 
-					if(i.x < this->map.size()-1 && !this->map[i.x+1][i.y]->isPassable())			//check if there is a wall below this one.
+					if(i.x < this->map.size()-1 && !this->map[i.x+1][i.y]->isPassable())		//check if there is a wall below this one.
 					{
 						//cout << "wall DOWN" << endl;
-						type |= DOWN;
+						type |= WALL_DOWN;
 					}
 
 					if(i.y != 0 && !this->map[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
 					{
 						//cout << "wall LEFT" << endl;
-						type |= LEFT;
+						type |= WALL_LEFT;
 					}
 
 					if(i.y < this->map[i.x].size()-1 && !this->map[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
 					{
 						//cout << "wall RIGHT" << endl;
-						type |= RIGHT;
+						type |= WALL_RIGHT;
 					}
 
 					//cout << "wall type set to " << +type << endl;
@@ -175,6 +188,16 @@ namespace Game
 		loc.x = this->getSizeX();
 		loc.y = this->getSizeY();
 		return loc;
+	}
+
+	const shared_ptr<MovingEntity> Map::getMovingEntity(int i) noexcept
+	{
+		return this->movingEntities[i];
+	}
+
+	const int Map::numberMovingEntities() noexcept
+	{
+		return this->movingEntities.size();
 	}
 
 } /* namespace Game */
