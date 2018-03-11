@@ -8,7 +8,6 @@
 #ifndef GAME_ENTITIES_PACMAN_H_
 #define GAME_ENTITIES_PACMAN_H_
 
-#include "Entity.h"
 #include "MovingEntity.h"
 
 namespace Game

@@ -70,25 +70,25 @@ namespace Game
 							break;
 						case 'I':
 							//INKY
-							ghost = make_shared<Ghost>(factory->createGhost(i, INKY));
+							ghost = factory->createGhost(i, INKY);
 							this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'B':
 							//BLINKY
-							ghost = make_shared<Ghost>(factory->createGhost(i, BLINKY));
+							ghost = factory->createGhost(i, BLINKY);
 							this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'P':
 							//PINKY
-							ghost = make_shared<Ghost>(factory->createGhost(i, PINKY));
+							ghost = factory->createGhost(i, PINKY);
 							this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'C':
 							//CLYDE
-							ghost = make_shared<Ghost>(factory->createGhost(i, CLYDE));
+							ghost = factory->createGhost(i, CLYDE);
 							this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
@@ -97,9 +97,9 @@ namespace Game
 							break;
 						case 'U':
 							//PACMAN
-							pacman = make_shared<Pacman>(factory->createPacman(i));
+							pacman = factory->createPacman(i);
 							this->map[i.x].emplace_back(pacman);
-							this->movingEntities.emplace_back(ghost);
+							this->movingEntities.emplace_back(pacman);
 							break;
 						default:
 							cout << "unknown input in map file" << endl;

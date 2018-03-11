@@ -8,9 +8,12 @@
 #include "SDLPacman.h"
 #include <memory>
 #include <iostream>
+#include <math.h>
+#include "../Util/SDLUtil.h"
 #include "../Util/TextureManaging.h"
 #include "../Util/TextureManager.h"
 #include "../SDLGraphHandler.h"
+#include "../../Game/Entities/MovingEntity.h"
 
 namespace SDL
 {
@@ -40,10 +43,11 @@ namespace SDL
 
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
-		Location offset;
-		offset.x = 0;
-		offset.y = 0;
-		unique_ptr<SDL_Rect> srcR = createSrcRect(offset);
+		Location imageOffset;
+		imageOffset.x = 0;
+		imageOffset.y = 0;
+
+		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 		shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getPacman();
 

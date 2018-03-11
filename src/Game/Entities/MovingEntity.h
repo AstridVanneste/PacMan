@@ -20,7 +20,7 @@ namespace Game
 
 	class MovingEntity : public Entity
 	{
-	private:
+	protected:
 		Direction direction;
 		int speed;						// amount of frames it takes to move from one place to the next
 		int offset;						// amount of frames that passed since last movement

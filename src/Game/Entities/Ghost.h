@@ -8,7 +8,6 @@
 #ifndef GHOST_H_
 #define GHOST_H_
 #include <string>
-#include "Entity.h"
 #include "MovingEntity.h"
 
 namespace Game
