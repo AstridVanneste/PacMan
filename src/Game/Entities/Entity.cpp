@@ -65,5 +65,15 @@ namespace Game
 		return this->passable;
 	}
 
+	const Location Entity::getLocation() noexcept
+	{
+		return this->location;
+	}
+
+	void Entity::setLocation(const Location& location) noexcept
+	{
+		this->location = location;
+	}
+
 }
 

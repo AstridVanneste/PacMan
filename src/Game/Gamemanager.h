@@ -10,7 +10,7 @@
 #include <memory>
 #include "GraphicsHandler.h"
 #include "Util/AbstractFactory.h"
-#include "EventHandler.h"
+#include "Events/EventHandler.h"
 #include "Map.h"
 
 namespace Game

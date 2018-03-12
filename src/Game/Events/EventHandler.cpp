@@ -18,4 +18,9 @@ Event_Handler::~Event_Handler()
 {
 }
 
+bool Event_Handler::handleEvents()
+{
+	return this->pollEvents();
+}
+
 } /* namespace SDL */

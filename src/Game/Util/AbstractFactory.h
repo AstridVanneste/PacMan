@@ -12,7 +12,7 @@
 #include "../Entities/Pacman.h"
 #include "../GraphicsHandler.h"
 #include "../Entities/Wall.h"
-#include "../EventHandler.h"
+#include "../Events/EventHandler.h"
 
 namespace Game
 {

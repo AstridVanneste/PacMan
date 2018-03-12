@@ -19,7 +19,7 @@ SDL_Event_Handler::~SDL_Event_Handler()
 {
 }
 
-bool SDL_Event_Handler::handleEvents()
+bool SDL_Event_Handler::pollEvents()
 {
 	SDL_Event event;
 	bool end = false;

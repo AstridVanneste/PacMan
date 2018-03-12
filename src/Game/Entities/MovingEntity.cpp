@@ -7,6 +7,7 @@
 
 #include "MovingEntity.h"
 #include <iostream>
+#include "../Util/Random.h"
 using namespace std;
 
 namespace Game
@@ -16,7 +17,7 @@ MovingEntity::MovingEntity()
 :Entity()
 {
 	this->direction = UP;
-	this->speed = 60; 		//1 move/s
+	this->speed = DEFAULT_SPEED; 		//1 move/s
 	this->offset = 0;
 }
 
@@ -32,7 +33,7 @@ MovingEntity::MovingEntity(Location location)
 :Entity(location)
 {
 	this->direction = UP;
-	this->speed = 60; 		//1 move/s
+	this->speed = DEFAULT_SPEED; 		//1 move/s
 	this->offset = 0;
 }
 
@@ -47,7 +48,7 @@ bool MovingEntity::update() noexcept
 	if(this->offset > this->speed)
 	{
 		//entity has to be moved 1 place
-		this->move();
+		//this->move();
 
 		this->offset = 0;
 		return true;
@@ -80,6 +81,81 @@ void MovingEntity::move() noexcept
 	default:
 		cout << "Invalid direction" << endl;
 	}
+}
+
+const Direction MovingEntity::getDirection() noexcept
+{
+	return this->direction;
+}
+
+void MovingEntity::setDirection(const Direction& direction) noexcept
+{
+	this->direction = direction;
+}
+
+void MovingEntity::toggleDirection() noexcept
+{
+	Direction newDirection;
+	do
+	{
+		newDirection = Direction(Random::getInstance().generateRandom(3));
+	}while(newDirection == this->direction);
+	this->direction = newDirection;
+	//cout << "Direction changed to " << this->direction;
+}
+
+const Location MovingEntity::getNextLocation(Location limits) noexcept
+{
+	Location destination = this->location;
+
+	switch(direction)
+	{
+	case UP:
+		if(destination.x != 0)
+		{
+			destination.x--;
+
+		}
+		else
+		{
+			this->toggleDirection();
+		}
+		break;
+	case DOWN:
+		if(destination.x < limits.x)
+		{
+			destination.x++;
+
+		}
+		else
+		{
+			this->toggleDirection();
+		}
+		break;
+	case LEFT:
+		if(destination.y != 0)
+		{
+			destination.y--;
+
+		}
+		else
+		{
+			this->toggleDirection();
+		}
+		break;
+	case RIGHT:
+		if(destination.y < limits.y)
+		{
+			destination.y++;
+
+		}
+		else
+		{
+			this->toggleDirection();
+		}
+		break;
+	}
+	return destination;
 }
 
 } /* namespace Game */

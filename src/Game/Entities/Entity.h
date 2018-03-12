@@ -35,6 +35,9 @@ namespace Game
 		const char getObjectType() noexcept;
 		void setObjectType(char type) noexcept;
 
+		const Location getLocation() noexcept;
+		void setLocation(const Location& location) noexcept;
+
 		void setX(int x) noexcept;
 		void setY(int y) noexcept;
 

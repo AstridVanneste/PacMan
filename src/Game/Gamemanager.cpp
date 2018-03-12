@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include "Entities/Ghost.h"
+#include "Entities/Wall.h"
+#include "Entities/MovingEntity.h"
 #include "Gamemanager.h"
 using namespace std;
 
@@ -35,7 +37,7 @@ namespace Game
 	{
 		this->running = true;
 		//initialize game
-		this->map->loadFromFile("res/Maps/arena.txt");
+		this->map->loadFromFile("res/Maps/arena2.txt");
 		cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init(this->map->getSize());
 		this->eventHandler = this->factory->createEventHandler();
@@ -50,14 +52,17 @@ namespace Game
 		while(!end)
 		{
 			unsigned int startTime = this->factory->getGraphicsHandler().getTime();
+
 			//input
 			end = this->eventHandler->handleEvents();
+
 			//update positions
 			this->update();
 
 			//visualize
 			this->factory->getGraphicsHandler().visualizeAll(this->map);
 
+			//limit FPS
 			unsigned int endTime = this->factory->getGraphicsHandler().getTime();
 			unsigned int frameTime = endTime - startTime;
 			if(FRAME_DELAY > frameTime)
@@ -84,6 +89,19 @@ namespace Game
 			if(this->map->getMovingEntity(i)->update())
 			{
 				//move entity on map
+				Location destination = this->map->getMovingEntity(i)->getNextLocation(this->map->getSize());
+
+				if(this->map->getEntity(destination)->isPassable())
+				{
+					Location loc = this->map->getMovingEntity(i)->getLocation();
+					this->map->setEntity(this->map->getMovingEntity(i)->getLocation(), factory->createWall(loc, EMPTY_WALL));
+					this->map->setEntity(destination, this->map->getMovingEntity(i));
+					this->map->getMovingEntity(i)->setLocation(destination);
+				}
+				else
+				{
+					this->map->getMovingEntity(i)->toggleDirection();
+				}
 			}
 		}
 	}

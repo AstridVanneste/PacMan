@@ -40,12 +40,12 @@ namespace SDL
 	const void SDL_Pacman::visualize()
 	{
 		//stuff
-
+		//cout << "visualize Pacman" << endl;
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Location imageOffset;
 		imageOffset.x = 0;
-		imageOffset.y = 0;
+		imageOffset.y = this->direction;
 
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);

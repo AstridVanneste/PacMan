@@ -38,11 +38,12 @@ namespace SDL
 	{
 		//cout << "SDL_Ghost::visualize()" << endl;
 
+		//cout << "visualize " << this->type  << " at ["<< this->location.x << "," << this->location.y << "]" << endl;
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Location offset;
-		offset.x = type;
-		offset.y = 0;
+		offset.x = this->type;
+		offset.y = this->direction;
 		unique_ptr<SDL_Rect> srcR = createSrcRect(offset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 		shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getGhost();

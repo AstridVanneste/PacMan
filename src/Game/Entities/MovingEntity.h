@@ -15,8 +15,10 @@ namespace Game
 
 	enum Direction
 	{
-		UP , DOWN , LEFT , RIGHT
+		LEFT , DOWN , RIGHT , UP
 	};
+
+	const int DEFAULT_SPEED = 10;
 
 	class MovingEntity : public Entity
 	{
@@ -36,7 +38,11 @@ namespace Game
 		bool update() noexcept;			//returns true if moved (depends on speed and offset)
 
 		const Direction getDirection() noexcept;
-		void setDirection(Direction direction) noexcept;
+		void setDirection(const Direction& direction) noexcept;
+
+		void toggleDirection() noexcept;
+
+		const Location getNextLocation(Location limits) noexcept;
 	};
 
 } /* namespace Game */

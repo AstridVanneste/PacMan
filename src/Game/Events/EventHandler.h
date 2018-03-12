@@ -17,7 +17,8 @@ public:
 	Event_Handler();
 	virtual ~Event_Handler();
 
-	virtual bool handleEvents()=0;
+	virtual bool handleEvents();
+	virtual bool pollEvents()=0;
 };
 
 } /* namespace SDL */

@@ -7,7 +7,7 @@
 
 #ifndef SDL_SDLEVENTHANDLER_H_
 #define SDL_SDLEVENTHANDLER_H_
-#include "../Game/EventHandler.h"
+#include "../Game/Events/EventHandler.h"
 
 namespace SDL
 {
@@ -18,7 +18,7 @@ namespace SDL
 		SDL_Event_Handler();
 		virtual ~SDL_Event_Handler();
 
-		bool handleEvents();
+		bool pollEvents();
 	};
 
 } /* namespace SDL */
