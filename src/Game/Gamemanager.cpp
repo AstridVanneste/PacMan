@@ -37,7 +37,7 @@ namespace Game
 	{
 		this->running = true;
 		//initialize game
-		this->map->loadFromFile("res/Maps/arena2.txt");
+		this->map->loadFromFile("res/Maps/arena3.txt");
 		cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init(this->map->getSize());
 		this->eventHandler = this->factory->createEventHandler();
@@ -94,9 +94,8 @@ namespace Game
 				if(this->map->getEntity(destination)->isPassable())
 				{
 					Location loc = this->map->getMovingEntity(i)->getLocation();
-					this->map->setEntity(this->map->getMovingEntity(i)->getLocation(), factory->createWall(loc, EMPTY_WALL));
-					this->map->setEntity(destination, this->map->getMovingEntity(i));
-					this->map->getMovingEntity(i)->setLocation(destination);
+					//cout << "Entity moved from [" << loc.x << "," << loc.y <<"] to [" << destination.x << "," << destination.y << "]" << endl;
+					this->map->moveEntity(i, destination);
 				}
 				else
 				{

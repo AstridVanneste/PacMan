@@ -40,12 +40,15 @@ namespace Game
 		void setEntity(Location location, shared_ptr<Entity> entity) noexcept;
 		const shared_ptr<Entity> getEntity(Location location) noexcept;
 		bool loadFromFile(string path);
+
 		const unsigned int getSizeX() noexcept;
 		const unsigned int getSizeY() noexcept;
 		const Location getSize() noexcept;
 
 		const shared_ptr<MovingEntity> getMovingEntity(int i) noexcept;
 		const int numberMovingEntities() noexcept;
+
+		void moveEntity(int i, Location destination) noexcept;
 	};
 
 } /* namespace Game */

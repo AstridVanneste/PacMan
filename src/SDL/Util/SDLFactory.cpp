@@ -51,11 +51,6 @@ namespace SDL
 		return make_shared<SDL_Wall>();
 	}
 
-	shared_ptr<Game::Wall> SDL_Factory::createWall(char type)
-	{
-		return make_shared<SDL_Wall>(type);
-	}
-
 	shared_ptr<Game::Wall> SDL_Factory::createWall(const Location& location)
 	{
 		return make_shared<SDL_Wall>(location);

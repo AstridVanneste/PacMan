@@ -200,4 +200,17 @@ namespace Game
 		return this->movingEntities.size();
 	}
 
+	void Map::moveEntity(int i, Location destination) noexcept
+	{
+		Location loc = this->movingEntities[i]->getLocation();
+
+		//move entity on map
+		this->map[destination.x][destination.y] = this->movingEntities[i];
+		//set empty entity on src location
+		this->map[loc.x][loc.y] = Gamemanager::getInstance().getFactory()->createWall(loc,EMPTY_WALL);
+		//update location in entity
+		this->movingEntities[i]->setLocation(destination);
+
+	}
+
 } /* namespace Game */

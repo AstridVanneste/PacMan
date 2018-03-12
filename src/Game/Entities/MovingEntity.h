@@ -12,12 +12,6 @@
 
 namespace Game
 {
-
-	enum Direction
-	{
-		LEFT , DOWN , RIGHT , UP
-	};
-
 	const int DEFAULT_SPEED = 10;
 
 	class MovingEntity : public Entity

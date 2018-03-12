@@ -7,4 +7,9 @@ typedef struct
 		unsigned int y;
 	}Location;
 
+enum Direction
+	{
+		LEFT , DOWN , RIGHT , UP
+	};
+
 #endif

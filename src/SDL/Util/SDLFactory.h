@@ -27,7 +27,6 @@ namespace SDL
 		shared_ptr<Game::Pacman> createPacman(const Location& location);
 		shared_ptr<Game::Wall> createWall();
 		shared_ptr<Game::Wall> createWall(const Location& location);
-		shared_ptr<Game::Wall> createWall(char type);
 		shared_ptr<Game::Wall> createWall(const Location& location, char type);
 		shared_ptr<Game::Event_Handler> createEventHandler();
 		Game::Graphics_Handler& getGraphicsHandler();

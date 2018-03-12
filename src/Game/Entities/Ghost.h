@@ -10,6 +10,10 @@
 #include <string>
 #include "MovingEntity.h"
 
+//FOR A*
+//https://gamedev.stackexchange.com/questions/15/how-does-a-pathfinding-work
+
+
 namespace Game
 {
 	enum GhostType{INKY, CLYDE, BLINKY, PINKY};
