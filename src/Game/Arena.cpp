@@ -5,36 +5,37 @@
  *      Author: Astrid
  */
 
+#include "Arena.h"
+
 #include <fstream>
 #include <iostream>
 #include <memory>
-#include "Map.h"
 #include "Gamemanager.h"
 #include "Entities/Ghost.h"
 using namespace std;
 
 namespace Game
 {
-	Map::Map()
+	Arena::Arena()
 	{
 
 	}
 
-	Map::~Map()
+	Arena::~Arena()
 	{
 	}
 
-	void Map::setEntity(Location location, shared_ptr<Entity> entity) noexcept
+	void Arena::setEntity(Location location, shared_ptr<Entity> entity) noexcept
 	{
-		map.at(location.x).at(location.y) = entity;
+		arena.at(location.x).at(location.y) = entity;
 	}
 
-	const shared_ptr<Entity> Map::getEntity(Location location) noexcept
+	const shared_ptr<Entity> Arena::getEntity(Location location) noexcept
 	{
-		return this->map[location.x][location.y];
+		return this->arena[location.x][location.y];
 	}
 
-	bool Map::loadFromFile(string path)
+	bool Arena::loadFromFile(string path)
 	{
 		cout << "started loading from file" << endl;
 
@@ -54,7 +55,7 @@ namespace Game
 			{
 				string line;
 				getline(file, line, '\n');
-				this->map.resize(i.x+1);
+				this->arena.resize(i.x+1);
 				//cout << "read line: " << line << endl;
 				for(i.y=0; i.y<line.size(); i.y++)
 				{
@@ -63,33 +64,37 @@ namespace Game
 					switch (line[i.y])
 					{
 						case '1':
-							this->map[i.x].emplace_back(factory->createWall(i,UNDEFINED_WALL));
+							this->arena[i.x].emplace_back(factory->createWall(i,UNDEFINED_WALL));
 							break;
 						case '0':
-							this->map[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							break;
 						case 'I':
 							//INKY
 							ghost = factory->createGhost(i, INKY);
-							this->map[i.x].emplace_back(ghost);
+							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							//this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'B':
 							//BLINKY
 							ghost = factory->createGhost(i, BLINKY);
-							this->map[i.x].emplace_back(ghost);
+							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							//this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'P':
 							//PINKY
 							ghost = factory->createGhost(i, PINKY);
-							this->map[i.x].emplace_back(ghost);
+							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							//this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case 'C':
 							//CLYDE
 							ghost = factory->createGhost(i, CLYDE);
-							this->map[i.x].emplace_back(ghost);
+							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							//this->map[i.x].emplace_back(ghost);
 							this->movingEntities.emplace_back(ghost);
 							break;
 						case '*':
@@ -98,7 +103,8 @@ namespace Game
 						case 'U':
 							//PACMAN
 							pacman = factory->createPacman(i);
-							this->map[i.x].emplace_back(pacman);
+							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
+							//this->map[i.x].emplace_back(pacman);
 							this->movingEntities.emplace_back(pacman);
 							break;
 						default:
@@ -123,66 +129,66 @@ namespace Game
 		return true;
 	}
 
-	void Map::setWallTypes()
+	void Arena::setWallTypes()
 	{
 		//cout << "start setting wall types" << endl;
-		cout << "Map size x = " << this->map.size() << " y = " << this->map[0].size() << endl;
+		cout << "Map size x = " << this->arena.size() << " y = " << this->arena[0].size() << endl;
 
 		Location i;
-		for ( i.x = 0; i.x < this->map.size(); i.x++)
+		for ( i.x = 0; i.x < this->arena.size(); i.x++)
 		{
-			for (i.y = 0; i.y < this->map[i.x].size(); i.y++)
+			for (i.y = 0; i.y < this->arena[i.x].size(); i.y++)
 			{
 				//cout << "checking for wall at x = " << i.x << " and y = " << i.y << endl;
 
-				if(!this->map[i.x][i.y]->isPassable())
+				if(!this->arena[i.x][i.y]->isPassable())
 				{
 					char type = 0;
 
 
-					if(i.x !=0 && !this->map[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
+					if(i.x !=0 && !this->arena[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
 					{
 						//cout << "wall UP" << endl;
 						type |= WALL_UP;
 					}
 
-					if(i.x < this->map.size()-1 && !this->map[i.x+1][i.y]->isPassable())		//check if there is a wall below this one.
+					if(i.x < this->arena.size()-1 && !this->arena[i.x+1][i.y]->isPassable())		//check if there is a wall below this one.
 					{
 						//cout << "wall DOWN" << endl;
 						type |= WALL_DOWN;
 					}
 
-					if(i.y != 0 && !this->map[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
+					if(i.y != 0 && !this->arena[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
 					{
 						//cout << "wall LEFT" << endl;
 						type |= WALL_LEFT;
 					}
 
-					if(i.y < this->map[i.x].size()-1 && !this->map[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
+					if(i.y < this->arena[i.x].size()-1 && !this->arena[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
 					{
 						//cout << "wall RIGHT" << endl;
 						type |= WALL_RIGHT;
 					}
 
 					//cout << "wall type set to " << +type << endl;
-					this->map[i.x][i.y] = Gamemanager::getInstance().getFactory()->createWall(i, type);
+					this->arena[i.x][i.y] = Gamemanager::getInstance().getFactory()->createWall(i, type);
 
 				}
 			}
 		}
 	}
 
-	const unsigned int Map::getSizeX() noexcept
+	const unsigned int Arena::getSizeX() noexcept
 	{
-		return this->map.size();
+		return this->arena.size();
 	}
 
-	const unsigned int Map::getSizeY() noexcept
+	const unsigned int Arena::getSizeY() noexcept
 	{
-		return this->map[0].size();
+		return this->arena[0].size();
 	}
 
-	const Location Map::getSize() noexcept
+	const Location Arena::getSize() noexcept
 	{
 		Location loc;
 		loc.x = this->getSizeX();
@@ -190,24 +196,24 @@ namespace Game
 		return loc;
 	}
 
-	const shared_ptr<MovingEntity> Map::getMovingEntity(int i) noexcept
+	const shared_ptr<MovingEntity> Arena::getMovingEntity(int i) noexcept
 	{
 		return this->movingEntities[i];
 	}
 
-	const int Map::numberMovingEntities() noexcept
+	const int Arena::numberMovingEntities() noexcept
 	{
 		return this->movingEntities.size();
 	}
 
-	void Map::moveEntity(int i, Location destination) noexcept
+	void Arena::moveEntity(int i, Location destination) noexcept
 	{
-		Location loc = this->movingEntities[i]->getLocation();
+		//Location loc = this->movingEntities[i]->getLocation();
 
 		//move entity on map
-		this->map[destination.x][destination.y] = this->movingEntities[i];
+		//this->map[destination.x][destination.y] = this->movingEntities[i];
 		//set empty entity on src location
-		this->map[loc.x][loc.y] = Gamemanager::getInstance().getFactory()->createWall(loc,EMPTY_WALL);
+		//this->map[loc.x][loc.y] = Gamemanager::getInstance().getFactory()->createWall(loc,EMPTY_WALL);
 		//update location in entity
 		this->movingEntities[i]->setLocation(destination);
 

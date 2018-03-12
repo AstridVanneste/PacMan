@@ -18,7 +18,7 @@ namespace Game
 	Gamemanager::Gamemanager()
 	{
 		this->factory = 0;
-		this->map = make_shared<Map>();
+		this->map = make_shared<Arena>();
 		this->running = false;
 	}
 

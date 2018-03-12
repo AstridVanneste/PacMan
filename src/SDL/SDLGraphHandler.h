@@ -10,8 +10,9 @@
 #include <SDL2/SDL.h>
 #include <memory>
 #include <string>
+
+#include "../Game/Arena.h"
 #include "../Game/GraphicsHandler.h"
-#include "../Game/Map.h"
 using namespace std;
 
 namespace SDL
@@ -38,7 +39,7 @@ namespace SDL
 		bool init(Location size);
 		void delay(int time);
 		unsigned int getTime();
-		const bool visualizeAll(shared_ptr<Game::Map> map);
+		const bool visualizeAll(shared_ptr<Game::Arena> map);
 		bool visualizeMap();
 		bool visualizeComponent();
 	};

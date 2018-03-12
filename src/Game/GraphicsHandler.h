@@ -8,7 +8,7 @@
 #ifndef GRAPHICSHANDLER_H_
 #define GRAPHICSHANDLER_H_
 
-#include "Map.h"
+#include "Arena.h"
 
 namespace Game
 {
@@ -23,7 +23,7 @@ namespace Game
 		virtual bool init(Location location)=0;
 		virtual void delay(int time)=0;
 		virtual unsigned int getTime()=0;
-		const virtual bool visualizeAll(shared_ptr<Map> map)=0;
+		const virtual bool visualizeAll(shared_ptr<Arena> map)=0;
 	};
 }
 

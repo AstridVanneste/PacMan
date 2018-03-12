@@ -5,8 +5,8 @@
  *      Author: Astrid
  */
 
-#ifndef GAME_MAP_H_
-#define GAME_MAP_H_
+#ifndef GAME_ARENA_H_
+#define GAME_ARENA_H_
 #include "Entities/Entity.h"
 #include "Entities/MovingEntity.h"
 #include <string>
@@ -26,16 +26,16 @@ namespace Game
 	 *	x = row
 	 *	y = column
 	 */
-	class Map
+	class Arena
 	{
 	private:
-		vector<vector<shared_ptr<Entity>>> map;
+		vector<vector<shared_ptr<Entity>>> arena;
 		vector<shared_ptr<MovingEntity>> movingEntities;
 
 		void setWallTypes();
 	public:
-		Map();
-		virtual ~Map();
+		Arena();
+		virtual ~Arena();
 
 		void setEntity(Location location, shared_ptr<Entity> entity) noexcept;
 		const shared_ptr<Entity> getEntity(Location location) noexcept;
@@ -53,4 +53,4 @@ namespace Game
 
 } /* namespace Game */
 
-#endif /* GAME_MAP_H_ */
+#endif /* GAME_ARENA_H_ */

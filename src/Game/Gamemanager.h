@@ -8,10 +8,11 @@
 #ifndef GAME_H_
 #define GAME_H_
 #include <memory>
+
+#include "Arena.h"
 #include "GraphicsHandler.h"
 #include "Util/AbstractFactory.h"
 #include "Events/EventHandler.h"
-#include "Map.h"
 
 namespace Game
 {
@@ -21,7 +22,7 @@ namespace Game
 	{
 	private:
 		shared_ptr<AbstractFactory> factory;
-		shared_ptr<Map> map;
+		shared_ptr<Arena> map;
 		shared_ptr<Event_Handler> eventHandler;
 
 		bool running;
