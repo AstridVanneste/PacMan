@@ -8,16 +8,24 @@
 #ifndef GAME_EVENTHANDLER_H_
 #define GAME_EVENTHANDLER_H_
 
+#include <vector>
+#include <memory>
+#include "Event.h"
+using namespace std;
+
 namespace Game
 {
 
 class Event_Handler
 {
+protected:
+	vector<shared_ptr<Event>> events;
 public:
 	Event_Handler();
 	virtual ~Event_Handler();
 
-	virtual bool handleEvents();
+	bool handleEvent(shared_ptr<Event> event);
+	bool handleEvents();
 	virtual bool pollEvents()=0;
 };
 

@@ -19,7 +19,11 @@ private:
 	EventType type;
 public:
 	Event();
+	Event(const EventType& type);
 	virtual ~Event();
+
+	const EventType getType() noexcept;
+	void setType(const EventType& type) noexcept;
 };
 
 } /* namespace Game */

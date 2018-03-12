@@ -6,6 +6,8 @@
  */
 
 #include "SDLEventHandler.h"
+#include "../Game/Events/Event.h"
+#include <memory>
 #include <SDL2/SDL.h>
 
 namespace SDL
@@ -25,6 +27,11 @@ bool SDL_Event_Handler::pollEvents()
 	bool end = false;
 	while(SDL_PollEvent(&event))
 	{
+		switch(event.type)
+		{
+		case SDL_QUIT:
+			this->events.emplace_back(make_shared<Game::Event>(QUIT));
+		}
 		if(event.type == SDL_QUIT)
 		{
 			end = true;
