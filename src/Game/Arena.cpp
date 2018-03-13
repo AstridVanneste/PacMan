@@ -25,12 +25,12 @@ namespace Game
 	{
 	}
 
-	void Arena::setEntity(Location location, shared_ptr<Entity> entity) noexcept
+	void Arena::setWall(Location location, shared_ptr<Wall> wall) noexcept
 	{
-		arena.at(location.x).at(location.y) = entity;
+		arena[location.x][location.y] = wall;
 	}
 
-	const shared_ptr<Entity> Arena::getEntity(Location location) noexcept
+	const shared_ptr<Wall> Arena::getWall(Location location) noexcept
 	{
 		return this->arena[location.x][location.y];
 	}
@@ -74,28 +74,28 @@ namespace Game
 							ghost = factory->createGhost(i, INKY);
 							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							//this->map[i.x].emplace_back(ghost);
-							this->movingEntities.emplace_back(ghost);
+							this->ghosts.emplace_back(ghost);
 							break;
 						case 'B':
 							//BLINKY
 							ghost = factory->createGhost(i, BLINKY);
 							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							//this->map[i.x].emplace_back(ghost);
-							this->movingEntities.emplace_back(ghost);
+							this->ghosts.emplace_back(ghost);
 							break;
 						case 'P':
 							//PINKY
 							ghost = factory->createGhost(i, PINKY);
 							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							//this->map[i.x].emplace_back(ghost);
-							this->movingEntities.emplace_back(ghost);
+							this->ghosts.emplace_back(ghost);
 							break;
 						case 'C':
 							//CLYDE
 							ghost = factory->createGhost(i, CLYDE);
 							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							//this->map[i.x].emplace_back(ghost);
-							this->movingEntities.emplace_back(ghost);
+							this->ghosts.emplace_back(ghost);
 							break;
 						case '*':
 							//BERRY
@@ -105,7 +105,7 @@ namespace Game
 							pacman = factory->createPacman(i);
 							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							//this->map[i.x].emplace_back(pacman);
-							this->movingEntities.emplace_back(pacman);
+							this->pacman = pacman;
 							break;
 						default:
 							cout << "unknown input in map file" << endl;
@@ -196,27 +196,48 @@ namespace Game
 		return loc;
 	}
 
-	const shared_ptr<MovingEntity> Arena::getMovingEntity(int i) noexcept
+	const shared_ptr<Ghost> Arena::getGhost(int i) noexcept
 	{
-		return this->movingEntities[i];
+		return this->ghosts[i];
 	}
 
-	const int Arena::numberMovingEntities() noexcept
+	const int Arena::numberGhosts() noexcept
 	{
-		return this->movingEntities.size();
+		return this->ghosts.size();
 	}
 
-	void Arena::moveEntity(int i, Location destination) noexcept
+	void Arena::moveGhost(int i, Location destination) noexcept
 	{
-		//Location loc = this->movingEntities[i]->getLocation();
+		this->ghosts[i]->setLocation(destination);
+	}
 
-		//move entity on map
-		//this->map[destination.x][destination.y] = this->movingEntities[i];
-		//set empty entity on src location
-		//this->map[loc.x][loc.y] = Gamemanager::getInstance().getFactory()->createWall(loc,EMPTY_WALL);
-		//update location in entity
-		this->movingEntities[i]->setLocation(destination);
+	void Arena::movePacman(Location destination) noexcept
+	{
+		this->pacman->setLocation(destination);
+	}
 
+	void Arena::visualize()
+	{
+		Location i;
+		for(i.x = 0; i.x < this->getSizeX(); i.x++)
+		{
+			for(i.y = 0; i.y < this->getSizeY(); i.y++)
+			{
+				this->getWall(i)->visualize();
+			}
+		}
+
+		for(unsigned int j = 0; j < this->ghosts.size(); j++)
+		{
+			this->ghosts[j]->visualize();
+		}
+
+		this->pacman->visualize();
+	}
+
+	const shared_ptr<Pacman> Arena::getPacman() noexcept
+	{
+		return this->pacman;
 	}
 
 } /* namespace Game */

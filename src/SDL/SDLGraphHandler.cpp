@@ -77,19 +77,13 @@ namespace SDL
 		return SDL_GetTicks();
 	}
 
-	const bool SDL_Graph_Handler::visualizeAll(shared_ptr<Game::Arena> map)
+	const bool SDL_Graph_Handler::visualizeAll(shared_ptr<Game::Arena> arena)
 	{
 		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0,  255);
 		SDL_RenderClear(renderer.get());
 
-		Location i;
-		for(i.x = 0; i.x < map->getSizeX(); i.x++)
-		{
-			for(i.y = 0; i.y < map->getSizeY(); i.y++)
-			{
-				map->getEntity(i)->visualize();
-			}
-		}
+		arena->visualize();
+
 		SDL_RenderPresent(this->renderer.get());
 
 		return true;

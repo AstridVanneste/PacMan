@@ -9,6 +9,9 @@
 #define GAME_ARENA_H_
 #include "Entities/Entity.h"
 #include "Entities/MovingEntity.h"
+#include "Entities/Pacman.h"
+#include "Entities/Wall.h"
+#include "Entities/Ghost.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -29,26 +32,32 @@ namespace Game
 	class Arena
 	{
 	private:
-		vector<vector<shared_ptr<Entity>>> arena;
-		vector<shared_ptr<MovingEntity>> movingEntities;
+		shared_ptr<Pacman> pacman; //TODO change all the things for pacman field instead of movingEntities vector
+		vector<vector<shared_ptr<Wall>>> arena;
+		vector<shared_ptr<Ghost>> ghosts;
 
 		void setWallTypes();
 	public:
 		Arena();
 		virtual ~Arena();
 
-		void setEntity(Location location, shared_ptr<Entity> entity) noexcept;
-		const shared_ptr<Entity> getEntity(Location location) noexcept;
+		void setWall(Location location, shared_ptr<Wall> wall) noexcept;
+		const shared_ptr<Wall> getWall(Location location) noexcept;
 		bool loadFromFile(string path);
 
 		const unsigned int getSizeX() noexcept;
 		const unsigned int getSizeY() noexcept;
 		const Location getSize() noexcept;
 
-		const shared_ptr<MovingEntity> getMovingEntity(int i) noexcept;
-		const int numberMovingEntities() noexcept;
+		const shared_ptr<Ghost> getGhost(int i) noexcept;
+		const int numberGhosts() noexcept;
+		void moveGhost(int i, Location destination) noexcept;
 
-		void moveEntity(int i, Location destination) noexcept;
+		const shared_ptr<Pacman> getPacman() noexcept;
+		void movePacman(Location destination) noexcept;
+
+
+		void visualize();
 	};
 
 } /* namespace Game */

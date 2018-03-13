@@ -84,23 +84,35 @@ namespace Game
 
 	void Gamemanager::update()
 	{
-		for(int i = 0; i < this->map->numberMovingEntities(); i++)
+		for(int i = 0; i < this->map->numberGhosts(); i++)
 		{
-			if(this->map->getMovingEntity(i)->update())
+			if(this->map->getGhost(i)->update())
 			{
 				//move entity on map
-				Location destination = this->map->getMovingEntity(i)->getNextLocation(this->map->getSize());
+				Location destination = this->map->getGhost(i)->getNextLocation(this->map->getSize());
 
-				if(this->map->getEntity(destination)->isPassable())
+				if(this->map->getWall(destination)->isPassable())
 				{
-					Location loc = this->map->getMovingEntity(i)->getLocation();
-					//cout << "Entity moved from [" << loc.x << "," << loc.y <<"] to [" << destination.x << "," << destination.y << "]" << endl;
-					this->map->moveEntity(i, destination);
+					this->map->moveGhost(i, destination);
 				}
 				else
 				{
-					this->map->getMovingEntity(i)->toggleDirection();
+					this->map->getGhost(i)->toggleDirection();
 				}
+			}
+		}
+
+		if(this->map->getPacman()->update())
+		{
+			Location destination = this->map->getPacman()->getNextLocation(this->map->getSize());
+
+			if(this->map->getWall(destination)->isPassable())
+			{
+				this->map->movePacman(destination);
+			}
+			else
+			{
+				this->map->getPacman()->toggleDirection();
 			}
 		}
 	}

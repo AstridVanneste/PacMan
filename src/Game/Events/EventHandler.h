@@ -26,7 +26,7 @@ public:
 
 	bool handleEvent(shared_ptr<Event> event);
 	bool handleEvents();
-	virtual bool pollEvents()=0;
+	virtual void pollEvents()=0;
 };
 
 } /* namespace SDL */

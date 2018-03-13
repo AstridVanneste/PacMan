@@ -6,6 +6,8 @@
  */
 
 #include "EventHandler.h"
+#include <iostream>
+using namespace std;
 
 namespace Game
 {
@@ -44,12 +46,16 @@ bool Event_Handler::handleEvent(shared_ptr<Event> event)
 	case QUIT:
 		return true;
 	case KEY_DOWN:
+		cout << "KEY_DOWN detected" << endl;
 		break;
 	case KEY_UP:
+		cout << "KEY_UP detected" << endl;
 		break;
 	case MOUSE:
+		cout << "MOUSE detected" << endl;
 		break;
 	case WINDOW:
+		cout << "WINDOW detected" << endl;
 		break;
 	}
 
