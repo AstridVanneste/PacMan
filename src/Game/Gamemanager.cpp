@@ -116,5 +116,10 @@ namespace Game
 			}
 		}
 	}
+
+	const shared_ptr<Pacman> Gamemanager::getPacman() noexcept
+	{
+		return this->map->getPacman();
+	}
 }
 

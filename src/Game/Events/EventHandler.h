@@ -18,6 +18,8 @@ namespace Game
 
 class Event_Handler
 {
+private:
+	void keyDown(shared_ptr<Event> event) noexcept;
 protected:
 	vector<shared_ptr<Event>> events;
 public:

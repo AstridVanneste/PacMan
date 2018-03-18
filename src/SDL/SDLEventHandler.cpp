@@ -15,35 +15,55 @@ using namespace std;
 namespace SDL
 {
 
-SDL_Event_Handler::SDL_Event_Handler()
-{
-}
-
-SDL_Event_Handler::~SDL_Event_Handler()
-{
-}
-
-void SDL_Event_Handler::pollEvents()
-{
-	SDL_Event event;
-	while(SDL_PollEvent(&event))
+	SDL_Event_Handler::SDL_Event_Handler()
 	{
-		switch(event.type)
+	}
+
+	SDL_Event_Handler::~SDL_Event_Handler()
+	{
+	}
+
+	void SDL_Event_Handler::pollEvents()
+	{
+		SDL_Event event;
+		while(SDL_PollEvent(&event))
 		{
-		case SDL_QUIT:
-			this->events.emplace_back(make_shared<Game::Event>(QUIT));
-			break;
-		case SDL_KEYUP:
-			this->events.emplace_back(make_shared<Game::Event>(KEY_UP));
-			break;
-		case SDL_KEYDOWN:
-			this->events.emplace_back(make_shared<Game::Event>(KEY_DOWN));
-			break;
-		default:
-			//cout << "unkown event captured" << endl;
-			break;
+			EventType type;
+			string subtype;
+			switch(event.type)
+			{
+			case SDL_QUIT:
+				type = QUIT;
+				break;
+			case SDL_KEYUP:
+				type = KEY_UP;
+				break;
+			case SDL_KEYDOWN:
+				type = KEY_DOWN;
+				//TODO change to constants?
+				switch(event.key.keysym.sym)
+				{
+				case SDLK_LEFT:
+					subtype = "LEFT";
+					break;
+				case SDLK_RIGHT:
+					subtype = "RIGHT";
+					break;
+				case SDLK_UP:
+					subtype = "UP";
+					break;
+				case SDLK_DOWN:
+					subtype = "DOWN";
+					break;
+				default:
+					break;
+				}
+				break;
+			default:
+				//cout << "unkown event captured" << endl;
+				break;
+			}
+			this->events.emplace_back(make_shared<Game::Event>(type, subtype));
 		}
 	}
-}
-
-} /* namespace SDL */
+}/* namespace SDL */

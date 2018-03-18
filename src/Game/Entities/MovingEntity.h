@@ -21,7 +21,6 @@ namespace Game
 		int speed;						// amount of frames it takes to move from one place to the next
 		int offset;						// amount of frames that passed since last movement
 
-		void move() noexcept;
 	public:
 		MovingEntity();
 		MovingEntity(const MovingEntity& me);
