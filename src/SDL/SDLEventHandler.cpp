@@ -29,21 +29,43 @@ void SDL_Event_Handler::pollEvents()
 	bool end = false;
 	while(SDL_PollEvent(&event))
 	{
+		EventType type;
+		string subtype;
 		switch(event.type)
 		{
 		case SDL_QUIT:
-			this->events.emplace_back(make_shared<Game::Event>(QUIT));
+			type = QUIT;
 			break;
 		case SDL_KEYUP:
-			this->events.emplace_back(make_shared<Game::Event>(KEY_UP));
+			type = KEY_UP;
 			break;
 		case SDL_KEYDOWN:
-			this->events.emplace_back(make_shared<Game::Event>(KEY_DOWN));
+			type = KEY_DOWN;
+			//TODO change to constants?
+			switch(event.key.keysym.sym)
+			{
+			case SDLK_LEFT:
+				subtype = "LEFT";
+				break;
+			case SDLK_RIGHT:
+				subtype = "RIGHT";
+				break;
+			case SDLK_UP:
+				subtype = "UP";
+				break;
+			case SDLK_DOWN:
+				subtype = "DOWN";
+				break;
+			default:
+				break;
+			}
 			break;
 		default:
 			//cout << "unkown event captured" << endl;
 			break;
 		}
+
+		this->events.emplace_back(make_shared<Game::Event>(type, subtype));
 
 		if(event.type == SDL_QUIT)
 		{

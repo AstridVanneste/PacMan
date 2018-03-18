@@ -40,6 +40,8 @@ namespace Game
 		void setFactory(shared_ptr<AbstractFactory> factory) noexcept;
 		const shared_ptr<AbstractFactory> getFactory() noexcept;
 
+		const shared_ptr<Pacman> getPacman() noexcept;
+
 		void start();
 		bool isRunning();
 

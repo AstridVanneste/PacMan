@@ -56,33 +56,6 @@ bool MovingEntity::update() noexcept
 	return false;
 }
 
-void MovingEntity::move() noexcept
-{
-	switch (this->direction)
-	{
-	case UP:
-		if(this->location.x != 0)
-		{
-			this->location.x--;
-		}
-		break;
-	case DOWN:
-		this->location.x++;
-		break;
-	case LEFT:
-		if(this->location.y != 0)
-		{
-			this->location.y--;
-		}
-		break;
-	case RIGHT:
-		this->location.y++;
-		break;
-	default:
-		cout << "Invalid direction" << endl;
-	}
-}
-
 const Direction MovingEntity::getDirection() noexcept
 {
 	return this->direction;

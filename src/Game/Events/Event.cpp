@@ -15,9 +15,10 @@ Event::Event()
 	this->type = QUIT;
 }
 
-Event::Event(const EventType& type)
+Event::Event(const EventType& type, const string& subtype)
 {
 	this->type = type;
+	this->subtype = subtype;
 }
 
 Event::~Event()
@@ -32,6 +33,16 @@ const EventType Event::getType() noexcept
 void Event::setType(const EventType& type) noexcept
 {
 	this->type = type;
+}
+
+const string Event::getSubtype() noexcept
+{
+	return this->subtype;
+}
+
+void Event::setSubtype(const string& subtype) noexcept
+{
+	this->subtype = subtype;
 }
 
 } /* namespace Game */
