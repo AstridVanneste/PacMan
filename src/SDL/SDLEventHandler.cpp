@@ -26,7 +26,6 @@ SDL_Event_Handler::~SDL_Event_Handler()
 void SDL_Event_Handler::pollEvents()
 {
 	SDL_Event event;
-	bool end = false;
 	while(SDL_PollEvent(&event))
 	{
 		switch(event.type)
@@ -43,11 +42,6 @@ void SDL_Event_Handler::pollEvents()
 		default:
 			//cout << "unkown event captured" << endl;
 			break;
-		}
-
-		if(event.type == SDL_QUIT)
-		{
-			end = true;
 		}
 	}
 }
