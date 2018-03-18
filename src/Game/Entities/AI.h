@@ -27,7 +27,8 @@ namespace Game
 		AI(const AI& ai);
 		virtual ~AI();
 
-
+		const AImode getMode() noexcept;
+		void setMode(const AImode& mode) noexcept;
 
 		const Direction getNewDirection(shared_ptr<Arena> arena) noexcept;
 	};

@@ -7,15 +7,61 @@
 
 #include "AI.h"
 
-namespace Game {
+namespace Game
+{
 
-AI::AI() {
-	// TODO Auto-generated constructor stub
+	AI::AI()
+	{
+		this->mode = SCATTER;
+	}
 
-}
+	AI::AI(const AI& ai)
+	{
+		this->mode = ai.mode;
+	}
 
-AI::~AI() {
-	// TODO Auto-generated destructor stub
-}
+	AI::~AI()
+	{
+	}
+
+	const Direction AI::getNewDirection(shared_ptr<Arena> arena) noexcept
+	{
+		Location target;
+		switch(mode)
+		{
+		case SCATTER:
+			target = this->getScatterTarget(arena);
+			break;
+		case CHASE:
+			target = this->getChaseTarget(arena);
+			break;
+		case FRIGHTENED:
+			target = this->getFrightenedTarget(arena);
+			break;
+		}
+
+		return UP;
+	}
+
+	const Location AI::getScatterTarget(shared_ptr<Arena> arena) noexcept
+	{
+		Location target = arena->getPacman()->getLocation();
+
+		return target;
+	}
+
+	const Location AI::getChaseTarget(shared_ptr<Arena> arena) noexcept
+	{
+		Location target = arena->getPacman()->getLocation();
+
+		return target;
+	}
+
+	const Location AI::getFrightenedTarget(shared_ptr<Arena> arena) noexcept
+	{
+		Location target = arena->getPacman()->getLocation();
+
+		return target;
+	}
 
 } /* namespace Game */
