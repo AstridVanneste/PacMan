@@ -9,7 +9,7 @@ typedef struct
 
 enum Direction
 	{
-		LEFT , DOWN , RIGHT , UP
+		LEFT , DOWN , RIGHT , UP, NONE
 	};
 
 #endif

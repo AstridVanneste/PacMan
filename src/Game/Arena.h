@@ -32,7 +32,7 @@ namespace Game
 	class Arena
 	{
 	private:
-		shared_ptr<Pacman> pacman; //TODO change all the things for pacman field instead of movingEntities vector
+		shared_ptr<Pacman> pacman;
 		vector<vector<shared_ptr<Wall>>> arena;
 		vector<shared_ptr<Ghost>> ghosts;
 

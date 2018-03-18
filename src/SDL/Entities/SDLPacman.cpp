@@ -45,7 +45,7 @@ namespace SDL
 
 		Location imageOffset;
 		imageOffset.x = 0;
-		imageOffset.y = this->direction;
+		imageOffset.y = this->direction%4;
 
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);

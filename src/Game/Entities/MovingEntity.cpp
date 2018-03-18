@@ -69,12 +69,16 @@ void MovingEntity::setDirection(const Direction& direction) noexcept
 void MovingEntity::toggleDirection() noexcept
 {
 	Direction newDirection;
-	do
+	if(this->direction == NONE)
 	{
 		newDirection = Direction(Random::getInstance().generateRandom(3));
-	}while(newDirection == this->direction);
+	}
+	else
+	{
+		newDirection = NONE;
+	}
 	this->direction = newDirection;
-	//cout << "Direction changed to " << this->direction;
+	// cout << "Direction changed to " << this->direction << endl;
 }
 
 const Location MovingEntity::getNextLocation(Location limits) noexcept
@@ -95,10 +99,9 @@ const Location MovingEntity::getNextLocation(Location limits) noexcept
 		}
 		break;
 	case DOWN:
-		if(destination.x < limits.x)
+		if(destination.x < limits.x-1)
 		{
 			destination.x++;
-
 		}
 		else
 		{
@@ -109,7 +112,6 @@ const Location MovingEntity::getNextLocation(Location limits) noexcept
 		if(destination.y != 0)
 		{
 			destination.y--;
-
 		}
 		else
 		{
@@ -117,15 +119,17 @@ const Location MovingEntity::getNextLocation(Location limits) noexcept
 		}
 		break;
 	case RIGHT:
-		if(destination.y < limits.y)
+		if(destination.y < limits.y-1)
 		{
 			destination.y++;
-
 		}
 		else
 		{
 			this->toggleDirection();
 		}
+		break;
+	case NONE:
+		this->toggleDirection();
 		break;
 	}
 	return destination;

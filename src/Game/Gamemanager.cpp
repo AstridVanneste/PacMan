@@ -18,7 +18,7 @@ namespace Game
 	Gamemanager::Gamemanager()
 	{
 		this->factory = 0;
-		this->map = make_shared<Arena>();
+		this->arena = make_shared<Arena>();
 		this->running = false;
 	}
 
@@ -37,9 +37,9 @@ namespace Game
 	{
 		this->running = true;
 		//initialize game
-		this->map->loadFromFile("res/Maps/arena3.txt");
+		this->arena->loadFromFile("res/Maps/arena2.txt");
 		cout << "Init graphics" << endl;
-		this->factory->getGraphicsHandler().init(this->map->getSize());
+		this->factory->getGraphicsHandler().init(this->arena->getSize());
 		this->eventHandler = this->factory->createEventHandler();
 		cout << "Start run()" << endl;
 		this->run();
@@ -60,7 +60,7 @@ namespace Game
 			this->update();
 
 			//visualize
-			this->factory->getGraphicsHandler().visualizeAll(this->map);
+			this->factory->getGraphicsHandler().visualizeAll(this->arena);
 
 			//limit FPS
 			unsigned int endTime = this->factory->getGraphicsHandler().getTime();
@@ -84,42 +84,42 @@ namespace Game
 
 	void Gamemanager::update()
 	{
-		for(int i = 0; i < this->map->numberGhosts(); i++)
+		for(int i = 0; i < this->arena->numberGhosts(); i++)
 		{
-			if(this->map->getGhost(i)->update())
+			if(this->arena->getGhost(i)->update())
 			{
 				//move entity on map
-				Location destination = this->map->getGhost(i)->getNextLocation(this->map->getSize());
+				Location destination = this->arena->getGhost(i)->getNextLocation(this->arena->getSize());
 
-				if(this->map->getWall(destination)->isPassable())
+				if(this->arena->getWall(destination)->isPassable())
 				{
-					this->map->moveGhost(i, destination);
+					this->arena->moveGhost(i, destination);
 				}
 				else
 				{
-					this->map->getGhost(i)->toggleDirection();
+					this->arena->getGhost(i)->toggleDirection();
 				}
 			}
 		}
 
-		if(this->map->getPacman()->update())
+		if(this->arena->getPacman()->update())
 		{
-			Location destination = this->map->getPacman()->getNextLocation(this->map->getSize());
+			Location destination = this->arena->getPacman()->getNextLocation(this->arena->getSize());
 
-			if(this->map->getWall(destination)->isPassable())
+			if(this->arena->getWall(destination)->isPassable())
 			{
-				this->map->movePacman(destination);
+				this->arena->movePacman(destination);
 			}
 			else
 			{
-				this->map->getPacman()->toggleDirection();
+				this->arena->getPacman()->toggleDirection();
 			}
 		}
 	}
 
 	const shared_ptr<Pacman> Gamemanager::getPacman() noexcept
 	{
-		return this->map->getPacman();
+		return this->arena->getPacman();
 	}
 }
 

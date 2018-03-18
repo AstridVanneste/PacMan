@@ -43,7 +43,7 @@ namespace SDL
 
 		Location offset;
 		offset.x = this->type;
-		offset.y = this->direction;
+		offset.y = this->direction%4;
 		unique_ptr<SDL_Rect> srcR = createSrcRect(offset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 		shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getGhost();

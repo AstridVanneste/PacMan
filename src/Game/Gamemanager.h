@@ -22,7 +22,7 @@ namespace Game
 	{
 	private:
 		shared_ptr<AbstractFactory> factory;
-		shared_ptr<Arena> map;
+		shared_ptr<Arena> arena;
 		shared_ptr<Event_Handler> eventHandler;
 
 		bool running;
