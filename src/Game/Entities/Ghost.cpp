@@ -7,6 +7,7 @@
 
 
 #include "Ghost.h"
+#include <iostream>
 using namespace std;
 
 namespace Game
@@ -17,7 +18,6 @@ namespace Game
 		this->objectType = GHOST;
 
 		this->type = BLINKY;
-		this->fear = false;
 	}
 
 	Ghost::Ghost(const Ghost& g)
@@ -25,25 +25,25 @@ namespace Game
 	{
 		this->objectType = GHOST;
 		this->type = g.type;
-		this->fear = g.fear;
+		//this->ai = make_unique(g.ai.get());
+		this->ai = make_unique<AI>();
 	}
 
 	Ghost::Ghost(GhostType type)
 	:MovingEntity()
 	{
 		this->objectType = GHOST;
-
 		this->type = type;
-		this->fear = false;
+		this->ai = make_unique<AI>();
 	}
 
-	Ghost::Ghost(Location location, GhostType type)
+	Ghost::Ghost(Util::Location location, GhostType type)
 	:MovingEntity(location)
 	{
-		this->objectType =GHOST;
-
+		this->objectType = GHOST;
 		this->type = type;
-		this->fear = false;
+
+		this->ai = make_unique<AI>();
 	}
 
 	Ghost::~Ghost()
@@ -56,7 +56,8 @@ namespace Game
 		{
 			MovingEntity::operator =(g);
 			this->type = g.type;
-			this->fear = g.fear;
+			//this->ai = g.ai;
+			this->ai = make_unique<AI>();
 		}
 
 		return *this;
@@ -70,6 +71,17 @@ namespace Game
 	void Ghost::setType(GhostType type) noexcept
 	{
 		this->type = type;
+	}
+
+	bool Ghost::update() noexcept
+	{
+		if(MovingEntity::update())
+		{
+			this->direction = this->ai->getNewDirection(this->location, this->direction);
+			cout << "NEW DIRECTION for ghost " << this->type << " = " << this->direction << endl;
+			return true;
+		}
+		return false;
 	}
 }
 

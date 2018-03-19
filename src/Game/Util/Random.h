@@ -10,7 +10,7 @@
 #include <random>
 using namespace std;
 
-namespace Game
+namespace Util
 {
 
 class Random

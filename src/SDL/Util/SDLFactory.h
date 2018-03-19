@@ -24,12 +24,12 @@ namespace SDL
 		SDL_Factory& operator=(const SDL_Factory& f);
 
 		shared_ptr<Game::Ghost> createGhost();
-		shared_ptr<Game::Ghost> createGhost(const Location& location, Game::GhostType type);
+		shared_ptr<Game::Ghost> createGhost(const Util::Location& location, Game::GhostType type);
 		shared_ptr<Game::Pacman> createPacman();
-		shared_ptr<Game::Pacman> createPacman(const Location& location);
+		shared_ptr<Game::Pacman> createPacman(const Util::Location& location);
 		shared_ptr<Game::Wall> createWall();
-		shared_ptr<Game::Wall> createWall(const Location& location);
-		shared_ptr<Game::Wall> createWall(const Location& location, char type);
+		shared_ptr<Game::Wall> createWall(const Util::Location& location);
+		shared_ptr<Game::Wall> createWall(const Util::Location& location, char type);
 		shared_ptr<Game::Event_Handler> createEventHandler();
 		Game::Graphics_Handler& getGraphicsHandler();
 };

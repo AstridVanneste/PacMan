@@ -8,7 +8,7 @@
 #include "Random.h"
 using namespace std;
 
-namespace Game
+namespace Util
 {
 
 Random::Random()

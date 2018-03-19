@@ -8,8 +8,8 @@
 #ifndef GAME_ENTITIES_AI_H_
 #define GAME_ENTITIES_AI_H_
 
+#include "../Util/Location.h"
 #include "../Util/Util.h"
-#include "../Arena.h"
 
 namespace Game
 {
@@ -19,9 +19,12 @@ namespace Game
 	private:
 		AImode mode;
 
-		const Location getScatterTarget(shared_ptr<Arena> arena) noexcept;
-		const Location getChaseTarget(shared_ptr<Arena> arena) noexcept;
-		const Location getFrightenedTarget(shared_ptr<Arena> arena) noexcept;
+		const Util::Location getScatterTarget() noexcept;
+		const Util::Location getChaseTarget() noexcept;
+		const Util::Location getFrightenedTarget() noexcept;
+
+		const int getDistance(const Util::Location& loc, const Util::Location& target) noexcept;
+		const Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction direction) noexcept;
 	public:
 		AI();
 		AI(const AI& ai);
@@ -31,7 +34,7 @@ namespace Game
 		const AImode getMode() noexcept;
 		void setMode(const AImode& mode) noexcept;
 
-		const Direction getNewDirection(shared_ptr<Arena> arena) noexcept;
+		const Direction getNewDirection(const Util::Location& loc, Direction direction) noexcept;
 	};
 } /* namespace Game */
 

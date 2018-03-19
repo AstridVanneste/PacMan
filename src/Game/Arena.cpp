@@ -42,12 +42,12 @@ namespace Game
 	{
 	}
 
-	void Arena::setWall(Location location, shared_ptr<Wall> wall) noexcept
+	void Arena::setWall(const Location& location, shared_ptr<Wall> wall) noexcept
 	{
 		arena[location.x][location.y] = wall;
 	}
 
-	const shared_ptr<Wall> Arena::getWall(Location location) noexcept
+	const shared_ptr<Wall> Arena::getWall(const Location& location) noexcept
 	{
 		return this->arena[location.x][location.y];
 	}
@@ -255,6 +255,44 @@ namespace Game
 	const shared_ptr<Pacman> Arena::getPacman() noexcept
 	{
 		return this->pacman;
+	}
+
+	const shared_ptr<vector<Direction>> Arena::getPosDir(const Location& loc) noexcept
+	{
+		shared_ptr<vector<Direction>> directions = make_shared<vector<Direction>>();
+		//UP
+		Location tmpLoc = loc;
+		tmpLoc.x--;
+		if(tmpLoc.x >= 0 && this->getWall(tmpLoc)->isPassable())
+		{
+			directions->push_back(UP);
+		}
+
+		//DOWN
+		tmpLoc = loc;
+		tmpLoc.x++;
+		if(tmpLoc.x < this->arena.size() && this->getWall(tmpLoc)->isPassable())
+		{
+			directions->push_back(DOWN);
+		}
+
+		//LEFT
+		tmpLoc = loc;
+		tmpLoc.y--;
+		if(tmpLoc.y >= 0 && this->getWall(tmpLoc)->isPassable())
+		{
+			directions->push_back(LEFT);
+		}
+
+		//RIGHT
+		tmpLoc = loc;
+		tmpLoc.y++;
+		if(tmpLoc.y < arena[0].size() && this->getWall(tmpLoc)->isPassable())
+		{
+			directions->push_back(RIGHT);
+		}
+
+		return directions;
 	}
 
 } /* namespace Game */

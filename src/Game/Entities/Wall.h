@@ -19,9 +19,9 @@ namespace Game {
 
 	public:
 		Wall();
-		Wall(const Location& location);
+		Wall(const Util::Location& location);
 		Wall(char type);
-		Wall(const Location& location, char type);
+		Wall(const Util::Location& location, char type);
 		virtual ~Wall();
 
 		Wall& operator=(const Wall& w);

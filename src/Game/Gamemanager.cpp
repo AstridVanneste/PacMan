@@ -89,7 +89,7 @@ namespace Game
 			if(this->arena->getGhost(i)->update())
 			{
 				//move entity on map
-				Location destination = this->arena->getGhost(i)->getNextLocation(this->arena->getSize());
+				Util::Location destination = this->arena->getGhost(i)->getNextLocation(this->arena->getSize());
 
 				if(this->arena->getWall(destination)->isPassable())
 				{
@@ -104,7 +104,7 @@ namespace Game
 
 		if(this->arena->getPacman()->update())
 		{
-			Location destination = this->arena->getPacman()->getNextLocation(this->arena->getSize());
+			Util::Location destination = this->arena->getPacman()->getNextLocation(this->arena->getSize());
 
 			if(this->arena->getWall(destination)->isPassable())
 			{
@@ -120,6 +120,11 @@ namespace Game
 	const shared_ptr<Pacman> Gamemanager::getPacman() noexcept
 	{
 		return this->arena->getPacman();
+	}
+
+	const shared_ptr<Arena> Gamemanager::getArena() noexcept
+	{
+		return this->arena;
 	}
 }
 

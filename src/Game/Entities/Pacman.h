@@ -18,7 +18,7 @@ namespace Game
 	public:
 		Pacman();
 		Pacman(const Pacman& pacman);
-		Pacman(const Location& location);
+		Pacman(const Util::Location& location);
 		virtual ~Pacman();
 		Pacman& operator=(const Pacman& p);
 	};

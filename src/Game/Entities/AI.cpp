@@ -6,6 +6,10 @@
  */
 
 #include "AI.h"
+#include <math.h>
+#include <iostream>
+#include "../Gamemanager.h"
+#include "../Arena.h"
 
 namespace Game
 {
@@ -26,7 +30,6 @@ namespace Game
 		{
 			this->mode = ai.mode;
 		}
-
 		return *this;
 	}
 
@@ -34,42 +37,77 @@ namespace Game
 	{
 	}
 
-	const Direction AI::getNewDirection(shared_ptr<Arena> arena) noexcept
+	const Direction AI::getNewDirection(const Util::Location& loc, Direction direction) noexcept
 	{
-		Location target;
+		Util::Location target;
 		switch(mode)
 		{
 		case SCATTER:
-			target = this->getScatterTarget(arena);
+			target = this->getScatterTarget();
 			break;
 		case CHASE:
-			target = this->getChaseTarget(arena);
+			target = this->getChaseTarget();
 			break;
 		case FRIGHTENED:
-			target = this->getFrightenedTarget(arena);
+			target = this->getFrightenedTarget();
 			break;
 		}
 
-		return UP;
+		return this->getOptimalDirection(loc,target, direction);
 	}
 
-	const Location AI::getScatterTarget(shared_ptr<Arena> arena) noexcept
+	const int AI::getDistance(const Util::Location& target, const Util::Location& loc) noexcept
 	{
-		Location target = arena->getPacman()->getLocation();
+		int distance = pow((loc.x - target.x),2) + pow((loc.y - target.y),2);
+
+		return distance;
+	}
+
+	const Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction direction) noexcept
+	{
+		Direction newDirection;
+		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
+
+		if(directions->size() == 1)
+		{
+			return directions[0];
+		}
+
+		for(int i =0; i < directions->size(); i++)
+		{
+			switch(directions[i])
+			{
+			case UP:
+				break;
+			case DOWN:
+				break;
+			case LEFT:
+				break;
+			case RIGHT:
+				break;
+			}
+		}
+
+		return newDirection;
+	}
+
+	const Util::Location AI::getScatterTarget() noexcept
+	{
+		Util::Location target = Gamemanager::getInstance().getArena()->getPacman()->getLocation();
 
 		return target;
 	}
 
-	const Location AI::getChaseTarget(shared_ptr<Arena> arena) noexcept
+	const Util::Location AI::getChaseTarget() noexcept
 	{
-		Location target = arena->getPacman()->getLocation();
+		Util::Location target = Gamemanager::getInstance().getArena()->getPacman()->getLocation();
 
 		return target;
 	}
 
-	const Location AI::getFrightenedTarget(shared_ptr<Arena> arena) noexcept
+	const Util::Location AI::getFrightenedTarget() noexcept
 	{
-		Location target = arena->getPacman()->getLocation();
+		Util::Location target = Gamemanager::getInstance().getArena()->getPacman()->getLocation();
 
 		return target;
 	}

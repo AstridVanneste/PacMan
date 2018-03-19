@@ -25,12 +25,12 @@ namespace Game
 		AbstractFactory& operator=(const AbstractFactory& af);
 
 		virtual shared_ptr<Ghost> createGhost()=0;
-		virtual shared_ptr<Ghost> createGhost(const Location& location, GhostType type)=0;
+		virtual shared_ptr<Ghost> createGhost(const Util::Location& location, GhostType type)=0;
 		virtual shared_ptr<Pacman> createPacman()=0;
-		virtual shared_ptr<Pacman> createPacman(const Location& location)=0;
+		virtual shared_ptr<Pacman> createPacman(const Util::Location& location)=0;
 		virtual shared_ptr<Wall> createWall()=0;
-		virtual shared_ptr<Wall> createWall(const Location& location)=0;
-		virtual shared_ptr<Wall> createWall(const Location& location, char type)=0;
+		virtual shared_ptr<Wall> createWall(const Util::Location& location)=0;
+		virtual shared_ptr<Wall> createWall(const Util::Location& location, char type)=0;
 		virtual shared_ptr<Event_Handler> createEventHandler()=0;
 		virtual Graphics_Handler& getGraphicsHandler()=0;
 	};

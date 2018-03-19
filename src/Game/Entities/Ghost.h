@@ -8,7 +8,10 @@
 #ifndef GHOST_H_
 #define GHOST_H_
 #include <string>
+#include <memory>
 #include "MovingEntity.h"
+#include "AI.h"
+using namespace std;
 
 //FOR A*
 //https://gamedev.stackexchange.com/questions/15/how-does-a-pathfinding-work
@@ -22,23 +25,20 @@ namespace Game
 	{
 	protected:
 		GhostType type;
-		bool fear;
+		unique_ptr<AI> ai;
 	public:
 		Ghost();
 		Ghost(const Ghost& g);
 		Ghost(GhostType type);
-		Ghost(Location location, GhostType type);
+		Ghost(Util::Location location, GhostType type);
 
 		Ghost& operator=(const Ghost& g);
 
 		virtual ~Ghost();
 
-
+		bool update() noexcept override;
 		const GhostType getType() noexcept;
 		void setType(GhostType type) noexcept;
-
-		const bool isFear() noexcept;
-		void setFear(bool fear) noexcept;
 	};
 }
 

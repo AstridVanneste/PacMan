@@ -24,20 +24,20 @@ namespace Game
 	public:
 		MovingEntity();
 		MovingEntity(const MovingEntity& me);
-		MovingEntity(Location location);
+		MovingEntity(Util::Location location);
 
 		virtual ~MovingEntity();
 
 		MovingEntity& operator=(const MovingEntity& me);
 
-		bool update() noexcept;			//returns true if moved (depends on speed and offset)
+		virtual bool update() noexcept;			//returns true if moved (depends on speed and offset)
 
 		const Direction getDirection() noexcept;
 		void setDirection(const Direction& direction) noexcept;
 
 		void toggleDirection() noexcept;
 
-		const Location getNextLocation(Location limits) noexcept;
+		const Util::Location getNextLocation(Util::Location limits) noexcept;
 	};
 
 } /* namespace Game */

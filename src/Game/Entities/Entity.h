@@ -9,6 +9,7 @@
 #define ENTITY_H_
 #include <string>
 #include "../Util/Util.h"
+#include "../Util/Location.h"
 #include "EntityTypes.h"
 using namespace std;
 
@@ -19,13 +20,13 @@ namespace Game
 	private:
 
 	protected:
-		Location location;
+		Util::Location location;
 		char objectType;
 		bool passable;
 	public:
 		Entity();
 		Entity(const Entity& e);
-		Entity(const Location& location);
+		Entity(const Util::Location& location);
 
 		virtual ~Entity();
 		Entity& operator= (const Entity& e);
@@ -35,8 +36,8 @@ namespace Game
 		const char getObjectType() noexcept;
 		void setObjectType(char type) noexcept;
 
-		const Location getLocation() noexcept;
-		void setLocation(const Location& location) noexcept;
+		const Util::Location getLocation() noexcept;
+		void setLocation(const Util::Location& location) noexcept;
 
 		void setX(int x) noexcept;
 		void setY(int y) noexcept;

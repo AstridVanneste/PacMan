@@ -52,17 +52,17 @@ bool Event_Handler::handleEvent(shared_ptr<Event> event)
 	case QUIT:
 		return true;
 	case KEY_DOWN:
-		cout << "KEY_DOWN detected" << endl;
+		//cout << "KEY_DOWN detected" << endl;
 		this->keyDown(event);
 		break;
 	case KEY_UP:
-		cout << "KEY_UP detected" << endl;
+		//cout << "KEY_UP detected" << endl;
 		break;
 	case MOUSE:
-		cout << "MOUSE detected" << endl;
+		//cout << "MOUSE detected" << endl;
 		break;
 	case WINDOW:
-		cout << "WINDOW detected" << endl;
+		//cout << "WINDOW detected" << endl;
 		break;
 	}
 

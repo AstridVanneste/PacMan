@@ -44,20 +44,22 @@ namespace Game
 
 		Arena& operator=(const Arena& a);
 
-		void setWall(Location location, shared_ptr<Wall> wall) noexcept;
-		const shared_ptr<Wall> getWall(Location location) noexcept;
+		void setWall(const Util::Location& location, shared_ptr<Wall> wall) noexcept;
+		const shared_ptr<Wall> getWall(const Util::Location& location) noexcept;
 		bool loadFromFile(string path);
 
 		const unsigned int getSizeX() noexcept;
 		const unsigned int getSizeY() noexcept;
-		const Location getSize() noexcept;
+		const Util::Location getSize() noexcept;
 
 		const shared_ptr<Ghost> getGhost(int i) noexcept;
 		const int numberGhosts() noexcept;
-		void moveGhost(int i, Location destination) noexcept;
+		void moveGhost(int i, Util::Location destination) noexcept;
 
 		const shared_ptr<Pacman> getPacman() noexcept;
-		void movePacman(Location destination) noexcept;
+		void movePacman(Util::Location destination) noexcept;
+
+		const shared_ptr<vector<Direction>> getPosDir(const Util::Location& loc) noexcept;
 
 
 		void visualize();

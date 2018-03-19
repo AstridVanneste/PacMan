@@ -29,7 +29,7 @@ MovingEntity::MovingEntity(const MovingEntity& me)
 	this->offset = me.offset;
 }
 
-MovingEntity::MovingEntity(Location location)
+MovingEntity::MovingEntity(Util::Location location)
 :Entity(location)
 {
 	this->direction = UP;
@@ -80,7 +80,7 @@ void MovingEntity::setDirection(const Direction& direction) noexcept
 
 void MovingEntity::toggleDirection() noexcept
 {
-	Direction newDirection;
+	/*Direction newDirection;
 	if(this->direction == NONE)
 	{
 		newDirection = Direction(Random::getInstance().generateRandom(3));
@@ -90,12 +90,12 @@ void MovingEntity::toggleDirection() noexcept
 		newDirection = NONE;
 	}
 	this->direction = newDirection;
-	// cout << "Direction changed to " << this->direction << endl;
+	// cout << "Direction changed to " << this->direction << endl;*/
 }
 
-const Location MovingEntity::getNextLocation(Location limits) noexcept
+const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexcept
 {
-	Location destination = this->location;
+	Util::Location destination = this->location;
 
 	switch(direction)
 	{
