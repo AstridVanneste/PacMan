@@ -28,6 +28,9 @@ namespace Game
 		Ghost(const Ghost& g);
 		Ghost(GhostType type);
 		Ghost(Location location, GhostType type);
+
+		Ghost& operator=(const Ghost& g);
+
 		virtual ~Ghost();
 
 

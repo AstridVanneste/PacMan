@@ -20,6 +20,16 @@ namespace Game
 		this->mode = ai.mode;
 	}
 
+	AI& AI::operator=(const AI& ai)
+	{
+		if(this != &ai)
+		{
+			this->mode = ai.mode;
+		}
+
+		return *this;
+	}
+
 	AI::~AI()
 	{
 	}

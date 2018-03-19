@@ -54,6 +54,17 @@ namespace Game
 		this->type = type;
 	}
 
+	Wall& Wall::operator=(const Wall& w)
+	{
+		if(this != &w)
+		{
+			Entity::operator =(w);
+			this->type = w.type;
+		}
+
+		return *this;
+	}
+
 	Wall::~Wall()
 	{
 	}

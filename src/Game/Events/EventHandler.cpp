@@ -21,6 +21,11 @@ Event_Handler::~Event_Handler()
 {
 }
 
+Event_Handler& Event_Handler::operator=(const Event_Handler& eh)
+{
+	return *this;
+}
+
 bool Event_Handler::handleEvents()
 {
 	this->pollEvents();

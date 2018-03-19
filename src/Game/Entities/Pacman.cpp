@@ -31,4 +31,14 @@ Pacman::~Pacman()
 {
 }
 
+Pacman& Pacman::operator=(const Pacman& p)
+{
+	if(this != &p)
+	{
+		MovingEntity::operator =(p);
+	}
+
+	return *this;
+}
+
 } /* namespace Game */

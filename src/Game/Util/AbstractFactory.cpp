@@ -16,4 +16,9 @@ namespace Game
 	AbstractFactory::~AbstractFactory()
 	{
 	}
+
+	AbstractFactory& AbstractFactory::operator=(const AbstractFactory& ah)
+	{
+		return *this;
+	}
 }

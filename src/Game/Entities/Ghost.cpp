@@ -50,6 +50,18 @@ namespace Game
 	{
 	}
 
+	Ghost& Ghost::operator=(const Ghost& g)
+	{
+		if(this != &g)
+		{
+			MovingEntity::operator =(g);
+			this->type = g.type;
+			this->fear = g.fear;
+		}
+
+		return *this;
+	}
+
 	const GhostType Ghost::getType() noexcept
 	{
 		return this->type;

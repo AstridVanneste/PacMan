@@ -18,7 +18,24 @@ namespace Game
 {
 	Arena::Arena()
 	{
+	}
 
+	Arena::Arena(const Arena& a)
+	{
+		this->pacman = a.pacman;
+		this->ghosts = a.ghosts;
+		this->arena = a.arena;
+	}
+
+	Arena& Arena::operator=(const Arena& a)
+	{
+		if(this != &a)
+		{
+			this->pacman = a.pacman;
+			this->ghosts = a.ghosts;
+			this->arena = a.arena;
+		}
+		return *this;
 	}
 
 	Arena::~Arena()

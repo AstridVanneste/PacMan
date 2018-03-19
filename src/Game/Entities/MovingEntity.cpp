@@ -41,6 +41,18 @@ MovingEntity::~MovingEntity()
 {
 }
 
+MovingEntity& MovingEntity::operator=(const MovingEntity& me)
+{
+	if(this != &me)
+	{
+		Entity::operator=(me);
+		this->direction = me.direction;
+		this->speed = me.speed;
+		this->offset = me.offset;
+	}
+	return *this;
+}
+
 bool MovingEntity::update() noexcept
 {
 	this->offset++;

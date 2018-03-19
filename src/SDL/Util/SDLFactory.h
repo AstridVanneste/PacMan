@@ -19,7 +19,9 @@ namespace SDL
 	{
 	public:
 		SDL_Factory();
-		/*virtual*/ ~SDL_Factory();
+		virtual ~SDL_Factory();
+
+		SDL_Factory& operator=(const SDL_Factory& f);
 
 		shared_ptr<Game::Ghost> createGhost();
 		shared_ptr<Game::Ghost> createGhost(const Location& location, Game::GhostType type);

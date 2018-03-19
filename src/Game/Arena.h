@@ -39,7 +39,10 @@ namespace Game
 		void setWallTypes();
 	public:
 		Arena();
+		Arena(const Arena& a);
 		virtual ~Arena();
+
+		Arena& operator=(const Arena& a);
 
 		void setWall(Location location, shared_ptr<Wall> wall) noexcept;
 		const shared_ptr<Wall> getWall(Location location) noexcept;

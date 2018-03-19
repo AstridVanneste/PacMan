@@ -21,6 +21,8 @@ namespace SDL
 		SDL_Pacman(const Location& location);
 		virtual ~SDL_Pacman();
 
+		SDL_Pacman& operator=(const SDL_Pacman& p);
+
 		const void visualize();
 	};
 

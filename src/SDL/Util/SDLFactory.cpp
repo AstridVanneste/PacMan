@@ -25,6 +25,15 @@ namespace SDL
 	{
 	}
 
+	SDL_Factory& SDL_Factory::operator =(const SDL_Factory& f)
+	{
+		if(this != &f)
+		{
+			AbstractFactory::operator=(f);
+		}
+		return *this;
+	}
+
 	shared_ptr<Game::Ghost> SDL_Factory::createGhost()
 	{
 		return make_shared<SDL_Ghost>();

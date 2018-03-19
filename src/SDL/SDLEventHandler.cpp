@@ -23,6 +23,15 @@ namespace SDL
 	{
 	}
 
+	SDL_Event_Handler& SDL_Event_Handler::operator=(const SDL_Event_Handler& eh)
+	{
+		if(this != &eh)
+		{
+			Event_Handler::operator=(eh);
+		}
+		return *this;
+	}
+
 	void SDL_Event_Handler::pollEvents()
 	{
 		SDL_Event event;

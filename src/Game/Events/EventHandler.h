@@ -26,6 +26,8 @@ public:
 	Event_Handler();
 	virtual ~Event_Handler();
 
+	Event_Handler& operator=(const Event_Handler& eh);
+
 	bool handleEvent(shared_ptr<Event> event);
 	bool handleEvents();
 	virtual void pollEvents()=0;

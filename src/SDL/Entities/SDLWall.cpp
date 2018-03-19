@@ -41,6 +41,15 @@ namespace SDL
 	{
 	}
 
+	SDL_Wall& SDL_Wall::operator=(const SDL_Wall& w)
+	{
+		if(this != &w)
+		{
+			Wall::operator=(w);
+		}
+		return *this;
+	}
+
 	const void SDL_Wall::visualize()
 	{
 		if(this->type != EMPTY_WALL)

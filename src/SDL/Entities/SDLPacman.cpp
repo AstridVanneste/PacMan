@@ -37,6 +37,15 @@ namespace SDL
 	{
 	}
 
+	SDL_Pacman& SDL_Pacman::operator=(const SDL_Pacman& p)
+	{
+		if(this != &p)
+		{
+			Pacman::operator=(p);
+		}
+		return *this;
+	}
+
 	const void SDL_Pacman::visualize()
 	{
 		//stuff

@@ -20,6 +20,7 @@ namespace Game
 		Pacman(const Pacman& pacman);
 		Pacman(const Location& location);
 		virtual ~Pacman();
+		Pacman& operator=(const Pacman& p);
 	};
 
 } /* namespace Game */

@@ -24,6 +24,8 @@ namespace Game {
 		Wall(const Location& location, char type);
 		virtual ~Wall();
 
+		Wall& operator=(const Wall& w);
+
 		void setType(char type) noexcept;
 		const char getType() noexcept;
 

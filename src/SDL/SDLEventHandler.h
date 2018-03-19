@@ -18,6 +18,8 @@ namespace SDL
 		SDL_Event_Handler();
 		virtual ~SDL_Event_Handler();
 
+		SDL_Event_Handler& operator=(const SDL_Event_Handler& eh);
+
 		void pollEvents();
 	};
 

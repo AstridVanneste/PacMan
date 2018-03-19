@@ -22,6 +22,8 @@ namespace Game
 		AbstractFactory();
 		virtual ~AbstractFactory();
 
+		AbstractFactory& operator=(const AbstractFactory& af);
+
 		virtual shared_ptr<Ghost> createGhost()=0;
 		virtual shared_ptr<Ghost> createGhost(const Location& location, GhostType type)=0;
 		virtual shared_ptr<Pacman> createPacman()=0;

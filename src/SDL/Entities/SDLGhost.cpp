@@ -34,6 +34,15 @@ namespace SDL
 	{
 	}
 
+	SDL_Ghost& SDL_Ghost::operator=(const SDL_Ghost& g)
+	{
+		if(this != &g)
+		{
+			Ghost::operator =(g);
+		}
+		return *this;
+	}
+
 	const void SDL_Ghost::visualize()
 	{
 		//cout << "SDL_Ghost::visualize()" << endl;

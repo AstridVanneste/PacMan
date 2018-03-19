@@ -28,6 +28,8 @@ namespace Game
 
 		virtual ~MovingEntity();
 
+		MovingEntity& operator=(const MovingEntity& me);
+
 		bool update() noexcept;			//returns true if moved (depends on speed and offset)
 
 		const Direction getDirection() noexcept;

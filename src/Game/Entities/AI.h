@@ -25,6 +25,7 @@ namespace Game
 	public:
 		AI();
 		AI(const AI& ai);
+		AI& operator=(const AI& ai);
 		virtual ~AI();
 
 		const AImode getMode() noexcept;

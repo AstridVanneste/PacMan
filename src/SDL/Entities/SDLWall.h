@@ -22,6 +22,8 @@ namespace SDL
 
 		virtual ~SDL_Wall();
 
+		SDL_Wall& operator=(const SDL_Wall& w);
+
 		const virtual void visualize();
 	};
 

@@ -25,6 +25,8 @@ public:
 	Event(const EventType& type, const string& subtype);
 	virtual ~Event();
 
+	Event& operator=(const Event& e);
+
 	const EventType getType() noexcept;
 	void setType(const EventType& type) noexcept;
 

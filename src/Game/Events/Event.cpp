@@ -25,6 +25,17 @@ Event::~Event()
 {
 }
 
+Event& Event::operator =(const Event& e)
+{
+	if(this != &e)
+	{
+		this->type = e.type;
+		this->subtype = e.subtype;
+	}
+
+	return *this;
+}
+
 const EventType Event::getType() noexcept
 {
 	return this->type;
