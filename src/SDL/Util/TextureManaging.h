@@ -11,7 +11,8 @@
 #include <memory>
 #include <string>
 #include <SDL2/SDL.h>
-#include "../../Game/Util/Util.h"
+
+#include "../../Game/Util/Direction.h"
 #include "../../Game/Util/Location.h"
 #include "SDLDestroyer.h"
 using namespace std;

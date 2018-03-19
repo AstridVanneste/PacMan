@@ -21,7 +21,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Wall::SDL_Wall(const Location& location)
+	SDL_Wall::SDL_Wall(const Util::Location& location)
 	: Game::Wall(location)
 	{
 	}
@@ -31,7 +31,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Wall::SDL_Wall(const Location& location, char type)
+	SDL_Wall::SDL_Wall(const Util::Location& location, char type)
 	: Game::Wall(location, type)
 	{
 
@@ -56,7 +56,7 @@ namespace SDL
 		{
 			shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
-			Location offset;
+			Util::Location offset;
 			offset.x = WALL_IMAGE[this->type][0];
 			offset.y = WALL_IMAGE[this->type][1];
 			unique_ptr<SDL_Rect> srcR = createSrcRect(offset);

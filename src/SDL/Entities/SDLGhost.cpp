@@ -25,7 +25,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Ghost::SDL_Ghost(Location location, Game::GhostType type)
+	SDL_Ghost::SDL_Ghost(Util::Location location, Game::GhostType type)
 	:Game::Ghost(location, type)
 	{
 	}
@@ -50,7 +50,7 @@ namespace SDL
 		//cout << "visualize " << this->type  << " at ["<< this->location.x << "," << this->location.y << "]" << endl;
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
-		Location offset;
+		Util::Location offset;
 		offset.x = this->type;
 		offset.y = this->direction%4;
 		unique_ptr<SDL_Rect> srcR = createSrcRect(offset);

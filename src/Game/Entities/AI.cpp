@@ -8,6 +8,7 @@
 #include "AI.h"
 #include <math.h>
 #include <iostream>
+#include <limits>
 #include "../Gamemanager.h"
 #include "../Arena.h"
 
@@ -63,28 +64,36 @@ namespace Game
 		return distance;
 	}
 
-	const Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction direction) noexcept
+	const Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction oldDirection) noexcept
 	{
 		Direction newDirection;
 		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
 
+		cout << "===================================================================================" << endl;
 		if(directions->size() == 1)
 		{
-			return directions[0];
+			cout << "only 1 possible direction" << endl;
+			return directions->at(0);
 		}
 
-		for(int i =0; i < directions->size(); i++)
+		cout << "possible directions = " << directions->size() << endl;
+		cout << "old direction = " << oldDirection << " and inverse = " << inverseDirection(oldDirection) << endl;
+
+		int distance = numeric_limits<int>::max();
+		for(unsigned int i =0; i < directions->size(); i++)
 		{
-			switch(directions[i])
+			Util::Location newLoc = loc + directions->at(i);
+			int temp = this->getDistance(newLoc, target);
+
+			cout << directions->at(i) <<" -> distance = " << temp << endl;
+
+			if(temp < distance)
 			{
-			case UP:
-				break;
-			case DOWN:
-				break;
-			case LEFT:
-				break;
-			case RIGHT:
-				break;
+				if(directions->at(i) != inverseDirection(oldDirection))
+				{
+					distance = temp;
+					newDirection = directions->at(i);
+				}
 			}
 		}
 

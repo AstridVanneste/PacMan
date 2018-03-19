@@ -27,7 +27,7 @@ namespace Game
 		this->location = e.location;
 	}
 
-	Entity::Entity(const Location& location)
+	Entity::Entity(const Util::Location& location)
 	{
 		this->objectType = ENTITY;
 		this->passable = true;
@@ -65,12 +65,12 @@ namespace Game
 		return this->passable;
 	}
 
-	const Location Entity::getLocation() noexcept
+	const Util::Location Entity::getLocation() noexcept
 	{
 		return this->location;
 	}
 
-	void Entity::setLocation(const Location& location) noexcept
+	void Entity::setLocation(const Util::Location& location) noexcept
 	{
 		this->location = location;
 	}

@@ -33,7 +33,7 @@ namespace SDL
 
 	}
 
-	unique_ptr<SDL_Rect> createDstRect(Location location)
+	unique_ptr<SDL_Rect> createDstRect(Util::Location location)
 	{
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
 		rect->h = ENTITY_HEIGHT;
@@ -43,7 +43,7 @@ namespace SDL
 		return rect;
 	}
 
-	unique_ptr<SDL_Rect> createSrcRect(Location location)
+	unique_ptr<SDL_Rect> createSrcRect(Util::Location location)
 	{
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
 		rect->h = ENTITY_HEIGHT;

@@ -39,7 +39,7 @@ namespace SDL
 		return make_shared<SDL_Ghost>();
 	}
 
-	shared_ptr<Game::Ghost> SDL_Factory::createGhost(const Location& location, Game::GhostType type)
+	shared_ptr<Game::Ghost> SDL_Factory::createGhost(const Util::Location& location, Game::GhostType type)
 	{
 		return make_shared<SDL_Ghost>(location, type);
 	}
@@ -49,7 +49,7 @@ namespace SDL
 		return make_shared<SDL_Pacman>();
 	}
 
-	shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Location& location)
+	shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Util::Location& location)
 	{
 		return make_shared<SDL_Pacman>(location);
 	}
@@ -60,12 +60,12 @@ namespace SDL
 		return make_shared<SDL_Wall>();
 	}
 
-	shared_ptr<Game::Wall> SDL_Factory::createWall(const Location& location)
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location)
 	{
 		return make_shared<SDL_Wall>(location);
 	}
 
-	shared_ptr<Game::Wall> SDL_Factory::createWall(const Location& location, char type)
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type)
 	{
 		return make_shared<SDL_Wall>(location, type);
 	}

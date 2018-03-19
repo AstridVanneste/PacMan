@@ -8,7 +8,8 @@
 #ifndef ENTITY_H_
 #define ENTITY_H_
 #include <string>
-#include "../Util/Util.h"
+
+#include "../Util/Direction.h"
 #include "../Util/Location.h"
 #include "EntityTypes.h"
 using namespace std;

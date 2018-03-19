@@ -28,7 +28,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Pacman::SDL_Pacman(const Location& location)
+	SDL_Pacman::SDL_Pacman(const Util::Location& location)
 	:Game::Pacman(location)
 	{
 	}
@@ -52,7 +52,7 @@ namespace SDL
 		//cout << "visualize Pacman" << endl;
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
-		Location imageOffset;
+		Util::Location imageOffset;
 		imageOffset.x = 0;
 		imageOffset.y = this->direction%4;
 

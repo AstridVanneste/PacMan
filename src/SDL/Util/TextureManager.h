@@ -10,7 +10,8 @@
 
 #include <memory>
 #include <SDL2/SDL.h>
-#include "../../Game/Util/Util.h"
+
+#include "../../Game/Util/Direction.h"
 using namespace std;
 
 namespace SDL

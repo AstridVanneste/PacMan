@@ -21,7 +21,7 @@ Pacman::Pacman(const Pacman& pacman)
 	this->objectType = PACMAN;
 }
 
-Pacman::Pacman(const Location& location)
+Pacman::Pacman(const Util::Location& location)
 :MovingEntity(location)
 {
 	this->objectType = PACMAN;

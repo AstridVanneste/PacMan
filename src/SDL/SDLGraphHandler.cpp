@@ -51,7 +51,7 @@ namespace SDL
 	 * Initializes everything necessary to start using SDL and the specific
 	 * window and renderer of this manager.
 	 */
-	bool SDL_Graph_Handler::init(Location size)
+	bool SDL_Graph_Handler::init(Util::Location size)
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{

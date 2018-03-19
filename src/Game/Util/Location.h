@@ -8,8 +8,9 @@
 #ifndef GAME_UTIL_LOCATION_H_
 #define GAME_UTIL_LOCATION_H_
 
-#include "Util.h"
 #include <iostream>
+
+#include "Direction.h"
 using namespace std;
 
 namespace Util
@@ -23,8 +24,7 @@ public:
 
 	Location& operator=(const Location& l);
 
-	friend Location operator+(const Location& l, const Direction& d) noexcept;
-	friend Location operator+(const Location& l1, const Location& l2) noexcept;
+	friend Location operator+(const Location& l,Direction d) noexcept;
 
 	friend ostream& operator<<(ostream& os, const Location& l);
 };

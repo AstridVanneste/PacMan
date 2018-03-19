@@ -42,12 +42,12 @@ namespace Game
 	{
 	}
 
-	void Arena::setWall(const Location& location, shared_ptr<Wall> wall) noexcept
+	void Arena::setWall(const Util::Location& location, shared_ptr<Wall> wall) noexcept
 	{
 		arena[location.x][location.y] = wall;
 	}
 
-	const shared_ptr<Wall> Arena::getWall(const Location& location) noexcept
+	const shared_ptr<Wall> Arena::getWall(const Util::Location& location) noexcept
 	{
 		return this->arena[location.x][location.y];
 	}
@@ -63,7 +63,7 @@ namespace Game
 		if(file.is_open())
 		{
 			cout << "file opened" << endl;
-			Location i;
+			Util::Location i;
 			i.x = 0;
 			i.y = 0;
 
@@ -151,7 +151,7 @@ namespace Game
 		//cout << "start setting wall types" << endl;
 		cout << "Map size x = " << this->arena.size() << " y = " << this->arena[0].size() << endl;
 
-		Location i;
+		Util::Location i;
 		for ( i.x = 0; i.x < this->arena.size(); i.x++)
 		{
 			for (i.y = 0; i.y < this->arena[i.x].size(); i.y++)
@@ -205,9 +205,9 @@ namespace Game
 		return this->arena[0].size();
 	}
 
-	const Location Arena::getSize() noexcept
+	const Util::Location Arena::getSize() noexcept
 	{
-		Location loc;
+		Util::Location loc;
 		loc.x = this->getSizeX();
 		loc.y = this->getSizeY();
 		return loc;
@@ -223,19 +223,19 @@ namespace Game
 		return this->ghosts.size();
 	}
 
-	void Arena::moveGhost(int i, Location destination) noexcept
+	void Arena::moveGhost(int i, Util::Location destination) noexcept
 	{
 		this->ghosts[i]->setLocation(destination);
 	}
 
-	void Arena::movePacman(Location destination) noexcept
+	void Arena::movePacman(Util::Location destination) noexcept
 	{
 		this->pacman->setLocation(destination);
 	}
 
 	void Arena::visualize()
 	{
-		Location i;
+		Util::Location i;
 		for(i.x = 0; i.x < this->getSizeX(); i.x++)
 		{
 			for(i.y = 0; i.y < this->getSizeY(); i.y++)
@@ -257,11 +257,11 @@ namespace Game
 		return this->pacman;
 	}
 
-	const shared_ptr<vector<Direction>> Arena::getPosDir(const Location& loc) noexcept
+	const shared_ptr<vector<Direction>> Arena::getPosDir(const Util::Location& loc) noexcept
 	{
 		shared_ptr<vector<Direction>> directions = make_shared<vector<Direction>>();
 		//UP
-		Location tmpLoc = loc;
+		Util::Location tmpLoc = loc;
 		tmpLoc.x--;
 		if(tmpLoc.x >= 0 && this->getWall(tmpLoc)->isPassable())
 		{

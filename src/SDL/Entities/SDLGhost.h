@@ -23,7 +23,7 @@ namespace SDL
 	public:
 		SDL_Ghost();
 		SDL_Ghost(Game::GhostType type);
-		SDL_Ghost(Location location, Game::GhostType type);
+		SDL_Ghost(Util::Location location, Game::GhostType type);
 		virtual ~SDL_Ghost();
 
 		SDL_Ghost& operator=(const SDL_Ghost& g);
