@@ -7,7 +7,7 @@
 
 #include "MovingEntity.h"
 #include <iostream>
-#include "../Util/Random.h"
+#include "../../Util/Random.h"
 using namespace std;
 
 namespace Game

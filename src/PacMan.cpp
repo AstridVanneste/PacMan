@@ -9,7 +9,7 @@
 #include "Game/Gamemanager.h"
 #include <iostream>
 #include <memory>
-#include "Game/Util/AbstractFactory.h"
+#include "Game/AbstractFactory.h"
 #include "SDL/Util/SDLFactory.h"
 using namespace std;
 

@@ -11,7 +11,7 @@
 
 #include "Arena.h"
 #include "GraphicsHandler.h"
-#include "Util/AbstractFactory.h"
+#include "AbstractFactory.h"
 #include "Events/EventHandler.h"
 
 namespace Game

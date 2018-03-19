@@ -11,7 +11,7 @@
 #include <memory>
 #include <SDL2/SDL.h>
 
-#include "../../Game/Util/Direction.h"
+#include "../../Util/Direction.h"
 using namespace std;
 
 namespace SDL

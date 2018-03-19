@@ -8,8 +8,8 @@
 #ifndef GAME_ENTITIES_AI_H_
 #define GAME_ENTITIES_AI_H_
 
-#include "../Util/Direction.h"
-#include "../Util/Location.h"
+#include "../../Util/Direction.h"
+#include "../../Util/Location.h"
 
 namespace Game
 {

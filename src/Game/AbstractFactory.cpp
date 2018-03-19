@@ -5,7 +5,7 @@
  *      Author: Astrid
  */
 
-#include "../Util/AbstractFactory.h"
+#include "AbstractFactory.h"
 
 namespace Game
 {
