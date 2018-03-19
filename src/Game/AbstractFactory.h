@@ -10,6 +10,7 @@
 #include <memory>
 #include "Entities/Ghost.h"
 #include "Entities/Pacman.h"
+#include "Entities/Dot.h"
 #include "GraphicsHandler.h"
 #include "Entities/Wall.h"
 #include "Events/EventHandler.h"
@@ -24,15 +25,23 @@ namespace Game
 
 		AbstractFactory& operator=(const AbstractFactory& af);
 
-		virtual shared_ptr<Ghost> createGhost()=0;
-		virtual shared_ptr<Ghost> createGhost(const Util::Location& location, GhostType type)=0;
-		virtual shared_ptr<Pacman> createPacman()=0;
-		virtual shared_ptr<Pacman> createPacman(const Util::Location& location)=0;
-		virtual shared_ptr<Wall> createWall()=0;
-		virtual shared_ptr<Wall> createWall(const Util::Location& location)=0;
-		virtual shared_ptr<Wall> createWall(const Util::Location& location, char type)=0;
-		virtual shared_ptr<Event_Handler> createEventHandler()=0;
-		virtual Graphics_Handler& getGraphicsHandler()=0;
+		const virtual shared_ptr<Ghost> createGhost()noexcept =0;
+		const virtual shared_ptr<Ghost> createGhost(const Util::Location& location, GhostType type)noexcept =0;
+
+		const virtual shared_ptr<Pacman> createPacman()noexcept =0;
+		const virtual shared_ptr<Pacman> createPacman(const Util::Location& location)noexcept =0;
+
+		const virtual shared_ptr<Wall> createWall()noexcept =0;
+		const virtual shared_ptr<Wall> createWall(const Util::Location& location)noexcept =0;
+		const virtual shared_ptr<Wall> createWall(const Util::Location& location, char type)noexcept =0;
+
+		const virtual shared_ptr<Dot> createDot()noexcept =0;
+		const virtual shared_ptr<Dot> createDot(const Util::Location& location)noexcept =0;
+		const virtual shared_ptr<Dot> createDot(const Util::Location& location, int value) noexcept =0;
+
+		const virtual shared_ptr<Event_Handler> createEventHandler()noexcept =0;
+
+		virtual Graphics_Handler& getGraphicsHandler()noexcept =0;
 	};
 }
 

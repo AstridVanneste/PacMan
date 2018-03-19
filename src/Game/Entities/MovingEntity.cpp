@@ -107,7 +107,7 @@ const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexce
 		}
 		else
 		{
-			this->toggleDirection();
+			destination.x = limits.x-1;
 		}
 		break;
 	case DOWN:
@@ -117,7 +117,7 @@ const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexce
 		}
 		else
 		{
-			this->toggleDirection();
+			destination.x = 0;
 		}
 		break;
 	case LEFT:
@@ -127,7 +127,7 @@ const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexce
 		}
 		else
 		{
-			this->toggleDirection();
+			destination.y = limits.y-1;
 		}
 		break;
 	case RIGHT:
@@ -137,11 +137,10 @@ const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexce
 		}
 		else
 		{
-			this->toggleDirection();
+			destination.y = 0;
 		}
 		break;
 	case NONE:
-		this->toggleDirection();
 		break;
 	}
 	return destination;

@@ -28,7 +28,7 @@ namespace SDL
 		SDL_Graph_Handler* operator= (const SDL_Graph_Handler& h) = delete;
 
 	public:
-
+		//TODO const and noexcept markings
 		virtual ~SDL_Graph_Handler();
 
 		static SDL_Graph_Handler& getInstance();
