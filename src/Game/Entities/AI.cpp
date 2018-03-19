@@ -69,15 +69,15 @@ namespace Game
 		Direction newDirection;
 		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
 
-		cout << "===================================================================================" << endl;
+		//cout << "===================================================================================" << endl;
 		if(directions->size() == 1)
 		{
-			cout << "only 1 possible direction" << endl;
+			//cout << "only 1 possible direction" << endl;
 			return directions->at(0);
 		}
 
-		cout << "possible directions = " << directions->size() << endl;
-		cout << "old direction = " << oldDirection << " and inverse = " << inverseDirection(oldDirection) << endl;
+		//cout << "possible directions = " << directions->size() << endl;
+		//cout << "old direction = " << oldDirection << " and inverse = " << inverseDirection(oldDirection) << endl;
 
 		int distance = numeric_limits<int>::max();
 		for(unsigned int i =0; i < directions->size(); i++)
@@ -85,7 +85,7 @@ namespace Game
 			Util::Location newLoc = loc + directions->at(i);
 			int temp = this->getDistance(newLoc, target);
 
-			cout << directions->at(i) <<" -> distance = " << temp << endl;
+			//cout << directions->at(i) <<" -> distance = " << temp << endl;
 
 			if(temp < distance)
 			{

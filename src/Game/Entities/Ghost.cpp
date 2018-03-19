@@ -78,7 +78,7 @@ namespace Game
 		if(MovingEntity::update())
 		{
 			this->direction = this->ai->getNewDirection(this->location, this->direction);
-			cout << "NEW DIRECTION for ghost " << this->type << " = " << this->direction << endl;
+			//cout << "NEW DIRECTION for ghost " << this->type << " = " << this->direction << endl;
 			return true;
 		}
 		return false;

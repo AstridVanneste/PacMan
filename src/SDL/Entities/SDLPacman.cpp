@@ -53,7 +53,7 @@ namespace SDL
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Util::Location imageOffset;
-		imageOffset.x = 0;
+		imageOffset.x = (this->offset/8)%2;
 		imageOffset.y = this->direction%4;
 
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
