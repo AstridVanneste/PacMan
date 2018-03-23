@@ -68,6 +68,11 @@ namespace SDL
 				cout << "Error when drawing image on screen" << endl;
 				cout << SDL_GetError() << endl;
 			}
+
+			if(this->type == DOT_WALL)
+			{
+				cout << "visualized DOT" << endl;
+			}
 		}
 	}
 

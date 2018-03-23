@@ -10,7 +10,6 @@
 #include "../Entities/SDLGhost.h"
 #include "../Entities/SDLWall.h"
 #include "../Entities/SDLPacman.h"
-#include "../Entities/SDLDot.h"
 #include "SDLDestroyShared.h"
 #include "../SDLEventHandler.h"
 using namespace std;
@@ -69,21 +68,6 @@ namespace SDL
 	const shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type) noexcept
 	{
 		return make_shared<SDL_Wall>(location, type);
-	}
-
-	const shared_ptr<Game::Dot> SDL_Factory::createDot() noexcept
-	{
-		return make_shared<SDL_Dot>();
-	}
-
-	const shared_ptr<Game::Dot> SDL_Factory::createDot(const Util::Location& location) noexcept
-	{
-		return make_shared<SDL_Dot>(location);
-	}
-
-	const shared_ptr<Game::Dot> SDL_Factory::createDot(const Util::Location& location, int value) noexcept
-	{
-		return make_shared<SDL_Dot>(location, value);
 	}
 
 	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler() noexcept

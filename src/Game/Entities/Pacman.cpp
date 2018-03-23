@@ -9,36 +9,55 @@
 
 namespace Game {
 
-Pacman::Pacman()
-:MovingEntity()
-{
-	this->objectType = PACMAN;
-}
-
-Pacman::Pacman(const Pacman& pacman)
-:MovingEntity(pacman)
-{
-	this->objectType = PACMAN;
-}
-
-Pacman::Pacman(const Util::Location& location)
-:MovingEntity(location)
-{
-	this->objectType = PACMAN;
-}
-
-Pacman::~Pacman()
-{
-}
-
-Pacman& Pacman::operator=(const Pacman& p)
-{
-	if(this != &p)
+	Pacman::Pacman()
+	:MovingEntity()
 	{
-		MovingEntity::operator =(p);
+		this->objectType = PACMAN;
+		this->score = 0;
 	}
 
-	return *this;
-}
+	Pacman::Pacman(const Pacman& pacman)
+	:MovingEntity(pacman)
+	{
+		this->objectType = PACMAN;
+		this->score = pacman.score;
+	}
+
+	Pacman::Pacman(const Util::Location& location)
+	:MovingEntity(location)
+	{
+		this->objectType = PACMAN;
+		this->score = 0;
+	}
+
+	Pacman::~Pacman()
+	{
+	}
+
+	Pacman& Pacman::operator=(const Pacman& p)
+	{
+		if(this != &p)
+		{
+			MovingEntity::operator =(p);
+			this->score = p.score;
+		}
+
+		return *this;
+	}
+
+	const int Pacman::getScore() noexcept
+	{
+		return this->score;
+	}
+
+	void Pacman::setScore(int score) noexcept
+	{
+		this->score = score;
+	}
+
+	void Pacman::addPoints(int points) noexcept
+	{
+		this->score += points;
+	}
 
 } /* namespace Game */

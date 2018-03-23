@@ -33,9 +33,6 @@ namespace SDL
 		const shared_ptr<Game::Wall> createWall(const Util::Location& location) noexcept override;
 		const shared_ptr<Game::Wall> createWall(const Util::Location& location, char type) noexcept override;
 
-		const virtual shared_ptr<Game::Dot> createDot()noexcept override;
-		const virtual shared_ptr<Game::Dot> createDot(const Util::Location& location)noexcept override;
-		const virtual shared_ptr<Game::Dot> createDot(const Util::Location& location, int value) noexcept override;
 
 		const shared_ptr<Game::Event_Handler> createEventHandler() noexcept override;
 

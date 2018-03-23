@@ -16,9 +16,11 @@ namespace Game {
 	{
 	protected:
 		char type;		//type is set using the constants in "WallConstants.h"
+		int value;
 
 	public:
 		Wall();
+		Wall(const Wall& w);
 		Wall(const Util::Location& location);
 		Wall(char type);
 		Wall(const Util::Location& location, char type);

@@ -95,10 +95,6 @@ namespace Game
 				{
 					this->arena->moveGhost(i, destination);
 				}
-				else
-				{
-					this->arena->getGhost(i)->toggleDirection();
-				}
 			}
 		}
 
@@ -109,10 +105,10 @@ namespace Game
 			if(this->arena->getWall(destination)->isPassable())
 			{
 				this->arena->movePacman(destination);
-			}
-			else
-			{
-				this->arena->getPacman()->toggleDirection();
+				if(this->arena->getWall(destination)->getObjectType() == DOT)
+				{
+
+				}
 			}
 		}
 	}

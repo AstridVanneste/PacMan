@@ -33,7 +33,7 @@ namespace Game
 	{
 	private:
 		shared_ptr<Pacman> pacman;
-		vector<vector<shared_ptr<Entity>>> arena;
+		vector<vector<shared_ptr<Wall>>> arena;
 		vector<shared_ptr<Ghost>> ghosts;
 
 		void setWallTypes();
@@ -44,9 +44,8 @@ namespace Game
 
 		Arena& operator=(const Arena& a);
 
-		//TODO change names back to entity instead of wall
-		void setWall(const Util::Location& location, shared_ptr<Entity> wall) noexcept;
-		const shared_ptr<Entity> getWall(const Util::Location& location) noexcept;
+		void setWall(const Util::Location& location, shared_ptr<Wall> wall) noexcept;
+		const shared_ptr<Wall> getWall(const Util::Location& location) noexcept;
 		bool loadFromFile(string path);
 
 		const unsigned int getSizeX() noexcept;

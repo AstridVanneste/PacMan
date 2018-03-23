@@ -10,7 +10,6 @@
 #include <memory>
 #include "Entities/Ghost.h"
 #include "Entities/Pacman.h"
-#include "Entities/Dot.h"
 #include "GraphicsHandler.h"
 #include "Entities/Wall.h"
 #include "Events/EventHandler.h"
@@ -34,10 +33,6 @@ namespace Game
 		const virtual shared_ptr<Wall> createWall()noexcept =0;
 		const virtual shared_ptr<Wall> createWall(const Util::Location& location)noexcept =0;
 		const virtual shared_ptr<Wall> createWall(const Util::Location& location, char type)noexcept =0;
-
-		const virtual shared_ptr<Dot> createDot()noexcept =0;
-		const virtual shared_ptr<Dot> createDot(const Util::Location& location)noexcept =0;
-		const virtual shared_ptr<Dot> createDot(const Util::Location& location, int value) noexcept =0;
 
 		const virtual shared_ptr<Event_Handler> createEventHandler()noexcept =0;
 
