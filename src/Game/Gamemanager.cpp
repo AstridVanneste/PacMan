@@ -105,9 +105,11 @@ namespace Game
 			if(this->arena->getWall(destination)->isPassable())
 			{
 				this->arena->movePacman(destination);
-				if(this->arena->getWall(destination)->getObjectType() == DOT)
+				if(this->arena->getWall(destination)->getType() == DOT_WALL)
 				{
-
+					this->arena->getPacman()->addPoints(this->arena->getWall(destination)->getValue());
+					this->arena->getWall(destination)->setType(EMPTY_WALL);
+					this->arena->getWall(destination)->setValue(0);
 				}
 			}
 		}

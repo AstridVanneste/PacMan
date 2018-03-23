@@ -69,6 +69,19 @@ namespace Game
 		this->value = 0;
 	}
 
+	Wall::Wall(const Util::Location& location, char type, int value)
+	{
+		this->objectType = WALL;
+		if(type != EMPTY_WALL && type != DOT_WALL)
+		{
+			this->passable = false;
+		}
+
+		this->location = location;
+		this->type = type;
+		this->value = value;
+	}
+
 	Wall& Wall::operator=(const Wall& w)
 	{
 		if(this != &w)
@@ -81,11 +94,14 @@ namespace Game
 		return *this;
 	}
 
+	Wall::~Wall()
+	{
+	}
+
 	void Wall::setType(char type) noexcept
 	{
-		cout << "setting wall type from " << +this->type << " to " << +type << endl;
 		this->type = type;
-		if(this->type != EMPTY_WALL && this->type != DOT_WALL)
+		if(this->type == EMPTY_WALL || this->type == DOT_WALL)
 		{
 			this->passable = true;
 		}
@@ -100,7 +116,13 @@ namespace Game
 		return this->type;
 	}
 
-	Wall::~Wall()
+	void Wall::setValue(int value) noexcept
 	{
+		this->value = value;
+	}
+
+	const int Wall::getValue() noexcept
+	{
+		return this->value;
 	}
 } /* namespace Game */

@@ -31,9 +31,9 @@ const char URD = WALL_UP | WALL_RIGHT | WALL_DOWN;					//1110		14
 
 const char LURD = WALL_LEFT | WALL_UP | WALL_RIGHT | WALL_DOWN;		//1111		15
 
-const char DOT_WALL = 16;
+const char DOT_WALL = 17;
 
-const int  WALL_IMAGE[17][2] =					//[i][0] -> x coordinate in picture	(top = 0)
+const int  WALL_IMAGE[18][2] =					//[i][0] -> x coordinate in picture	(top = 0)
 												//[i][1] -> y coordinate in picture (left = 0)
 {
 		{3,3},	//0
@@ -52,7 +52,8 @@ const int  WALL_IMAGE[17][2] =					//[i][0] -> x coordinate in picture	(top = 0)
 		{2,3},	//13
 		{3,2},	//14
 		{2,2},	//15
-		{4,1}	//16
+		{4,1},	//16
+		{4,1}	//17
 };
 
-const int DEFAULT_DOT_VALUE = 100;
+const int DEFAULT_DOT_VALUE = 10;

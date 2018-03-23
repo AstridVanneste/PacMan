@@ -116,7 +116,7 @@ namespace Game
 							break;
 						case '*':
 							//DOT
-							this->arena[i.x].emplace_back(factory->createWall(i, DOT_WALL));
+							this->arena[i.x].emplace_back(factory->createWall(i, DOT_WALL, DEFAULT_DOT_VALUE));
 							//TODO add value of the DOT
 							break;
 						case 'U':

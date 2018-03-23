@@ -55,8 +55,8 @@ namespace Game
 
 	const char Entity::getObjectType() noexcept
 	{
-		cout << "checking object type" << endl;
-		cout << "Object type: " << +this->objectType << endl;
+		//cout << "checking object type" << endl;
+		//cout << "Object type: " << +this->objectType << endl;
 		return this->objectType;
 	}
 

@@ -37,6 +37,12 @@ namespace SDL
 
 	}
 
+	SDL_Wall::SDL_Wall(const Util::Location& location, char type, int value)
+	: Game::Wall(location, type, value)
+	{
+
+	}
+
 	SDL_Wall::~SDL_Wall()
 	{
 	}
@@ -69,10 +75,6 @@ namespace SDL
 				cout << SDL_GetError() << endl;
 			}
 
-			if(this->type == DOT_WALL)
-			{
-				cout << "visualized DOT" << endl;
-			}
 		}
 	}
 

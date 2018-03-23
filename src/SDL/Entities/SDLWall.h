@@ -19,6 +19,7 @@ namespace SDL
 		SDL_Wall(const Util::Location& location);
 		SDL_Wall(char type);
 		SDL_Wall(const Util::Location& location, char type);
+		SDL_Wall(const Util::Location& location, char type, int value);
 
 		virtual ~SDL_Wall();
 

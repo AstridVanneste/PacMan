@@ -58,6 +58,7 @@ namespace Game {
 	void Pacman::addPoints(int points) noexcept
 	{
 		this->score += points;
+		cout << "SCORE: " << this->score << endl;
 	}
 
 } /* namespace Game */

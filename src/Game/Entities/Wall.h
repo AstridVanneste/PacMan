@@ -24,12 +24,16 @@ namespace Game {
 		Wall(const Util::Location& location);
 		Wall(char type);
 		Wall(const Util::Location& location, char type);
+		Wall(const Util::Location& location, char type, int value);
 		virtual ~Wall();
 
 		Wall& operator=(const Wall& w);
 
 		void setType(char type) noexcept;
 		const char getType() noexcept;
+
+		void setValue(int value) noexcept;
+		const int getValue() noexcept;
 
 	};
 

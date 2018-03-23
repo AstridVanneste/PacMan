@@ -33,6 +33,7 @@ namespace Game
 		const virtual shared_ptr<Wall> createWall()noexcept =0;
 		const virtual shared_ptr<Wall> createWall(const Util::Location& location)noexcept =0;
 		const virtual shared_ptr<Wall> createWall(const Util::Location& location, char type)noexcept =0;
+		const virtual shared_ptr<Wall> createWall(const Util::Location& location, char type, int value)noexcept =0;
 
 		const virtual shared_ptr<Event_Handler> createEventHandler()noexcept =0;
 

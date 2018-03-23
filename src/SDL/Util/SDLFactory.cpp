@@ -70,6 +70,11 @@ namespace SDL
 		return make_shared<SDL_Wall>(location, type);
 	}
 
+	const shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type, int value) noexcept
+	{
+		return make_shared<SDL_Wall>(location, type,value);
+	}
+
 	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler() noexcept
 	{
 		return SDL_Graph_Handler::getInstance();
