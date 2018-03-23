@@ -61,7 +61,7 @@ namespace SDL
 			offset.y = WALL_IMAGE[this->type][1];
 			unique_ptr<SDL_Rect> srcR = createSrcRect(offset);
 			unique_ptr<SDL_Rect> destR = createDstRect(this->location);
-			shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getWall();
+			shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getBackground();
 
 			if(SDL_RenderCopy(renderer.get(), tex.get(), srcR.get() ,destR.get())<0)
 			{

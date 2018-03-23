@@ -37,7 +37,7 @@ namespace Game
 	{
 		this->running = true;
 		//initialize game
-		this->arena->loadFromFile("res/Maps/arena2.txt");
+		this->arena->loadFromFile("res/Maps/arena3.txt");
 		cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init(this->arena->getSize());
 		this->eventHandler = this->factory->createEventHandler();

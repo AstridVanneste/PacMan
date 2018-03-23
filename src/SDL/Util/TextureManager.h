@@ -25,6 +25,8 @@ private:
 	shared_ptr<SDL_Texture> walls;
 	shared_ptr<SDL_Texture> ghosts;
 	shared_ptr<SDL_Texture> pacman;
+	shared_ptr<SDL_Texture> dot;
+
 public:
 	TextureManager();
 	TextureManager(shared_ptr<SDL_Renderer> renderer);
@@ -32,11 +34,11 @@ public:
 
 	static TextureManager& getInstance();
 
-	void setRenderer(shared_ptr<SDL_Renderer> renderer);
+	void setRenderer(shared_ptr<SDL_Renderer> renderer) noexcept;
 
-	shared_ptr<SDL_Texture> getWall();
-	shared_ptr<SDL_Texture> getGhost();
-	shared_ptr<SDL_Texture> getPacman();
+	shared_ptr<SDL_Texture> getBackground() noexcept;
+	shared_ptr<SDL_Texture> getGhost() noexcept;
+	shared_ptr<SDL_Texture> getPacman() noexcept;
 };
 
 } /* namespace Game */

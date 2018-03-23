@@ -15,6 +15,8 @@ namespace SDL
 
 class SDL_Dot : public Game::Dot
 {
+const int IMAGE_OFFSET[2] = {4,1};
+
 public:
 	SDL_Dot();
 	SDL_Dot(const SDL_Dot& dot);

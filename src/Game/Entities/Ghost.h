@@ -10,7 +10,7 @@
 #include <string>
 #include <memory>
 #include "MovingEntity.h"
-#include "AI.h"
+#include "../AI/AI.h"
 using namespace std;
 
 //FOR A*

@@ -24,6 +24,7 @@ public:
 	Dot(const Util::Location& location, int value);
 
 	//TODO = operator overloading
+	Dot& operator=(const Dot& d);
 
 	virtual ~Dot();
 };

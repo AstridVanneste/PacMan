@@ -50,10 +50,10 @@ namespace SDL
 		//cout << "visualize " << this->type  << " at ["<< this->location.x << "," << this->location.y << "]" << endl;
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
-		Util::Location offset;
-		offset.x = this->type;
-		offset.y = this->direction%4;
-		unique_ptr<SDL_Rect> srcR = createSrcRect(offset);
+		Util::Location imageOffset;
+		imageOffset.x = this->type;
+		imageOffset.y = this->direction%4;
+		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 		shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getGhost();
 

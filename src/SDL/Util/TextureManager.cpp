@@ -25,12 +25,12 @@ namespace SDL
 		return instance;
 	}
 
-	void TextureManager::setRenderer(shared_ptr<SDL_Renderer> renderer)
+	void TextureManager::setRenderer(shared_ptr<SDL_Renderer> renderer) noexcept
 	{
 		this->renderer = renderer;
 	}
 
-	shared_ptr<SDL_Texture> TextureManager::getWall()
+	shared_ptr<SDL_Texture> TextureManager::getBackground() noexcept
 	{
 		if(this->walls.get() == nullptr)
 		{
@@ -40,7 +40,7 @@ namespace SDL
 		return this->walls;
 	}
 
-	shared_ptr<SDL_Texture> TextureManager::getGhost()
+	shared_ptr<SDL_Texture> TextureManager::getGhost() noexcept
 	{
 		if(this->ghosts.get() == nullptr)
 		{
@@ -50,7 +50,7 @@ namespace SDL
 		return this->ghosts;
 	}
 
-	shared_ptr<SDL_Texture> TextureManager::getPacman()
+	shared_ptr<SDL_Texture> TextureManager::getPacman() noexcept
 	{
 		if(this->pacman.get() == nullptr)
 		{
