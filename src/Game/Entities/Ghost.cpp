@@ -7,6 +7,10 @@
 
 
 #include "Ghost.h"
+#include "../AI/BlinkyAI.h"
+#include "../AI/PinkyAI.h"
+#include "../AI/InkyAI.h"
+#include "../AI/ClydeAI.h"
 #include <iostream>
 using namespace std;
 
@@ -16,8 +20,8 @@ namespace Game
 	:MovingEntity()
 	{
 		this->objectType = GHOST;
-
 		this->type = BLINKY;
+		this->createAI();
 	}
 
 	Ghost::Ghost(const Ghost& g)
@@ -25,8 +29,7 @@ namespace Game
 	{
 		this->objectType = GHOST;
 		this->type = g.type;
-		//this->ai = make_unique(g.ai.get());
-		this->ai = make_unique<AI>();
+		this->createAI();
 	}
 
 	Ghost::Ghost(GhostType type)
@@ -34,7 +37,7 @@ namespace Game
 	{
 		this->objectType = GHOST;
 		this->type = type;
-		this->ai = make_unique<AI>();
+		this->createAI();
 	}
 
 	Ghost::Ghost(Util::Location location, GhostType type)
@@ -43,7 +46,7 @@ namespace Game
 		this->objectType = GHOST;
 		this->type = type;
 
-		this->ai = make_unique<AI>();
+		this->createAI();
 	}
 
 	Ghost::~Ghost()
@@ -57,7 +60,7 @@ namespace Game
 			MovingEntity::operator =(g);
 			this->type = g.type;
 			//this->ai = g.ai;
-			this->ai = make_unique<AI>();
+			this->createAI();
 		}
 
 		return *this;
@@ -82,6 +85,32 @@ namespace Game
 			return true;
 		}
 		return false;
+	}
+
+	void Ghost::createAI() noexcept
+	{
+		switch(this->type)
+		{
+		case BLINKY:
+			//cout << "BLINKY made" << endl;
+			this->ai = make_unique<BlinkyAI>();
+			break;
+		case PINKY:
+			//cout << "PINKY made" << endl;
+			this->ai = make_unique<PinkyAI>();
+			break;
+		case INKY:
+			//cout << "INKY made" << endl;
+			this->ai = make_unique<InkyAI>();
+			break;
+		case CLYDE:
+			//cout << "CLYDE made" << endl;
+			this->ai = make_unique<ClydeAI>();
+			break;
+		default:
+			//cout << "GHOST made" << endl;
+			this->ai = make_unique<AI>();
+		}
 	}
 }
 

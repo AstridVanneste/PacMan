@@ -19,12 +19,13 @@ namespace Game
 	private:
 		AImode mode;
 
-		const Util::Location getScatterTarget() noexcept;
 		const Util::Location getChaseTarget() noexcept;
 		const Util::Location getFrightenedTarget() noexcept;
 
 		const int getDistance(const Util::Location& loc, const Util::Location& target) noexcept;
 		const Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction direction) noexcept;
+	protected:
+		Util::Location scatterTarget;
 	public:
 		AI();
 		AI(const AI& ai);

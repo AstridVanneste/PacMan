@@ -23,6 +23,8 @@ namespace Game
 
 	class Ghost: public MovingEntity
 	{
+	private:
+		void createAI() noexcept;
 	protected:
 		GhostType type;
 		unique_ptr<AI> ai;

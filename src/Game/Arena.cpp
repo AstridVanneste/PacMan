@@ -156,10 +156,9 @@ namespace Game
 		Util::Location i;
 		for ( i.x = 0; i.x < this->arena.size(); i.x++)
 		{
-			//TODO check everywhere if component is wall!! (not DOT)
 			for (i.y = 0; i.y < this->arena[i.x].size(); i.y++)
 			{
-				cout << "checking for wall at x = " << i.x << " and y = " << i.y << endl;
+				//cout << "checking for wall at x = " << i.x << " and y = " << i.y << endl;
 				if(this->arena[i.x][i.y]->getObjectType() == WALL)
 				{
 					if(!this->arena[i.x][i.y]->isPassable())
@@ -169,29 +168,29 @@ namespace Game
 
 						if(i.x !=0 && !this->arena[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
 						{
-							cout << "wall UP" << endl;
+							//cout << "wall UP" << endl;
 							type |= WALL_UP;
 						}
 
 						if(i.x < this->arena.size()-1 && !this->arena[i.x+1][i.y]->isPassable())		//check if there is a wall below this one.
 						{
-							cout << "wall DOWN" << endl;
+							//cout << "wall DOWN" << endl;
 							type |= WALL_DOWN;
 						}
 
 						if(i.y != 0 && !this->arena[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
 						{
-							cout << "wall LEFT" << endl;
+							//cout << "wall LEFT" << endl;
 							type |= WALL_LEFT;
 						}
 
 						if(i.y < this->arena[i.x].size()-1 && !this->arena[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
 						{
-							cout << "wall RIGHT" << endl;
+							//cout << "wall RIGHT" << endl;
 							type |= WALL_RIGHT;
 						}
 
-						cout << "wall type set to " << +type << endl;
+						//cout << "wall type set to " << +type << endl;
 						this->arena[i.x][i.y]->setType(type);
 					}
 				}

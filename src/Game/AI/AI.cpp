@@ -18,11 +18,14 @@ namespace Game
 	AI::AI()
 	{
 		this->mode = SCATTER;
+		this->scatterTarget.x = 0;
+		this->scatterTarget.y = 0;
 	}
 
 	AI::AI(const AI& ai)
 	{
 		this->mode = ai.mode;
+		this->scatterTarget = ai.scatterTarget;
 	}
 
 	AI& AI::operator=(const AI& ai)
@@ -30,6 +33,7 @@ namespace Game
 		if(this != &ai)
 		{
 			this->mode = ai.mode;
+			this->scatterTarget = ai.scatterTarget;
 		}
 		return *this;
 	}
@@ -44,7 +48,7 @@ namespace Game
 		switch(mode)
 		{
 		case SCATTER:
-			target = this->getScatterTarget();
+			target = this->scatterTarget;
 			break;
 		case CHASE:
 			target = this->getChaseTarget();
@@ -70,6 +74,7 @@ namespace Game
 		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
 
 		//cout << "===================================================================================" << endl;
+		//cout << "headed for TARGET = " << target << endl;
 		if(directions->size() == 1)
 		{
 			//cout << "only 1 possible direction" << endl;
@@ -98,13 +103,6 @@ namespace Game
 		}
 
 		return newDirection;
-	}
-
-	const Util::Location AI::getScatterTarget() noexcept
-	{
-		Util::Location target = Gamemanager::getInstance().getArena()->getPacman()->getLocation();
-
-		return target;
 	}
 
 	const Util::Location AI::getChaseTarget() noexcept
