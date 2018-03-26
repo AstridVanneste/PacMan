@@ -10,7 +10,6 @@
 
 namespace Game
 {
-
 	InkyAI::InkyAI()
 	: AI()
 	{
@@ -38,6 +37,18 @@ namespace Game
 			AI::operator=(ai);
 		}
 		return *this;
+	}
+
+	const Util::Location InkyAI::getChaseTarget(const Util::Location& loc) noexcept
+	{
+		Util::Location pacman = Gamemanager::getInstance().getPacman()->getLocation();
+			Util::Location target = pacman;
+
+			if(this->getDistance(pacman, loc) > 8)
+			{
+				target = this->scatterTarget;
+			}
+			return target;
 	}
 
 } /* namespace Game */

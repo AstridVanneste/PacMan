@@ -13,16 +13,16 @@ namespace Game
 {
 
 BlinkyAI::BlinkyAI()
-:AI()
+: AI()
 {
 	Util::Location target = Gamemanager::getInstance().getArena()->getSize();
 	target.x = 0;
 	this->scatterTarget = target;
-	cout << "BLINKY AI created, TARGET = " << this->scatterTarget << endl;
+	//cout << "BLINKY AI created, TARGET = " << this->scatterTarget << endl;
 }
 
 BlinkyAI::BlinkyAI(const BlinkyAI& ai)
-:AI(ai)
+: AI(ai)
 {
 }
 
@@ -37,6 +37,11 @@ BlinkyAI& BlinkyAI::operator =(const BlinkyAI& ai)
 		AI::operator=(ai);
 	}
 	return *this;
+}
+
+const Util::Location BlinkyAI::getChaseTarget(const Util::Location& loc) noexcept
+{
+	return Gamemanager::getInstance().getPacman()->getLocation();
 }
 
 } /* namespace SDL */

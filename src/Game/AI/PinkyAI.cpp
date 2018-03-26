@@ -6,6 +6,7 @@
  */
 
 #include "PinkyAI.h"
+#include "../Gamemanager.h"
 
 namespace Game
 {
@@ -33,6 +34,20 @@ namespace Game
 			AI::operator=(ai);
 		}
 		return *this;
+	}
+
+	const Util::Location PinkyAI::getChaseTarget(const Util::Location& loc) noexcept
+	{
+		Util::Location target = Gamemanager::getInstance().getPacman()->getLocation();
+		Direction direction = Gamemanager::getInstance().getPacman()->getDirection();
+
+		for(int i = 0; i<4; i++)
+		{
+			target += direction;
+		}
+
+
+		return target;
 	}
 
 } /* namespace Game */

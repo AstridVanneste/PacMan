@@ -15,12 +15,14 @@ namespace Game
 
 class ClydeAI: public AI
 {
-public:
-	ClydeAI();
-	ClydeAI(const ClydeAI& ai);
-	virtual ~ClydeAI();
+	private:
+		const Util::Location getChaseTarget(const Util::Location& loc) noexcept override;
+	public:
+		ClydeAI();
+		ClydeAI(const ClydeAI& ai);
+		virtual ~ClydeAI();
 
-	ClydeAI& operator=(const ClydeAI& ai);
+		ClydeAI& operator=(const ClydeAI& ai);
 };
 
 } /* namespace Game */

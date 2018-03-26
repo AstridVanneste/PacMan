@@ -16,7 +16,7 @@ ClydeAI::ClydeAI()
 {
 	this->scatterTarget = Gamemanager::getInstance().getArena()->getSize();
 	this->scatterTarget.y = 0;
-	cout << "CLYDE AI created, TARGET = " << this->scatterTarget << endl;
+	//cout << "CLYDE AI created, TARGET = " << this->scatterTarget << endl;
 }
 
 ClydeAI::ClydeAI(const ClydeAI& ai)
@@ -35,6 +35,18 @@ ClydeAI& ClydeAI::operator=(const ClydeAI& ai)
 		AI::operator=(ai);
 	}
 	return *this;
+}
+
+const Util::Location ClydeAI::getChaseTarget(const Util::Location& loc) noexcept
+{
+	Util::Location pacman = Gamemanager::getInstance().getPacman()->getLocation();
+	Util::Location target = pacman;
+
+	if(this->getDistance(pacman, loc) > 8)
+	{
+		target = this->scatterTarget;
+	}
+	return target;
 }
 
 } /* namespace Game */

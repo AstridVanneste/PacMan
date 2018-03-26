@@ -45,6 +45,11 @@ Location operator+(const Location& l, Direction d) noexcept
 	return loc;
 }
 
+Location operator+=(const Location& l, Direction d) noexcept
+{
+	return operator+(l,d);
+}
+
 ostream& operator << (ostream& os, const Location& l)
 {
 	os << "[" << l.x << "," << l.y << "]";

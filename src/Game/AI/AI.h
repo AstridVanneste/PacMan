@@ -13,19 +13,19 @@
 
 namespace Game
 {
-	enum AImode{CHASE, SCATTER, FRIGHTENED};
+	enum AImode{CHASE, SCATTER, FLEE};
 	class AI
 	{
 	private:
 		AImode mode;
 
-		const Util::Location getChaseTarget() noexcept;
+		const virtual Util::Location getChaseTarget(const Util::Location& loc) noexcept =0;
 		const Util::Location getFrightenedTarget() noexcept;
 
-		const int getDistance(const Util::Location& loc, const Util::Location& target) noexcept;
 		const Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction direction) noexcept;
 	protected:
 		Util::Location scatterTarget;
+		const int getDistance(const Util::Location& loc, const Util::Location& target) noexcept;
 	public:
 		AI();
 		AI(const AI& ai);

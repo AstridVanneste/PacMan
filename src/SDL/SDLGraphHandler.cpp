@@ -79,7 +79,7 @@ namespace SDL
 
 	const bool SDL_Graph_Handler::visualizeAll(shared_ptr<Game::Arena> arena)
 	{
-		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0,  255);
+		SDL_SetRenderDrawColor(renderer.get(), 255, 255, 255,  255);
 		SDL_RenderClear(renderer.get());
 
 		arena->visualize();

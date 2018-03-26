@@ -107,9 +107,6 @@ namespace Game
 			//cout << "CLYDE made" << endl;
 			this->ai = make_unique<ClydeAI>();
 			break;
-		default:
-			//cout << "GHOST made" << endl;
-			this->ai = make_unique<AI>();
 		}
 	}
 }

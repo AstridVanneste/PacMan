@@ -17,7 +17,7 @@ namespace Game
 
 	AI::AI()
 	{
-		this->mode = SCATTER;
+		this->mode = CHASE;
 		this->scatterTarget.x = 0;
 		this->scatterTarget.y = 0;
 	}
@@ -51,9 +51,9 @@ namespace Game
 			target = this->scatterTarget;
 			break;
 		case CHASE:
-			target = this->getChaseTarget();
+			target = this->getChaseTarget(loc);
 			break;
-		case FRIGHTENED:
+		case FLEE:
 			target = this->getFrightenedTarget();
 			break;
 		}
@@ -73,8 +73,8 @@ namespace Game
 		Direction newDirection;
 		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
 
-		//cout << "===================================================================================" << endl;
-		//cout << "headed for TARGET = " << target << endl;
+		cout << "===================================================================================" << endl;
+		cout << "headed for TARGET = " << target << endl;
 		if(directions->size() == 1)
 		{
 			//cout << "only 1 possible direction" << endl;
@@ -103,13 +103,6 @@ namespace Game
 		}
 
 		return newDirection;
-	}
-
-	const Util::Location AI::getChaseTarget() noexcept
-	{
-		Util::Location target = Gamemanager::getInstance().getArena()->getPacman()->getLocation();
-
-		return target;
 	}
 
 	const Util::Location AI::getFrightenedTarget() noexcept

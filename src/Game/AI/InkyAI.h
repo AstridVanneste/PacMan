@@ -15,6 +15,8 @@ namespace Game
 
 class InkyAI: public AI
 {
+private:
+		const Util::Location getChaseTarget(const Util::Location& loc) noexcept override;
 public:
 	InkyAI();
 	InkyAI(const InkyAI& ai);

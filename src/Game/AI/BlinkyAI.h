@@ -15,6 +15,8 @@ namespace Game
 
 	class BlinkyAI: public AI
 	{
+	private:
+		const Util::Location getChaseTarget(const Util::Location& loc) noexcept override;
 	public:
 		BlinkyAI();
 		BlinkyAI(const BlinkyAI& ai);
