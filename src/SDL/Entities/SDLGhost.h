@@ -18,10 +18,13 @@
  */
 namespace SDL
 {
+
+
 	class SDL_Ghost : public Game::Ghost
 	{
 	public:
 		SDL_Ghost();
+		SDL_Ghost(const SDL_Ghost& g);
 		SDL_Ghost(Game::GhostType type);
 		SDL_Ghost(Util::Location location, Game::GhostType type);
 		virtual ~SDL_Ghost();

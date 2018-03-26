@@ -30,6 +30,11 @@ namespace SDL
 	{
 	}
 
+	SDL_Ghost::SDL_Ghost(const SDL_Ghost& g)
+	:Game::Ghost(g)
+	{
+	}
+
 	SDL_Ghost::~SDL_Ghost()
 	{
 	}
@@ -45,14 +50,12 @@ namespace SDL
 
 	const void SDL_Ghost::visualize()
 	{
-		//cout << "SDL_Ghost::visualize()" << endl;
-
-		//cout << "visualize " << this->type  << " at ["<< this->location.x << "," << this->location.y << "]" << endl;
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Util::Location imageOffset;
 		imageOffset.x = this->type;
-		imageOffset.y = this->direction%4;
+		imageOffset.y = this->direction;
+
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
 		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 		shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getGhost();

@@ -12,9 +12,13 @@
 
 namespace SDL
 {
+	const int MAX_ANIMATION = 3;
 
 	class SDL_Pacman : public Game::Pacman
 	{
+	private:
+		int animationOffset;
+		bool animationDirection;
 	public:
 		SDL_Pacman();
 		SDL_Pacman(const SDL_Pacman& pacman);

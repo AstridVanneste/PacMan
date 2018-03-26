@@ -21,16 +21,22 @@ namespace SDL
 	SDL_Pacman::SDL_Pacman()
 	:Game::Pacman()
 	{
+		this->animationOffset = 0;
+		this->animationDirection = true;
 	}
 
 	SDL_Pacman::SDL_Pacman(const SDL_Pacman& pacman)
 	:Game::Pacman(pacman)
 	{
+		this->animationOffset = pacman.animationOffset;
+		this->animationDirection = pacman.animationDirection;
 	}
 
 	SDL_Pacman::SDL_Pacman(const Util::Location& location)
 	:Game::Pacman(location)
 	{
+		this->animationOffset = 0;
+		this->animationDirection = true;
 	}
 
 	SDL_Pacman::~SDL_Pacman()
@@ -42,6 +48,8 @@ namespace SDL
 		if(this != &p)
 		{
 			Pacman::operator=(p);
+			this->animationOffset = p.animationOffset;
+			this->animationDirection = p.animationDirection;
 		}
 		return *this;
 	}
@@ -50,10 +58,27 @@ namespace SDL
 	{
 		//stuff
 		//cout << "visualize Pacman" << endl;
+
+		if(this->offset%(this->speed/2) == this->speed%(this->speed/2))
+		{
+			if((this->animationOffset >= MAX_ANIMATION && this->animationDirection) || (this->animationOffset <= 0 && !this->animationDirection))
+			{
+				this->animationDirection = !this->animationDirection;
+			}
+			else if(this->animationDirection)
+			{
+				this->animationOffset++;
+			}
+			else
+			{
+				this->animationOffset--;
+			}
+		}
+
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Util::Location imageOffset;
-		imageOffset.x = (this->offset/8)%2;
+		imageOffset.x = this->animationOffset;
 		imageOffset.y = this->direction%4;
 
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);

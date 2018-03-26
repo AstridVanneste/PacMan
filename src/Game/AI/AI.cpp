@@ -73,8 +73,8 @@ namespace Game
 		Direction newDirection;
 		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
 
-		cout << "===================================================================================" << endl;
-		cout << "headed for TARGET = " << target << endl;
+		//cout << "===================================================================================" << endl;
+		//cout << "headed for TARGET = " << target << endl;
 		if(directions->size() == 1)
 		{
 			//cout << "only 1 possible direction" << endl;
