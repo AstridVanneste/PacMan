@@ -26,7 +26,7 @@ namespace SDL
 		SDL_Ghost(Util::Location location, Game::GhostType type);
 		virtual ~SDL_Ghost();
 
-		SDL_Ghost& operator=(const SDL_Ghost& g);
+		SDL_Ghost& operator=(const SDL_Ghost& g) noexcept;
 
 		const void visualize();
 	};

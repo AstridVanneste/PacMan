@@ -17,7 +17,7 @@ namespace Game
 
 	AI::AI()
 	{
-		this->mode = CHASE;
+		this->mode = FLEE;
 		this->scatterTarget.x = 0;
 		this->scatterTarget.y = 0;
 	}
@@ -84,7 +84,15 @@ namespace Game
 		//cout << "possible directions = " << directions->size() << endl;
 		//cout << "old direction = " << oldDirection << " and inverse = " << inverseDirection(oldDirection) << endl;
 
-		int distance = numeric_limits<int>::max();
+		int distance;
+		if(this->mode != FLEE)
+		{
+			distance = numeric_limits<int>::max();
+		}
+		else
+		{
+			distance = 0;
+		}
 		for(unsigned int i =0; i < directions->size(); i++)
 		{
 			Util::Location newLoc = loc + directions->at(i);
@@ -92,7 +100,7 @@ namespace Game
 
 			//cout << directions->at(i) <<" -> distance = " << temp << endl;
 
-			if(temp < distance)
+			if((temp < distance && this->mode != FLEE) || (temp > distance && this->mode == FLEE))
 			{
 				if(directions->at(i) != inverseDirection(oldDirection))
 				{

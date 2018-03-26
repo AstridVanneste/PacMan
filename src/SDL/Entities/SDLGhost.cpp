@@ -34,7 +34,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Ghost& SDL_Ghost::operator=(const SDL_Ghost& g)
+	SDL_Ghost& SDL_Ghost::operator=(const SDL_Ghost& g) noexcept
 	{
 		if(this != &g)
 		{

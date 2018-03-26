@@ -37,7 +37,7 @@ namespace SDL
 	{
 	}
 
-	SDL_Pacman& SDL_Pacman::operator=(const SDL_Pacman& p)
+	SDL_Pacman& SDL_Pacman::operator=(const SDL_Pacman& p) noexcept
 	{
 		if(this != &p)
 		{
