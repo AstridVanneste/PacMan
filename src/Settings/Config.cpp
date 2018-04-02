@@ -7,17 +7,31 @@
 
 #include "Config.h"
 #include <iostream>
+#include <fstream>
+#include <algorithm>
 
 namespace Settings
 {
 
 	Config::Config()
 	{
-		cout << "ERROR: Config object made without filename!!" << endl;
 	}
+
 
 	Config::~Config()
 	{
+	}
+
+	Config& Config::getInstance()
+	{
+		static Config instance;
+		return instance;
+	}
+
+	void Config::setPath(const string& fname) noexcept
+	{
+		this->fname = fname;
+		this->extractKeys();
 	}
 
 	const void Config::removeComment(string& line) noexcept
@@ -40,7 +54,7 @@ namespace Settings
 	const bool Config::validLine(const string& line) noexcept
 	{
 		string temp = line;
-		temp.erase(0, temp.find_first_not_of("\t "));
+
 		if(temp[0] == '=')
 		{
 			return false;
@@ -60,15 +74,97 @@ namespace Settings
 	const void Config::extractKey(string& key, const size_t& sepPos, const string& line) noexcept
 	{
 		key = line.substr(0, sepPos);
-		if(key.find('\t') != line.npos || key.find(' ') != line.npos)
+	}
+
+	const void Config::extractValue(string& value, const size_t& sepPos, const string& line) noexcept
+	{
+		value = line.substr(sepPos + 1);
+	}
+
+	const void Config::extractContents(const string& line) noexcept
+	{
+		string temp = line;
+
+		temp.erase(remove(temp.begin(), temp.end(), ' '), temp.end());
+
+
+		size_t sepPos = temp.find('=');
+
+		string key, value;
+		extractKey(key, sepPos, temp);
+		extractValue(value, sepPos, temp);
+
+		if(!keyExists(key))
 		{
-			key.erase(key.find_first_of(("\t")));
+			contents.insert(pair<string,string>(key, value));
+		}
+		else
+		{
+			cout << "CFG: Can only have unique key names!\n" << endl;
 		}
 	}
 
-	const void extractValue(string& value, const size_t& sepPos, string& line)
+	void Config::parseLine(const string& line, const size_t lineNo)
+	{
+		if(line.find('=') == line.npos)
+		{
+			cout << "CFG: Couldn't find seperator on line " << lineNo << endl;
+		}
+		else
+		{
+			if(!validLine(line))
+			{
+				cout << "CFG: Bad format for line " << lineNo << endl;
+			}
+			else
+			{
+				extractContents(line);
+			}
+		}
+	}
+
+	void Config::extractKeys()
 	{
 
+		ifstream file;
+		file.open(this->fname);
+
+		if(!file)
+		{
+			cout << "CFG: File " << this->fname << " couldn't be found!" << endl;
+		}
+		else
+		{
+			string line;
+			size_t lineNo = 0;
+			while(std::getline(file, line))
+			{
+				lineNo++;
+				string temp = line;
+				if(temp.empty())
+				{
+					continue;
+				}
+				this->removeComment(temp);
+
+				if(this->onlyWhiteSpace(temp))
+				{
+					continue;
+				}
+
+				parseLine(temp, lineNo);
+			}
+		}
+
+		file.close();
 	}
+
+	const bool Config::keyExists(const string& key) noexcept
+	{
+		bool result = contents.find(key) != contents.end();
+		cout << "keyExists(" << key << ") = " << result << endl;
+		return result;
+	}
+
 
 } /* namespace Settings */

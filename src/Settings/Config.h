@@ -12,6 +12,8 @@
 
 #include <map>
 #include <string>
+#include "Convert.h"
+#include "Keys.h"
 using namespace std;
 
 namespace Settings
@@ -23,6 +25,8 @@ private:
 	map<string, string> contents;
 	string fname;
 
+	Config();
+
 	const void removeComment(string& line) noexcept;
 	const bool onlyWhiteSpace(const string& line) noexcept;
 	const bool validLine(const string& line) noexcept;
@@ -30,14 +34,26 @@ private:
 	const void extractValue(string& value, const size_t& sepPos, const string& line) noexcept;
 	void extractKeys();
 	const void extractContents(const string& line) noexcept;
+	void parseLine(const string& line, const size_t lineNo);
 public:
-	Config();
-	Config(const string& fname);
 	virtual ~Config();
+
+	static Config& getInstance();
+
+	void setPath(const string& fname) noexcept;
 
 	const bool keyExists(const string& key) noexcept;
 
-	template <typename T> T getValueOfKey(const string& key, const T& defaultValue = T());
+	template <typename T> T getValueOfKey(const string& key, const T& defaultValue = T())
+	{
+		if(!this->keyExists(key))
+		{
+			return defaultValue;
+		}
+
+		cout << "Returning " << contents.find(key)->second << endl;
+		return Convert::string_to_T<T>(contents.find(key)->second);
+	}
 };
 
 } /* namespace Settings */

@@ -1,0 +1,8 @@
+# Settings for Pacman Game
+
+# GOD MODE (not getting killed by ghosts)
+god_mode=1
+
+# SPEED
+ghost_speed = 13
+pacman_speed = 10

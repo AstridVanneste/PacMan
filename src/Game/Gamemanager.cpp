@@ -9,6 +9,7 @@
 #include "Entities/Ghost.h"
 #include "Entities/Wall.h"
 #include "Entities/MovingEntity.h"
+#include "../Settings/Config.h"
 #include "Gamemanager.h"
 using namespace std;
 
@@ -36,11 +37,19 @@ namespace Game
 	void Gamemanager::start()
 	{
 		this->running = true;
-		//initialize game
+
+		// load settings
+		Settings::Config::getInstance().setPath("res/Settings.txt");
+
+		//initialize game arena
 		this->arena->loadFromFile("res/Maps/arena3.txt");
 		cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init(this->arena->getSize());
+
+		// create event handler
 		this->eventHandler = this->factory->createEventHandler();
+
+
 		cout << "Start run()" << endl;
 		this->run();
 	}

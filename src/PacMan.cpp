@@ -1,10 +1,4 @@
-//============================================================================
-// Name        : PacMan.cpp
-// Author      : Astrid Vanneste
-// Version     :
-// Copyright   : 
-// Description : Hello World in C++, Ansi-style
-//============================================================================
+
 
 #include "Game/Gamemanager.h"
 #include <iostream>

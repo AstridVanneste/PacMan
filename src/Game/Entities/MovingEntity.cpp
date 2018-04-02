@@ -17,7 +17,7 @@ MovingEntity::MovingEntity()
 :Entity()
 {
 	this->direction = UP;
-	this->speed = DEFAULT_SPEED; 		//1 move/s
+	this->speed = DEFAULT_SPEED;
 	this->offset = 0;
 }
 
@@ -33,7 +33,7 @@ MovingEntity::MovingEntity(Util::Location location)
 :Entity(location)
 {
 	this->direction = UP;
-	this->speed = DEFAULT_SPEED; 		//1 move/s
+	this->speed = DEFAULT_SPEED;
 	this->offset = 0;
 }
 

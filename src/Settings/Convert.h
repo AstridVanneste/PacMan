@@ -11,6 +11,9 @@
 // Based on: http://www.dreamincode.net/forums/topic/183191-create-a-simple-configuration-file-parser/
 
 #include <string>
+#include <iostream>
+#include <sstream>
+#include <typeinfo>
 using namespace std;
 
 namespace Settings
@@ -22,8 +25,26 @@ public:
 	Convert();
 	virtual ~Convert();
 
-	template<typename T> static string T_to_string(const T& val);
-	template<typename T> static T string_to_T(const string& val);
+	template<typename T> static string T_to_string(const T& val)
+	{
+		ostringstream ostr;
+		ostr << val;
+
+		return ostr.str();
+	}
+
+	template<typename T> static T string_to_T(const string& val)
+	{
+		istringstream istr(val);
+		T returnVal;
+
+		if(!(istr >> returnVal))
+		{
+			exitWithError("CFG: Not a valid " + (string)typeid(T).name() + " received!\n");
+		}
+
+		return returnVal;
+	}
 
 	static void exitWithError(const string& error);
 };
