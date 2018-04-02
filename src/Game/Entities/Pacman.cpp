@@ -17,7 +17,6 @@ namespace Game {
 		if(Settings::Config::getInstance().keyExists(Settings::PACMAN_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::PACMAN_SPEED);
-			cout << "Pacman speed set to " << this->speed << endl;
 		}
 		this->score = 0;
 	}
