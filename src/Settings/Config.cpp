@@ -162,7 +162,7 @@ namespace Settings
 	const bool Config::keyExists(const string& key) noexcept
 	{
 		bool result = contents.find(key) != contents.end();
-		cout << "keyExists(" << key << ") = " << result << endl;
+		//cout << "keyExists(" << key << ") = " << result << endl;
 		return result;
 	}
 

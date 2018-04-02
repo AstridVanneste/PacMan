@@ -27,6 +27,8 @@ public:
 	friend Location operator+(const Location& l,Direction d) noexcept;
 	friend Location operator+=(const Location& l, Direction d) noexcept;
 
+	friend bool operator==(const Location& l1, const Location& l2) noexcept;
+
 	friend ostream& operator<<(ostream& os, const Location& l);
 };
 

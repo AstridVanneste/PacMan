@@ -22,9 +22,9 @@ namespace Game
 	{
 		this->objectType = GHOST;
 		this->type = BLINKY;
-		if(Settings::Config::getInstance().keyExists(GHOST_SPEED))
+		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
-			this->speed = Settings::Config::getInstance().getValueOfKey<int>(GHOST_SPEED);
+			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
 			cout << "Ghost speed set to " << this->speed << endl;
 		}
 		this->createAI();
@@ -42,9 +42,9 @@ namespace Game
 	:MovingEntity()
 	{
 		this->objectType = GHOST;
-		if(Settings::Config::getInstance().keyExists(GHOST_SPEED))
+		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
-			this->speed = Settings::Config::getInstance().getValueOfKey<int>(GHOST_SPEED);
+			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
 			cout << "Ghost speed set to " << this->speed << endl;
 		}
 		this->type = type;
@@ -55,9 +55,9 @@ namespace Game
 	:MovingEntity(location)
 	{
 		this->objectType = GHOST;
-		if(Settings::Config::getInstance().keyExists(GHOST_SPEED))
+		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
-			this->speed = Settings::Config::getInstance().getValueOfKey<int>(GHOST_SPEED);
+			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
 			cout << "Ghost speed set to " << this->speed << endl;
 		}
 		this->type = type;

@@ -56,4 +56,9 @@ ostream& operator << (ostream& os, const Location& l)
 	return os;
 }
 
+bool operator==(const Location& l1, const Location& l2) noexcept
+{
+	return (l1.x == l2.x) && (l1.y == l2.y);
+}
+
 } /* namespace Game */

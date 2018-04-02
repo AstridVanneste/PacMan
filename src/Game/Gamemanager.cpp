@@ -100,7 +100,7 @@ namespace Game
 				//move entity on map
 				Util::Location destination = this->arena->getGhost(i)->getNextLocation(this->arena->getSize());
 
-				if(this->arena->getWall(destination)->isPassable())
+				if(this->arena->detectWallCollision(destination))
 				{
 					this->arena->moveGhost(i, destination);
 				}
@@ -111,7 +111,7 @@ namespace Game
 		{
 			Util::Location destination = this->arena->getPacman()->getNextLocation(this->arena->getSize());
 
-			if(this->arena->getWall(destination)->isPassable())
+			if(this->arena->detectWallCollision(destination))
 			{
 				this->arena->movePacman(destination);
 				if(this->arena->getWall(destination)->getType() == DOT_WALL)
@@ -119,6 +119,11 @@ namespace Game
 					this->arena->getPacman()->addPoints(this->arena->getWall(destination)->getValue());
 					this->arena->getWall(destination)->setType(EMPTY_WALL);
 					this->arena->getWall(destination)->setValue(0);
+				}
+
+				if(this->arena->detectGhostCollision() || Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE))
+				{
+					cout << "GAME OVER" << endl;
 				}
 			}
 		}

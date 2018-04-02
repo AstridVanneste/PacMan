@@ -298,4 +298,22 @@ namespace Game
 		return directions;
 	}
 
+	const bool Arena::detectWallCollision(Util::Location& destination) noexcept
+	{
+		return this->arena[destination.x][destination.y]->isPassable();
+	}
+
+	const bool Arena::detectGhostCollision() noexcept
+	{
+		for(unsigned int i = 0; i < this->ghosts.size(); i++)
+		{
+			if(this->ghosts[i]->getLocation() == this->pacman->getLocation())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 } /* namespace Game */

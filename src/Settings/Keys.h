@@ -11,10 +11,15 @@
 #include <string>
 using namespace std;
 
-const string GHOST_SPEED = "ghost_speed";
-const string PACMAN_SPEED = "pacman_speed";
+namespace Settings
+{
+	const string GHOST_SPEED = "ghost_speed";
+	const string PACMAN_SPEED = "pacman_speed";
 
-const string GOD_MODE = "god_mode";
+	const string GOD_MODE = "god_mode";
+
+	const string DOT_VALUE = "dot_value";
+}
 
 
 

@@ -14,9 +14,9 @@ namespace Game {
 	:MovingEntity()
 	{
 		this->objectType = PACMAN;
-		if(Settings::Config::getInstance().keyExists(PACMAN_SPEED))
+		if(Settings::Config::getInstance().keyExists(Settings::PACMAN_SPEED))
 		{
-			this->speed = Settings::Config::getInstance().getValueOfKey<int>(PACMAN_SPEED);
+			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::PACMAN_SPEED);
 			cout << "Pacman speed set to " << this->speed << endl;
 		}
 		this->score = 0;
@@ -33,9 +33,9 @@ namespace Game {
 	:MovingEntity(location)
 	{
 		this->objectType = PACMAN;
-		if(Settings::Config::getInstance().keyExists(PACMAN_SPEED))
+		if(Settings::Config::getInstance().keyExists(Settings::PACMAN_SPEED))
 		{
-			this->speed = Settings::Config::getInstance().getValueOfKey<int>(PACMAN_SPEED);
+			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::PACMAN_SPEED);
 		}
 		this->score = 0;
 	}

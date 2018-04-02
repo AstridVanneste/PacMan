@@ -51,7 +51,7 @@ public:
 			return defaultValue;
 		}
 
-		cout << "Returning " << contents.find(key)->second << endl;
+		//cout << "Returning " << contents.find(key)->second << endl;
 		return Convert::string_to_T<T>(contents.find(key)->second);
 	}
 };
