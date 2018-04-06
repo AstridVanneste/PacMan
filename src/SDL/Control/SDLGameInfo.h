@@ -10,6 +10,9 @@
 
 #include "../../Game/Control/GameInfo.h"
 
+#include <string>
+using namespace std;
+
 namespace SDL
 {
 
@@ -23,6 +26,10 @@ namespace SDL
 		virtual ~SDL_GameInfo();
 
 		const void visualize() override;
+
+		const void visualizeScore();
+		const void visualizeLives();
+		const void visualizeStateText(const string& text);
 	};
 
 } /* namespace Game */

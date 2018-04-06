@@ -13,12 +13,20 @@ using namespace std;
 
 namespace Settings
 {
+	// SPEEDS
 	const string GHOST_SPEED = "ghost_speed";
 	const string PACMAN_SPEED = "pacman_speed";
 
+	// GOD MODE
 	const string GOD_MODE = "god_mode";
 
+	// POINTS
 	const string DOT_VALUE = "dot_value";
+
+	// PATHS
+	const string GHOST_PATH = "ghost_path";
+	const string PACMAN_PATH = "pacman_path";
+	const string WALL_PATH = "wall_path";
 }
 
 

@@ -76,12 +76,16 @@
                                     <listOptionValue builtIn="false" value="sdl2"/>
                                     									
                                     <listOptionValue builtIn="false" value="sdl2_image"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="sdl2_ttf.dll"/>
                                     								
                                 </option>
                                 								
                                 <option id="gnu.cpp.link.option.other.210393277" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" useByScannerDiscovery="false" valueType="stringList">
                                     									
                                     <listOptionValue builtIn="false" value="libjpeg-9.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libfreetype-6.dll"/>
                                     									
                                     <listOptionValue builtIn="false" value="libpng16-16.dll"/>
                                     									

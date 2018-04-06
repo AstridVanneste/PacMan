@@ -31,7 +31,32 @@ SDL_GameInfo::~SDL_GameInfo()
 
 const void SDL_GameInfo::visualize()
 {
-	//TODO complete!
+	this->visualizeScore();
+	this->visualizeLives();
+
+	if(this->gameState == Game::PAUSED)
+	{
+		this->visualizeStateText("PAUSED");
+	}
+	else if(this->gameState == Game::GAME_OVER)
+	{
+		this->visualizeStateText("GAME OVER!");
+	}
+}
+
+const void SDL_GameInfo::visualizeScore()
+{
+
+}
+
+const void SDL_GameInfo::visualizeLives()
+{
+
+}
+
+const void SDL_GameInfo::visualizeStateText(const string& text)
+{
+
 }
 
 } /* namespace Game */

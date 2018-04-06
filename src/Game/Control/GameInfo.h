@@ -16,7 +16,7 @@ namespace Game
 
 	class GameInfo
 	{
-	private:
+	protected:
 		int score;
 		int lives;
 		GameState gameState;

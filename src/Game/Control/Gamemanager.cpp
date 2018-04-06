@@ -126,7 +126,7 @@ namespace Game
 					this->arena->getWall(destination)->setValue(0);
 				}
 
-				if(this->arena->detectGhostCollision() || Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE))
+				if(this->arena->detectGhostCollision() && !Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE))
 				{
 					cout << "GAME OVER" << endl;
 				}
