@@ -9,8 +9,8 @@
 #include <math.h>
 #include <iostream>
 #include <limits>
-#include "../Gamemanager.h"
-#include "../Arena.h"
+#include "../Control/Gamemanager.h"
+#include "../Control/Arena.h"
 
 namespace Game
 {

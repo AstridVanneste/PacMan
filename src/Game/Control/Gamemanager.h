@@ -12,7 +12,7 @@
 #include "Arena.h"
 #include "GraphicsHandler.h"
 #include "AbstractFactory.h"
-#include "Events/EventHandler.h"
+#include "../Events/EventHandler.h"
 
 namespace Game
 {

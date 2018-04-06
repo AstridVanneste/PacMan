@@ -7,7 +7,7 @@
 
 #ifndef SDL_SDLEVENTHANDLER_H_
 #define SDL_SDLEVENTHANDLER_H_
-#include "../Game/Events/EventHandler.h"
+#include "../../Game/Events/EventHandler.h"
 
 namespace SDL
 {

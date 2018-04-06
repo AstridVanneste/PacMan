@@ -7,7 +7,7 @@
 #include <iostream>
 #include <memory>
 #include "SDLGhost.h"
-#include "../SDLGraphHandler.h"
+#include "../Control/SDLGraphHandler.h"
 #include "../Util/SDLDestroyer.h"
 #include "../Util/TextureManaging.h"
 #include "../Util/TextureManager.h"

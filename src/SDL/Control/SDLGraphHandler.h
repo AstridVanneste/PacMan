@@ -11,8 +11,8 @@
 #include <memory>
 #include <string>
 
-#include "../Game/Arena.h"
-#include "../Game/GraphicsHandler.h"
+#include "../../Game/Control/Arena.h"
+#include "../../Game/Control/GraphicsHandler.h"
 using namespace std;
 
 namespace SDL

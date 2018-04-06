@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "BlinkyAI.h"
-#include "../Gamemanager.h"
+#include "../Control/Gamemanager.h"
 
 namespace Game
 {

@@ -8,10 +8,10 @@
 #ifndef SDLFACTORY_H_
 #define SDLFACTORY_H_
 #include <memory>
-#include "../../Game/AbstractFactory.h"
+#include "../../Game/Control/AbstractFactory.h"
 #include "../../Game/Entities/Ghost.h"
 #include "../../Game/Entities/Pacman.h"
-#include "../SDLGraphHandler.h"
+#include "../Control/SDLGraphHandler.h"
 
 namespace SDL
 {

@@ -7,11 +7,11 @@
 
 #ifndef GAME_ARENA_H_
 #define GAME_ARENA_H_
-#include "Entities/Entity.h"
-#include "Entities/MovingEntity.h"
-#include "Entities/Pacman.h"
-#include "Entities/Wall.h"
-#include "Entities/Ghost.h"
+#include "../Entities/Entity.h"
+#include "../Entities/MovingEntity.h"
+#include "../Entities/Pacman.h"
+#include "../Entities/Wall.h"
+#include "../Entities/Ghost.h"
 #include <string>
 #include <vector>
 #include <memory>

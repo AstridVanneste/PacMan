@@ -11,7 +11,7 @@
 #include <iostream>
 #include <memory>
 #include "Gamemanager.h"
-#include "Entities/Ghost.h"
+#include "../Entities/Ghost.h"
 using namespace std;
 
 namespace Game

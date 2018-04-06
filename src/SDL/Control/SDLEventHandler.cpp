@@ -6,7 +6,7 @@
  */
 
 #include "SDLEventHandler.h"
-#include "../Game/Events/Event.h"
+#include "../../Game/Events/Event.h"
 #include <memory>
 #include <SDL2/SDL.h>
 #include <iostream>

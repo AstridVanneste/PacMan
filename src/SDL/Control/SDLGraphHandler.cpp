@@ -7,9 +7,9 @@
 
 #include <vector>
 #include "SDLGraphHandler.h"
-#include "Util/TextureManager.h"
-#include "Util/SDLDestroyShared.h"
-#include "Util/SDLUtil.h"
+#include "../Util/TextureManager.h"
+#include "../Util/SDLDestroyShared.h"
+#include "../Util/SDLUtil.h"
 
 namespace SDL
 {

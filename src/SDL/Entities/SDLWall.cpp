@@ -9,7 +9,7 @@
 #include <memory>
 #include <iostream>
 #include <SDL2/SDL.h>
-#include "../SDLGraphHandler.h"
+#include "../Control/SDLGraphHandler.h"
 #include "../Util/TextureManaging.h"
 #include "../Util/TextureManager.h"
 #include "WallConstants.h"

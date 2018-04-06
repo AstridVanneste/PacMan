@@ -6,7 +6,7 @@
  */
 
 #include "PinkyAI.h"
-#include "../Gamemanager.h"
+#include "../Control/Gamemanager.h"
 
 namespace Game
 {

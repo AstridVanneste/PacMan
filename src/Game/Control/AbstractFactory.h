@@ -8,11 +8,11 @@
 #ifndef ABSTRACTFACTORY_H_
 #define ABSTRACTFACTORY_H_
 #include <memory>
-#include "Entities/Ghost.h"
-#include "Entities/Pacman.h"
+#include "../Entities/Ghost.h"
+#include "../Entities/Pacman.h"
 #include "GraphicsHandler.h"
-#include "Entities/Wall.h"
-#include "Events/EventHandler.h"
+#include "../Entities/Wall.h"
+#include "../Events/EventHandler.h"
 
 namespace Game
 {

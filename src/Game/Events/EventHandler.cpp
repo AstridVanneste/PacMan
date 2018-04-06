@@ -6,7 +6,7 @@
  */
 
 #include "EventHandler.h"
-#include "../Gamemanager.h"
+#include "../Control/Gamemanager.h"
 #include <iostream>
 using namespace std;
 

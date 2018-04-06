@@ -12,7 +12,7 @@
 #include "../Util/SDLUtil.h"
 #include "../Util/TextureManaging.h"
 #include "../Util/TextureManager.h"
-#include "../SDLGraphHandler.h"
+#include "../Control/SDLGraphHandler.h"
 #include "../../Game/Entities/MovingEntity.h"
 
 namespace SDL

@@ -6,10 +6,10 @@
  */
 
 #include <iostream>
-#include "Entities/Ghost.h"
-#include "Entities/Wall.h"
-#include "Entities/MovingEntity.h"
-#include "../Settings/Config.h"
+#include "../Entities/Ghost.h"
+#include "../Entities/Wall.h"
+#include "../Entities/MovingEntity.h"
+#include "../../Settings/Config.h"
 #include "Gamemanager.h"
 using namespace std;
 
