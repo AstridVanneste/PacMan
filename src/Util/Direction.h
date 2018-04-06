@@ -4,13 +4,17 @@
 #include <iostream>
 using namespace std;
 
-enum Direction
+namespace Util
+{
+
+	enum Direction
 	{
 		LEFT , DOWN , RIGHT , UP, NONE
 	};
 
-Direction inverseDirection(Direction d);
+	Direction inverseDirection(Direction d);
 
-ostream& operator << (ostream& os, Direction d);
+	ostream& operator << (ostream& os, Direction d);
+}
 
 #endif

@@ -17,7 +17,8 @@ namespace Game
 	class MovingEntity : public Entity
 	{
 	protected:
-		Direction direction;
+		Util::Direction direction;
+		bool moving;
 		int speed;						// amount of frames it takes to move from one place to the next
 		int offset;						// amount of frames that passed since last movement
 
@@ -32,12 +33,12 @@ namespace Game
 
 		virtual bool update() noexcept;			//returns true if moved (depends on speed and offset)
 
-		const Direction getDirection() noexcept;
-		void setDirection(const Direction& direction) noexcept;
-
-		void toggleDirection() noexcept;
+		const Util::Direction getDirection() noexcept;
+		void setDirection(const Util::Direction& direction) noexcept;
 
 		const Util::Location getNextLocation(Util::Location limits) noexcept;
+
+		void setMoving(bool moving) noexcept;
 	};
 
 } /* namespace Game */

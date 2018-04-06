@@ -260,15 +260,15 @@ namespace Game
 		return this->pacman;
 	}
 
-	const shared_ptr<vector<Direction>> Arena::getPosDir(const Util::Location& loc) noexcept
+	const shared_ptr<vector<Util::Direction>> Arena::getPosDir(const Util::Location& loc) noexcept
 	{
-		shared_ptr<vector<Direction>> directions = make_shared<vector<Direction>>();
+		shared_ptr<vector<Util::Direction>> directions = make_shared<vector<Util::Direction>>();
 		//UP
 		Util::Location tmpLoc = loc;
 		tmpLoc.x--;
 		if(tmpLoc.x >= 0 && this->getWall(tmpLoc)->isPassable())
 		{
-			directions->push_back(UP);
+			directions->push_back(Util::UP);
 		}
 
 		//DOWN
@@ -276,7 +276,7 @@ namespace Game
 		tmpLoc.x++;
 		if(tmpLoc.x < this->arena.size() && this->getWall(tmpLoc)->isPassable())
 		{
-			directions->push_back(DOWN);
+			directions->push_back(Util::DOWN);
 		}
 
 		//LEFT
@@ -284,7 +284,7 @@ namespace Game
 		tmpLoc.y--;
 		if(tmpLoc.y >= 0 && this->getWall(tmpLoc)->isPassable())
 		{
-			directions->push_back(LEFT);
+			directions->push_back(Util::LEFT);
 		}
 
 		//RIGHT
@@ -292,7 +292,7 @@ namespace Game
 		tmpLoc.y++;
 		if(tmpLoc.y < arena[0].size() && this->getWall(tmpLoc)->isPassable())
 		{
-			directions->push_back(RIGHT);
+			directions->push_back(Util::RIGHT);
 		}
 
 		return directions;
@@ -300,7 +300,7 @@ namespace Game
 
 	const bool Arena::detectWallCollision(Util::Location& destination) noexcept
 	{
-		return this->arena[destination.x][destination.y]->isPassable();
+		return !this->arena[destination.x][destination.y]->isPassable();
 	}
 
 	const bool Arena::detectGhostCollision() noexcept

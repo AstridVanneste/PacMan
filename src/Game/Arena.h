@@ -59,7 +59,7 @@ namespace Game
 		const shared_ptr<Pacman> getPacman() noexcept;
 		void movePacman(Util::Location destination) noexcept;
 
-		const shared_ptr<vector<Direction>> getPosDir(const Util::Location& loc) noexcept;
+		const shared_ptr<vector<Util::Direction>> getPosDir(const Util::Location& loc) noexcept;
 
 		const bool detectWallCollision(Util::Location& destination) noexcept;
 		const bool detectGhostCollision() noexcept;

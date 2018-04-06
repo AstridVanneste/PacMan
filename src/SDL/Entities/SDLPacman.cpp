@@ -82,7 +82,15 @@ namespace SDL
 		imageOffset.y = this->direction%4;
 
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);
-		unique_ptr<SDL_Rect> destR = createDstRect(this->location);
+		unique_ptr<SDL_Rect> destR;
+		if(this->moving)
+		{
+			 destR = createDstRect(this->location, this->offset, this->speed, this->direction);
+		}
+		else
+		{
+			destR = createDstRect(this->location);
+		}
 		shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getPacman();
 
 		if(SDL_RenderCopy(renderer.get(), tex.get(), srcR.get(), destR.get())<0)

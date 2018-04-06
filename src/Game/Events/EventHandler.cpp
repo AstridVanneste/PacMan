@@ -75,22 +75,22 @@ void Event_Handler::keyDown(shared_ptr<Event> event) noexcept
 
 	if(subtype == "UP")
 	{
-		Gamemanager::getInstance().getPacman()->setDirection(UP);
+		Gamemanager::getInstance().getPacman()->setDirection(Util::UP);
 		//cout << "KEY UP" << endl;
 	}
 	else if (subtype == "DOWN")
 	{
-		Gamemanager::getInstance().getPacman()->setDirection(DOWN);
+		Gamemanager::getInstance().getPacman()->setDirection(Util::DOWN);
 		//cout << "KEY DOWN" << endl;
 	}
 	else if(subtype == "LEFT")
 	{
-		Gamemanager::getInstance().getPacman()->setDirection(LEFT);
+		Gamemanager::getInstance().getPacman()->setDirection(Util::LEFT);
 		//cout << "KEY LEFT" << endl;
 	}
 	else if(subtype == "RIGHT")
 	{
-		Gamemanager::getInstance().getPacman()->setDirection(RIGHT);
+		Gamemanager::getInstance().getPacman()->setDirection(Util::RIGHT);
 		//cout << "KEY RIGHT" << endl;
 	}
 }

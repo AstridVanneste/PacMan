@@ -43,6 +43,46 @@ namespace SDL
 		return rect;
 	}
 
+	unique_ptr<SDL_Rect> createDstRect(Util::Location location, int offset, int speed, Util::Direction direction)
+	{
+		unique_ptr<SDL_Rect> rect = createDstRect(location);
+		offset -= speed/2;
+
+		float factor;
+
+		if(direction == Util::UP || direction == Util::DOWN)
+		{
+			// ADJUST x
+			factor = ENTITY_HEIGHT/speed;
+			float result = factor * offset;
+			if(direction == Util::DOWN)
+			{
+				rect->y += (int)result;
+			}
+			else
+			{
+				rect->y -= (int)result;
+			}
+
+		}
+		else
+		{
+			// ADJUST y
+			factor = ENTITY_WIDTH/speed;
+			float result = factor * offset;
+			if(direction == Util::RIGHT)
+			{
+				rect->x += (int)result;
+			}
+			else
+			{
+				rect->x -= (int)result;
+			}
+		}
+
+		return rect;
+	}
+
 	unique_ptr<SDL_Rect> createSrcRect(Util::Location location)
 	{
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();

@@ -22,7 +22,7 @@ namespace Game
 		const virtual Util::Location getChaseTarget(const Util::Location& loc) noexcept =0;
 		const Util::Location getFrightenedTarget() noexcept;
 
-		const Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction direction) noexcept;
+		const Util::Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Util::Direction direction) noexcept;
 	protected:
 		Util::Location scatterTarget;
 		const int getDistance(const Util::Location& loc, const Util::Location& target) noexcept;
@@ -35,7 +35,7 @@ namespace Game
 		const AImode getMode() noexcept;
 		void setMode(const AImode& mode) noexcept;
 
-		const Direction getNewDirection(const Util::Location& loc, Direction direction) noexcept;
+		const Util::Direction getNewDirection(const Util::Location& loc, Util::Direction direction) noexcept;
 	};
 } /* namespace Game */
 

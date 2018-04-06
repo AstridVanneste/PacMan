@@ -9,45 +9,49 @@
 #include <iostream>
 using namespace std;
 
-Direction inverseDirection(Direction d)
+namespace Util
 {
-	switch(d)
+
+	Direction inverseDirection(Direction d)
 	{
-	case UP:
-		return DOWN;
-	case DOWN:
-		return UP;
-	case LEFT:
-		return RIGHT;
-	case RIGHT:
-		return LEFT;
-	default:
-		return NONE;
-	}
-}
-
-
-ostream& operator<<(ostream& os, Direction d)
-{
-	switch(d)
+		switch(d)
 		{
 		case UP:
-			os << "UP";
-			break;
+			return DOWN;
 		case DOWN:
-			os << "DOWN";
-			break;
+			return UP;
 		case LEFT:
-			os << "LEFT";
-			break;
+			return RIGHT;
 		case RIGHT:
-			os << "RIGHT";
-			break;
-		case NONE:
-			os << "NONE";
-			break;
+			return LEFT;
+		default:
+			return NONE;
 		}
-	return os;
+	}
+
+
+	ostream& operator<<(ostream& os, Direction d)
+	{
+		switch(d)
+			{
+			case UP:
+				os << "UP";
+				break;
+			case DOWN:
+				os << "DOWN";
+				break;
+			case LEFT:
+				os << "LEFT";
+				break;
+			case RIGHT:
+				os << "RIGHT";
+				break;
+			case NONE:
+				os << "NONE";
+				break;
+			}
+		return os;
+	}
 }
 
 

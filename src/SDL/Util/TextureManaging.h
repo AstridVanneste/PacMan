@@ -21,6 +21,7 @@ namespace SDL
 {
 	shared_ptr<SDL_Texture> createTexture(const char* path, shared_ptr<SDL_Renderer> renderer);
 	unique_ptr<SDL_Rect> createDstRect(Util::Location location);
+	unique_ptr<SDL_Rect> createDstRect(Util::Location, int offset, int speed, Util::Direction direction);
 	unique_ptr<SDL_Rect> createSrcRect(Util::Location location);
 }
 

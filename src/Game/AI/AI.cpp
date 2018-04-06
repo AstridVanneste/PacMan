@@ -42,7 +42,7 @@ namespace Game
 	{
 	}
 
-	const Direction AI::getNewDirection(const Util::Location& loc, Direction direction) noexcept
+	const Util::Direction AI::getNewDirection(const Util::Location& loc, Util::Direction direction) noexcept
 	{
 		Util::Location target;
 		switch(mode)
@@ -68,10 +68,10 @@ namespace Game
 		return distance;
 	}
 
-	const Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Direction oldDirection) noexcept
+	const Util::Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Util::Direction oldDirection) noexcept
 	{
-		Direction newDirection;
-		shared_ptr<vector<Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
+		Util::Direction newDirection;
+		shared_ptr<vector<Util::Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
 
 		//cout << "===================================================================================" << endl;
 		//cout << "headed for TARGET = " << target << endl;

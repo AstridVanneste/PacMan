@@ -12,6 +12,7 @@
 #include "../SDLGraphHandler.h"
 #include "../Util/TextureManaging.h"
 #include "../Util/TextureManager.h"
+#include "WallConstants.h"
 
 namespace SDL
 {
@@ -58,13 +59,13 @@ namespace SDL
 
 	const void SDL_Wall::visualize()
 	{
-		if(this->type != EMPTY_WALL)
+		if(this->type != Game::EMPTY_WALL)
 		{
 			shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 			Util::Location offset;
-			offset.x = WALL_IMAGE[this->type][0];
-			offset.y = WALL_IMAGE[this->type][1];
+			offset.x = WALL_IMAGE[(int)this->type][0];
+			offset.y = WALL_IMAGE[(int)this->type][1];
 			unique_ptr<SDL_Rect> srcR = createSrcRect(offset);
 			unique_ptr<SDL_Rect> destR = createDstRect(this->location);
 			shared_ptr<SDL_Texture> tex = TextureManager::getInstance().getBackground();
