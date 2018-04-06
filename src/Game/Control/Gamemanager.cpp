@@ -18,7 +18,8 @@ namespace Game
 
 	Gamemanager::Gamemanager()
 	{
-		this->factory = 0;
+		this->factory = nullptr;
+		this->gameInfo = nullptr;
 		this->arena = make_shared<Arena>();
 		this->running = false;
 	}
@@ -40,6 +41,10 @@ namespace Game
 
 		// load settings
 		Settings::Config::getInstance().setPath("res/Settings.txt");
+
+		//initialize game info
+		//TODO change arguments to values provided in settings
+		this->gameInfo = this->factory->createGameInfo(0,3,RUNNING);
 
 		//initialize game arena
 		this->arena->loadFromFile("res/Maps/arena3.txt");

@@ -23,6 +23,8 @@ namespace SDL
 
 		SDL_Factory& operator=(const SDL_Factory& f);
 
+		const shared_ptr<Game::GameInfo> createGameInfo(int score, int lives, Game::GameState gameState) noexcept override;
+
 		const shared_ptr<Game::Ghost> createGhost() noexcept override;
 		const shared_ptr<Game::Ghost> createGhost(const Util::Location& location, Game::GhostType type) noexcept override;
 

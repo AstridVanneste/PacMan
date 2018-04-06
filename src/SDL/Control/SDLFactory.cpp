@@ -6,12 +6,13 @@
  */
 
 #include <memory>
-#include "../Util/SDLFactory.h"
+#include "SDLFactory.h"
 #include "../Entities/SDLGhost.h"
 #include "../Entities/SDLWall.h"
 #include "../Entities/SDLPacman.h"
-#include "SDLDestroyShared.h"
-#include "../Control/SDLEventHandler.h"
+#include "../Util/SDLDestroyShared.h"
+#include "SDLEventHandler.h"
+#include "SDLGameInfo.h"
 using namespace std;
 
 
@@ -32,6 +33,11 @@ namespace SDL
 			AbstractFactory::operator=(f);
 		}
 		return *this;
+	}
+
+	const shared_ptr<Game::GameInfo> SDL_Factory::createGameInfo(int score, int lives, Game::GameState gameState) noexcept
+	{
+		return make_shared<SDL_GameInfo>(score, lives, gameState);
 	}
 
 	const shared_ptr<Game::Ghost> SDL_Factory::createGhost() noexcept

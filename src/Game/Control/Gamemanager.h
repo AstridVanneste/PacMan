@@ -13,17 +13,20 @@
 #include "GraphicsHandler.h"
 #include "AbstractFactory.h"
 #include "../Events/EventHandler.h"
+#include "GameInfo.h"
 
 namespace Game
 {
 	const unsigned int FPS = 60;
 	const unsigned int FRAME_DELAY = 1000/FPS;
+
 	class Gamemanager
 	{
 	private:
 		shared_ptr<AbstractFactory> factory;
 		shared_ptr<Arena> arena;
 		shared_ptr<Event_Handler> eventHandler;
+		shared_ptr<GameInfo> gameInfo;
 
 		bool running;
 

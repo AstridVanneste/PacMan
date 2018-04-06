@@ -4,7 +4,7 @@
 #include <iostream>
 #include <memory>
 #include "Game/Control/AbstractFactory.h"
-#include "SDL/Util/SDLFactory.h"
+#include "SDL/Control/SDLFactory.h"
 using namespace std;
 
 int main(int argc, char *argv[])

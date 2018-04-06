@@ -10,9 +10,10 @@
 #include <memory>
 #include "../Entities/Ghost.h"
 #include "../Entities/Pacman.h"
-#include "GraphicsHandler.h"
 #include "../Entities/Wall.h"
 #include "../Events/EventHandler.h"
+#include "GameInfo.h"
+#include "GraphicsHandler.h"
 
 namespace Game
 {
@@ -23,6 +24,8 @@ namespace Game
 		virtual ~AbstractFactory();
 
 		AbstractFactory& operator=(const AbstractFactory& af);
+
+		const virtual shared_ptr<GameInfo> createGameInfo(int score, int lives, GameState gameState)noexcept =0;
 
 		const virtual shared_ptr<Ghost> createGhost()noexcept =0;
 		const virtual shared_ptr<Ghost> createGhost(const Util::Location& location, GhostType type)noexcept =0;
