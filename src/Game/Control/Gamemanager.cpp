@@ -74,7 +74,7 @@ namespace Game
 			this->update();
 
 			//visualize
-			this->factory->getGraphicsHandler().visualizeAll(this->arena);
+			this->factory->getGraphicsHandler().visualizeAll();
 			this->gameInfo->visualize();
 
 			//limit FPS
@@ -127,9 +127,13 @@ namespace Game
 					this->arena->getWall(destination)->setValue(0);
 				}
 
-				if(this->arena->detectGhostCollision() && !Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE))
+				if(this->arena->detectGhostCollision()  && (!Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE)))
 				{
-					cout << "GAME OVER" << endl;
+					this->gameInfo->decreaseLives();
+					if(this->gameInfo->getLives() <= 0)
+					{
+						cout << "GAME OVER" << endl;
+					}
 				}
 			}
 			else
@@ -147,6 +151,11 @@ namespace Game
 	const shared_ptr<Arena> Gamemanager::getArena() noexcept
 	{
 		return this->arena;
+	}
+
+	const shared_ptr<GameInfo> Gamemanager::getGameInfo() noexcept
+	{
+		return this->gameInfo;
 	}
 }
 

@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "SDLGraphHandler.h"
+#include "../../Game/Control/Gamemanager.h"
 #include "../Util/TextureManager.h"
 #include "../Util/SDLDestroyShared.h"
 #include "../Util/SDLUtil.h"
@@ -77,12 +78,13 @@ namespace SDL
 		return SDL_GetTicks();
 	}
 
-	const bool SDL_Graph_Handler::visualizeAll(shared_ptr<Game::Arena> arena)
+	const bool SDL_Graph_Handler::visualizeAll()
 	{
 		SDL_SetRenderDrawColor(renderer.get(), 255, 255, 255,  255);
 		SDL_RenderClear(renderer.get());
 
-		arena->visualize();
+		Game::Gamemanager::getInstance().getArena()->visualize();
+		Game::Gamemanager::getInstance().getGameInfo()->visualize();
 
 		SDL_RenderPresent(this->renderer.get());
 

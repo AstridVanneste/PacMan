@@ -32,7 +32,7 @@ namespace Game
 
 		Gamemanager();
 		Gamemanager(const Gamemanager& gamemanager) = delete;
-		Gamemanager* operator =(const Gamemanager& gamemanager) = delete;
+		Gamemanager* operator = (const Gamemanager& gamemanager) = delete;
 
 		void run();
 	public:
@@ -42,6 +42,8 @@ namespace Game
 
 		void setFactory(shared_ptr<AbstractFactory> factory) noexcept;
 		const shared_ptr<AbstractFactory> getFactory() noexcept;
+
+		const shared_ptr<GameInfo> getGameInfo() noexcept;
 
 		const shared_ptr<Arena> getArena() noexcept;
 

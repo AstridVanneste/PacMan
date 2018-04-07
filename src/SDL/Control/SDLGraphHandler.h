@@ -39,7 +39,7 @@ namespace SDL
 		bool init(Util::Location size);
 		void delay(int time);
 		unsigned int getTime();
-		const bool visualizeAll(shared_ptr<Game::Arena> map);
+		const bool visualizeAll() override;
 		bool visualizeMap();
 		bool visualizeComponent();
 	};
