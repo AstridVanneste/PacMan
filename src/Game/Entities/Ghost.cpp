@@ -94,13 +94,8 @@ namespace Game
 
 	bool Ghost::update() noexcept
 	{
-		if(MovingEntity::update())
-		{
-			this->direction = this->ai->getNewDirection(this->location, this->direction);
-			//cout << "NEW DIRECTION for ghost " << this->type << " = " << this->direction << endl;
-			return true;
-		}
-		return false;
+		this->nextDirection = this->ai->getNewDirection(this->location, this->direction);
+		return MovingEntity::update();
 	}
 
 	void Ghost::createAI() noexcept

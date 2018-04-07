@@ -6,6 +6,8 @@
  */
 
 #include "SDLGameInfo.h"
+#include <iostream>
+using namespace std;
 
 namespace SDL
 {
@@ -31,6 +33,7 @@ SDL_GameInfo::~SDL_GameInfo()
 
 const void SDL_GameInfo::visualize()
 {
+	cout << "====================================================================================" << endl;
 	this->visualizeScore();
 	this->visualizeLives();
 
@@ -46,12 +49,12 @@ const void SDL_GameInfo::visualize()
 
 const void SDL_GameInfo::visualizeScore()
 {
-
+	cout << "SCORE:	" << this->score << endl;
 }
 
 const void SDL_GameInfo::visualizeLives()
 {
-
+	cout << "LIVES: " << this->lives << endl;
 }
 
 const void SDL_GameInfo::visualizeStateText(const string& text)

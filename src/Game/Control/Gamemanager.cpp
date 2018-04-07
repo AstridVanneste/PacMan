@@ -75,6 +75,7 @@ namespace Game
 
 			//visualize
 			this->factory->getGraphicsHandler().visualizeAll(this->arena);
+			this->gameInfo->visualize();
 
 			//limit FPS
 			unsigned int endTime = this->factory->getGraphicsHandler().getTime();
@@ -121,7 +122,7 @@ namespace Game
 				this->arena->movePacman(destination);
 				if(this->arena->getWall(destination)->getType() == DOT_WALL)
 				{
-					this->arena->getPacman()->addPoints(this->arena->getWall(destination)->getValue());
+					this->gameInfo->addScore(this->arena->getWall(destination)->getValue());
 					this->arena->getWall(destination)->setType(EMPTY_WALL);
 					this->arena->getWall(destination)->setValue(0);
 				}

@@ -18,6 +18,7 @@ namespace Game
 	{
 	protected:
 		Util::Direction direction;
+		Util::Direction nextDirection;
 		bool moving;
 		int speed;						// amount of frames it takes to move from one place to the next
 		int offset;						// amount of frames that passed since last movement
@@ -33,8 +34,13 @@ namespace Game
 
 		virtual bool update() noexcept;			//returns true if moved (depends on speed and offset)
 
+		void updateDirection() noexcept;
+
 		const Util::Direction getDirection() noexcept;
 		void setDirection(const Util::Direction& direction) noexcept;
+
+		const Util::Direction getNextDirection() noexcept;
+		void setNextDirection(const Util::Direction& direction) noexcept;
 
 		const Util::Location getNextLocation(Util::Location limits) noexcept;
 

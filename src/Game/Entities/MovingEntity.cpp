@@ -18,6 +18,7 @@ MovingEntity::MovingEntity()
 {
 	this->moving = true;
 	this->direction = Util::UP;
+	this->nextDirection = this->direction;
 	this->speed = DEFAULT_SPEED;
 	this->offset = 0;
 }
@@ -27,6 +28,7 @@ MovingEntity::MovingEntity(const MovingEntity& me)
 {
 	this->moving = me.moving;
 	this->direction = me.direction;
+	this->nextDirection = me.nextDirection;
 	this->speed = me.speed;
 	this->offset = me.offset;
 }
@@ -36,6 +38,7 @@ MovingEntity::MovingEntity(Util::Location location)
 {
 	this->moving = true;
 	this->direction = Util::UP;
+	this->nextDirection = this->direction;
 	this->speed = DEFAULT_SPEED;
 	this->offset = 0;
 }
@@ -51,6 +54,7 @@ MovingEntity& MovingEntity::operator=(const MovingEntity& me)
 		Entity::operator=(me);
 		this->moving = me.moving;
 		this->direction = me.direction;
+		this->nextDirection = me.nextDirection;
 		this->speed = me.speed;
 		this->offset = me.offset;
 	}
@@ -62,17 +66,36 @@ bool MovingEntity::update() noexcept
 
 	this->offset++;
 
-	if(this->offset > this->speed)
+	if(this->nextDirection == this->direction || this->nextDirection == inverseDirection(this->direction))
 	{
-		//entity has to be moved 1 place
-		//this->move();
-
-		this->offset = 0;
-		return true;
+		if(this->offset > this->speed)
+		{
+			//entity has to be moved 1 place
+			//this->move();
+			//cout << "STRAIGTH or OPPOSITE MOVEMENT" << endl;
+			this->offset = 0;
+			this->updateDirection();
+			return true;
+		}
+	}
+	else
+	{
+		if(this->offset > this->speed/2)
+		{
+			//cout << "TURNING" << endl;
+			this->offset = 0;
+			this->updateDirection();
+			return true;
+		}
 	}
 	return false;
 
 
+}
+
+void MovingEntity::updateDirection() noexcept
+{
+	this->setDirection(this->nextDirection);
 }
 
 const Util::Direction MovingEntity::getDirection() noexcept
@@ -84,6 +107,16 @@ void MovingEntity::setDirection(const Util::Direction& direction) noexcept
 {
 	this->moving = true;
 	this->direction = direction;
+}
+
+const Util::Direction MovingEntity::getNextDirection() noexcept
+{
+	return this->nextDirection;
+}
+
+void MovingEntity::setNextDirection(const Util::Direction& direction) noexcept
+{
+	this->nextDirection = direction;
 }
 
 const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexcept

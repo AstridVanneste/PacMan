@@ -37,10 +37,11 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::WALL_PATH))
 			{
-				cout << "asking for wall path" << endl;
-				char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::WALL_PATH);
-				cout << "WALLS PATH = [" << path << "]" << endl;
-				this->walls = createTexture(path, this->renderer);
+				//cout << "asking for wall path" << endl;
+				//char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::WALL_PATH);
+				//cout << "WALLS PATH = [" << path << "]" << endl;
+				//this->walls = createTexture(path, this->renderer);
+				this->walls = createTexture("res/Images/Walls.png", this->renderer);
 			}
 		}
 		return this->walls;
@@ -52,8 +53,9 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::GHOST_PATH))
 			{
-				char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::GHOST_PATH);
-				this->ghosts = createTexture(path, renderer);
+				//char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::GHOST_PATH);
+				//this->ghosts = createTexture(path, renderer);
+				this->ghosts = createTexture("res/Images/Ghost.png", this->renderer);
 			}
 		}
 		return this->ghosts;
@@ -65,8 +67,9 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::PACMAN_PATH))
 			{
-				char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::PACMAN_PATH);
-				this->pacman = createTexture(path, renderer);
+				//char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::PACMAN_PATH);
+				//this->pacman = createTexture(path, renderer);
+				this->pacman = createTexture("res/Images/Pacman.png", this->renderer);
 			}
 		}
 
