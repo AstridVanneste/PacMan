@@ -40,7 +40,10 @@ namespace Game
 		this->running = true;
 
 		// load settings
-		Settings::Config::getInstance().addPath("res/Settings.txt");
+		Settings::Config::getInstance().addPath("res/Settings/General.txt");
+		Settings::Config::getInstance().addPath("res/Settings/Entities.txt");
+		Settings::Config::getInstance().addPath("res/Settings/Graphics.txt");
+		Settings::Config::getInstance().addPath("res/Settings/GamePhases.txt");
 
 		//initialize game info
 		//TODO change arguments to values provided in settings

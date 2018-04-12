@@ -1,5 +1,20 @@
-# Paths to all the settings files.
+# Settings for Pacman Game
 
-entities_settings = /res/Settings/Entities.txt
-general_settings = /res/Settings/Entities.txt
-graphics_settings = /res/Settings/Graphics.txt
+# GOD MODE (not getting killed by ghosts)
+god_mode = 1
+
+# POINTS
+dot_value = 10
+
+# LIVES
+max_lives = 3
+
+# SPEED
+ghost_speed = 13
+pacman_speed = 10
+
+
+# PATHS
+ghost_path = res/Images/Ghost.png
+pacman_path = res/Images/Pacman.png
+wall_path = res/Images/Walls.png
