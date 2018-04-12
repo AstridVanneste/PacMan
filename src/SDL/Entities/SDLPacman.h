@@ -22,7 +22,7 @@ namespace SDL
 	public:
 		SDL_Pacman();
 		SDL_Pacman(const SDL_Pacman& pacman);
-		SDL_Pacman(const Util::Location& location);
+		SDL_Pacman(const Util::Location& location, const Util::Location& respawnPoint);
 		virtual ~SDL_Pacman();
 
 		SDL_Pacman& operator=(const SDL_Pacman& p) noexcept;

@@ -32,8 +32,8 @@ namespace SDL
 		this->animationDirection = pacman.animationDirection;
 	}
 
-	SDL_Pacman::SDL_Pacman(const Util::Location& location)
-	:Game::Pacman(location)
+	SDL_Pacman::SDL_Pacman(const Util::Location& location, const Util::Location& respawnPoint)
+	:Game::Pacman(location, respawnPoint)
 	{
 		this->animationOffset = 0;
 		this->animationDirection = true;

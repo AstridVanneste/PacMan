@@ -1,0 +1,6 @@
+# Settings necessary for the functionality of all the entities in the game.
+
+
+# SPEED
+ghost_speed = 13
+pacman_speed = 10

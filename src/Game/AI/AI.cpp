@@ -17,7 +17,7 @@ namespace Game
 
 	AI::AI()
 	{
-		this->mode = FLEE;
+		this->mode = SCATTER;
 		this->scatterTarget.x = 0;
 		this->scatterTarget.y = 0;
 	}

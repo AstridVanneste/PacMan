@@ -55,9 +55,9 @@ namespace SDL
 		return make_shared<SDL_Pacman>();
 	}
 
-	const shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Util::Location& location) noexcept
+	const shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Util::Location& location, const Util::Location& respawnPoint) noexcept
 	{
-		return make_shared<SDL_Pacman>(location);
+		return make_shared<SDL_Pacman>(location, respawnPoint);
 	}
 
 

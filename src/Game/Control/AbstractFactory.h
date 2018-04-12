@@ -31,7 +31,7 @@ namespace Game
 		const virtual shared_ptr<Ghost> createGhost(const Util::Location& location, GhostType type)noexcept =0;
 
 		const virtual shared_ptr<Pacman> createPacman()noexcept =0;
-		const virtual shared_ptr<Pacman> createPacman(const Util::Location& location)noexcept =0;
+		const virtual shared_ptr<Pacman> createPacman(const Util::Location& location, const Util::Location& respawnPoint)noexcept =0;
 
 		const virtual shared_ptr<Wall> createWall()noexcept =0;
 		const virtual shared_ptr<Wall> createWall(const Util::Location& location)noexcept =0;

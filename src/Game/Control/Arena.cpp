@@ -121,7 +121,7 @@ namespace Game
 							break;
 						case 'U':
 							//PACMAN
-							pacman = factory->createPacman(i);
+							pacman = factory->createPacman(i, i);
 							this->arena[i.x].emplace_back(factory->createWall(i,EMPTY_WALL));
 							//this->map[i.x].emplace_back(pacman);
 							this->pacman = pacman;

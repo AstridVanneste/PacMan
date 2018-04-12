@@ -29,7 +29,7 @@ namespace SDL
 		const shared_ptr<Game::Ghost> createGhost(const Util::Location& location, Game::GhostType type) noexcept override;
 
 		const shared_ptr<Game::Pacman> createPacman() noexcept override;
-		const shared_ptr<Game::Pacman> createPacman(const Util::Location& location) noexcept override;
+		const shared_ptr<Game::Pacman> createPacman(const Util::Location& location, const Util::Location& respawnPoint) noexcept override;
 
 		const shared_ptr<Game::Wall> createWall() noexcept override;
 		const shared_ptr<Game::Wall> createWall(const Util::Location& location) noexcept override;

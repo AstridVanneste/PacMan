@@ -1,0 +1,5 @@
+# Paths to all the settings files.
+
+entities_settings = /res/Settings/Entities.txt
+general_settings = /res/Settings/Entities.txt
+graphics_settings = /res/Settings/Graphics.txt

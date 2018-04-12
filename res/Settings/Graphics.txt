@@ -1,0 +1,7 @@
+# Settings necessary to display the graphics of the game.
+
+
+# PATHS
+ghost_path = res/Images/Ghost.png
+pacman_path = res/Images/Pacman.png
+wall_path = res/Images/Walls.png

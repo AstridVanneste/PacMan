@@ -49,6 +49,8 @@ namespace Game
 
 		const shared_ptr<Pacman> getPacman() noexcept;
 
+		void handleGhostCollision() noexcept;
+
 		void start();
 		bool isRunning();
 

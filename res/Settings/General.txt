@@ -12,9 +12,3 @@ max_lives = 3
 # SPEED
 ghost_speed = 13
 pacman_speed = 10
-
-
-# PATHS
-ghost_path = res/Images/Ghost.png
-pacman_path = res/Images/Pacman.png
-wall_path = res/Images/Walls.png

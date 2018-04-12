@@ -40,7 +40,7 @@ namespace Game
 		this->running = true;
 
 		// load settings
-		Settings::Config::getInstance().setPath("res/Settings.txt");
+		Settings::Config::getInstance().addPath("res/Settings.txt");
 
 		//initialize game info
 		//TODO change arguments to values provided in settings
@@ -109,6 +109,11 @@ namespace Game
 				if(!this->arena->detectWallCollision(destination))
 				{
 					this->arena->moveGhost(i, destination);
+
+					if(this->arena->detectGhostCollision()  && (!Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE)))
+					{
+						this->handleGhostCollision();
+					}
 				}
 			}
 		}
@@ -129,11 +134,7 @@ namespace Game
 
 				if(this->arena->detectGhostCollision()  && (!Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE)))
 				{
-					this->gameInfo->decreaseLives();
-					if(this->gameInfo->getLives() <= 0)
-					{
-						cout << "GAME OVER" << endl;
-					}
+					this->handleGhostCollision();
 				}
 			}
 			else
@@ -156,6 +157,13 @@ namespace Game
 	const shared_ptr<GameInfo> Gamemanager::getGameInfo() noexcept
 	{
 		return this->gameInfo;
+	}
+
+	void Gamemanager::handleGhostCollision() noexcept
+	{
+		this->gameInfo->decreaseLives();
+
+		this->arena->getPacman()->respawn();
 	}
 }
 

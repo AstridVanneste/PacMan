@@ -40,7 +40,7 @@ public:
 
 	static Config& getInstance();
 
-	void setPath(const string& fname) noexcept;
+	void addPath(const string& fname) noexcept;
 
 	const bool keyExists(const string& key) noexcept;
 

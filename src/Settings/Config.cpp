@@ -28,7 +28,7 @@ namespace Settings
 		return instance;
 	}
 
-	void Config::setPath(const string& fname) noexcept
+	void Config::addPath(const string& fname) noexcept
 	{
 		this->fname = fname;
 		this->extractKeys();
