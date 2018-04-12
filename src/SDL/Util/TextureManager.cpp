@@ -8,6 +8,9 @@
 #include "TextureManager.h"
 #include "TextureManaging.h"
 #include "../../Settings/Config.h"
+#include <cstring>
+#include <string>
+using namespace std;
 
 namespace SDL
 {
@@ -37,11 +40,9 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::WALL_PATH))
 			{
-				//cout << "asking for wall path" << endl;
-				//char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::WALL_PATH);
-				//cout << "WALLS PATH = [" << path << "]" << endl;
-				//this->walls = createTexture(path, this->renderer);
-				this->walls = createTexture("res/Images/Walls.png", this->renderer);
+				cout << "Wall texture created" << endl;
+				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::WALL_PATH);
+				this->walls = createTexture(path.c_str(), renderer);
 			}
 		}
 		return this->walls;
@@ -53,9 +54,9 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::GHOST_PATH))
 			{
-				//char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::GHOST_PATH);
-				//this->ghosts = createTexture(path, renderer);
-				this->ghosts = createTexture("res/Images/Ghost.png", this->renderer);
+				cout << "Ghost texture created" << endl;
+				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::GHOST_PATH);
+				this->ghosts = createTexture(path.c_str(), renderer);
 			}
 		}
 		return this->ghosts;
@@ -67,12 +68,11 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::PACMAN_PATH))
 			{
-				//char* path = Settings::Config::getInstance().getValueOfKey<char*>(Settings::PACMAN_PATH);
-				//this->pacman = createTexture(path, renderer);
-				this->pacman = createTexture("res/Images/Pacman.png", this->renderer);
+				cout << "Pacman texture created" << endl;
+				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::PACMAN_PATH);
+				this->pacman = createTexture(path.c_str(), renderer);
 			}
 		}
-
 		return this->pacman;
 	}
 
