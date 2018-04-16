@@ -93,6 +93,10 @@ void Event_Handler::keyDown(shared_ptr<Event> event) noexcept
 		Gamemanager::getInstance().getPacman()->setNextDirection(Util::RIGHT);
 		//cout << "KEY RIGHT" << endl;
 	}
+	else if(subtype == "ESCAPE")
+	{
+		cout << "ESCAPE" << endl;
+	}
 }
 
 } /* namespace SDL */

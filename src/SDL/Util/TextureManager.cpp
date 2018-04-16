@@ -40,7 +40,7 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::WALL_PATH))
 			{
-				cout << "Wall texture created" << endl;
+				//cout << "Wall texture created" << endl;
 				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::WALL_PATH);
 				this->walls = createTexture(path.c_str(), renderer);
 			}
@@ -54,7 +54,7 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::GHOST_PATH))
 			{
-				cout << "Ghost texture created" << endl;
+				//cout << "Ghost texture created" << endl;
 				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::GHOST_PATH);
 				this->ghosts = createTexture(path.c_str(), renderer);
 			}
@@ -68,7 +68,7 @@ namespace SDL
 		{
 			if(Settings::Config::getInstance().keyExists(Settings::PACMAN_PATH))
 			{
-				cout << "Pacman texture created" << endl;
+				//cout << "Pacman texture created" << endl;
 				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::PACMAN_PATH);
 				this->pacman = createTexture(path.c_str(), renderer);
 			}

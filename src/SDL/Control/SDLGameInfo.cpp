@@ -33,9 +33,9 @@ SDL_GameInfo::~SDL_GameInfo()
 
 const void SDL_GameInfo::visualize()
 {
-	cout << "====================================================================================" << endl;
-	this->visualizeScore();
-	this->visualizeLives();
+	//cout << "====================================================================================" << endl;
+	//this->visualizeScore();
+	//this->visualizeLives();
 
 	if(this->gameState == Game::PAUSED)
 	{

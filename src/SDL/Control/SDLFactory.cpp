@@ -11,7 +11,7 @@
 #include "../Entities/SDLWall.h"
 #include "../Entities/SDLPacman.h"
 #include "../Util/SDLDestroyShared.h"
-#include "SDLEventHandler.h"
+#include "../Events/SDLEventHandler.h"
 #include "SDLGameInfo.h"
 using namespace std;
 

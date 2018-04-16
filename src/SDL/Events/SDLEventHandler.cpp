@@ -64,7 +64,11 @@ namespace SDL
 				case SDLK_DOWN:
 					subtype = "DOWN";
 					break;
+				case SDLK_ESCAPE:
+					subtype = "ESC";
+					break;
 				default:
+					subtype = "UNKNOWN";
 					break;
 				}
 				break;
