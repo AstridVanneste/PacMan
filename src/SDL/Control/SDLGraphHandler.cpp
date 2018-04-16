@@ -6,6 +6,7 @@
  */
 
 #include <vector>
+#include <SDL2/SDL_TTF.h>
 #include "SDLGraphHandler.h"
 #include "../../Game/Control/Gamemanager.h"
 #include "../Util/TextureManager.h"
@@ -56,14 +57,24 @@ namespace SDL
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
-			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.y * ENTITY_WIDTH, size.x* ENTITY_HEIGHT, SDL_WINDOW_SHOWN));
+			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.y * ENTITY_WIDTH, size.x* ENTITY_HEIGHT + ARENA_OFFSET, SDL_WINDOW_SHOWN));
 			this->renderer = SDL_shared<SDL_Renderer>(SDL_CreateRenderer(window.get(), -1, 0));
-
-			if(this->window != NULL && this->renderer != NULL)
+			if(TTF_Init()==0)
 			{
-				TextureManager::getInstance().setRenderer(this->renderer);
-				return true;
+				if(this->window != NULL && this->renderer != NULL)
+				{
+					TextureManager::getInstance().setRenderer(this->renderer);
+					return true;
+				}
 			}
+			else
+			{
+				cout << "TTF not properly initialized!" << endl;
+			}
+		}
+		else
+		{
+			cout << "SDL not properly initialized!" << endl;
 		}
 		return false;
 	}
@@ -91,14 +102,11 @@ namespace SDL
 		return true;
 	}
 
-	bool SDL_Graph_Handler::visualizeMap()
+	void SDL_Graph_Handler::quit()
 	{
-		return true;
-	}
-
-	bool SDL_Graph_Handler::visualizeComponent()
-	{
-		return true;
+		// TODO solve error with TTF_quit()
+		//TTF_Quit();
+		SDL_Quit();
 	}
 }
 

@@ -77,7 +77,7 @@
                                     									
                                     <listOptionValue builtIn="false" value="sdl2_image"/>
                                     									
-                                    <listOptionValue builtIn="false" value="sdl2_ttf.dll"/>
+                                    <listOptionValue builtIn="false" value="sdl2_ttf"/>
                                     								
                                 </option>
                                 								

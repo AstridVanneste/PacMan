@@ -1,5 +1,6 @@
 #include <memory>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 using namespace std;
 
 //https://blog.galowicz.de/2016/02/21/automatic_resource_release_with_sdl/
@@ -25,13 +26,18 @@ namespace SDL
 		SDL_DestroyTexture(texture);
 	}
 
+	static void SDL_Del(TTF_Font* font)
+	{
+		TTF_CloseFont(font);
+	}
+
 	template <typename T>
 	shared_ptr<T> SDL_shared(T *t)
 	{
 		return std::shared_ptr<T>(t, [](T *t)
-				{
-					SDL_Del(t);
-				});
+			{
+				SDL_Del(t);
+			});
 	}
 
 }

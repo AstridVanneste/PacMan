@@ -8,6 +8,9 @@
 #include "TextureManager.h"
 #include "TextureManaging.h"
 #include "../../Settings/Config.h"
+#include "SDLDestroyShared.h"
+#include "SDLDestroyer.h"
+#include "../../Settings/Config.h"
 #include <cstring>
 #include <string>
 using namespace std;
@@ -42,7 +45,7 @@ namespace SDL
 			{
 				//cout << "Wall texture created" << endl;
 				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::WALL_PATH);
-				this->walls = createTexture(path.c_str(), renderer);
+				this->walls = createTexture(path.c_str(), this->renderer);
 			}
 		}
 		return this->walls;
@@ -56,7 +59,7 @@ namespace SDL
 			{
 				//cout << "Ghost texture created" << endl;
 				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::GHOST_PATH);
-				this->ghosts = createTexture(path.c_str(), renderer);
+				this->ghosts = createTexture(path.c_str(), this->renderer);
 			}
 		}
 		return this->ghosts;
@@ -70,10 +73,28 @@ namespace SDL
 			{
 				//cout << "Pacman texture created" << endl;
 				string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::PACMAN_PATH);
-				this->pacman = createTexture(path.c_str(), renderer);
+				this->pacman = createTexture(path.c_str(), this->renderer);
 			}
 		}
 		return this->pacman;
+	}
+
+	shared_ptr<SDL_Texture> TextureManager::getText(string text) noexcept
+	{
+		if(this->font.get() == nullptr)
+		{
+			string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::FONT_PATH);
+			int size = Settings::Config::getInstance().getValueOfKey<int>(Settings::FONT_SIZE);
+			this->font = SDL_shared<TTF_Font>(TTF_OpenFont(path.c_str(), size));
+		}
+
+		SDL_Color color = {0, 0, 0, 0};
+
+		unique_ptr<SDL_Surface, SDL_Destroyer> surface(TTF_RenderText_Solid(font.get(), text.c_str(), color));
+
+		shared_ptr<SDL_Texture> texture = SDL_shared<SDL_Texture>(SDL_CreateTextureFromSurface(this->renderer.get(), surface.get()));
+
+		return texture;
 	}
 
 } /* namespace Game */

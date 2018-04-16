@@ -1,7 +1,17 @@
 # Settings necessary to display the graphics of the game.
 
 
-# PATHS
+# BACKGROUND COLOR
+b_r = 255;
+b_g = 255;
+b_b = 255;
+b_a = 0;
+
+# IMAGES
 ghost_path = res/Images/Ghost.png
 pacman_path = res/Images/Pacman.png
 wall_path = res/Images/Walls.png
+
+# FONTS
+font_path = res/Fonts/TerminusTTF.ttf
+font_size = 12

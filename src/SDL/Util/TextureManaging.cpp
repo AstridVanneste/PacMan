@@ -38,8 +38,8 @@ namespace SDL
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
 		rect->h = ENTITY_HEIGHT;
 		rect->w = ENTITY_WIDTH;
-		rect->x = location.y * ENTITY_HEIGHT;
-		rect->y = location.x * ENTITY_WIDTH;
+		rect->x = location.y * ENTITY_WIDTH;
+		rect->y = location.x * ENTITY_HEIGHT + ARENA_OFFSET;
 		return rect;
 	}
 
@@ -90,6 +90,17 @@ namespace SDL
 		rect->w = ENTITY_WIDTH;
 		rect->x = location.y * (ENTITY_HEIGHT + 1);
 		rect->y = location.x * (ENTITY_WIDTH + 1);
+		return rect;
+	}
+
+	unique_ptr<SDL_Rect> createTextRect(Util::Location location)
+	{
+		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
+		rect->h = TEXT_HEIGHT;
+		rect->w = TEXT_WIDTH;
+		rect->x = location.y;
+		rect->y = location.x;
+
 		return rect;
 	}
 }

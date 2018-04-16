@@ -47,7 +47,7 @@ namespace Game
 
 		//initialize game info
 		//TODO change arguments to values provided in settings
-		this->gameInfo = this->factory->createGameInfo(0,3,RUNNING);
+		this->gameInfo = this->factory->createGameInfo(0,3, NOT_STARTED);
 
 		//initialize game arena
 		this->arena->loadFromFile("res/Maps/arena3.txt");
@@ -60,6 +60,8 @@ namespace Game
 
 		cout << "Start run()" << endl;
 		this->run();
+
+		this->factory->getGraphicsHandler().quit();
 	}
 
 	void Gamemanager::run()
@@ -74,7 +76,10 @@ namespace Game
 			end = this->eventHandler->handleEvents();
 
 			//update positions
-			this->update();
+			if(this->gameInfo->getGameState() == RUNNING)
+			{
+				this->update();
+			}
 
 			//visualize
 			this->factory->getGraphicsHandler().visualizeAll();

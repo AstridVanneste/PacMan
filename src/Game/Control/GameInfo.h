@@ -10,7 +10,7 @@
 
 namespace Game
 {
-	enum GameState{RUNNING, PAUSED, GAME_OVER};
+	enum GameState{RUNNING, PAUSED, GAME_OVER, NOT_STARTED};
 
 	const int DEFAULT_LIVES = 3;
 
@@ -36,6 +36,7 @@ namespace Game
 
 		const GameState getGameState() noexcept;
 		void setGameState(GameState gameState) noexcept;
+		void togglePause() noexcept;
 
 		const virtual void visualize()=0;
 	};

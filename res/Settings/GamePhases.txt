@@ -1,0 +1,5 @@
+# TIMES FOR THE PHASES OF THE GHOST
+
+scatter_time = 7
+chase_time = 15
+flee_time = 10

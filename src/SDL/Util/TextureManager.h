@@ -10,6 +10,7 @@
 
 #include <memory>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "../../Util/Direction.h"
 using namespace std;
@@ -27,6 +28,8 @@ private:
 	shared_ptr<SDL_Texture> pacman;
 	shared_ptr<SDL_Texture> dot;
 
+	shared_ptr<TTF_Font> font;
+
 public:
 	TextureManager();
 	TextureManager(shared_ptr<SDL_Renderer> renderer);
@@ -39,6 +42,8 @@ public:
 	shared_ptr<SDL_Texture> getBackground() noexcept;
 	shared_ptr<SDL_Texture> getGhost() noexcept;
 	shared_ptr<SDL_Texture> getPacman() noexcept;
+
+	shared_ptr<SDL_Texture> getText(string text) noexcept;
 };
 
 } /* namespace Game */

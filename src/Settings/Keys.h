@@ -23,10 +23,21 @@ namespace Settings
 	// POINTS
 	const string DOT_VALUE = "dot_value";
 
-	// PATHS
+	// BACKGROUND COLOR
+	// TODO use!
+	const string B_R = "b_r";
+	const string B_G = "b_g";
+	const string B_B = "b_b";
+	const string B_A = "b_a";
+
+	// IMAGES
 	const string GHOST_PATH = "ghost_path";
 	const string PACMAN_PATH = "pacman_path";
 	const string WALL_PATH = "wall_path";
+
+	// FONTS
+	const string FONT_PATH = "font_path";
+	const string FONT_SIZE = "font_size";
 }
 
 

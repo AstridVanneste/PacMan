@@ -100,7 +100,7 @@ namespace Settings
 		}
 		else
 		{
-			cout << "CFG: Can only have unique key names!\n" << endl;
+			cout << "Settings: Can only have unique key names! (" << key << ") \n" << endl;
 		}
 	}
 
@@ -108,7 +108,7 @@ namespace Settings
 	{
 		if(line.find('=') == line.npos)
 		{
-			cout << "CFG: Couldn't find seperator on line " << lineNo << endl;
+			cout << "Settings: Couldn't find seperator on line " << lineNo << endl;
 		}
 		else
 		{

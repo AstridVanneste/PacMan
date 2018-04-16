@@ -6,7 +6,6 @@
  */
 
 #include "SDLEventHandler.h"
-#include "../../Game/Events/Event.h"
 #include <memory>
 #include <SDL2/SDL.h>
 #include <iostream>
@@ -37,38 +36,38 @@ namespace SDL
 		SDL_Event event;
 		while(SDL_PollEvent(&event))
 		{
-			EventType type;
+			Game::EventType type;
 			string subtype;
 			switch(event.type)
 			{
 			case SDL_QUIT:
-				type = QUIT;
+				type = Game::QUIT;
 				break;
 			case SDL_KEYUP:
-				type = KEY_UP;
+				type = Game::KEY_UP;
 				break;
 			case SDL_KEYDOWN:
-				type = KEY_DOWN;
+				type = Game::KEY_DOWN;
 				//TODO change to constants?
 				switch(event.key.keysym.sym)
 				{
 				case SDLK_LEFT:
-					subtype = "LEFT";
+					subtype = Game::LEFT_K;
 					break;
 				case SDLK_RIGHT:
-					subtype = "RIGHT";
+					subtype = Game::RIGHT_K;
 					break;
 				case SDLK_UP:
-					subtype = "UP";
+					subtype = Game::UP_K;
 					break;
 				case SDLK_DOWN:
-					subtype = "DOWN";
+					subtype = Game::DOWN_K;
 					break;
 				case SDLK_ESCAPE:
-					subtype = "ESC";
+					subtype = Game::ESCAPE_K;
 					break;
 				default:
-					subtype = "UNKNOWN";
+					subtype = Game::UNKNOWN_K;
 					break;
 				}
 				break;

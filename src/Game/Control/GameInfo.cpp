@@ -14,7 +14,7 @@ namespace Game
 	{
 		this->lives = DEFAULT_LIVES;
 		this->score = 0;
-		this->gameState = RUNNING;
+		this->gameState = NOT_STARTED;
 	}
 
 	GameInfo::GameInfo(const GameInfo& gi)
@@ -63,6 +63,10 @@ namespace Game
 	void GameInfo::decreaseLives() noexcept
 	{
 		this->lives--;
+		if(this->lives <= 0)
+		{
+			this->gameState = GAME_OVER;
+		}
 	}
 
 	const GameState GameInfo::getGameState() noexcept
@@ -73,6 +77,18 @@ namespace Game
 	void GameInfo::setGameState(GameState gameState) noexcept
 	{
 		this->gameState = gameState;
+	}
+
+	void GameInfo::togglePause() noexcept
+	{
+		if(this->gameState == PAUSED)
+		{
+			this->gameState = RUNNING;
+		}
+		else if(this->gameState == RUNNING)
+		{
+			this->gameState = PAUSED;
+		}
 	}
 
 } /* namespace Game */

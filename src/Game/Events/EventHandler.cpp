@@ -73,30 +73,40 @@ void Event_Handler::keyDown(shared_ptr<Event> event) noexcept
 {
 	string subtype = event->getSubtype();
 
-	if(subtype == "UP")
+	if(Gamemanager::getInstance().getGameInfo()->getGameState() == NOT_STARTED)
 	{
-		Gamemanager::getInstance().getPacman()->setNextDirection(Util::UP);
-		//cout << "KEY UP" << endl;
+		Gamemanager::getInstance().getGameInfo()->setGameState(RUNNING);
 	}
-	else if (subtype == "DOWN")
+
+	if(Gamemanager::getInstance().getGameInfo()->getGameState() != PAUSED)
 	{
-		Gamemanager::getInstance().getPacman()->setNextDirection(Util::DOWN);
-		//cout << "KEY DOWN" << endl;
+		if(subtype == UP_K)
+		{
+			Gamemanager::getInstance().getPacman()->setNextDirection(Util::UP);
+			//cout << "KEY UP" << endl;
+		}
+		else if (subtype == DOWN_K)
+		{
+			Gamemanager::getInstance().getPacman()->setNextDirection(Util::DOWN);
+			//cout << "KEY DOWN" << endl;
+		}
+		else if(subtype == LEFT_K)
+		{
+			Gamemanager::getInstance().getPacman()->setNextDirection(Util::LEFT);
+			//cout << "KEY LEFT" << endl;
+		}
+		else if(subtype == RIGHT_K)
+		{
+			Gamemanager::getInstance().getPacman()->setNextDirection(Util::RIGHT);
+			//cout << "KEY RIGHT" << endl;
+		}
 	}
-	else if(subtype == "LEFT")
+	if(subtype == ESCAPE_K)
 	{
-		Gamemanager::getInstance().getPacman()->setNextDirection(Util::LEFT);
-		//cout << "KEY LEFT" << endl;
+		Gamemanager::getInstance().getGameInfo()->togglePause();
+		//cout << subtype << endl;
 	}
-	else if(subtype == "RIGHT")
-	{
-		Gamemanager::getInstance().getPacman()->setNextDirection(Util::RIGHT);
-		//cout << "KEY RIGHT" << endl;
-	}
-	else if(subtype == "ESCAPE")
-	{
-		cout << "ESCAPE" << endl;
-	}
+
 }
 
 } /* namespace SDL */

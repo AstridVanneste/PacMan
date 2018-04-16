@@ -8,11 +8,24 @@
 #ifndef GAME_EVENTS_EVENTTYPE_H_
 #define GAME_EVENTS_EVENTTYPE_H_
 
-enum EventType
+#include <string>
+using namespace std;
+
+namespace Game
 {
-	KEY_UP, KEY_DOWN, WINDOW, MOUSE, QUIT
-};
+	enum EventType
+	{
+		KEY_UP, KEY_DOWN, WINDOW, MOUSE, QUIT
+	};
 
+	const string LEFT_K = "LEFT";
+	const string RIGHT_K = "RIGHT";
+	const string UP_K = "UP";
+	const string DOWN_K = "DOWN";
 
+	const string ESCAPE_K = "ESCAPE";
+
+	const string UNKNOWN_K = "UNKNOWN";
+}
 
 #endif /* GAME_EVENTS_EVENTTYPE_H_ */

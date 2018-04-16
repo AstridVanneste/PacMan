@@ -29,6 +29,7 @@ namespace SDL
 
 	public:
 		//TODO const and noexcept markings
+		//TODO is singleton usefull?
 		virtual ~SDL_Graph_Handler();
 
 		static SDL_Graph_Handler& getInstance();
@@ -37,11 +38,10 @@ namespace SDL
 		shared_ptr<SDL_Window> getWindow();
 
 		bool init(Util::Location size);
+		void quit() override;
 		void delay(int time);
 		unsigned int getTime();
 		const bool visualizeAll() override;
-		bool visualizeMap();
-		bool visualizeComponent();
 	};
 }
 
