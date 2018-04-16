@@ -28,6 +28,7 @@ namespace SDL
 		SDL_Pacman& operator=(const SDL_Pacman& p) noexcept;
 
 		const void visualize();
+		bool update() noexcept override;
 	};
 
 } /* namespace Game */

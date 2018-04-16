@@ -38,6 +38,9 @@ namespace Settings
 	// FONTS
 	const string FONT_PATH = "font_path";
 	const string FONT_SIZE = "font_size";
+
+	// ENTITY SIZE
+	//const string ENTITY_HEIGHT = "entity_height";
 }
 
 

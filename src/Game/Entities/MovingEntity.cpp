@@ -20,7 +20,7 @@ MovingEntity::MovingEntity()
 	this->direction = Util::UP;
 	this->nextDirection = this->direction;
 	this->speed = DEFAULT_SPEED;
-	this->offset = 0;
+	this->offset = this->speed/2;
 }
 
 MovingEntity::MovingEntity(const MovingEntity& me)
@@ -40,7 +40,7 @@ MovingEntity::MovingEntity(Util::Location location)
 	this->direction = Util::UP;
 	this->nextDirection = this->direction;
 	this->speed = DEFAULT_SPEED;
-	this->offset = 0;
+	this->offset = this->speed/2;
 }
 
 MovingEntity::~MovingEntity()

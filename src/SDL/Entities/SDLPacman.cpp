@@ -59,22 +59,6 @@ namespace SDL
 		//stuff
 		//cout << "visualize Pacman" << endl;
 
-		if(this->offset%(this->speed/2) == this->speed%(this->speed/2))
-		{
-			if((this->animationOffset >= MAX_ANIMATION && this->animationDirection) || (this->animationOffset <= 0 && !this->animationDirection))
-			{
-				this->animationDirection = !this->animationDirection;
-			}
-			else if(this->animationDirection)
-			{
-				this->animationOffset++;
-			}
-			else
-			{
-				this->animationOffset--;
-			}
-		}
-
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Util::Location imageOffset;
@@ -98,6 +82,29 @@ namespace SDL
 			cout << "Error when drawing image on screen" << endl;
 			cout << SDL_GetError() << endl;
 		}
+	}
+
+	bool SDL_Pacman::update() noexcept
+	{
+		bool ret = Game::MovingEntity::update();
+
+		if(this->offset%(this->speed/2) == this->speed%(this->speed/2))
+		{
+			if((this->animationOffset >= MAX_ANIMATION && this->animationDirection) || (this->animationOffset <= 0 && !this->animationDirection))
+			{
+				this->animationDirection = !this->animationDirection;
+			}
+			else if(this->animationDirection)
+			{
+				this->animationOffset++;
+			}
+			else
+			{
+				this->animationOffset--;
+			}
+		}
+
+		return ret;
 	}
 
 } /* namespace Game */

@@ -12,6 +12,7 @@
 #include "../Util/TextureManager.h"
 #include "../Util/SDLDestroyShared.h"
 #include "../Util/SDLUtil.h"
+#include "../../Settings/Config.h"
 
 namespace SDL
 {

@@ -1,5 +1,14 @@
 # Settings necessary to display the graphics of the game.
 
+# ENTITY SIZE
+entity_height = 32
+entity_width = 32
+
+arena_offset = 32
+
+# TEXT SIZE
+text_height = 24
+text_width = 100
 
 # BACKGROUND COLOR
 b_r = 255;
@@ -15,3 +24,4 @@ wall_path = res/Images/Walls.png
 # FONTS
 font_path = res/Fonts/TerminusTTF.ttf
 font_size = 12
+
