@@ -11,11 +11,13 @@
 #include <SDL2/SDL.h>
 #include <memory>
 #include <string>
+#include "../Util/SDLUtil.h"
 #include "../../Settings/Config.h"
 #include "../Util/SDLDestroyShared.h"
 #include "SDLGraphHandler.h"
 #include "../Util/TextureManager.h"
 #include "../Util/TextureManaging.h"
+#include "../../Game/Control/Gamemanager.h"
 using namespace std;
 
 namespace SDL
@@ -42,7 +44,6 @@ SDL_GameInfo::~SDL_GameInfo()
 
 const void SDL_GameInfo::visualize()
 {
-	//cout << "====================================================================================" << endl;
 	this->visualizeScore();
 	this->visualizeLives();
 
@@ -68,7 +69,7 @@ const void SDL_GameInfo::visualizeScore()
 	shared_ptr<SDL_Texture> tex  = TextureManager::getInstance().getText(text);
 
 	Util::Location location = {0, 0};
-	unique_ptr<SDL_Rect> dstR = createTextRect(location);
+	unique_ptr<SDL_Rect> dstR = createTextRect(location, text.size());
 
 	SDL_RenderCopy(renderer.get(), tex.get(), nullptr, dstR.get());
 
@@ -82,7 +83,7 @@ const void SDL_GameInfo::visualizeLives()
 	shared_ptr<SDL_Texture> tex  = TextureManager::getInstance().getText(text);
 
 	Util::Location location = {0, 150};
-	unique_ptr<SDL_Rect> dstR = createTextRect(location);
+	unique_ptr<SDL_Rect> dstR = createTextRect(location, text.size());
 
 	SDL_RenderCopy(renderer.get(), tex.get(), nullptr, dstR.get());
 }
@@ -93,8 +94,14 @@ const void SDL_GameInfo::visualizeStateText(const string& text)
 
 	shared_ptr<SDL_Texture> tex  = TextureManager::getInstance().getText(text);
 
-	Util::Location location = {150, 150};
-	unique_ptr<SDL_Rect> dstR = createTextRect(location);
+	Util::Location location = Game::Gamemanager::getInstance().getArena()->getSize();
+	location.x *= ENTITY_HEIGHT;
+	location.y *= ENTITY_WIDTH;
+	location.y -= TEXT_WIDTH*text.size() ;
+	location.x /= 2;
+	location.y /= 2;
+
+	unique_ptr<SDL_Rect> dstR = createTextRect(location, text.size());
 
 	SDL_RenderCopy(renderer.get(), tex.get(), nullptr, dstR.get());
 }

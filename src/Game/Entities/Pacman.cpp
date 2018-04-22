@@ -58,6 +58,7 @@ namespace Game {
 	void Pacman::respawn() noexcept
 	{
 		this->location = this->respawnPoint;
+		this->offset = this->speed/2;
 	}
 
 } /* namespace Game */

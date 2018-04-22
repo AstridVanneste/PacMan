@@ -24,7 +24,7 @@ namespace SDL
 	unique_ptr<SDL_Rect> createDstRect(Util::Location, int offset, int speed, Util::Direction direction);
 	unique_ptr<SDL_Rect> createSrcRect(Util::Location location);
 
-	unique_ptr<SDL_Rect> createTextRect(Util::Location location);
+	unique_ptr<SDL_Rect> createTextRect(Util::Location location, int length);
 }
 
 #endif /* SDL_ENTITIES_TEXTUREMANAGING_H_ */

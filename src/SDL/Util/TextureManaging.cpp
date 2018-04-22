@@ -93,11 +93,11 @@ namespace SDL
 		return rect;
 	}
 
-	unique_ptr<SDL_Rect> createTextRect(Util::Location location)
+	unique_ptr<SDL_Rect> createTextRect(Util::Location location, int length)
 	{
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
 		rect->h = TEXT_HEIGHT;
-		rect->w = TEXT_WIDTH;
+		rect->w = TEXT_WIDTH * length;
 		rect->x = location.y;
 		rect->y = location.x;
 
