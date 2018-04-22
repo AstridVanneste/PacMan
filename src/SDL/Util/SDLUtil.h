@@ -9,6 +9,7 @@ namespace SDL
 
 	const int ARENA_OFFSET = 32;
 
+	const int TEXT_OFFSET = 4;
 	const int TEXT_HEIGHT = 24;
 	const int TEXT_WIDTH = 7;
 }

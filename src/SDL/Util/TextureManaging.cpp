@@ -98,8 +98,8 @@ namespace SDL
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
 		rect->h = TEXT_HEIGHT;
 		rect->w = TEXT_WIDTH * length;
-		rect->x = location.y;
-		rect->y = location.x;
+		rect->x = location.y  + TEXT_OFFSET;
+		rect->y = location.x  + TEXT_OFFSET;
 
 		return rect;
 	}

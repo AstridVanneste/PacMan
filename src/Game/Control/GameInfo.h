@@ -10,7 +10,7 @@
 
 namespace Game
 {
-	enum GameState{RUNNING, PAUSED, GAME_OVER, NOT_STARTED};
+	enum GameState{RUNNING, PAUSED, GAME_OVER, NOT_STARTED, VICTORY};
 
 	const int DEFAULT_LIVES = 3;
 
@@ -19,12 +19,18 @@ namespace Game
 	protected:
 		int score;
 		int lives;
+		int dotsLeft;
 		GameState gameState;
 	public:
 		GameInfo();
 		GameInfo(const GameInfo& gi);
 		GameInfo(int score, int lives, GameState gameState);
 		virtual ~GameInfo();
+
+		GameInfo& operator=(const GameInfo& gi);
+
+		void setDotsLeft(int dotsLeft) noexcept;
+		void decreaseDotsLeft() noexcept;
 
 		const int getScore() noexcept;
 		void setScore(int score) noexcept;

@@ -1,7 +1,7 @@
 # Settings for Pacman Game
 
 # GOD MODE (not getting killed by ghosts)
-god_mode = 0
+god_mode = 1
 
 # POINTS
 dot_value = 10

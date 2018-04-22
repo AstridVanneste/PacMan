@@ -135,6 +135,7 @@ namespace Game
 				if(this->arena->getWall(destination)->getType() == DOT_WALL)
 				{
 					this->gameInfo->addScore(this->arena->getWall(destination)->getValue());
+					this->gameInfo->decreaseDotsLeft();
 					this->arena->getWall(destination)->setType(EMPTY_WALL);
 					this->arena->getWall(destination)->setValue(0);
 				}

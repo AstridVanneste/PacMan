@@ -15,7 +15,7 @@ namespace Game
 
 	ModeControl::ModeControl()
 	{
-		this->mode = CHASE;
+		this->mode = SCATTER;
 		this->phaseStartTime = Gamemanager::getInstance().getFactory()->getGraphicsHandler().getTime();
 	}
 
@@ -47,7 +47,7 @@ namespace Game
 			this->mode = this->toggleMode();
 		}
 
-		cout << "MODE = " << this->mode << endl;
+		//cout << "MODE = " << this->mode << endl;
 
 		return this->mode;
 	}

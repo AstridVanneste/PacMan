@@ -15,6 +15,7 @@ namespace Game
 		this->lives = DEFAULT_LIVES;
 		this->score = 0;
 		this->gameState = NOT_STARTED;
+		this->dotsLeft = 0;
 	}
 
 	GameInfo::GameInfo(const GameInfo& gi)
@@ -22,6 +23,7 @@ namespace Game
 		this->lives = gi.lives;
 		this->score = gi.score;
 		this->gameState = gi.gameState;
+		this->dotsLeft = gi.dotsLeft;
 	}
 
 	GameInfo::GameInfo(int score, int lives, GameState gameState)
@@ -29,10 +31,24 @@ namespace Game
 		this->lives = lives;
 		this->score = score;
 		this->gameState = gameState;
+		this->dotsLeft = 0;
 	}
 
 	GameInfo::~GameInfo()
 	{
+	}
+
+	GameInfo& GameInfo::operator =(const GameInfo& gi)
+	{
+		if(this != &gi)
+		{
+			this->lives = gi.lives;
+			this->score = gi.score;
+			this->gameState = gi.gameState;
+			this->dotsLeft = gi.dotsLeft;
+		}
+
+		return *this;
 	}
 
 	const int GameInfo::getScore() noexcept
@@ -81,13 +97,30 @@ namespace Game
 
 	void GameInfo::togglePause() noexcept
 	{
-		if(this->gameState == PAUSED)
+		switch(this->gameState)
 		{
+		case PAUSED:
 			this->gameState = RUNNING;
-		}
-		else if(this->gameState == RUNNING)
-		{
+			break;
+		case RUNNING:
 			this->gameState = PAUSED;
+			break;
+		default:
+			break;
+		}
+	}
+
+	void GameInfo::setDotsLeft(int dotsLeft) noexcept
+	{
+		this->dotsLeft = dotsLeft;
+	}
+
+	void GameInfo::decreaseDotsLeft() noexcept
+	{
+		this->dotsLeft--;
+		if(dotsLeft <= 0)
+		{
+			this->gameState = VICTORY;
 		}
 	}
 

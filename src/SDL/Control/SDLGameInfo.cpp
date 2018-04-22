@@ -47,18 +47,24 @@ const void SDL_GameInfo::visualize()
 	this->visualizeScore();
 	this->visualizeLives();
 
-	if(this->gameState == Game::PAUSED)
+	switch(this->gameState)
 	{
+	case Game::PAUSED:
 		this->visualizeStateText("PAUSED");
-	}
-	else if(this->gameState == Game::GAME_OVER)
-	{
+		break;
+	case Game::GAME_OVER:
 		this->visualizeStateText("GAME OVER!");
-	}
-	else if(this->gameState == Game::NOT_STARTED)
-	{
+		break;
+	case Game::NOT_STARTED:
 		this->visualizeStateText("PRESS ANY KEY TO START...");
+		break;
+	case Game::VICTORY:
+		this->visualizeStateText("VICTORY!");
+		break;
+	default:
+		break;
 	}
+
 }
 
 const void SDL_GameInfo::visualizeScore()

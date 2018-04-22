@@ -60,6 +60,8 @@ namespace Game
 		ifstream file;
 		file.open(path);
 
+		int numDots = 0;
+
 		if(file.is_open())
 		{
 			//cout << "file opened" << endl;
@@ -117,6 +119,7 @@ namespace Game
 						case '*':
 							//DOT
 							this->arena[i.x].emplace_back(factory->createWall(i, DOT_WALL, DEFAULT_DOT_VALUE));
+							numDots++;
 							//TODO add value of the DOT
 							break;
 						case 'U':
@@ -135,6 +138,8 @@ namespace Game
 
 			}
 			file.close();
+
+			Gamemanager::getInstance().getGameInfo()->setDotsLeft(numDots);
 			//cout << "file closed" << endl;
 		}
 		else
