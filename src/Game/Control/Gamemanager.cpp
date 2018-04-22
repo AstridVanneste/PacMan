@@ -51,14 +51,14 @@ namespace Game
 
 		//initialize game arena
 		this->arena->loadFromFile("res/Maps/arena3.txt");
-		cout << "Init graphics" << endl;
+		//cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init(this->arena->getSize());
 
 		// create event handler
 		this->eventHandler = this->factory->createEventHandler();
 
 
-		cout << "Start run()" << endl;
+		//cout << "Start run()" << endl;
 		this->run();
 
 		this->factory->getGraphicsHandler().quit();
@@ -67,7 +67,6 @@ namespace Game
 	void Gamemanager::run()
 	{
 		bool end = false;
-		shared_ptr<Ghost> ghost = this->factory->createGhost();
 		while(!end)
 		{
 			unsigned int startTime = this->factory->getGraphicsHandler().getTime();

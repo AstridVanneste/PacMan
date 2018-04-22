@@ -25,7 +25,7 @@ namespace Game
 		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
-			cout << "Ghost speed set to " << this->speed << endl;
+			//cout << "EMPTY CONSTRUCTOR: Ghost speed set to " << this->speed << endl;
 		}
 		this->createAI();
 	}
@@ -45,7 +45,7 @@ namespace Game
 		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
-			cout << "Ghost speed set to " << this->speed << endl;
+			//cout << "COPY CONSTRUCTOR: Ghost speed set to " << this->speed << endl;
 		}
 		this->type = type;
 		this->createAI();
@@ -58,7 +58,7 @@ namespace Game
 		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
-			cout << "Ghost speed set to " << this->speed << endl;
+			//cout << "REGULAR CONSTRUCTOR: Ghost speed set to " << this->speed << endl;
 		}
 		this->type = type;
 

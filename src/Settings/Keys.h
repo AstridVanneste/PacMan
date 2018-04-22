@@ -41,6 +41,11 @@ namespace Settings
 
 	// ENTITY SIZE
 	//const string ENTITY_HEIGHT = "entity_height";
+
+	// GAME PHASES
+	const string CHASE_TIME = "chase_time";
+	const string SCATTER_TIME = "scatter_time";
+	const string FLEE_TIME = "flee_time";
 }
 
 

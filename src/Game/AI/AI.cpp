@@ -17,14 +17,14 @@ namespace Game
 
 	AI::AI()
 	{
-		this->mode = SCATTER;
+		this->modeControl = make_shared<ModeControl>();
 		this->scatterTarget.x = 0;
 		this->scatterTarget.y = 0;
 	}
 
 	AI::AI(const AI& ai)
 	{
-		this->mode = ai.mode;
+		this->modeControl = ai.modeControl;
 		this->scatterTarget = ai.scatterTarget;
 	}
 
@@ -32,7 +32,7 @@ namespace Game
 	{
 		if(this != &ai)
 		{
-			this->mode = ai.mode;
+			this->modeControl = ai.modeControl;
 			this->scatterTarget = ai.scatterTarget;
 		}
 		return *this;
@@ -45,7 +45,7 @@ namespace Game
 	const Util::Direction AI::getNewDirection(const Util::Location& loc, Util::Direction direction) noexcept
 	{
 		Util::Location target;
-		switch(mode)
+		switch(this->modeControl->getMode())
 		{
 		case SCATTER:
 			target = this->scatterTarget;
@@ -85,7 +85,8 @@ namespace Game
 		//cout << "old direction = " << oldDirection << " and inverse = " << inverseDirection(oldDirection) << endl;
 
 		int distance;
-		if(this->mode != FLEE)
+		AImode mode = this->modeControl->getMode();
+		if(mode != FLEE)
 		{
 			distance = numeric_limits<int>::max();
 		}
@@ -100,7 +101,7 @@ namespace Game
 
 			//cout << directions->at(i) <<" -> distance = " << temp << endl;
 
-			if((temp < distance && this->mode != FLEE) || (temp > distance && this->mode == FLEE))
+			if((temp < distance && mode != FLEE) || (temp > distance && mode == FLEE))
 			{
 				if(directions->at(i) != inverseDirection(oldDirection))
 				{

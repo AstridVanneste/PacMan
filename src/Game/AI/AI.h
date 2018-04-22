@@ -8,16 +8,18 @@
 #ifndef GAME_ENTITIES_AI_H_
 #define GAME_ENTITIES_AI_H_
 
+#include <memory>
 #include "../../Util/Direction.h"
 #include "../../Util/Location.h"
+#include "ModeControl.h"
 
 namespace Game
 {
-	enum AImode{CHASE, SCATTER, FLEE};
+
 	class AI
 	{
 	private:
-		AImode mode;
+		shared_ptr<ModeControl> modeControl;
 
 		const virtual Util::Location getChaseTarget(const Util::Location& loc) noexcept =0;
 		const Util::Location getFrightenedTarget() noexcept;

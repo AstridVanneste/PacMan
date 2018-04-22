@@ -54,7 +54,7 @@ namespace Game
 
 	bool Arena::loadFromFile(string path)
 	{
-		cout << "started loading from file" << endl;
+		//cout << "started loading from file" << endl;
 
 		shared_ptr<AbstractFactory> factory = Gamemanager::getInstance().getFactory();
 		ifstream file;
@@ -62,7 +62,7 @@ namespace Game
 
 		if(file.is_open())
 		{
-			cout << "file opened" << endl;
+			//cout << "file opened" << endl;
 			Util::Location i;
 			i.x = 0;
 			i.y = 0;
@@ -135,7 +135,7 @@ namespace Game
 
 			}
 			file.close();
-			cout << "file closed" << endl;
+			//cout << "file closed" << endl;
 		}
 		else
 		{
@@ -151,7 +151,7 @@ namespace Game
 	void Arena::setWallTypes()
 	{
 		//cout << "start setting wall types" << endl;
-		cout << "Map size x = " << this->arena.size() << " y = " << this->arena[0].size() << endl;
+		//cout << "Map size x = " << this->arena.size() << " y = " << this->arena[0].size() << endl;
 
 		Util::Location i;
 		for ( i.x = 0; i.x < this->arena.size(); i.x++)

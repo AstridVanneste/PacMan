@@ -189,6 +189,36 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release.1654777292" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release">
                                 								
+                                <option id="gnu.cpp.link.option.libs.235854386" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+                                    									
+                                    <listOptionValue builtIn="false" value="mingw32"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="sdl2main"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="sdl2"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="sdl2_image"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="sdl2_ttf"/>
+                                    								
+                                </option>
+                                								
+                                <option id="gnu.cpp.link.option.other.610529813" superClass="gnu.cpp.link.option.other" useByScannerDiscovery="false" valueType="stringList">
+                                    									
+                                    <listOptionValue builtIn="false" value="libjpeg-9.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libfreetype-6.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libpng16-16.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libtiff-5.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libwebp-7.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="zlib1.dll"/>
+                                    								
+                                </option>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1370112245" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
                                     <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
