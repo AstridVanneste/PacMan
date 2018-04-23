@@ -36,7 +36,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the window used by this manager.
 	 */
-	shared_ptr<SDL_Window> SDL_Graph_Handler::getWindow()
+	const shared_ptr<SDL_Window> SDL_Graph_Handler::getWindow() noexcept
 	{
 		return this->window;
 	}
@@ -44,7 +44,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the renderer used by this manager.
 	 */
-	shared_ptr<SDL_Renderer> SDL_Graph_Handler::getRenderer()
+	const shared_ptr<SDL_Renderer> SDL_Graph_Handler::getRenderer() noexcept
 	{
 		return this->renderer;
 	}
@@ -54,7 +54,7 @@ namespace SDL
 	 * Initializes everything necessary to start using SDL and the specific
 	 * window and renderer of this manager.
 	 */
-	bool SDL_Graph_Handler::init(Util::Location size)
+	bool SDL_Graph_Handler::init(Util::Location size) noexcept
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
@@ -80,12 +80,12 @@ namespace SDL
 		return false;
 	}
 
-	void SDL_Graph_Handler::delay(int time)
+	void SDL_Graph_Handler::delay(int time) noexcept
 	{
 		SDL_Delay(time);
 	}
 
-	unsigned int SDL_Graph_Handler::getTime()
+	unsigned int SDL_Graph_Handler::getTime() noexcept
 	{
 		return SDL_GetTicks();
 	}
@@ -103,7 +103,7 @@ namespace SDL
 		return true;
 	}
 
-	void SDL_Graph_Handler::quit()
+	void SDL_Graph_Handler::quit() noexcept
 	{
 		// TODO solve error with TTF_quit()
 		//TTF_Quit();

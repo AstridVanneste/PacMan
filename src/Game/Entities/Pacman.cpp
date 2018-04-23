@@ -13,7 +13,6 @@ namespace Game {
 	Pacman::Pacman()
 	:MovingEntity()
 	{
-		this->objectType = PACMAN;
 		if(Settings::Config::getInstance().keyExists(Settings::PACMAN_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::PACMAN_SPEED);
@@ -25,14 +24,12 @@ namespace Game {
 	Pacman::Pacman(const Pacman& pacman)
 	:MovingEntity(pacman)
 	{
-		this->objectType = PACMAN;
 		this->respawnPoint = pacman.respawnPoint;
 	}
 
 	Pacman::Pacman(const Util::Location& location, const Util::Location& respawnPoint)
 	:MovingEntity(location)
 	{
-		this->objectType = PACMAN;
 		if(Settings::Config::getInstance().keyExists(Settings::PACMAN_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::PACMAN_SPEED);
@@ -55,10 +52,6 @@ namespace Game {
 		return *this;
 	}
 
-	void Pacman::respawn() noexcept
-	{
-		this->location = this->respawnPoint;
-		this->offset = this->speed/2;
-	}
+
 
 } /* namespace Game */

@@ -63,6 +63,9 @@ namespace Game
 
 		const bool detectWallCollision(Util::Location& destination) noexcept;
 		const bool detectGhostCollision() noexcept;
+		void handleGhostCollision() noexcept;
+
+		void setFleeMode() noexcept;
 
 
 		void visualize();

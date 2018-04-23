@@ -34,6 +34,7 @@ namespace Game
 	const char LURD = WALL_LEFT | WALL_UP | WALL_RIGHT | WALL_DOWN;		//1111		15
 
 	const char DOT_WALL = 17;
+	const char POWER_PELLET = 18;
 
 
 

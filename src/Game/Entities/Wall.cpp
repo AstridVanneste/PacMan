@@ -14,7 +14,6 @@ namespace Game
 	Wall::Wall()
 	:Entity()
 	{
-		this->objectType = WALL;
 		this->passable = false;
 		this->type = UNDEFINED_WALL;
 		this->value = 0;
@@ -30,7 +29,6 @@ namespace Game
 	Wall::Wall(const Util::Location& location)
 	:Entity(location)
 	{
-		this->objectType = WALL;
 		this->passable = false;
 		this->type = UNDEFINED_WALL;
 		this->value = 0;
@@ -39,9 +37,6 @@ namespace Game
 	Wall::Wall(char type)
 	:Entity()
 	{
-		this->objectType = WALL;
-
-
 		Util::Location location;
 		location.x = 0;
 		location.y = 0;
@@ -58,7 +53,6 @@ namespace Game
 
 	Wall::Wall(const Util::Location& location, char type)
 	{
-		this->objectType = WALL;
 		if(type != EMPTY_WALL && type != DOT_WALL)
 		{
 			this->passable = false;
@@ -71,8 +65,7 @@ namespace Game
 
 	Wall::Wall(const Util::Location& location, char type, int value)
 	{
-		this->objectType = WALL;
-		if(type != EMPTY_WALL && type != DOT_WALL)
+		if(type != EMPTY_WALL && type != DOT_WALL && type != POWER_PELLET)
 		{
 			this->passable = false;
 		}
@@ -101,7 +94,7 @@ namespace Game
 	void Wall::setType(char type) noexcept
 	{
 		this->type = type;
-		if(this->type == EMPTY_WALL || this->type == DOT_WALL)
+		if(this->type == EMPTY_WALL || this->type == DOT_WALL || this->type == POWER_PELLET)
 		{
 			this->passable = true;
 		}

@@ -17,7 +17,7 @@ b_b = 255;
 b_a = 0;
 
 # IMAGES
-ghost_path = res/Images/Ghost.png
+ghost_path = res/Images/Ghosts.png
 pacman_path = res/Images/Pacman.png
 wall_path = res/Images/Walls.png
 

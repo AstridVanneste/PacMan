@@ -22,6 +22,7 @@ namespace Game
 		bool moving;
 		int speed;						// amount of frames it takes to move from one place to the next
 		int offset;						// amount of frames that passed since last movement
+		Util::Location respawnPoint;
 
 	public:
 		MovingEntity();
@@ -45,6 +46,8 @@ namespace Game
 		const Util::Location getNextLocation(Util::Location limits) noexcept;
 
 		void setMoving(bool moving) noexcept;
+
+		virtual void respawn() noexcept;
 	};
 
 } /* namespace Game */

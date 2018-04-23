@@ -48,7 +48,6 @@ namespace SDL
 				break;
 			case SDL_KEYDOWN:
 				type = Game::KEY_DOWN;
-				//TODO change to constants?
 				switch(event.key.keysym.sym)
 				{
 				case SDLK_LEFT:

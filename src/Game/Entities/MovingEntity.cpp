@@ -21,6 +21,7 @@ MovingEntity::MovingEntity()
 	this->nextDirection = this->direction;
 	this->speed = DEFAULT_SPEED;
 	this->offset = this->speed/2;
+	this->respawnPoint = this->location;
 }
 
 MovingEntity::MovingEntity(const MovingEntity& me)
@@ -31,6 +32,7 @@ MovingEntity::MovingEntity(const MovingEntity& me)
 	this->nextDirection = me.nextDirection;
 	this->speed = me.speed;
 	this->offset = me.offset;
+	this->respawnPoint = me.respawnPoint;
 }
 
 MovingEntity::MovingEntity(Util::Location location)
@@ -41,6 +43,7 @@ MovingEntity::MovingEntity(Util::Location location)
 	this->nextDirection = this->direction;
 	this->speed = DEFAULT_SPEED;
 	this->offset = this->speed/2;
+	this->respawnPoint = this->location;
 }
 
 MovingEntity::~MovingEntity()
@@ -57,6 +60,7 @@ MovingEntity& MovingEntity::operator=(const MovingEntity& me)
 		this->nextDirection = me.nextDirection;
 		this->speed = me.speed;
 		this->offset = me.offset;
+		this->respawnPoint = me.respawnPoint;
 	}
 	return *this;
 }
@@ -175,6 +179,12 @@ const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexce
 void MovingEntity::setMoving(bool moving) noexcept
 {
 	this->moving = moving;
+}
+
+void MovingEntity::respawn() noexcept
+{
+	this->location = this->respawnPoint;
+	this->offset = this->speed/2;
 }
 
 } /* namespace Game */

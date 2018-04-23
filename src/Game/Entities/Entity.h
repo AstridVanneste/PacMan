@@ -22,7 +22,6 @@ namespace Game
 
 	protected:
 		Util::Location location;
-		char objectType;
 		bool passable;
 	public:
 		Entity();
@@ -33,9 +32,6 @@ namespace Game
 		Entity& operator= (const Entity& e);
 
 		const virtual void visualize()=0;
-
-		const char getObjectType() noexcept;
-		void setObjectType(char type) noexcept;
 
 		const Util::Location getLocation() noexcept;
 		void setLocation(const Util::Location& location) noexcept;

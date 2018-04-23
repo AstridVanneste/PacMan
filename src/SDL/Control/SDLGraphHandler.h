@@ -28,19 +28,17 @@ namespace SDL
 		SDL_Graph_Handler* operator= (const SDL_Graph_Handler& h) = delete;
 
 	public:
-		//TODO const and noexcept markings
-		//TODO is singleton usefull?
 		virtual ~SDL_Graph_Handler();
 
 		static SDL_Graph_Handler& getInstance();
 
-		shared_ptr<SDL_Renderer> getRenderer();
-		shared_ptr<SDL_Window> getWindow();
+		const shared_ptr<SDL_Renderer> getRenderer() noexcept;
+		const shared_ptr<SDL_Window> getWindow() noexcept;
 
-		bool init(Util::Location size);
-		void quit() override;
-		void delay(int time);
-		unsigned int getTime();
+		bool init(Util::Location size) noexcept;
+		void quit() noexcept override;
+		void delay(int time) noexcept override;
+		unsigned int getTime() noexcept override;
 		const bool visualizeAll() override;
 	};
 }

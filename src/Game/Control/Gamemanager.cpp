@@ -46,11 +46,10 @@ namespace Game
 		Settings::Config::getInstance().addPath("res/Settings/GamePhases.txt");
 
 		//initialize game info
-		//TODO change arguments to values provided in settings
-		this->gameInfo = this->factory->createGameInfo(0,3, NOT_STARTED);
+		this->gameInfo = this->factory->createGameInfo(0, Settings::Config::getInstance().getValueOfKey<int>(Settings::MAX_LIVES), NOT_STARTED);
 
 		//initialize game arena
-		this->arena->loadFromFile("res/Maps/arena3.txt");
+		this->arena->loadFromFile(Settings::Config::getInstance().getValueOfKey<string>(Settings::MAP_PATH));
 		//cout << "Init graphics" << endl;
 		this->factory->getGraphicsHandler().init(this->arena->getSize());
 
@@ -119,8 +118,10 @@ namespace Game
 
 					if(this->arena->detectGhostCollision()  && (!Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE)))
 					{
-						this->handleGhostCollision();
+					//	this->handleGhostCollision();
 					}
+
+					this->arena->handleGhostCollision();
 				}
 			}
 		}
@@ -132,24 +133,28 @@ namespace Game
 			if(!this->arena->detectWallCollision(destination))
 			{
 				this->arena->movePacman(destination);
-				if(this->arena->getWall(destination)->getType() == DOT_WALL)
+				if(this->arena->getWall(destination)->getType() == DOT_WALL || this->arena->getWall(destination)->getType() == POWER_PELLET)
 				{
+					if(this->arena->getWall(destination)->getType() == POWER_PELLET)
+					{
+						this->arena->setFleeMode();
+					}
+
 					this->gameInfo->addScore(this->arena->getWall(destination)->getValue());
 					this->gameInfo->decreaseDotsLeft();
 					this->arena->getWall(destination)->setType(EMPTY_WALL);
 					this->arena->getWall(destination)->setValue(0);
 				}
 
-				if(this->arena->detectGhostCollision()  && (!Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE)))
-				{
-					this->handleGhostCollision();
-				}
+				this->arena->handleGhostCollision();
 			}
 			else
 			{
 				this->arena->getPacman()->setMoving(false);
 			}
 		}
+
+
 	}
 
 	const shared_ptr<Pacman> Gamemanager::getPacman() noexcept

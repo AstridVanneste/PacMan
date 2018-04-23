@@ -53,7 +53,16 @@ namespace SDL
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
 		Util::Location imageOffset;
-		imageOffset.x = this->type;
+
+		if(this->getMode() != Game::FLEE)
+		{
+			imageOffset.x = this->type;
+		}
+		else
+		{
+			imageOffset.x = 4;
+		}
+
 		imageOffset.y = this->direction;
 
 		unique_ptr<SDL_Rect> srcR = createSrcRect(imageOffset);

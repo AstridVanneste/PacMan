@@ -1,10 +1,16 @@
 # Settings for Pacman Game
 
+
+# MAP
+map_path = res/Maps/arena3.txt
+
 # GOD MODE (not getting killed by ghosts)
 god_mode = 1
 
 # POINTS
 dot_value = 10
+power_pellet_value = 100
+ghost_value = 400
 
 # LIVES
 max_lives = 3

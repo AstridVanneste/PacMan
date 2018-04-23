@@ -20,7 +20,6 @@ namespace Game
 	Ghost::Ghost()
 	:MovingEntity()
 	{
-		this->objectType = GHOST;
 		this->type = BLINKY;
 		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
@@ -33,7 +32,6 @@ namespace Game
 	Ghost::Ghost(const Ghost& g)
 	:MovingEntity(g)
 	{
-		this->objectType = GHOST;
 		this->type = g.type;
 		this->createAI();
 	}
@@ -41,7 +39,6 @@ namespace Game
 	Ghost::Ghost(GhostType type)
 	:MovingEntity()
 	{
-		this->objectType = GHOST;
 		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
@@ -54,7 +51,6 @@ namespace Game
 	Ghost::Ghost(Util::Location location, GhostType type)
 	:MovingEntity(location)
 	{
-		this->objectType = GHOST;
 		if(Settings::Config::getInstance().keyExists(Settings::GHOST_SPEED))
 		{
 			this->speed = Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_SPEED);
@@ -119,6 +115,27 @@ namespace Game
 			this->ai = make_unique<ClydeAI>();
 			break;
 		}
+	}
+
+	void Ghost::setMode(const AImode& mode) noexcept
+	{
+		this->ai->setMode(mode);
+	}
+
+	void Ghost::toggleMode() noexcept
+	{
+		this->ai->toggleMode();
+	}
+
+	const AImode Ghost::getMode() noexcept
+	{
+		return this->ai->getMode();
+	}
+
+	void Ghost::respawn() noexcept
+	{
+		MovingEntity::respawn();
+		this->ai->toggleMode();
 	}
 }
 

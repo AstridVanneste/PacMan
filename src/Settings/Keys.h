@@ -13,15 +13,23 @@ using namespace std;
 
 namespace Settings
 {
-	// SPEEDS
-	const string GHOST_SPEED = "ghost_speed";
-	const string PACMAN_SPEED = "pacman_speed";
+	// MAP PATH
+	const string MAP_PATH = "map_path";
 
 	// GOD MODE
 	const string GOD_MODE = "god_mode";
 
 	// POINTS
 	const string DOT_VALUE = "dot_value";
+	const string POWER_PELLET_VALUE = "power_pellet_value";
+	const string GHOST_VALUE = "ghost_value";
+
+	// SPEEDS
+	const string GHOST_SPEED = "ghost_speed";
+	const string PACMAN_SPEED = "pacman_speed";
+
+	// MAX LIVES
+	const string MAX_LIVES = "max_lives";
 
 	// BACKGROUND COLOR
 	// TODO use!

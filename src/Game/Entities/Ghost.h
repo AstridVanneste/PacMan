@@ -41,6 +41,12 @@ namespace Game
 		bool update() noexcept override;
 		const GhostType getType() noexcept;
 		void setType(GhostType type) noexcept;
+
+		const AImode getMode() noexcept;
+		void setMode(const AImode& mode) noexcept;
+		void toggleMode() noexcept;
+
+		void respawn() noexcept override;
 	};
 }
 

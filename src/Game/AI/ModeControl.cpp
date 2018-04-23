@@ -103,12 +103,17 @@ namespace Game
 		switch(this->mode)
 		{
 		case CHASE:
-			return SCATTER;
+			this->mode = SCATTER;
+			break;
 		case SCATTER:
-			return CHASE;
+			this->mode = CHASE;
+			break;
 		case FLEE:
-			return CHASE;
+			this->mode = CHASE;
+			break;
 		}
+
+		return this->mode;
 	}
 
 

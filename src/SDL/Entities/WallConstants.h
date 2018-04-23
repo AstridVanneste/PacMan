@@ -11,7 +11,7 @@
 
 namespace SDL
 {
-	const int  WALL_IMAGE[18][2] =						//[i][0] -> x coordinate in picture	(top = 0)
+	const int  WALL_IMAGE[19][2] =						//[i][0] -> x coordinate in picture	(top = 0)
 														//[i][1] -> y coordinate in picture (left = 0)
 		{
 				{3,3},	//0
@@ -31,7 +31,8 @@ namespace SDL
 				{3,2},	//14
 				{2,2},	//15
 				{4,1},	//16
-				{4,1}	//17
+				{4,1},	//17
+				{4,3}	//18
 		};
 	}
 

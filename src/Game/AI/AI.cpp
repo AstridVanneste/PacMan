@@ -42,6 +42,21 @@ namespace Game
 	{
 	}
 
+	const AImode AI::getMode() noexcept
+	{
+		return this->modeControl->getMode();
+	}
+
+	void AI::setMode(const AImode& mode) noexcept
+	{
+		this->modeControl->setMode(mode);
+	}
+
+	void AI::toggleMode() noexcept
+	{
+		this->modeControl->toggleMode();
+	}
+
 	const Util::Direction AI::getNewDirection(const Util::Location& loc, Util::Direction direction) noexcept
 	{
 		Util::Location target;

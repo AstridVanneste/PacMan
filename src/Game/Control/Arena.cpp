@@ -12,6 +12,7 @@
 #include <memory>
 #include "Gamemanager.h"
 #include "../Entities/Ghost.h"
+#include "../../Settings/Config.h"
 using namespace std;
 
 namespace Game
@@ -118,9 +119,13 @@ namespace Game
 							break;
 						case '*':
 							//DOT
-							this->arena[i.x].emplace_back(factory->createWall(i, DOT_WALL, DEFAULT_DOT_VALUE));
+							this->arena[i.x].emplace_back(factory->createWall(i, DOT_WALL, Settings::Config::getInstance().getValueOfKey<int>(Settings::DOT_VALUE)));
 							numDots++;
-							//TODO add value of the DOT
+							break;
+						case '#':
+							//POWER PELLET
+							this->arena[i.x].emplace_back(factory->createWall(i, POWER_PELLET, Settings::Config::getInstance().getValueOfKey<int>(Settings::POWER_PELLET_VALUE)));
+							numDots++;
 							break;
 						case 'U':
 							//PACMAN
@@ -164,40 +169,38 @@ namespace Game
 			for (i.y = 0; i.y < this->arena[i.x].size(); i.y++)
 			{
 				//cout << "checking for wall at x = " << i.x << " and y = " << i.y << endl;
-				if(this->arena[i.x][i.y]->getObjectType() == WALL)
+
+				if(!this->arena[i.x][i.y]->isPassable())
 				{
-					if(!this->arena[i.x][i.y]->isPassable())
+					char type = 0;
+
+
+					if(i.x !=0 && !this->arena[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
 					{
-						char type = 0;
-
-
-						if(i.x !=0 && !this->arena[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
-						{
-							//cout << "wall UP" << endl;
-							type |= WALL_UP;
-						}
-
-						if(i.x < this->arena.size()-1 && !this->arena[i.x+1][i.y]->isPassable())		//check if there is a wall below this one.
-						{
-							//cout << "wall DOWN" << endl;
-							type |= WALL_DOWN;
-						}
-
-						if(i.y != 0 && !this->arena[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
-						{
-							//cout << "wall LEFT" << endl;
-							type |= WALL_LEFT;
-						}
-
-						if(i.y < this->arena[i.x].size()-1 && !this->arena[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
-						{
-							//cout << "wall RIGHT" << endl;
-							type |= WALL_RIGHT;
-						}
-
-						//cout << "wall type set to " << +type << endl;
-						this->arena[i.x][i.y]->setType(type);
+						//cout << "wall UP" << endl;
+						type |= WALL_UP;
 					}
+
+					if(i.x < this->arena.size()-1 && !this->arena[i.x+1][i.y]->isPassable())		//check if there is a wall below this one.
+					{
+						//cout << "wall DOWN" << endl;
+						type |= WALL_DOWN;
+					}
+
+					if(i.y != 0 && !this->arena[i.x][i.y-1]->isPassable())						//check if there is a wall on the left.
+					{
+						//cout << "wall LEFT" << endl;
+						type |= WALL_LEFT;
+					}
+
+					if(i.y < this->arena[i.x].size()-1 && !this->arena[i.x][i.y+1]->isPassable())	//check if there is a wall on the right.
+					{
+						//cout << "wall RIGHT" << endl;
+						type |= WALL_RIGHT;
+					}
+
+					//cout << "wall type set to " << +type << endl;
+					this->arena[i.x][i.y]->setType(type);
 				}
 			}
 		}
@@ -318,6 +321,38 @@ namespace Game
 			}
 		}
 		return false;
+	}
+
+	void Arena::setFleeMode() noexcept
+	{
+		for(int i = 0; i < this->ghosts.size(); i++)
+		{
+			this->ghosts[i]->setMode(FLEE);
+		}
+	}
+
+	void Arena::handleGhostCollision() noexcept
+	{
+		for(unsigned int i = 0; i < this->ghosts.size(); i++)
+		{
+			if(this->ghosts[i]->getLocation() == this->pacman->getLocation())
+			{
+				if(this->ghosts[i]->getMode() != FLEE)
+				{
+					if(!Settings::Config::getInstance().getValueOfKey<bool>(Settings::GOD_MODE))
+					{
+						this->pacman->respawn();
+						Gamemanager::getInstance().getGameInfo()->decreaseLives();
+					}
+				}
+				else
+				{
+					this->ghosts[i]->respawn();
+					this->ghosts[i]->toggleMode();
+					Gamemanager::getInstance().getGameInfo()->addScore(Settings::Config::getInstance().getValueOfKey<int>(Settings::GHOST_VALUE));
+				}
+			}
+		}
 	}
 
 
