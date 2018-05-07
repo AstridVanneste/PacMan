@@ -43,10 +43,8 @@ namespace Game
 
 		for(int i = 0; i<4; i++)
 		{
-			target += direction;
+			target = target + direction;
 		}
-
-
 		return target;
 	}
 
