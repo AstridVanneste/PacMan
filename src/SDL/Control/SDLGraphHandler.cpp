@@ -141,9 +141,14 @@ namespace SDL
 			//Play the music
 			if( Mix_PlayMusic( music.get(), -1 ) == -1 )
 			{
-				return 1;
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
+		return true;
 	}
 }
 

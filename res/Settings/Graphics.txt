@@ -12,9 +12,9 @@ text_width = 8
 text_offset = 4
 
 # BACKGROUND COLOR
-b_r = 255;
-b_g = 255;
-b_b = 255;
+b_r = 0;
+b_g = 0;
+b_b = 0;
 b_a = 0;
 
 # IMAGES

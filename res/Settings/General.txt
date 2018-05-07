@@ -1,8 +1,7 @@
 # Settings for Pacman Game
 
-
 # MAP
-map_path = res/Maps/arena3.txt
+map_path = res/Maps/arena1.txt
 
 # GOD MODE (not getting killed by ghosts)
 god_mode = 1
