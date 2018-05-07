@@ -31,7 +31,7 @@ namespace SDL
 
 		SDL_Ghost& operator=(const SDL_Ghost& g) noexcept;
 
-		const void visualize();
+		void visualize() const override;
 	};
 }
 

@@ -44,12 +44,12 @@ namespace Game
 		return *this;
 	}
 
-	const bool Entity::isPassable() noexcept
+	bool Entity::isPassable() const noexcept
 	{
 		return this->passable;
 	}
 
-	const Util::Location Entity::getLocation() noexcept
+	Util::Location Entity::getLocation() const noexcept
 	{
 		return this->location;
 	}

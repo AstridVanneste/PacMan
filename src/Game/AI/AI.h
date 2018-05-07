@@ -21,24 +21,24 @@ namespace Game
 	private:
 		shared_ptr<ModeControl> modeControl;
 
-		const virtual Util::Location getChaseTarget(const Util::Location& loc) noexcept =0;
-		const Util::Location getFrightenedTarget() noexcept;
+		virtual Util::Location getChaseTarget(const Util::Location& loc) const noexcept =0;
+		Util::Location getFrightenedTarget() const noexcept;
 
-		const Util::Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Util::Direction direction) noexcept;
+		Util::Direction getOptimalDirection(const Util::Location& loc, const Util::Location& target, Util::Direction direction) const noexcept;
 	protected:
 		Util::Location scatterTarget;
-		const int getDistance(const Util::Location& loc, const Util::Location& target) noexcept;
+		int getDistance(const Util::Location& loc, const Util::Location& target) const noexcept;
 	public:
 		AI();
 		AI(const AI& ai);
 		AI& operator=(const AI& ai);
 		virtual ~AI();
 
-		const AImode getMode() noexcept;
+		AImode getMode() const noexcept;
 		void setMode(const AImode& mode) noexcept;
 		void toggleMode() noexcept;
 
-		const Util::Direction getNewDirection(const Util::Location& loc, Util::Direction direction) noexcept;
+		Util::Direction getNewDirection(const Util::Location& loc, Util::Direction direction) const noexcept;
 	};
 } /* namespace Game */
 

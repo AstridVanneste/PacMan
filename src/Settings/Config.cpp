@@ -34,7 +34,7 @@ namespace Settings
 		this->extractKeys();
 	}
 
-	const void Config::removeComment(string& line) noexcept
+	void Config::removeComment(string& line) const noexcept
 	{
 		if(line.find('#') != line.npos)
 		{
@@ -42,7 +42,7 @@ namespace Settings
 		}
 	}
 
-	const bool Config::onlyWhiteSpace(const string& line) noexcept
+	bool Config::onlyWhiteSpace(const string& line) const noexcept
 	{
 		if(line.find_first_not_of(' ') == line.npos)
 		{
@@ -51,7 +51,7 @@ namespace Settings
 		return false;
 	}
 
-	const bool Config::validLine(const string& line) noexcept
+	bool Config::validLine(const string& line) const noexcept
 	{
 		string temp = line;
 
@@ -71,17 +71,17 @@ namespace Settings
 		return false;
 	}
 
-	const void Config::extractKey(string& key, const size_t& sepPos, const string& line) noexcept
+	void Config::extractKey(string& key, const size_t& sepPos, const string& line) const noexcept
 	{
 		key = line.substr(0, sepPos);
 	}
 
-	const void Config::extractValue(string& value, const size_t& sepPos, const string& line) noexcept
+	void Config::extractValue(string& value, const size_t& sepPos, const string& line) const noexcept
 	{
 		value = line.substr(sepPos + 1);
 	}
 
-	const void Config::extractContents(const string& line) noexcept
+	void Config::extractContents(const string& line) noexcept
 	{
 		string temp = line;
 
@@ -96,7 +96,7 @@ namespace Settings
 
 		if(!keyExists(key))
 		{
-			contents.insert(pair<string,string>(key, value));
+			this->contents.insert(pair<string,string>(key, value));
 		}
 		else
 		{
@@ -159,7 +159,7 @@ namespace Settings
 		file.close();
 	}
 
-	const bool Config::keyExists(const string& key) noexcept
+	bool Config::keyExists(const string& key) const noexcept
 	{
 		bool result = contents.find(key) != contents.end();
 		//cout << "keyExists(" << key << ") = " << result << endl;

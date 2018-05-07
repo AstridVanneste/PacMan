@@ -58,7 +58,7 @@ namespace Game
 		this->phaseStartTime = Gamemanager::getInstance().getFactory()->getGraphicsHandler().getTime();
 	}
 
-	const bool ModeControl::modeFinished() noexcept
+	bool ModeControl::modeFinished() const noexcept
 	{
 		unsigned int timeLimit = this->getTimeLimit();
 
@@ -75,7 +75,7 @@ namespace Game
 		return false;
 	}
 
-	const unsigned int ModeControl::getTimeLimit() noexcept
+	unsigned int ModeControl::getTimeLimit() const noexcept
 	{
 
 		unsigned int timeLimit;
@@ -96,7 +96,7 @@ namespace Game
 		return timeLimit;
 	}
 
-	const AImode ModeControl::toggleMode() noexcept
+	AImode ModeControl::toggleMode() noexcept
 	{
 		this->phaseStartTime = Gamemanager::getInstance().getFactory()->getGraphicsHandler().getTime();
 

@@ -39,10 +39,10 @@ namespace Game
 		virtual ~Ghost();
 
 		bool update() noexcept override;
-		const GhostType getType() noexcept;
+		GhostType getType() const noexcept;
 		void setType(GhostType type) noexcept;
 
-		const AImode getMode() noexcept;
+		AImode getMode() const noexcept;
 		void setMode(const AImode& mode) noexcept;
 		void toggleMode() noexcept;
 

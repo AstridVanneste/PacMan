@@ -25,11 +25,11 @@ namespace SDL
 
 		virtual ~SDL_GameInfo();
 
-		const void visualize() override;
+		void visualize() const override;
 
-		const void visualizeScore();
-		const void visualizeLives();
-		const void visualizeStateText(const string& text);
+		void visualizeScore() const;
+		void visualizeLives() const;
+		void visualizeStateText(const string& text) const;
 	};
 
 } /* namespace Game */

@@ -97,7 +97,7 @@ namespace Game
 		}
 	}
 
-	const shared_ptr<AbstractFactory> Gamemanager::getFactory() noexcept
+	shared_ptr<AbstractFactory> Gamemanager::getFactory() const noexcept
 	{
 		return this->factory;
 	}
@@ -159,17 +159,17 @@ namespace Game
 		}
 	}
 
-	const shared_ptr<Pacman> Gamemanager::getPacman() noexcept
+	shared_ptr<Pacman> Gamemanager::getPacman() const noexcept
 	{
 		return this->arena->getPacman();
 	}
 
-	const shared_ptr<Arena> Gamemanager::getArena() noexcept
+	shared_ptr<Arena> Gamemanager::getArena() const noexcept
 	{
 		return this->arena;
 	}
 
-	const shared_ptr<GameInfo> Gamemanager::getGameInfo() noexcept
+	shared_ptr<GameInfo> Gamemanager::getGameInfo() const noexcept
 	{
 		return this->gameInfo;
 	}

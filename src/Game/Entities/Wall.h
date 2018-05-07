@@ -30,10 +30,10 @@ namespace Game {
 		Wall& operator=(const Wall& w);
 
 		void setType(char type) noexcept;
-		const char getType() noexcept;
+		char getType() const noexcept;
 
 		void setValue(int value) noexcept;
-		const int getValue() noexcept;
+		int getValue() const noexcept;
 
 	};
 

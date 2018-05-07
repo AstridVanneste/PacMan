@@ -48,7 +48,7 @@ namespace Game
 		arena[location.x][location.y] = wall;
 	}
 
-	const shared_ptr<Wall> Arena::getWall(const Util::Location& location) noexcept
+	shared_ptr<Wall> Arena::getWall(const Util::Location& location) const noexcept
 	{
 		return this->arena[location.x][location.y];
 	}
@@ -204,17 +204,17 @@ namespace Game
 		}
 	}
 
-	const unsigned int Arena::getSizeX() noexcept
+	unsigned int Arena::getSizeX() const noexcept
 	{
 		return this->arena.size();
 	}
 
-	const unsigned int Arena::getSizeY() noexcept
+	unsigned int Arena::getSizeY() const noexcept
 	{
 		return this->arena[0].size();
 	}
 
-	const Util::Location Arena::getSize() noexcept
+	Util::Location Arena::getSize() const noexcept
 	{
 		Util::Location loc;
 		loc.x = this->getSizeX();
@@ -222,12 +222,12 @@ namespace Game
 		return loc;
 	}
 
-	const shared_ptr<Ghost> Arena::getGhost(int i) noexcept
+	shared_ptr<Ghost> Arena::getGhost(int i) const noexcept
 	{
 		return this->ghosts[i];
 	}
 
-	const int Arena::numberGhosts() noexcept
+	int Arena::numberGhosts() const noexcept
 	{
 		return this->ghosts.size();
 	}
@@ -261,12 +261,12 @@ namespace Game
 		this->pacman->visualize();
 	}
 
-	const shared_ptr<Pacman> Arena::getPacman() noexcept
+	shared_ptr<Pacman> Arena::getPacman() const noexcept
 	{
 		return this->pacman;
 	}
 
-	const shared_ptr<vector<Util::Direction>> Arena::getPosDir(const Util::Location& loc) noexcept
+	shared_ptr<vector<Util::Direction>> Arena::getPosDir(const Util::Location& loc) const noexcept
 	{
 		shared_ptr<vector<Util::Direction>> directions = make_shared<vector<Util::Direction>>();
 		//UP
@@ -304,12 +304,12 @@ namespace Game
 		return directions;
 	}
 
-	const bool Arena::detectWallCollision(Util::Location& destination) noexcept
+	bool Arena::detectWallCollision(Util::Location& destination) const noexcept
 	{
 		return !this->arena[destination.x][destination.y]->isPassable();
 	}
 
-	const bool Arena::detectGhostCollision() noexcept
+	bool Arena::detectGhostCollision() const noexcept
 	{
 		for(unsigned int i = 0; i < this->ghosts.size(); i++)
 		{

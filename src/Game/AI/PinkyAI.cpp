@@ -36,7 +36,7 @@ namespace Game
 		return *this;
 	}
 
-	const Util::Location PinkyAI::getChaseTarget(const Util::Location& loc) noexcept
+	Util::Location PinkyAI::getChaseTarget(const Util::Location& loc) const noexcept
 	{
 		Util::Location target = Gamemanager::getInstance().getPacman()->getLocation();
 		Util::Direction direction = Gamemanager::getInstance().getPacman()->getDirection();

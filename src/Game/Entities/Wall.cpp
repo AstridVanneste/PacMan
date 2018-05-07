@@ -104,7 +104,7 @@ namespace Game
 		}
 	}
 
-	const char Wall::getType() noexcept
+	char Wall::getType() const noexcept
 	{
 		return this->type;
 	}
@@ -114,7 +114,7 @@ namespace Game
 		this->value = value;
 	}
 
-	const int Wall::getValue() noexcept
+	int Wall::getValue() const noexcept
 	{
 		return this->value;
 	}

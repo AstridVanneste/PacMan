@@ -30,18 +30,18 @@ namespace Game
 		virtual ~Entity();
 		Entity& operator= (const Entity& e);
 
-		const virtual void visualize()=0;
+		virtual void visualize() const =0;
 
-		const Util::Location getLocation() noexcept;
+		Util::Location getLocation() const noexcept;
 		void setLocation(const Util::Location& location) noexcept;
 
 		void setX(int x) noexcept;
 		void setY(int y) noexcept;
 
-		const int getX() noexcept;
-		const int getY() noexcept;
+		int getX() const noexcept;
+		int getY() const noexcept;
 
-		const virtual bool isPassable() noexcept;
+		virtual bool isPassable() const noexcept;
 	};
 }
 

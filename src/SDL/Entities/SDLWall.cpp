@@ -57,7 +57,7 @@ namespace SDL
 		return *this;
 	}
 
-	const void SDL_Wall::visualize()
+	void SDL_Wall::visualize() const
 	{
 		if(this->type != Game::EMPTY_WALL)
 		{

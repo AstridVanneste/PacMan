@@ -48,7 +48,7 @@ namespace SDL
 		return *this;
 	}
 
-	const void SDL_Ghost::visualize()
+	void SDL_Ghost::visualize() const
 	{
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 

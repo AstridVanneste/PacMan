@@ -39,7 +39,7 @@ namespace Game
 		return *this;
 	}
 
-	const Util::Location InkyAI::getChaseTarget(const Util::Location& loc) noexcept
+	Util::Location InkyAI::getChaseTarget(const Util::Location& loc) const noexcept
 	{
 		Util::Location pacman = Gamemanager::getInstance().getPacman()->getLocation();
 			Util::Location target = pacman;

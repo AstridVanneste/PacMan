@@ -41,13 +41,13 @@ namespace Game
 		static Gamemanager& getInstance();
 
 		void setFactory(shared_ptr<AbstractFactory> factory) noexcept;
-		const shared_ptr<AbstractFactory> getFactory() noexcept;
+		shared_ptr<AbstractFactory> getFactory() const noexcept;
 
-		const shared_ptr<GameInfo> getGameInfo() noexcept;
+		shared_ptr<GameInfo> getGameInfo() const noexcept;
 
-		const shared_ptr<Arena> getArena() noexcept;
+		shared_ptr<Arena> getArena() const noexcept;
 
-		const shared_ptr<Pacman> getPacman() noexcept;
+		shared_ptr<Pacman> getPacman() const noexcept;
 
 		void handleGhostCollision() noexcept;
 

@@ -41,7 +41,7 @@ SDL_GameInfo::~SDL_GameInfo()
 {
 }
 
-const void SDL_GameInfo::visualize()
+void SDL_GameInfo::visualize() const
 {
 	this->visualizeScore();
 	this->visualizeLives();
@@ -66,7 +66,7 @@ const void SDL_GameInfo::visualize()
 
 }
 
-const void SDL_GameInfo::visualizeScore()
+void SDL_GameInfo::visualizeScore() const
 {
 	shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
@@ -81,7 +81,7 @@ const void SDL_GameInfo::visualizeScore()
 
 }
 
-const void SDL_GameInfo::visualizeLives()
+void SDL_GameInfo::visualizeLives() const
 {
 	shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 
@@ -95,7 +95,7 @@ const void SDL_GameInfo::visualizeLives()
 	SDL_RenderCopy(renderer.get(), tex.get(), nullptr, dstR.get());
 }
 
-const void SDL_GameInfo::visualizeStateText(const string& text)
+void SDL_GameInfo::visualizeStateText(const string& text) const
 {
 	shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());
 

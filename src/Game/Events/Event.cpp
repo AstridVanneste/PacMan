@@ -36,7 +36,7 @@ Event& Event::operator =(const Event& e)
 	return *this;
 }
 
-const EventType Event::getType() noexcept
+EventType Event::getType() const noexcept
 {
 	return this->type;
 }
@@ -46,7 +46,7 @@ void Event::setType(const EventType& type) noexcept
 	this->type = type;
 }
 
-const string Event::getSubtype() noexcept
+string Event::getSubtype() const noexcept
 {
 	return this->subtype;
 }

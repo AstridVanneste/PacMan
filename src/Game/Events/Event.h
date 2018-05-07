@@ -27,10 +27,10 @@ public:
 
 	Event& operator=(const Event& e);
 
-	const EventType getType() noexcept;
+	EventType getType() const noexcept;
 	void setType(const EventType& type) noexcept;
 
-	const string getSubtype() noexcept;
+	string getSubtype() const noexcept;
 	void setSubtype(const string& subtype) noexcept;
 };
 

@@ -23,7 +23,7 @@ public:
 
 	static Random& getInstance();
 
-	const int generateRandom(int limit) noexcept;
+	int generateRandom(int limit) const noexcept;
 };
 
 } /* namespace Game */

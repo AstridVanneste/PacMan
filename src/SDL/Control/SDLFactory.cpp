@@ -35,48 +35,48 @@ namespace SDL
 		return *this;
 	}
 
-	const shared_ptr<Game::GameInfo> SDL_Factory::createGameInfo(int score, int lives, Game::GameState gameState) noexcept
+	shared_ptr<Game::GameInfo> SDL_Factory::createGameInfo(int score, int lives, Game::GameState gameState) const noexcept
 	{
 		return make_shared<SDL_GameInfo>(score, lives, gameState);
 	}
 
-	const shared_ptr<Game::Ghost> SDL_Factory::createGhost() noexcept
+	shared_ptr<Game::Ghost> SDL_Factory::createGhost() const noexcept
 	{
 		return make_shared<SDL_Ghost>();
 	}
 
-	const shared_ptr<Game::Ghost> SDL_Factory::createGhost(const Util::Location& location, Game::GhostType type) noexcept
+	shared_ptr<Game::Ghost> SDL_Factory::createGhost(const Util::Location& location, Game::GhostType type) const noexcept
 	{
 		return make_shared<SDL_Ghost>(location, type);
 	}
 
-	const shared_ptr<Game::Pacman> SDL_Factory::createPacman() noexcept
+	shared_ptr<Game::Pacman> SDL_Factory::createPacman() const noexcept
 	{
 		return make_shared<SDL_Pacman>();
 	}
 
-	const shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Util::Location& location, const Util::Location& respawnPoint) noexcept
+	shared_ptr<Game::Pacman> SDL_Factory::createPacman(const Util::Location& location, const Util::Location& respawnPoint) const noexcept
 	{
 		return make_shared<SDL_Pacman>(location, respawnPoint);
 	}
 
 
-	const shared_ptr<Game::Wall> SDL_Factory::createWall() noexcept
+	shared_ptr<Game::Wall> SDL_Factory::createWall() const noexcept
 	{
 		return make_shared<SDL_Wall>();
 	}
 
-	const shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location) noexcept
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location) const noexcept
 	{
 		return make_shared<SDL_Wall>(location);
 	}
 
-	const shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type) noexcept
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type) const noexcept
 	{
 		return make_shared<SDL_Wall>(location, type);
 	}
 
-	const shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type, int value) noexcept
+	shared_ptr<Game::Wall> SDL_Factory::createWall(const Util::Location& location, char type, int value) const noexcept
 	{
 		return make_shared<SDL_Wall>(location, type,value);
 	}
@@ -86,7 +86,7 @@ namespace SDL
 		return SDL_Graph_Handler::getInstance();
 	}
 
-	const shared_ptr<Game::EventHandler> SDL_Factory::createEventHandler() noexcept
+	shared_ptr<Game::EventHandler> SDL_Factory::createEventHandler() const noexcept
 	{
 		return make_shared<SDL_Event_Handler>();
 	}

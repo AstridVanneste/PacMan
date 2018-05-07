@@ -27,13 +27,13 @@ private:
 
 	Config();
 
-	const void removeComment(string& line) noexcept;
-	const bool onlyWhiteSpace(const string& line) noexcept;
-	const bool validLine(const string& line) noexcept;
-	const void extractKey(string& key, const size_t& sepPos, const string& line) noexcept;
-	const void extractValue(string& value, const size_t& sepPos, const string& line) noexcept;
+	void removeComment(string& line) const noexcept;
+	bool onlyWhiteSpace(const string& line) const noexcept;
+	bool validLine(const string& line) const noexcept;
+	void extractKey(string& key, const size_t& sepPos, const string& line) const noexcept;
+	void extractValue(string& value, const size_t& sepPos, const string& line) const noexcept;
 	void extractKeys();
-	const void extractContents(const string& line) noexcept;
+	void extractContents(const string& line) noexcept;
 	void parseLine(const string& line, const size_t lineNo);
 public:
 	virtual ~Config();
@@ -42,7 +42,7 @@ public:
 
 	void addPath(const string& fname) noexcept;
 
-	const bool keyExists(const string& key) noexcept;
+	bool keyExists(const string& key) const noexcept;
 
 	template <typename T> T getValueOfKey(const string& key, const T& defaultValue = T())
 	{

@@ -23,21 +23,21 @@ namespace SDL
 
 		SDL_Factory& operator=(const SDL_Factory& f);
 
-		const shared_ptr<Game::GameInfo> createGameInfo(int score, int lives, Game::GameState gameState) noexcept override;
+		shared_ptr<Game::GameInfo> createGameInfo(int score, int lives, Game::GameState gameState) const noexcept override;
 
-		const shared_ptr<Game::Ghost> createGhost() noexcept override;
-		const shared_ptr<Game::Ghost> createGhost(const Util::Location& location, Game::GhostType type) noexcept override;
+		shared_ptr<Game::Ghost> createGhost() const noexcept override;
+		shared_ptr<Game::Ghost> createGhost(const Util::Location& location, Game::GhostType type) const noexcept override;
 
-		const shared_ptr<Game::Pacman> createPacman() noexcept override;
-		const shared_ptr<Game::Pacman> createPacman(const Util::Location& location, const Util::Location& respawnPoint) noexcept override;
+		shared_ptr<Game::Pacman> createPacman() const noexcept override;
+		shared_ptr<Game::Pacman> createPacman(const Util::Location& location, const Util::Location& respawnPoint) const noexcept override;
 
-		const shared_ptr<Game::Wall> createWall() noexcept override;
-		const shared_ptr<Game::Wall> createWall(const Util::Location& location) noexcept override;
-		const shared_ptr<Game::Wall> createWall(const Util::Location& location, char type) noexcept override;
-		const shared_ptr<Game::Wall> createWall(const Util::Location& location, char type, int value) noexcept override;
+		shared_ptr<Game::Wall> createWall() const noexcept override;
+		shared_ptr<Game::Wall> createWall(const Util::Location& location) const noexcept override;
+		shared_ptr<Game::Wall> createWall(const Util::Location& location, char type) const noexcept override;
+		shared_ptr<Game::Wall> createWall(const Util::Location& location, char type, int value) const noexcept override;
 
 
-		const shared_ptr<Game::EventHandler> createEventHandler() noexcept override;
+		shared_ptr<Game::EventHandler> createEventHandler() const noexcept override;
 
 		Game::GraphicsHandler& getGraphicsHandler() noexcept override;
 };

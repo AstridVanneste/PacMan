@@ -19,8 +19,8 @@ namespace Game
 		AImode mode;
 		unsigned int phaseStartTime;
 
-		const bool modeFinished() noexcept;
-		const unsigned int getTimeLimit() noexcept;
+		bool modeFinished() const noexcept;
+		unsigned int getTimeLimit() const noexcept;
 	public:
 		ModeControl();
 		ModeControl(const ModeControl& mc);
@@ -31,7 +31,7 @@ namespace Game
 		AImode getMode() noexcept;
 		void setMode(const AImode& mode) noexcept;
 
-		const AImode toggleMode() noexcept;
+		AImode toggleMode() noexcept;
 	};
 
 } /* namespace Game */

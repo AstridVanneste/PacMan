@@ -42,7 +42,7 @@ namespace Game
 	{
 	}
 
-	const AImode AI::getMode() noexcept
+	AImode AI::getMode() const noexcept
 	{
 		return this->modeControl->getMode();
 	}
@@ -57,7 +57,7 @@ namespace Game
 		this->modeControl->toggleMode();
 	}
 
-	const Util::Direction AI::getNewDirection(const Util::Location& loc, Util::Direction direction) noexcept
+	Util::Direction AI::getNewDirection(const Util::Location& loc, Util::Direction direction) const noexcept
 	{
 		Util::Location target;
 		switch(this->modeControl->getMode())
@@ -76,13 +76,13 @@ namespace Game
 		return this->getOptimalDirection(loc,target, direction);
 	}
 
-	const int AI::getDistance(const Util::Location& p1, const Util::Location& p2) noexcept
+	int AI::getDistance(const Util::Location& p1, const Util::Location& p2) const noexcept
 	{
 		int distance = pow((p2.x - p1.x),2) + pow((p2.y - p1.y),2);
 		return distance;
 	}
 
-	const Util::Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Util::Direction oldDirection) noexcept
+	Util::Direction AI::getOptimalDirection(const Util::Location& loc, const Util::Location& target, Util::Direction oldDirection) const noexcept
 	{
 		Util::Direction newDirection;
 		shared_ptr<vector<Util::Direction>> directions = Gamemanager::getInstance().getArena()->getPosDir(loc);
@@ -128,7 +128,7 @@ namespace Game
 		return newDirection;
 	}
 
-	const Util::Location AI::getFrightenedTarget() noexcept
+	Util::Location AI::getFrightenedTarget() const noexcept
 	{
 		Util::Location target = Gamemanager::getInstance().getArena()->getPacman()->getLocation();
 

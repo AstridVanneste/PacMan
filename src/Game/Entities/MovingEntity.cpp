@@ -102,7 +102,7 @@ void MovingEntity::updateDirection() noexcept
 	this->setDirection(this->nextDirection);
 }
 
-const Util::Direction MovingEntity::getDirection() noexcept
+Util::Direction MovingEntity::getDirection() const noexcept
 {
 	return this->direction;
 }
@@ -113,7 +113,7 @@ void MovingEntity::setDirection(const Util::Direction& direction) noexcept
 	this->direction = direction;
 }
 
-const Util::Direction MovingEntity::getNextDirection() noexcept
+Util::Direction MovingEntity::getNextDirection() const noexcept
 {
 	return this->nextDirection;
 }
@@ -123,7 +123,7 @@ void MovingEntity::setNextDirection(const Util::Direction& direction) noexcept
 	this->nextDirection = direction;
 }
 
-const Util::Location MovingEntity::getNextLocation(Util::Location limits) noexcept
+Util::Location MovingEntity::getNextLocation(Util::Location limits) const noexcept
 {
 	Util::Location destination = this->location;
 

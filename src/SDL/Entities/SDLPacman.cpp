@@ -53,9 +53,8 @@ namespace SDL
 		return *this;
 	}
 
-	const void SDL_Pacman::visualize()
+	void SDL_Pacman::visualize() const
 	{
-		//stuff
 		//cout << "visualize Pacman" << endl;
 
 		shared_ptr<SDL_Renderer> renderer(SDL_Graph_Handler::getInstance().getRenderer());

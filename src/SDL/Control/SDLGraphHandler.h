@@ -34,15 +34,15 @@ namespace SDL
 
 		static SDL_Graph_Handler& getInstance();
 
-		const shared_ptr<SDL_Renderer> getRenderer() noexcept;
-		const shared_ptr<SDL_Window> getWindow() noexcept;
+		shared_ptr<SDL_Renderer> getRenderer() const noexcept;
+		shared_ptr<SDL_Window> getWindow() const noexcept;
 
 		bool init(Util::Location size) noexcept;
 		void delay(int time) noexcept override;
 		unsigned int getTime() noexcept override;
-		const bool visualizeAll() override;
+		bool visualizeAll() const override;
 
-		const bool playMusic() override;
+		bool playMusic() const override;
 	};
 }
 

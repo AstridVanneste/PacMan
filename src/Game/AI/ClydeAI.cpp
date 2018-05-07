@@ -37,7 +37,7 @@ ClydeAI& ClydeAI::operator=(const ClydeAI& ai)
 	return *this;
 }
 
-const Util::Location ClydeAI::getChaseTarget(const Util::Location& loc) noexcept
+Util::Location ClydeAI::getChaseTarget(const Util::Location& loc) const noexcept
 {
 	Util::Location pacman = Gamemanager::getInstance().getPacman()->getLocation();
 	Util::Location target = pacman;

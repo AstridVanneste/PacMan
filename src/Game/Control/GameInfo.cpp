@@ -51,7 +51,7 @@ namespace Game
 		return *this;
 	}
 
-	const int GameInfo::getScore() noexcept
+	int GameInfo::getScore() const noexcept
 	{
 		return this->score;
 	}
@@ -66,7 +66,7 @@ namespace Game
 		this->score += score;
 	}
 
-	const int GameInfo::getLives() noexcept
+	int GameInfo::getLives() const noexcept
 	{
 		return this->lives;
 	}
@@ -85,7 +85,7 @@ namespace Game
 		}
 	}
 
-	const GameState GameInfo::getGameState() noexcept
+	GameState GameInfo::getGameState() const noexcept
 	{
 		return this->gameState;
 	}

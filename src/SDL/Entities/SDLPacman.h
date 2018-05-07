@@ -27,7 +27,7 @@ namespace SDL
 
 		SDL_Pacman& operator=(const SDL_Pacman& p) noexcept;
 
-		const void visualize();
+		void visualize() const override;
 		bool update() noexcept override;
 	};
 

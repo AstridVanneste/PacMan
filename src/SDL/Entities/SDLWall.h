@@ -25,7 +25,7 @@ namespace SDL
 
 		SDL_Wall& operator=(const SDL_Wall& w);
 
-		const virtual void visualize();
+		virtual void visualize() const override;
 	};
 
 } /* namespace SDL */

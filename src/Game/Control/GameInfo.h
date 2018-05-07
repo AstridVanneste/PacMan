@@ -32,19 +32,19 @@ namespace Game
 		void setDotsLeft(int dotsLeft) noexcept;
 		void decreaseDotsLeft() noexcept;
 
-		const int getScore() noexcept;
+		int getScore() const noexcept;
 		void setScore(int score) noexcept;
 		void addScore(int score) noexcept;
 
-		const int getLives() noexcept;
+		int getLives() const noexcept;
 		void setLives(int lives) noexcept;
 		void decreaseLives() noexcept;
 
-		const GameState getGameState() noexcept;
+		GameState getGameState() const noexcept;
 		void setGameState(GameState gameState) noexcept;
 		void togglePause() noexcept;
 
-		const virtual void visualize()=0;
+		virtual void visualize() const =0;
 	};
 
 } /* namespace Game */

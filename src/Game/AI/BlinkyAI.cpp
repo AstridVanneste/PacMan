@@ -39,7 +39,7 @@ BlinkyAI& BlinkyAI::operator =(const BlinkyAI& ai)
 	return *this;
 }
 
-const Util::Location BlinkyAI::getChaseTarget(const Util::Location& loc) noexcept
+Util::Location BlinkyAI::getChaseTarget(const Util::Location& loc) const noexcept
 {
 	return Gamemanager::getInstance().getPacman()->getLocation();
 }

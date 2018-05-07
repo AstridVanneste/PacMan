@@ -38,7 +38,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the window used by this manager.
 	 */
-	const shared_ptr<SDL_Window> SDL_Graph_Handler::getWindow() noexcept
+	shared_ptr<SDL_Window> SDL_Graph_Handler::getWindow() const noexcept
 	{
 		return this->window;
 	}
@@ -46,7 +46,7 @@ namespace SDL
 	/*
 	 * Returns a pointer to the renderer used by this manager.
 	 */
-	const shared_ptr<SDL_Renderer> SDL_Graph_Handler::getRenderer() noexcept
+	shared_ptr<SDL_Renderer> SDL_Graph_Handler::getRenderer() const noexcept
 	{
 		return this->renderer;
 	}
@@ -116,7 +116,7 @@ namespace SDL
 		return SDL_GetTicks();
 	}
 
-	const bool SDL_Graph_Handler::visualizeAll()
+	bool SDL_Graph_Handler::visualizeAll() const
 	{
 		int r = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_R);
 		int g = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_G);
@@ -133,7 +133,7 @@ namespace SDL
 		return true;
 	}
 
-	const bool SDL_Graph_Handler::playMusic()
+	bool SDL_Graph_Handler::playMusic() const
 	{
 		//If there is no music playing
 		if( Mix_PlayingMusic() == 0 )

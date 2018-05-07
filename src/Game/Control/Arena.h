@@ -45,24 +45,24 @@ namespace Game
 		Arena& operator=(const Arena& a);
 
 		void setWall(const Util::Location& location, shared_ptr<Wall> wall) noexcept;
-		const shared_ptr<Wall> getWall(const Util::Location& location) noexcept;
+		shared_ptr<Wall> getWall(const Util::Location& location) const noexcept;
 		bool loadFromFile(string path);
 
-		const unsigned int getSizeX() noexcept;
-		const unsigned int getSizeY() noexcept;
-		const Util::Location getSize() noexcept;
+		unsigned int getSizeX() const noexcept;
+		unsigned int getSizeY() const noexcept;
+		Util::Location getSize() const noexcept;
 
-		const shared_ptr<Ghost> getGhost(int i) noexcept;
-		const int numberGhosts() noexcept;
+		shared_ptr<Ghost> getGhost(int i) const noexcept;
+		int numberGhosts() const noexcept;
 		void moveGhost(int i, Util::Location destination) noexcept;
 
-		const shared_ptr<Pacman> getPacman() noexcept;
+		shared_ptr<Pacman> getPacman() const noexcept;
 		void movePacman(Util::Location destination) noexcept;
 
-		const shared_ptr<vector<Util::Direction>> getPosDir(const Util::Location& loc) noexcept;
+		shared_ptr<vector<Util::Direction>> getPosDir(const Util::Location& loc) const noexcept;
 
-		const bool detectWallCollision(Util::Location& destination) noexcept;
-		const bool detectGhostCollision() noexcept;
+		bool detectWallCollision(Util::Location& destination) const noexcept;
+		bool detectGhostCollision() const noexcept;
 		void handleGhostCollision() noexcept;
 
 		void setFleeMode() noexcept;

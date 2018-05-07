@@ -16,7 +16,7 @@ namespace Game
 class ClydeAI: public AI
 {
 	private:
-		const Util::Location getChaseTarget(const Util::Location& loc) noexcept override;
+		Util::Location getChaseTarget(const Util::Location& loc) const noexcept override;
 	public:
 		ClydeAI();
 		ClydeAI(const ClydeAI& ai);

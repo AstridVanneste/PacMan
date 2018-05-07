@@ -78,7 +78,7 @@ namespace Game
 		return *this;
 	}
 
-	const GhostType Ghost::getType() noexcept
+	GhostType Ghost::getType() const noexcept
 	{
 		return this->type;
 	}
@@ -127,7 +127,7 @@ namespace Game
 		this->ai->toggleMode();
 	}
 
-	const AImode Ghost::getMode() noexcept
+	AImode Ghost::getMode() const noexcept
 	{
 		return this->ai->getMode();
 	}

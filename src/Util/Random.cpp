@@ -27,7 +27,7 @@ Random& Random::getInstance()
 	return instance;
 }
 
-const int Random::generateRandom(int limit) noexcept
+int Random::generateRandom(int limit) const noexcept
 {
 	uniform_int_distribution<int> idist(0,limit); // [0,limit]
 	return idist(this->generator);

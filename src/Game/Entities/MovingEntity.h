@@ -37,13 +37,13 @@ namespace Game
 
 		void updateDirection() noexcept;
 
-		const Util::Direction getDirection() noexcept;
+		Util::Direction getDirection() const noexcept;
 		void setDirection(const Util::Direction& direction) noexcept;
 
-		const Util::Direction getNextDirection() noexcept;
+		Util::Direction getNextDirection() const noexcept;
 		void setNextDirection(const Util::Direction& direction) noexcept;
 
-		const Util::Location getNextLocation(Util::Location limits) noexcept;
+		Util::Location getNextLocation(Util::Location limits) const noexcept;
 
 		void setMoving(bool moving) noexcept;
 
