@@ -11,7 +11,6 @@
 
 #include "../../Util/Direction.h"
 #include "../../Util/Location.h"
-#include "EntityTypes.h"
 using namespace std;
 
 namespace Game

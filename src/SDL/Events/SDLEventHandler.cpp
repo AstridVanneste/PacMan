@@ -26,7 +26,7 @@ namespace SDL
 	{
 		if(this != &eh)
 		{
-			Event_Handler::operator=(eh);
+			EventHandler::operator=(eh);
 		}
 		return *this;
 	}

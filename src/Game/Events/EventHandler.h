@@ -16,17 +16,17 @@ using namespace std;
 namespace Game
 {
 
-class Event_Handler
+class EventHandler
 {
 private:
 	void keyDown(shared_ptr<Event> event) noexcept;
 protected:
 	vector<shared_ptr<Event>> events;
 public:
-	Event_Handler();
-	virtual ~Event_Handler();
+	EventHandler();
+	virtual ~EventHandler();
 
-	Event_Handler& operator=(const Event_Handler& eh);
+	EventHandler& operator=(const EventHandler& eh);
 
 	bool handleEvent(shared_ptr<Event> event);
 	bool handleEvents();

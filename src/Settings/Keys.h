@@ -32,7 +32,6 @@ namespace Settings
 	const string MAX_LIVES = "max_lives";
 
 	// BACKGROUND COLOR
-	// TODO use!
 	const string B_R = "b_r";
 	const string B_G = "b_g";
 	const string B_B = "b_b";
@@ -47,8 +46,20 @@ namespace Settings
 	const string FONT_PATH = "font_path";
 	const string FONT_SIZE = "font_size";
 
+	const string TEXT_OFFSET = "text_offset";
+	const string TEXT_HEIGHT = "text_height";
+	const string TEXT_WIDTH = "text_width";
+
+	// MUSIC
+	const string MUSIC_ENABLE = "music_enable";
+	const string MUSIC_VOLUME = "music_volume";
+	const string MUSIC_PATH = "music_path";
+
 	// ENTITY SIZE
-	//const string ENTITY_HEIGHT = "entity_height";
+	const string ENTITY_HEIGHT = "entity_height";
+	const string ENTITY_WIDTH = "entity_width";
+
+	const string ARENA_OFFSET = "arena_offset";
 
 	// GAME PHASES
 	const string CHASE_TIME = "chase_time";

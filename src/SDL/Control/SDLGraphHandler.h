@@ -8,6 +8,7 @@
 #ifndef SDLHANDLER_H_
 #define SDLHANDLER_H_
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 #include <memory>
 #include <string>
 
@@ -17,11 +18,12 @@ using namespace std;
 
 namespace SDL
 {
-	class SDL_Graph_Handler : public Game::Graphics_Handler
+	class SDL_Graph_Handler : public Game::GraphicsHandler
 	{
 	private:
 		shared_ptr<SDL_Renderer> renderer;
 		shared_ptr<SDL_Window> window;
+		shared_ptr<Mix_Music> music;
 
 		SDL_Graph_Handler();
 		SDL_Graph_Handler(const SDL_Graph_Handler& h) = delete;
@@ -36,10 +38,11 @@ namespace SDL
 		const shared_ptr<SDL_Window> getWindow() noexcept;
 
 		bool init(Util::Location size) noexcept;
-		void quit() noexcept override;
 		void delay(int time) noexcept override;
 		unsigned int getTime() noexcept override;
 		const bool visualizeAll() override;
+
+		const bool playMusic() override;
 	};
 }
 

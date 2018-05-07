@@ -11,7 +11,6 @@
 #include <SDL2/SDL.h>
 #include <memory>
 #include <string>
-#include "../Util/SDLUtil.h"
 #include "../../Settings/Config.h"
 #include "../Util/SDLDestroyShared.h"
 #include "SDLGraphHandler.h"
@@ -74,6 +73,7 @@ const void SDL_GameInfo::visualizeScore()
 	string text = "SCORE: " + to_string(this->score);
 	shared_ptr<SDL_Texture> tex  = TextureManager::getInstance().getText(text);
 
+	// TODO change to constants
 	Util::Location location = {0, 0};
 	unique_ptr<SDL_Rect> dstR = createTextRect(location, text.size());
 
@@ -88,6 +88,7 @@ const void SDL_GameInfo::visualizeLives()
 	string text = "LIVES: " + to_string(this->lives);
 	shared_ptr<SDL_Texture> tex  = TextureManager::getInstance().getText(text);
 
+	// TODO change to constants
 	Util::Location location = {0, 150};
 	unique_ptr<SDL_Rect> dstR = createTextRect(location, text.size());
 
@@ -101,9 +102,9 @@ const void SDL_GameInfo::visualizeStateText(const string& text)
 	shared_ptr<SDL_Texture> tex  = TextureManager::getInstance().getText(text);
 
 	Util::Location location = Game::Gamemanager::getInstance().getArena()->getSize();
-	location.x *= ENTITY_HEIGHT;
-	location.y *= ENTITY_WIDTH;
-	location.y -= TEXT_WIDTH*text.size() ;
+	location.x *= Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_HEIGHT);
+	location.y *= Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_WIDTH);
+	location.y -= Settings::Config::getInstance().getValueOfKey<int>(Settings::TEXT_WIDTH)*text.size() ;
 	location.x /= 2;
 	location.y /= 2;
 

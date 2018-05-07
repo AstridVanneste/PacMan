@@ -9,7 +9,6 @@
 #include <memory>
 #include <iostream>
 #include <math.h>
-#include "../Util/SDLUtil.h"
 #include "../Util/TextureManaging.h"
 #include "../Util/TextureManager.h"
 #include "../Control/SDLGraphHandler.h"

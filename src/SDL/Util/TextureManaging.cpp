@@ -8,12 +8,12 @@
 #include "TextureManaging.h"
 #include "SDLDestroyer.h"
 #include "SDLDestroyShared.h"
+#include "../../Settings/Config.h"
 #include <memory>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_Image.h>
 
-#include "SDLUtil.h"
 using namespace std;
 
 namespace SDL
@@ -36,10 +36,12 @@ namespace SDL
 	unique_ptr<SDL_Rect> createDstRect(Util::Location location)
 	{
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
-		rect->h = ENTITY_HEIGHT;
-		rect->w = ENTITY_WIDTH;
-		rect->x = location.y * ENTITY_WIDTH;
-		rect->y = location.x * ENTITY_HEIGHT + ARENA_OFFSET;
+		int height = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_HEIGHT);
+		int width = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_WIDTH);
+		rect->h = height;
+		rect->w = width;
+		rect->x = location.y * width;
+		rect->y = location.x * height + Settings::Config::getInstance().getValueOfKey<int>(Settings::ARENA_OFFSET);
 		return rect;
 	}
 
@@ -53,7 +55,7 @@ namespace SDL
 		if(direction == Util::UP || direction == Util::DOWN)
 		{
 			// ADJUST x
-			factor = ENTITY_HEIGHT/speed;
+			factor = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_HEIGHT)/speed;
 			float result = factor * offset;
 			if(direction == Util::DOWN)
 			{
@@ -68,15 +70,15 @@ namespace SDL
 		else
 		{
 			// ADJUST y
-			factor = ENTITY_WIDTH/speed;
+			factor = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_WIDTH)/speed;
 			float result = factor * offset;
 			if(direction == Util::RIGHT)
 			{
-				rect->x += (int)result;
+				rect->x += static_cast<int>(result);
 			}
 			else
 			{
-				rect->x -= (int)result;
+				rect->x -= static_cast<int>(result);
 			}
 		}
 
@@ -86,20 +88,23 @@ namespace SDL
 	unique_ptr<SDL_Rect> createSrcRect(Util::Location location)
 	{
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
-		rect->h = ENTITY_HEIGHT;
-		rect->w = ENTITY_WIDTH;
-		rect->x = location.y * (ENTITY_HEIGHT + 1);
-		rect->y = location.x * (ENTITY_WIDTH + 1);
+		int height = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_HEIGHT);
+		int width = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_WIDTH);
+		rect->h = height;
+		rect->w = width;
+		rect->x = location.y * (height + 1);
+		rect->y = location.x * (width + 1);
 		return rect;
 	}
 
 	unique_ptr<SDL_Rect> createTextRect(Util::Location location, int length)
 	{
+		int offset = Settings::Config::getInstance().getValueOfKey<int>(Settings::TEXT_OFFSET);
 		unique_ptr<SDL_Rect> rect = make_unique<SDL_Rect>();
-		rect->h = TEXT_HEIGHT;
-		rect->w = TEXT_WIDTH * length;
-		rect->x = location.y  + TEXT_OFFSET;
-		rect->y = location.x  + TEXT_OFFSET;
+		rect->h = Settings::Config::getInstance().getValueOfKey<int>(Settings::TEXT_HEIGHT);
+		rect->w = Settings::Config::getInstance().getValueOfKey<int>(Settings::TEXT_WIDTH) * length;
+		rect->x = location.y  + offset;
+		rect->y = location.x  + offset;
 
 		return rect;
 	}

@@ -12,19 +12,20 @@
 
 namespace Game
 {
-	class Graphics_Handler
+	class GraphicsHandler
 	{
 	public:
-		Graphics_Handler();
-		virtual ~Graphics_Handler();
+		GraphicsHandler();
+		virtual ~GraphicsHandler();
 
-		static Graphics_Handler& getInstance();
+		static GraphicsHandler& getInstance();
 
 		virtual bool init(Util::Location location)=0;
-		virtual void quit()=0;
 		virtual void delay(int time)=0;
 		virtual unsigned int getTime()=0;
 		const virtual bool visualizeAll()=0;
+
+		const virtual bool playMusic()=0;
 	};
 }
 

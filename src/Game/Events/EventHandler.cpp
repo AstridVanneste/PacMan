@@ -13,20 +13,20 @@ using namespace std;
 namespace Game
 {
 
-Event_Handler::Event_Handler()
+EventHandler::EventHandler()
 {
 }
 
-Event_Handler::~Event_Handler()
+EventHandler::~EventHandler()
 {
 }
 
-Event_Handler& Event_Handler::operator=(const Event_Handler& eh)
+EventHandler& EventHandler::operator=(const EventHandler& eh)
 {
 	return *this;
 }
 
-bool Event_Handler::handleEvents()
+bool EventHandler::handleEvents()
 {
 	this->pollEvents();
 
@@ -45,7 +45,7 @@ bool Event_Handler::handleEvents()
 	return quit;
 }
 
-bool Event_Handler::handleEvent(shared_ptr<Event> event)
+bool EventHandler::handleEvent(shared_ptr<Event> event)
 {
 	switch(event->getType())
 	{
@@ -69,7 +69,7 @@ bool Event_Handler::handleEvent(shared_ptr<Event> event)
 	return false;
 }
 
-void Event_Handler::keyDown(shared_ptr<Event> event) noexcept
+void EventHandler::keyDown(shared_ptr<Event> event) noexcept
 {
 	string subtype = event->getSubtype();
 

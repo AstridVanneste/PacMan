@@ -9,11 +9,11 @@
 
 namespace Game
 {
-	Graphics_Handler::Graphics_Handler()
+	GraphicsHandler::GraphicsHandler()
 	{
 	}
 
-	Graphics_Handler::~Graphics_Handler()
+	GraphicsHandler::~GraphicsHandler()
 	{
 	}
 }

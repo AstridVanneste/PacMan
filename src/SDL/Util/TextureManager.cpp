@@ -88,7 +88,12 @@ namespace SDL
 			this->font = SDL_shared<TTF_Font>(TTF_OpenFont(path.c_str(), size));
 		}
 
-		SDL_Color color = {0, 0, 0, 0};
+		unsigned char r = 255 - Settings::Config::getInstance().getValueOfKey<int>(Settings::B_R);
+		unsigned char g = 255 - Settings::Config::getInstance().getValueOfKey<int>(Settings::B_G);
+		unsigned char b = 255 - Settings::Config::getInstance().getValueOfKey<int>(Settings::B_B);
+		unsigned char a = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_A);
+
+		SDL_Color color = {r, g, b, a};
 
 		unique_ptr<SDL_Surface, SDL_Destroyer> surface(TTF_RenderText_Solid(font.get(), text.c_str(), color));
 

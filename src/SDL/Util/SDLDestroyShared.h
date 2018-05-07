@@ -1,6 +1,7 @@
 #include <memory>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_mixer.h>
 using namespace std;
 
 //https://blog.galowicz.de/2016/02/21/automatic_resource_release_with_sdl/
@@ -29,6 +30,16 @@ namespace SDL
 	static void SDL_Del(TTF_Font* font)
 	{
 		TTF_CloseFont(font);
+	}
+
+	static void SDL_Del(Mix_Music* music)
+	{
+		Mix_FreeMusic(music);
+	}
+
+	static void SDL_Del(Mix_Chunk* chunk)
+	{
+		Mix_FreeChunk(chunk);
 	}
 
 	template <typename T>

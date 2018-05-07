@@ -12,7 +12,7 @@
 namespace SDL
 {
 
-	class SDL_Event_Handler : public Game::Event_Handler
+	class SDL_Event_Handler : public Game::EventHandler
 	{
 	public:
 		SDL_Event_Handler();

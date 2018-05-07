@@ -173,8 +173,6 @@ namespace Game
 				if(!this->arena[i.x][i.y]->isPassable())
 				{
 					char type = 0;
-
-
 					if(i.x !=0 && !this->arena[i.x-1][i.y]->isPassable())							//check if there is a wall above this one.
 					{
 						//cout << "wall UP" << endl;

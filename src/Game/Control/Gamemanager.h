@@ -25,7 +25,7 @@ namespace Game
 	private:
 		shared_ptr<AbstractFactory> factory;
 		shared_ptr<Arena> arena;
-		shared_ptr<Event_Handler> eventHandler;
+		shared_ptr<EventHandler> eventHandler;
 		shared_ptr<GameInfo> gameInfo;
 
 		bool running;

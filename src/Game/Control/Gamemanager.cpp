@@ -56,11 +56,15 @@ namespace Game
 		// create event handler
 		this->eventHandler = this->factory->createEventHandler();
 
+		//play music
+		if(Settings::Config::getInstance().getValueOfKey<bool>(Settings::MUSIC_ENABLE))
+		{
+			this->factory->getGraphicsHandler().playMusic();
+		}
+
 
 		//cout << "Start run()" << endl;
 		this->run();
-
-		this->factory->getGraphicsHandler().quit();
 	}
 
 	void Gamemanager::run()
@@ -153,8 +157,6 @@ namespace Game
 				this->arena->getPacman()->setMoving(false);
 			}
 		}
-
-
 	}
 
 	const shared_ptr<Pacman> Gamemanager::getPacman() noexcept

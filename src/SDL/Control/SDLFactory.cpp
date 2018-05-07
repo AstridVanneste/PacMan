@@ -81,12 +81,12 @@ namespace SDL
 		return make_shared<SDL_Wall>(location, type,value);
 	}
 
-	Game::Graphics_Handler& SDL_Factory::getGraphicsHandler() noexcept
+	Game::GraphicsHandler& SDL_Factory::getGraphicsHandler() noexcept
 	{
 		return SDL_Graph_Handler::getInstance();
 	}
 
-	const shared_ptr<Game::Event_Handler> SDL_Factory::createEventHandler() noexcept
+	const shared_ptr<Game::EventHandler> SDL_Factory::createEventHandler() noexcept
 	{
 		return make_shared<SDL_Event_Handler>();
 	}

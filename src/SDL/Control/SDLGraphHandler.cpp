@@ -6,13 +6,15 @@
  */
 
 #include <vector>
+#include <string>
+#include <cstring>
 #include <SDL2/SDL_TTF.h>
 #include "SDLGraphHandler.h"
 #include "../../Game/Control/Gamemanager.h"
 #include "../Util/TextureManager.h"
 #include "../Util/SDLDestroyShared.h"
-#include "../Util/SDLUtil.h"
 #include "../../Settings/Config.h"
+using namespace std;
 
 namespace SDL
 {
@@ -58,26 +60,50 @@ namespace SDL
 	{
 		if(SDL_Init(SDL_INIT_EVERYTHING)==0)
 		{
-			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.y * ENTITY_WIDTH, size.x* ENTITY_HEIGHT + ARENA_OFFSET, SDL_WINDOW_SHOWN));
+			atexit(SDL_Quit);
+			int height = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_HEIGHT);
+			int width = Settings::Config::getInstance().getValueOfKey<int>(Settings::ENTITY_WIDTH);
+			int offset = Settings::Config::getInstance().getValueOfKey<int>(Settings::ARENA_OFFSET);
+			this->window = SDL_shared<SDL_Window> (SDL_CreateWindow("PacMan", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.y * width, size.x* height + offset, SDL_WINDOW_SHOWN));
 			this->renderer = SDL_shared<SDL_Renderer>(SDL_CreateRenderer(window.get(), -1, 0));
-			if(TTF_Init()==0)
+		}
+		else
+		{
+			return false;
+		}
+
+		if(TTF_Init()==0)
+		{
+			atexit(TTF_Quit);
+			if(this->window != NULL && this->renderer != NULL)
 			{
-				if(this->window != NULL && this->renderer != NULL)
-				{
-					TextureManager::getInstance().setRenderer(this->renderer);
-					return true;
-				}
-			}
-			else
-			{
-				cout << "TTF not properly initialized!" << endl;
+				TextureManager::getInstance().setRenderer(this->renderer);
 			}
 		}
 		else
 		{
-			cout << "SDL not properly initialized!" << endl;
+			cout << "TTF not properly initialized!" << endl;
+			return false;
 		}
-		return false;
+
+		//Initialize SDL_mixer
+		if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == 0 )
+		{
+			// TODO change to settings constant
+			string path = Settings::Config::getInstance().getValueOfKey<string>(Settings::MUSIC_PATH);
+			this->music = SDL_shared<Mix_Music>(Mix_LoadMUS(path.c_str()));
+			if(this->music == nullptr)
+			{
+				return false;
+			}
+			Mix_VolumeMusic(MIX_MAX_VOLUME * Settings::Config::getInstance().getValueOfKey<float>(Settings::MUSIC_VOLUME));
+		}
+		else
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	void SDL_Graph_Handler::delay(int time) noexcept
@@ -92,7 +118,11 @@ namespace SDL
 
 	const bool SDL_Graph_Handler::visualizeAll()
 	{
-		SDL_SetRenderDrawColor(renderer.get(), 255, 255, 255,  255);
+		int r = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_R);
+		int g = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_G);
+		int b = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_B);
+		int a = Settings::Config::getInstance().getValueOfKey<int>(Settings::B_A);
+		SDL_SetRenderDrawColor(renderer.get(), r, g, b,  a);
 		SDL_RenderClear(renderer.get());
 
 		Game::Gamemanager::getInstance().getArena()->visualize();
@@ -103,11 +133,17 @@ namespace SDL
 		return true;
 	}
 
-	void SDL_Graph_Handler::quit() noexcept
+	const bool SDL_Graph_Handler::playMusic()
 	{
-		// TODO solve error with TTF_quit()
-		//TTF_Quit();
-		SDL_Quit();
+		//If there is no music playing
+		if( Mix_PlayingMusic() == 0 )
+		{
+			//Play the music
+			if( Mix_PlayMusic( music.get(), -1 ) == -1 )
+			{
+				return 1;
+			}
+		}
 	}
 }
 

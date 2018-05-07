@@ -78,6 +78,8 @@
                                     <listOptionValue builtIn="false" value="sdl2_image"/>
                                     									
                                     <listOptionValue builtIn="false" value="sdl2_ttf"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="sdl2_mixer"/>
                                     								
                                 </option>
                                 								
@@ -94,6 +96,18 @@
                                     <listOptionValue builtIn="false" value="libwebp-7.dll"/>
                                     									
                                     <listOptionValue builtIn="false" value="zlib1.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libFLAC-8.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libmodplug-1.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libmpg123-0.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libogg-0.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libvorbis-0.dll"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="libvorbisfile-3.dll"/>
                                     								
                                 </option>
                                 								

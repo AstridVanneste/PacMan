@@ -76,10 +76,9 @@ namespace Game
 		return this->getOptimalDirection(loc,target, direction);
 	}
 
-	const int AI::getDistance(const Util::Location& target, const Util::Location& loc) noexcept
+	const int AI::getDistance(const Util::Location& p1, const Util::Location& p2) noexcept
 	{
-		int distance = pow((loc.x - target.x),2) + pow((loc.y - target.y),2);
-
+		int distance = pow((p2.x - p1.x),2) + pow((p2.y - p1.y),2);
 		return distance;
 	}
 
